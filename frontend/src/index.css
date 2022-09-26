@@ -1,5 +1,6 @@
 body {
-  width: 1920px;
+  width: 100vw;
+  min-width: 1920px;
   border: 0px;
   margin: 0px;
   box-sizing: border-box;
