@@ -1,14 +1,15 @@
-* {
-  transition: 0.2s;
-}
-
 body {
-  width: 100vw;
-
-  border: 0;
-  padding: 0;
+  width: 1920px;
+  border: 0px;
+  margin: 0px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   user-select: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -1,6 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../Components/Yehoon/Components/HomePage";
-import Header from "../Components/Yehoon/Components/Header";
+import HomePage from "../Components/Yehoon/Components/HomePage/HomePage";
+import MainLayout from "../Components/Yehoon/Components/LayOut/MainLayout";
+import Header from "../Components/Yehoon/Components/LayOut/Header";
+import Footer from "../Components/Yehoon/Components/LayOut/Footer";
+
+import "./App.css";
 // import AllProduct from "../Components/Yehoon/Components/보류/AllProduct";
 // import ProductPage from "../Components/Yehoon/Components/보류/ProductPage";
 
@@ -10,12 +14,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route element={<Header />}>
+        <Route element={<MainLayout />}>
+          <Route element={<Header />} />
+
           <Route path="/" element={<HomePage />}></Route>
 
           {/* 보류 */}
           {/* <Route path="/all" element={<AllProduct />}></Route> */}
           {/* <Route path="/product/:id" element={<ProductPage />}></Route> */}
+          <Route element={<Footer />} />
         </Route>
       </Routes>
     </>
