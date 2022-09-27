@@ -3,6 +3,7 @@ import MainSlider from "./MainSlider/MainSilder";
 import MainLocal from "./MainLocal/MainLocal";
 import MainPromotion from "./MainPromotion/MainPromition";
 import MainFavoriteProduct from "./MainFavoriteProduct/MainFavoriteProduct";
+import MainLatestProduct from "./MainLatestProduct/MainLatestProduct";
 
 const MainBox = styled.main`
   width: 1920px;
@@ -19,10 +20,11 @@ const HomePage = () => {
         <MainLocal></MainLocal>
         <MainPromotion></MainPromotion>
         <MainFavoriteProduct></MainFavoriteProduct>
+        <MainLatestProduct></MainLatestProduct>
         {/* 
         
         
-        <MainLatestProduct></MainLatestProduct>
+        
         <MainReviewProduct></MainReviewProduct>
         <MainBottomEvent></MainBottomEvent>
         <MainBottomQA></MainBottomQA> */}
