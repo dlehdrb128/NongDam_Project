@@ -12,6 +12,7 @@ const MainPromotionBox = styled.div`
 const PromotionImg = styled.img`
   width: 547px;
   height: 326px;
+  cursor: pointer;
 `;
 
 const PromotionTitle = styled.div`

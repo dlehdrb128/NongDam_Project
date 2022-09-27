@@ -28,13 +28,14 @@ const HeaderLogo = styled.img`
 const HeaderInput = styled.input`
   width: 550px;
   height: 60px;
-  border-radius: 10px;
-  border: 2px solid #80c342;
   display: flex;
   justify-content: space-between;
+  border-radius: 10px;
+  border: 2px solid #80c342;
+  outline-color: #80c342;
   padding-left: 20px;
   font-size: 1rem;
-  outline-color: #80c342;
+  font-family: "NanumGothic-Regular";
 
   &::placeholder {
     color: #c0c0c0;
