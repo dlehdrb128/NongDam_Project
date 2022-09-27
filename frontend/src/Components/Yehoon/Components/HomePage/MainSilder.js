@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import EventNavItem from "./EventNavItem";
 import SliderImg from "./SliderImg";
 
 const SliderBox = styled.div`
-  width: 100vw;
+  width: 1920px;
   height: 570px;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,29 @@ const SliderBox = styled.div`
 
 const SliderImgBox = styled.div``;
 
-const SliderLoading = styled.div``;
+// const SliderLoadingBar = styled.progress`
+//   width: 1920px;
+//   height: 10px;
+//   margin-bottom: 11px;
+//   appearance: none;
+//   border-top: 1px solid #c0c0c0;
+//   border-bottom: 1px solid #c0c0c0;
+
+//   &::-webkit-progress-bar {
+//     background-color: white;
+//   }
+
+//   &::-webkit-progress-value {
+//     background-color: #80c342;
+//   }
+// `;
+
+// const SliderLoading = styled.div`
+//   width: ${(props) => props.width};
+//   height: 5px;
+//   background-color: #80c342;
+//   transition: 0.1s;
+// `;
 
 const EventNavBox = styled.div`
   display: flex;
@@ -40,37 +62,38 @@ const ImgItemBox = styled.div`
   display: flex;
   width: 100vw;
   flex-shrink: 0;
-  transition: ease 0.8s;
+  transition: ease 1s;
 `;
 
 const MainSlider = () => {
   const Slider = useRef();
   const [index, setIndex] = useState(1);
   const [delay, setDelay] = useState(5000);
+  // const [slider, setSlider] = useState(1);
+  // const [delay2, setDelay2] = useState(50);
 
   const data = [
     { image: "/img/MainSliderImg.svg", text: "농담 오픈 이벤트" },
     {
-      image: "https://picsum.photos/id/30/1920/1080",
+      image: "/img/picture(1).jpg",
       text: "지역 특산품 이벤트",
     },
     {
-      image: "https://picsum.photos/id/25/1920/1080",
+      image: "/img/picture(2).jpg",
       text: "소비자 리뷰 이벤트",
     },
     {
-      image: "https://picsum.photos/id/30/1920/1080",
-      text: "지역 특산품 이벤트",
+      image: "/img/picture(3).jpg",
+      text: "니가 가라 하와이",
     },
     {
-      image: "https://picsum.photos/id/25/1920/1080",
-      text: "소비자 리뷰 이벤트",
+      image: "/img/picture(4).jpeg",
+      text: "배달의민족 주문",
     },
   ];
 
   const useInterval = (callback, delay) => {
     const savedCallback = useRef(); // 최근에 들어온 callback을 저장할 ref를 하나 만든다.
-
     useEffect(() => {
       savedCallback.current = callback; // callback이 바뀔 때마다 ref를 업데이트 해준다.
     }, [callback]);
@@ -95,12 +118,25 @@ const MainSlider = () => {
     Slider.current.style.transform = `translateX(${currentIndex * -1920}px)`;
   };
 
+  // const sliderLoading = () => {
+  //   setSlider(slider + 1);
+  //   if (slider >= 100) {
+  //     setSlider(1);
+  //   }
+  // };
+
   useInterval(() => {
     moveSlider(index);
   }, delay);
 
   const resetInterval = (number, index) => {
-    setIndex(index);
+    // setSlider(index);
+
+    if (index === data.length - 1) {
+      setIndex(0);
+    } else {
+      setIndex(index + 1);
+    }
     Slider.current.style.transform = `translateX(${index * -1920}px)`;
     setDelay(number + 1);
   };
@@ -114,7 +150,8 @@ const MainSlider = () => {
               <SliderImg key={index} data={value}></SliderImg>
             ))}
           </ImgItemBox>
-          <SliderLoading>로딩</SliderLoading>
+          {/* 프로그래스바 보류 */}
+          {/* <SliderLoadingBar value={slider} max={"100"}></SliderLoadingBar> */}
         </SliderImgBox>
         <EventNavBox>
           <EventNavItemBox>
