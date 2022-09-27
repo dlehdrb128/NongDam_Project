@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import '../../../../src/index.css';
+
 // 가장 진한 회색 rgba(82,82,82,1)
 // 중간 회색 rgba(149,149,149,1)
 // 가장 옅은 회색 rgba(192,192,192,1)
@@ -12,8 +13,8 @@ const Login = () => {
     width: 1277px;
     height: 80px;
     text-align: center;
-    font-size: 2rem;
-    font-family: NanumGothic-Bold;
+    font-size: 3rem;
+    font-family: lotteHappyBold;
     color: rgba(82, 82, 82, 1);
     border-bottom: 1px solid rgba(192, 192, 192, 1);
     margin-top: 80px;
@@ -25,6 +26,8 @@ const Login = () => {
     justify-content: space-around;
     align-items: center;
     margin-right: 10px;
+    position: relative;
+    bottom: 5px;
   `;
   const LoginBox = styled.input`
     width: 625px;
@@ -32,6 +35,8 @@ const Login = () => {
     border-radius: 10px;
     border: 1px solid rgba(192, 192, 192, 1);
     margin: 10px;
+    font-size: 1.2rem;
+    font-family: NanumGothic-Regular;
     & ::placeholder {
       padding-left: 10px;
     }
@@ -65,6 +70,7 @@ const Login = () => {
     margin-left: 10px;
   `;
   const LoginMain = styled.div`
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,8 +134,11 @@ const Login = () => {
     height: 50px;
     border: 1px solid rgba(128, 195, 66, 1);
     border-radius: 5px;
+    margin-top: 5px;
     color: rgba(128, 195, 66, 1);
     display: flex;
+    font-size: 1rem;
+    font-family: NanumGothic-Regular;
     justify-content: center;
     align-items: center;
   `;
@@ -138,12 +147,6 @@ const Login = () => {
     width: 200px;
     justify-content: space-around;
     align-items: center;
-  `;
-  const SNSIcon = styled.a`
-    width: 55px;
-    height: 55px;
-    border: 1px solid rgba(192, 192, 192, 1);
-    border-radius: 100%;
   `;
   const SNSBox = styled.div`
     width: 625px;
@@ -156,11 +159,38 @@ const Login = () => {
     flex-direction: column;
     justify-content: space-around;
   `;
+  const SNSIcon = styled.a`
+    width: 55px;
+    height: 55px;
+    border: 1px solid rgba(192, 192, 192, 1);
+    border-radius: 100%;
+    position: relative;
+    right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
   const SignupPlease = styled.div`
     font-size: 1rem;
     color: rgba(255, 0, 0, 1);
   `;
-
+  const NaverLogo = styled.img`
+    position: absolute;
+    width: 55px;
+    height: 55px;
+  `;
+  const KakaotalkLogo = styled.img`
+    position: absolute;
+    width: 40px;
+    height: 40px;
+  `;
+  const AppleLogo = styled.img`
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    width: 42px;
+    height: 42px;
+  `;
   return (
     <>
       <LoginHeader>로그인</LoginHeader>
@@ -200,9 +230,15 @@ const Login = () => {
               부탁드립니다.
             </SignupPlease>
             <IconBox>
-              <SNSIcon href='http://naver.com'></SNSIcon>
-              <SNSIcon href='http://naver.com'></SNSIcon>
-              <SNSIcon href='http://naver.com'></SNSIcon>
+              <SNSIcon href='http://naver.com'>
+                <NaverLogo src='/img/naverLogo.png' alt='네이버' />
+              </SNSIcon>
+              <SNSIcon href='http://naver.com'>
+                <KakaotalkLogo src='/img/kakaoTalk.png' alt='카카오톡' />
+              </SNSIcon>
+              <SNSIcon href='http://naver.com'>
+                <AppleLogo src='/img/apple.png' alt='애플' />
+              </SNSIcon>
             </IconBox>
           </SNSBox>
         </LoginResponse>
