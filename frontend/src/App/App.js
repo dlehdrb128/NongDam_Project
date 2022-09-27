@@ -3,6 +3,7 @@ import HomePage from "../Components/Yehoon/Components/HomePage/HomePage";
 import MainLayout from "../Components/Yehoon/Components/LayOut/MainLayout";
 import Header from "../Components/Yehoon/Components/LayOut/Header";
 import Footer from "../Components/Yehoon/Components/LayOut/Footer";
+import Test from "../Components/Sangho/Components/test";
 
 import "./App.css";
 // import AllProduct from "../Components/Yehoon/Components/보류/AllProduct";
@@ -18,6 +19,7 @@ function App() {
           <Route element={<Header />} />
 
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/test" element={<Test />}></Route>
 
           {/* 보류 */}
           {/* <Route path="/all" element={<AllProduct />}></Route> */}
