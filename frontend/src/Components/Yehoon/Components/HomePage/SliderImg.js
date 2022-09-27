@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
-const SliderImgs = styled.img`
-  width: 1920px;
-  height: 494px;
-`;
+const SliderImgs = styled.img``;
 
-const ImgBox = styled.div`
-  width: 1920px;
-  height: 494px;
-`;
+const ImgBox = styled.div``;
 
 const SliderImg = ({ data }) => {
   return (
