@@ -120,6 +120,7 @@ const HeaderBottom = styled.div`
         padding: 23px 13px;
         font-family: "NanumGothic-Regular";
         color: rgba(82, 82, 82, 1);
+        z-index: 1;
         gap: 20px;
 
         & > div:hover {

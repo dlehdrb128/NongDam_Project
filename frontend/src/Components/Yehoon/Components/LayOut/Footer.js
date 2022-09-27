@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const FooterBox = styled.div`
   width: 1920px;
-  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,8 +115,10 @@ const FooterBoxBottom = styled.div`
     width: 100%;
     display: flex;
     gap: 200px;
+
     justify-content: center;
     margin-top: 40px;
+    margin-bottom: 50px;
 
     & > div:nth-child(1) {
       display: flex;
@@ -198,7 +199,7 @@ const Footer = () => {
           <div>
             <div>
               <div>
-                <img alt="이미지 없음"></img>
+                <img src="/img/gongjung.svg" alt="이미지 없음"></img>
                 <div>
                   공정거래위원회
                   <br />
@@ -206,7 +207,7 @@ const Footer = () => {
                 </div>
               </div>
               <div>
-                <img alt="이미지 없음"></img>
+                <img src="/img/yesSign.svg" alt="이미지 없음"></img>
                 <div>
                   금융결제원
                   <br />
@@ -214,14 +215,15 @@ const Footer = () => {
                 </div>
               </div>
               <div>
-                <img alt="이미지 없음"></img>
+                <img src="/img/kica.svg" alt="이미지 없음"></img>
                 <div>
-                  한국정보인증
+                  KICA
                   <br />
+                  한국정보인증
                 </div>
               </div>
               <div>
-                <img alt="이미지 없음"></img>
+                <img src="/img/gongjung.svg" alt="이미지 없음"></img>
                 <div>
                   한국온라인쇼핑협회
                   <br />
