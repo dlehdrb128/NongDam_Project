@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import MainSlider from "./MainSilder";
+import MainSlider from "./MainSlider/MainSilder";
+import MainLocal from "./MainLocal/MainLocal";
+import MainPromotion from "./MainPromotion/MainPromition";
+import MainFavoriteProduct from "./MainFavoriteProduct/MainFavoriteProduct";
 
 const MainBox = styled.main`
   width: 1920px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const HomePage = () => {
@@ -12,9 +16,12 @@ const HomePage = () => {
     <>
       <MainBox>
         <MainSlider></MainSlider>
-        {/* <MainLocal></MainLocal>
+        <MainLocal></MainLocal>
         <MainPromotion></MainPromotion>
         <MainFavoriteProduct></MainFavoriteProduct>
+        {/* 
+        
+        
         <MainLatestProduct></MainLatestProduct>
         <MainReviewProduct></MainReviewProduct>
         <MainBottomEvent></MainBottomEvent>
