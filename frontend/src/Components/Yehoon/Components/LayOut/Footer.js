@@ -21,18 +21,23 @@ const FooterBoxTop = styled.div`
     align-items: center;
     margin-top: 20px;
     font-family: "NanumGothic-Regular";
+    color: rgba(82, 82, 82, 1);
     gap: 100px;
+
+    & > a {
+      color: rgba(82, 82, 82, 1);
+    }
     & > a:link {
       text-decoration: none;
-      color: black;
+      color: rgba(82, 82, 82, 1);
     }
     & > a:visited {
       text-decoration: none;
-      color: black;
+      color: rgba(82, 82, 82, 1);
     }
     & > a:active {
       text-decoration: none;
-      color: black;
+      color: rgba(82, 82, 82, 1);
     }
 
     & > a:hover {
@@ -51,6 +56,7 @@ const FooterBoxMiddle = styled.div`
   display: flex;
   gap: 150px;
   margin-bottom: 80px;
+  color: rgba(82, 82, 82, 1);
 
   & > div:nth-child(1) {
     width: 176px;
@@ -99,6 +105,7 @@ const FooterBoxBottom = styled.div`
   width: 1920px;
   display: flex;
   flex-direction: column;
+  color: rgba(82, 82, 82, 1);
 
   & > hr {
     width: 1920px;
