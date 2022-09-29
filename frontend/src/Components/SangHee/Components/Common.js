@@ -9,7 +9,8 @@ export const Common = {
   white: 'rgba(255,255,255,1)',
   fontSize_60: '6rem',
   fontSize_50: '5rem',
+  fontSize_40: '4rem',
   fontSize_30: '3rem',
   fontSize_25: '2.5rem',
   fontSize_20: '2rem',
-}
+};
