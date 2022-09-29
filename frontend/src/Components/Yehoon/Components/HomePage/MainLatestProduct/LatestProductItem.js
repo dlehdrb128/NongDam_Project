@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Theme from "./../../../../../theme/theme";
 
 const LatestProductItemBox = styled.div`
   width: 180px;
@@ -20,20 +21,20 @@ const LatestProductItemBox = styled.div`
   & > div:nth-child(2) {
     & > div:nth-child(1) {
       font-family: "SCD-6";
-      font-size: 1.1rem;
-      color: rgba(128, 195, 66, 1);
+      font-size: 1.7rem;
+      color: ${Theme.green};
     }
 
     & > div:nth-child(2) {
       font-family: "SCD-3";
-      font-size: 1rem;
+      font-size: 1.6rem;
       color: rgba(0, 0, 0, 1);
     }
   }
   & > div:nth-child(3) {
     font-family: "SCD-7";
-    font-size: 1.2rem;
-    color: rgba(82, 82, 82, 1);
+    font-size: 1.9rem;
+    color: ${Theme.lightblack};
   }
 `;
 

@@ -6,7 +6,10 @@ const MainLogoItem = styled.img``;
 const MainLogo = () => {
   return (
     <MainLogoBox>
-      <MainLogoItem src="/img/main-banner.png" alt="이미지 없음"></MainLogoItem>
+      <MainLogoItem
+        src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmTLl31MH-IdU_HMOvUV7hP6Z1JkbRMqEqWmN13-lxB2OYH1tA-8EnqdSnfdEX3PEl_Zon_cCM4=w1920-h969"
+        alt="이미지 없음"
+      ></MainLogoItem>
     </MainLogoBox>
   );
 };

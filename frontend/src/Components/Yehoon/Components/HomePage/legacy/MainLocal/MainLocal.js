@@ -34,13 +34,13 @@ const LocalItemTop = styled.div`
   & > div:nth-child(1) {
     font-family: "lotteHappyBold";
     color: rgba(128, 195, 66, 1);
-    font-size: 1.9rem;
+    font-size: 3rem;
   }
 
   & > div:nth-child(2) {
     font-family: "NanumGothic-Regular";
     color: rgba(149, 149, 149, 1);
-    font-size: 1.1rem;
+    font-size: 1.8rem;
   }
 `;
 
@@ -65,7 +65,7 @@ const LocalMap = styled.div`
   & > div {
     cursor: pointer;
     position: absolute;
-    font-size: 1.15rem;
+    font-size: 1.7rem;
     font-family: "NanumGothic-ExtraBold";
     color: rgba(255, 255, 255, 1);
 
@@ -135,7 +135,7 @@ const LocalTitleBox = styled.div`
   & > div:nth-child(1) {
     font-family: "lotteHappyBold";
     color: rgba(82, 82, 82, 1);
-    font-size: 4rem;
+    font-size: 6.4rem;
     margin-bottom: 96px;
   }
 
@@ -145,7 +145,7 @@ const LocalTitleBox = styled.div`
     text-align: end;
     font-family: "NanumGothic-Regular";
     color: rgba(149, 149, 149, 1);
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     margin-bottom: 42px;
     line-height: 30px;
   }
@@ -154,7 +154,7 @@ const LocalTitleBox = styled.div`
     font-family: "NanumGothic-Bold";
     margin-right: 70px;
     color: rgba(243, 152, 0, 1);
-    font-size: 0.95rem;
+    font-size: 1.6rem;
     cursor: pointer;
   }
 `;

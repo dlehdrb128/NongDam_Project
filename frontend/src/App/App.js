@@ -5,8 +5,9 @@ import Header from "../Components/Yehoon/Components/LayOut/Header";
 import Footer from "../Components/Yehoon/Components/LayOut/Footer";
 import Login from "../Components/Geunsoo/Components/login";
 import Intro from "../Components/SangHee/Components/Intro";
-// import AllProduct from "../Components/Yehoon/Components/보류/AllProduct";
-// import ProductPage from "../Components/Yehoon/Components/ProductPage/ProductPage";
+import AllProduct from "../Components/Yehoon/Components/ProductPage/AllProduct";
+import ProductPage from "../Components/Yehoon/Components/ProductPage/ProductPage";
+import AdminMain from "./../Components/Yeonju/Components/AdminMain";
 import "./App.css";
 
 function App() {
@@ -18,8 +19,10 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/intro" element={<Intro />}></Route>
-          {/* <Route path="/all" element={<AllProduct />}></Route>
-          <Route path="/product/:id" element={<ProductPage />}></Route> */}
+          <Route path="/all" element={<AllProduct />}></Route>
+          <Route path="/product/:id" element={<ProductPage />}></Route>
+          <Route path="/admin" element={<AdminMain />}></Route>
+
           <Route element={<Footer />} />
         </Route>
       </Routes>
