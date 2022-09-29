@@ -23,17 +23,17 @@ const MainFavoriteItemBox = styled.div`
   }
   & > div:nth-child(2) {
     font-family: "NanumGothic-Bold";
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     color: rgba(128, 195, 66, 1);
   }
   & > div:nth-child(3) {
     font-family: "NanumGothic-Regular";
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     color: rgba(82, 82, 82, 1);
   }
   & > div:nth-child(4) {
     font-family: "NanumGothic-Bold";
-    font-size: 1.2rem;
+    font-size: 1.9rem;
     color: rgba(82, 82, 82, 1);
   }
 `;

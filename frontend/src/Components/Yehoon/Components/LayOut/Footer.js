@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Theme from "./../../../../theme/theme";
 
 const FooterBox = styled.div`
   width: 1920px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 200px;
 `;
 
 const FooterBoxTop = styled.div`
@@ -20,27 +22,31 @@ const FooterBoxTop = styled.div`
     align-items: center;
     margin-top: 20px;
     font-family: "SCD-4";
-    color: rgba(82, 82, 82, 1);
+    color: ${Theme.lightblack};
     gap: 100px;
 
     & > a {
-      color: rgba(82, 82, 82, 1);
+      font-size: 1.8rem;
+    }
+
+    & > a {
+      color: ${Theme.lightblack};
     }
     & > a:link {
       text-decoration: none;
-      color: rgba(82, 82, 82, 1);
+      color: ${Theme.lightblack};
     }
     & > a:visited {
       text-decoration: none;
-      color: rgba(82, 82, 82, 1);
+      color: ${Theme.lightblack};
     }
     & > a:active {
       text-decoration: none;
-      color: rgba(82, 82, 82, 1);
+      color: ${Theme.lightblack};
     }
 
     & > a:hover {
-      color: #80c342;
+      color: ${Theme.green};
       font-weight: 600;
     }
   }
@@ -55,7 +61,7 @@ const FooterBoxMiddle = styled.div`
   display: flex;
   gap: 150px;
   margin-bottom: 80px;
-  color: rgba(82, 82, 82, 1);
+  color: ${Theme.lightblack};
 
   & img {
     padding-left: 120px;
@@ -74,15 +80,17 @@ const FooterBoxMiddle = styled.div`
     gap: 20px;
     & > div:nth-child(1) {
       font-family: "SCD-6";
-      font-size: 1.2rem;
+      font-size: 2.2rem;
     }
 
     & > div:nth-child(2) {
-      font-family: "SCD-4";
-      font-size: 0.9rem;
+      font-family: "SCD-3";
       display: flex;
       flex-direction: column;
       gap: 10px;
+      & > div {
+        font-size: 1.2rem;
+      }
     }
 
     & > div:nth-child(3) {
@@ -93,11 +101,11 @@ const FooterBoxMiddle = styled.div`
 
       & > div:nth-child(1) {
         font-family: "SCD-6";
-        font-size: 0.9rem;
+        font-size: 1.5rem;
       }
       & > div:nth-child(2) {
         font-family: "SCD-4";
-        font-size: 0.9rem;
+        font-size: 1.5rem;
         color: #c0c0c0;
       }
     }
@@ -108,7 +116,7 @@ const FooterBoxBottom = styled.div`
   width: 1920px;
   display: flex;
   flex-direction: column;
-  color: rgba(82, 82, 82, 1);
+  color: ${Theme.lightblack};
 
   & > hr {
     width: 1920px;
@@ -137,7 +145,7 @@ const FooterBoxBottom = styled.div`
 
         & > div {
           font-family: "SCD-4";
-          font-size: 0.8rem;
+          font-size: 1.4rem;
           text-align: center;
           line-height: 20px;
         }
@@ -153,7 +161,7 @@ const FooterBoxBottom = styled.div`
       }
       & > div:nth-child(2) {
         font-family: "SCD-4";
-        font-size: 0.8rem;
+        font-size: 1.4rem;
       }
     }
   }

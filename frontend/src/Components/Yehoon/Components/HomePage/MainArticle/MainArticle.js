@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Theme from "./../../../../../theme/theme";
 
 const MainArticleBox = styled.div`
   width: 1280px;
@@ -23,33 +24,33 @@ const MainArticleTitle = styled.div`
 
   & > div:nth-child(1) {
     font-family: "YANGJIN";
-    font-size: 2.8rem;
-    color: rgba(128, 195, 66, 1);
+    font-size: 4.5rem;
+    color: ${Theme.green};
   }
 
   & > div:nth-child(2) {
     font-family: "YANGJIN";
-    font-size: 2.8rem;
-    color: rgba(82, 82, 82, 1);
+    font-size: 4.5rem;
+    color: ${Theme.lightblack};
   }
 
   & > hr {
     width: 436px;
-    border: 1px solid rgba(192, 192, 192, 1);
+    border: 1px solid ${Theme.lightgray};
   }
 
   & > div:nth-child(4) {
     display: flex;
     text-align: end;
     font-family: "SCD-4";
-    font-size: 1.2rem;
-    color: rgba(82, 82, 82, 1);
+    font-size: 1.92rem;
+    color: ${Theme.lightblack};
   }
 
   & > div:nth-child(5) {
     font-family: "SCD-5";
-    font-size: 1.2rem;
-    color: rgba(128, 195, 66, 1);
+    font-size: 1.92rem;
+    color: ${Theme.green};
   }
   & > div:nth-child(6) {
     width: 248px;
@@ -58,15 +59,15 @@ const MainArticleTitle = styled.div`
     justify-content: center;
     align-items: center;
     font-family: "YANGJIN";
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(243, 152, 0, 1);
+    font-size: 1.7rem;
+    color: ${Theme.white};
+    background-color: ${Theme.orange};
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     &:hover {
       cursor: pointer;
-      background-color: rgba(128, 195, 66, 1);
+      background-color: ${Theme.green};
     }
   }
 `;

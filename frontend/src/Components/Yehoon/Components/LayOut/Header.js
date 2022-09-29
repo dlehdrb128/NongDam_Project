@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Theme from "./../../../../theme/theme";
 
 const HeaderBox = styled.div`
   width: 1920px;
@@ -25,7 +26,7 @@ const HeaderBox = styled.div`
 
     &:hover {
       cursor: pointer;
-      color: rgba(128, 195, 66, 1);
+      color: ${Theme.green};
     }
   }
 
@@ -45,15 +46,20 @@ const HeaderBox = styled.div`
 const HeaderBoxMid = styled.div`
   display: flex;
   gap: 66px;
-  color: rgba(82, 82, 82, 1);
+  color: ${Theme.lightblack};
   font-family: "YANGJIN";
-  font-size: 1.1rem;
   margin-right: 180px;
   margin-left: 70px;
+  & > a {
+    font-size: 1.6rem;
+  }
+  & > div {
+    font-size: 1.6rem;
+  }
 
   & > div:hover {
     cursor: pointer;
-    color: rgba(128, 195, 66, 1);
+    color: ${Theme.green};
   }
 `;
 
@@ -63,8 +69,11 @@ const HeaderBoxRight = styled.div`
   justify-content: center;
   gap: 40px;
   font-family: "SCD-4";
-  font-size: 1.1rem;
   margin-bottom: 5px;
+
+  & > div {
+    font-size: 1.7rem;
+  }
 
   & > div:hover {
     cursor: pointer;
@@ -72,21 +81,25 @@ const HeaderBoxRight = styled.div`
   }
 
   & > div:nth-child(1) {
-    color: rgba(82, 82, 82, 1);
+    color: ${Theme.lightblack};
   }
 
   & > a:nth-child(2) > div {
     color: rgba(255, 255, 255, 1);
     width: 79px;
     height: 30px;
-    background-color: rgba(128, 195, 66, 1);
+    background-color: ${Theme.green};
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.6rem;
   }
 
   & > a {
+    & > div {
+      font-size: 1.6rem;
+    }
     &:link {
       text-decoration: none;
       color: black;
@@ -118,12 +131,14 @@ const Header = () => {
           <HeaderBoxMid>
             <Link to="/intro">함께 둘러보는 농담</Link>
 
-            <Link to="/">못난이 장터</Link>
+            <Link to="/all">못난이 장터</Link>
             <div>못난이 활용법</div>
             <div>온라인 5일장</div>
           </HeaderBoxMid>
           <HeaderBoxRight>
-            <div>회원가입</div>
+            <Link to="/admin">
+              <div>회원가입</div>
+            </Link>
             <Link to="/login">
               <div>로그인</div>
             </Link>

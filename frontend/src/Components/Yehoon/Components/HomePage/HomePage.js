@@ -3,6 +3,7 @@ import MainLatestProduct from "./MainLatestProduct/MainLatestProduct";
 import MainLogo from "./MainLogo/MainLogo";
 import MainArticle from "./MainArticle/MainArticle";
 import MainEventMarket from "./MainEventMarket/MainEventMarket";
+import MainReview from "./MainReview/MainReview";
 
 const MainBox = styled.main`
   width: 1920px;
@@ -19,6 +20,7 @@ const HomePage = () => {
         <MainArticle></MainArticle>
         <MainLatestProduct></MainLatestProduct>
         <MainEventMarket></MainEventMarket>
+        <MainReview></MainReview>
       </MainBox>
     </>
   );
