@@ -11,14 +11,14 @@ const MainFavoriteProductBox = styled.div`
   gap: 29px;
 
   & > div:nth-child(1) {
-    font-size: 2rem;
+    font-size: 3.2rem;
     font-family: "lotteHappyBold";
     color: rgba(128, 195, 66, 1);
   }
 
   & > div:nth-child(2) {
     font-family: "lotteHappyLight";
-    font-size: 1.15rem;
+    font-size: 1.8rem;
     color: rgba(149, 149, 149, 1);
   }
 `;

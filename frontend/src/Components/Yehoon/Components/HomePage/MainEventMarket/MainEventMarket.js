@@ -24,7 +24,7 @@ const EventTextBox = styled.div`
     text-align: center;
     line-height: 35px;
     font-family: "SCD-4";
-    font-size: 1.5rem;
+    font-size: 2.4rem;
     color: ${Theme.lightblack};
   }
 
@@ -34,7 +34,7 @@ const EventTextBox = styled.div`
     background-color: ${Theme.green};
     border-radius: 10px;
     font-family: "YANGJIN";
-    font-size: 1.2rem;
+    font-size: 1.9rem;
     color: ${Theme.white};
     display: flex;
     justify-content: center;
@@ -53,13 +53,13 @@ const EventTextBox = styled.div`
     position: relative;
     color: rgba(82, 82, 82, 1);
     font-family: "SCD-4";
-    font-size: 1.5rem;
+    font-size: 2.4rem;
 
     & > span {
       position: relative;
       color: ${Theme.orange};
       font-family: "SCD-6";
-      font-size: 3rem;
+      font-size: 4.8rem;
 
       &::before {
         position: absolute;

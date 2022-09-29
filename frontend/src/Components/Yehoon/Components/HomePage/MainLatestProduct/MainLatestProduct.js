@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import LatestProductItem from "./LatestProductItem";
+import Theme from "./../../../../../theme/theme";
 
 const MainLatestProductBox = styled.div`
   width: 1920px;
   height: 545px;
   margin-top: 200px;
-  background: linear-gradient(to top, white 61%, rgba(242, 242, 242, 1) 52%);
+  background: linear-gradient(to top, white 61%, ${Theme.white} 52%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +26,7 @@ const LatestProductBox = styled.div`
       left: 10px;
       width: 298px;
       height: 339px;
-      border: 3px solid rgba(128, 195, 66, 1);
+      border: 3px solid ${Theme.green};
       border-radius: 10px;
     }
     & > img {

@@ -50,7 +50,7 @@ const EventNavItemBox = styled.div`
   gap: 120px;
   color: #c0c0c0;
   font-family: "NanumGothic-Bold";
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 
   & > div:hover {
     cursor: pointer;

@@ -6,6 +6,8 @@ const Theme = {
   white: "rgba(242,242,242,1)",
   orange: "rgba(243,152,0,1)",
   red: "rgba(255,0,0,1)",
+  black: "rgba(0, 0, 0, 1)",
+  realWhite: "rgba(255, 255, 255, 1)",
 };
 
 export default Theme;
