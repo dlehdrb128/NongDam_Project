@@ -1,8 +1,9 @@
+import '../../../App/App.css'
+import styled from 'styled-components';
+
 const Intro = () => {
   return (
-    <>
-      <h1>인트로 페이지</h1>
-    </>
+    <></>
   );
 };
 
