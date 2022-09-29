@@ -1,7 +1,7 @@
-// import { useParams } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect, useState } from "react";
-// import { productAll } from "../Slice/getData";
+// // import { useParams } from "react-router-dom";
+// // import { useDispatch, useSelector } from "react-redux";
+// // import { useEffect, useState } from "react";
+// // import { productAll } from "../Slice/getData";
 // import styled from "styled-components";
 
 // const ProductPageTop = styled.div`
@@ -109,48 +109,48 @@
 // `;
 
 // const ProductPage = () => {
-//   const { id } = useParams();
-//   const [count, setCount] = useState(0);
+//   // const { id } = useParams();
+//   // const [count, setCount] = useState(0);
 
-//   const disPatch = useDispatch();
+//   // const disPatch = useDispatch();
 
-//   useEffect(() => {
-//     const getData = () => {
-//       disPatch(productAll());
-//     };
-//     getData();
-//   }, [disPatch]);
+//   // useEffect(() => {
+//   //   const getData = () => {
+//   //     disPatch(productAll());
+//   //   };
+//   //   getData();
+//   // }, [disPatch]);
 
-//   const { value, status } = useSelector((store) => store.data);
+//   // const { value, status } = useSelector((store) => store.data);
 
-//   const realValue = value[0];
+//   // const realValue = value[0];
 
-//   if (!realValue) {
-//     return null;
-//   }
+//   // if (!realValue) {
+//   //   return null;
+//   // }
 
-//   let ProductData = realValue.filter((value) => {
-//     return value.product_id === Number(id);
-//   });
+//   // let ProductData = realValue.filter((value) => {
+//   //   return value.product_id === Number(id);
+//   // });
 
-//   if (status === "loading") {
-//     return null;
-//   }
+//   // if (status === "loading") {
+//   //   return null;
+//   // }
 
-//   const up = () => {
-//     if (count > 0) {
-//       setCount((count) => count - 1);
-//     }
-//   };
+//   // const up = () => {
+//   //   if (count > 0) {
+//   //     setCount((count) => count - 1);
+//   //   }
+//   // };
 
-//   const down = () => {
-//     setCount((count) => count + 1);
-//   };
+//   // const down = () => {
+//   //   setCount((count) => count + 1);
+//   // };
 
 //   return (
 //     <>
 //       <ProductPageTop>
-//         <ProductPageTopLeft>
+//         {/* <ProductPageTopLeft>
 //           <img src={ProductData[0].image} alt="데이터를 찾을 수 없습니다"></img>
 //         </ProductPageTopLeft>
 //         <ProductPageTopRight>
@@ -167,7 +167,7 @@
 //             <div>구매하기</div>
 //             <div>장바구니</div>
 //           </div>
-//         </ProductPageTopRight>
+//         </ProductPageTopRight> */}
 //       </ProductPageTop>
 //     </>
 //   );
