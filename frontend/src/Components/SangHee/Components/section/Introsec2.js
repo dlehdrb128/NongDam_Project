@@ -3,11 +3,14 @@ import '../../../../App/App.css';
 import { Common } from '../Common';
 import styled from 'styled-components';
 
+//color,font Asset
 const { Maincol, text, fontSize_50, fontSize_30, fontSize_20 } = Common;
 
+//section2
 const Section2 = styled.section`
   width: inherit;
   margin-bottom: 18rem;
+  //title
   & > h1 {
     font-family: YANGJIN;
     font-size: ${fontSize_50};
@@ -20,9 +23,11 @@ const Section2 = styled.section`
       color: ${Maincol};
     }
   }
+  //sec2_contents
   & > div:nth-child(2) {
     display: flex;
     justify-content: space-between;
+    //text
     & > div:nth-child(1) {
       & > div {
         margin-bottom: 6rem;
@@ -38,6 +43,7 @@ const Section2 = styled.section`
           margin-bottom: 3rem;
         }
       }
+      //bold text
       & > h1 {
         font-family: YANGJIN;
         font-size: ${fontSize_30};
@@ -51,11 +57,12 @@ const Section2 = styled.section`
         }
       }
     }
+    //img
     & > img {
       width: 70rem;
       height: 65rem;
     }
-  }
+  } //common
   p {
     color: ${text};
     letter-spacing: 0.025rem;

@@ -23,14 +23,20 @@ const Intro = () => {
   return (
     <>
       <IntroTopvisual />
+      {/* Visual */}
       <Main>
         <div className='sec_wrap'>
           <Introsec1 />
+          {/* section1 */}
           <Introsec2 />
+          {/* section2 */}
           <Introsec3 />
+          {/* section3 */}
           <Introsec4 />
+          {/* section4 */}
         </div>
         <Introsec5 />
+        {/* seciton5 */}
       </Main>
     </>
   );

@@ -1,14 +1,16 @@
-import '../../../../index.css';
 import '../../../../App/App.css';
 import { Common } from '../Common';
 import styled from 'styled-components';
 
+//color,font Asset
 const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_20 } =
   Common;
 
+//section4
 const Section4 = styled.section`
   width: inherit;
   margin-bottom: 18rem;
+  //title
   & > h1 {
     font-family: YANGJIN;
     font-size: ${fontSize_50};
@@ -16,13 +18,16 @@ const Section4 = styled.section`
     color: ${text};
     letter-spacing: 0.4rem;
   }
+  //sec4_contents
   & > div:nth-child(2) {
     display: flex;
     justify-content: space-between;
+    //img
     & > img {
       width: 70rem;
       height: 65rem;
     }
+    //text
     & > div:nth-child(2) {
       & > div {
         margin-bottom: 6rem;
@@ -38,6 +43,7 @@ const Section4 = styled.section`
           margin-bottom: 3rem;
         }
       }
+      //text_bold
       & > h1 {
         font-family: YANGJIN;
         font-size: ${fontSize_30};
@@ -58,6 +64,7 @@ const Section4 = styled.section`
       }
     }
   }
+  //common
   p {
     color: ${text};
     letter-spacing: 0.025rem;

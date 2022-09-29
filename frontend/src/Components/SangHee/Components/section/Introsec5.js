@@ -1,13 +1,15 @@
-import '../../../../index.css';
 import '../../../../App/App.css';
 import { Common } from '../Common';
 import styled from 'styled-components';
 
+//color,font Asset
 const { Maincol, orange, white, fontSize_60, fontSize_40, fontSize_25 } =
   Common;
 
+//section5
 const Section5 = styled.section`
   width: 100%;
+  //title
   & > h1 {
     font-family: YANGJIN;
     font-size: ${fontSize_60};
@@ -16,6 +18,7 @@ const Section5 = styled.section`
     text-align: center;
     margin-bottom: 3rem;
   }
+  //sec5_contents
   & > div:nth-child(2) {
     height: 58.4rem;
     background: url('https://lh3.googleusercontent.com/drive-viewer/AJc5JmSO5zlxwGaLiNbopmkmkYv7GHrWANZy_GToUOx_AhRXOLXsZpIrd9ke-SOwYLATJA8Epfi-UcQ=w1920-h966')
@@ -24,6 +27,7 @@ const Section5 = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    //text_con_wrap
     & > div {
       background: rgba(21, 21, 21, 0.71);
       width: 68.5rem;
@@ -32,6 +36,7 @@ const Section5 = styled.section`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      //text_bold
       & > h1 {
         text-align: center;
         font-size: ${fontSize_40};
@@ -45,6 +50,7 @@ const Section5 = styled.section`
           color: ${white};
         }
       }
+      //text
       & > p {
         width: 41.2rem;
         word-break: keep-all;

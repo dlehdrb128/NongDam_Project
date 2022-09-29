@@ -1,14 +1,17 @@
-import '../../../../index.css';
 import '../../../../App/App.css';
 import { Common } from '../Common';
 import styled from 'styled-components';
 
+//color,font Asset
 const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } =
   Common;
 
+//section3
 const Section3 = styled.section`
   width: inherit;
   margin-bottom: 18rem;
+
+  //title
   & > h1 {
     text-align: center;
     font-size: ${fontSize_50};
@@ -21,6 +24,7 @@ const Section3 = styled.section`
       font-size: ${fontSize_50};
     }
   }
+  //sec3_con
   p {
     color: ${text};
     font-family: SCD-4;
@@ -31,11 +35,13 @@ const Section3 = styled.section`
     letter-spacing: 0.125rem;
     margin-bottom: 4.5rem;
   }
+  //img
   & > img {
     width: 100%;
     height: 50.9rem;
     margin-bottom: 4.5rem;
   }
+  //text_bold
   & > p:nth-child(4) {
     font-family: YANGJIN;
     font-size: ${fontSize_30};
