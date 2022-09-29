@@ -9,6 +9,26 @@ const HeaderBox = styled.div`
   align-items: center;
   background-color: rgba(255, 255, 255, 1);
 
+  & a {
+    &:link {
+      text-decoration: none;
+      color: black;
+    }
+    &:visited {
+      text-decoration: none;
+      color: black;
+    }
+    &:active {
+      text-decoration: none;
+      color: black;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: rgba(128, 195, 66, 1);
+    }
+  }
+
   & > div {
     position: relative;
     width: 1280px;
@@ -96,8 +116,9 @@ const Header = () => {
             <img src="/img/logo-3.svg" alt="이미지 없음"></img>
           </Link>
           <HeaderBoxMid>
-            <div>함께 둘러보는 농담</div>
-            <div>못난이 장터</div>
+            <Link to="/intro">함께 둘러보는 농담</Link>
+
+            <Link to="/">못난이 장터</Link>
             <div>못난이 활용법</div>
             <div>온라인 5일장</div>
           </HeaderBoxMid>
