@@ -1,4 +1,3 @@
-import '../../../../index.css';
 import '../../../../App/App.css';
 import { Common } from '../Common';
 import styled from 'styled-components';
