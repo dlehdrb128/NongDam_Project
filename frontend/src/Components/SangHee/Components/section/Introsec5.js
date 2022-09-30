@@ -3,12 +3,16 @@ import { Common } from '../Common';
 import styled from 'styled-components';
 
 //color,font Asset
-const { Maincol, orange, white, fontSize_60, fontSize_40, fontSize_25 } =
+const { Maincol, orange, white, fontSize_60, fontSize_40, fontSize_25, fontSize_30, btnTransition } =
   Common;
 
 //section5
 const Section5 = styled.section`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   //title
   & > h1 {
     font-family: YANGJIN;
@@ -20,6 +24,7 @@ const Section5 = styled.section`
   }
   //sec5_contents
   & > div:nth-child(2) {
+    width: 100%;
     height: 58.4rem;
     background: url('https://lh3.googleusercontent.com/drive-viewer/AJc5JmSO5zlxwGaLiNbopmkmkYv7GHrWANZy_GToUOx_AhRXOLXsZpIrd9ke-SOwYLATJA8Epfi-UcQ=w1920-h966')
       no-repeat center;
@@ -27,6 +32,7 @@ const Section5 = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 8rem;
     //text_con_wrap
     & > div {
       background: rgba(21, 21, 21, 0.71);
@@ -63,6 +69,23 @@ const Section5 = styled.section`
       }
     }
   }
+  //button
+  &>button{
+    color: ${white};
+    font-size: ${fontSize_30};
+    font-family: YANGJIN;
+    background: ${Maincol};
+    width: 40rem;
+    height: 8rem;
+    border:none;
+    border-radius: 1rem;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1);
+    transition: ${btnTransition};
+    cursor: pointer;
+    &:hover{
+      background:${orange};
+    }
+  }
 `;
 
 const Introsec5 = () => {
@@ -84,6 +107,7 @@ const Introsec5 = () => {
           </p>
         </div>
       </div>
+      <button>제보하러 가기</button>
     </Section5>
   );
 };

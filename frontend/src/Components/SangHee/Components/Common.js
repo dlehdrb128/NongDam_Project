@@ -13,4 +13,5 @@ export const Common = {
   fontSize_30: '3rem',
   fontSize_25: '2.5rem',
   fontSize_20: '2rem',
+  btnTransition: 'ease-in 0.3s'
 };
