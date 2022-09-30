@@ -15,6 +15,8 @@ try {
   console.log("uploads 파일이 없어서 생성합니다!");
 }
 
+// Request full drive access.
+
 // const upload = multer.diskStorage({
 //   destination: (req, file, cb) => {
 //     cb(null, "uploads/");
@@ -51,16 +53,6 @@ app.post("/upload", upload.single("img"), (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  console.log(__dirname + "/uploads/1664249585032.png");
-
-  let decode = Buffer.from(
-    __dirname + "/uploads/1664249585032.png",
-    "base64",
-    "UTF-8"
-  ); //
-
-  console.log(decode);
-
   res.send(decode);
 });
 

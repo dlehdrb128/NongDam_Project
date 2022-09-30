@@ -1,15 +1,15 @@
 @font-face {
-  font-family: 12lotteHappyBold;
+  font-family: lotteHappyBold;
   src: url("../../public/font/12lotteHappyBold.ttf");
 }
 
 @font-face {
-  font-family: 12lotteHappyLight;
+  font-family: lotteHappyLight;
   src: url("../../public/font/12lotteHappyLight.ttf");
 }
 
 @font-face {
-  font-family: 12lotteHappyMedium;
+  font-family: lotteHappyMedium;
   src: url("../../public/font/12lotteHappyMedium.ttf");
 }
 
