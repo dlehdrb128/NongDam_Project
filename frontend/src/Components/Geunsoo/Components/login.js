@@ -22,13 +22,12 @@ const Login = () => {
   `;
   const LoginResponse = styled.div`
     width: 600px;
+    height: 625px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     margin-right: 10px;
-    position: relative;
-    bottom: 5px;
   `;
   const LoginBox = styled.input`
     width: 600px;
@@ -65,7 +64,7 @@ const Login = () => {
   `;
   const Ppl = styled.div`
     width: 600px;
-    height: 625px;
+    height: 600px;
     background-color: #ccc;
     margin-left: 10px;
   `;
@@ -85,12 +84,14 @@ const Login = () => {
     color: rgba(82, 82, 82, 1);
     font-size: 1.5rem;
     font-family: NanumGothic-Regular;
+    position: relative;
+    bottom: 1px;
   `;
   const LoginButton = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 620px;
+    width: 600px;
     height: 60px;
     border: 1px solid rgba(128, 195, 66, 1);
     border-radius: 10px;
@@ -102,13 +103,12 @@ const Login = () => {
   `;
   const Security = styled.div`
     width: 600px;
-    height: 50px;
     display: flex;
     justify-content: right;
     align-items: center;
   `;
   const SignupGuide = styled.div`
-    width: 620px;
+    width: 600px;
     height: 120px;
     border-bottom: 1px solid rgba(192, 192, 192, 1);
     padding-bottom: 15px;
@@ -121,11 +121,13 @@ const Login = () => {
     font-size: 2rem;
     font-family: NanumGothic-Regular;
     color: rgba(82, 82, 82, 1);
+    margin-bottom: 10px;
   `;
   const MemberBenefits = styled.div`
     font-size: 1.5rem;
     font-family: NanumGothic-Regular;
     color: rgba(82, 82, 82, 1);
+    margin-bottom: 5px;
   `;
   const SignupButton = styled.a`
     text-decoration: none;
@@ -146,7 +148,7 @@ const Login = () => {
     width: 200px;
     justify-content: space-around;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 5px;
   `;
   const SNSLogin = styled.div`
     font-size: 2rem;
@@ -155,7 +157,7 @@ const Login = () => {
   const SNSBox = styled.div`
     width: 600px;
     height: 150px;
-    margin-top: 10px;
+
     text-align: left;
     font-size: 2rem;
     color: rgba(82, 82, 82, 1);
