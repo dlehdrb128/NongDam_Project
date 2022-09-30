@@ -20,13 +20,13 @@ const Theme = {
 };
 
 const StyledButton = styled.button`
-  color: ${Theme.realWhite};
+  color: ${(props) => props.color || Theme.realWhite};
   font-size: ${(props) => props.fs};
-  font-family: YANGJIN;
-  background: ${Theme.green};
+  font-family: ${(props) => props.fontFamily || "YANGJIN"};
+  background: ${(props) => props.bg || Theme.green};
   width: ${(props) => props.wd};
   height: ${(props) => props.ht};
-  border: none;
+  border: ${(props) => props.border || "none"};
   border-radius: 1rem;
   box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1);
   transition: ${Theme.btnTransition};
