@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Theme from "./../../../../theme/theme";
 
 const FooterBox = styled.div`
   width: 1920px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 200px;
 `;
 
 const FooterBoxTop = styled.div`
@@ -21,32 +19,28 @@ const FooterBoxTop = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    font-family: "SCD-4";
-    color: ${Theme.lightblack};
+    font-family: "NanumGothic-Regular";
+    color: rgba(82, 82, 82, 1);
     gap: 100px;
 
     & > a {
-      font-size: 1.8rem;
-    }
-
-    & > a {
-      color: ${Theme.lightblack};
+      color: rgba(82, 82, 82, 1);
     }
     & > a:link {
       text-decoration: none;
-      color: ${Theme.lightblack};
+      color: rgba(82, 82, 82, 1);
     }
     & > a:visited {
       text-decoration: none;
-      color: ${Theme.lightblack};
+      color: rgba(82, 82, 82, 1);
     }
     & > a:active {
       text-decoration: none;
-      color: ${Theme.lightblack};
+      color: rgba(82, 82, 82, 1);
     }
 
     & > a:hover {
-      color: ${Theme.green};
+      color: #80c342;
       font-weight: 600;
     }
   }
@@ -61,11 +55,7 @@ const FooterBoxMiddle = styled.div`
   display: flex;
   gap: 150px;
   margin-bottom: 80px;
-  color: ${Theme.lightblack};
-
-  & img {
-    padding-left: 120px;
-  }
+  color: rgba(82, 82, 82, 1);
 
   & > div:nth-child(1) {
     width: 176px;
@@ -79,18 +69,16 @@ const FooterBoxMiddle = styled.div`
     margin-top: 80px;
     gap: 20px;
     & > div:nth-child(1) {
-      font-family: "SCD-6";
-      font-size: 2.2rem;
+      font-family: "NanumGothic-Bold";
+      font-size: 1.2rem;
     }
 
     & > div:nth-child(2) {
-      font-family: "SCD-3";
+      font-family: "NanumGothic-Regular";
+      font-size: 0.9rem;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      & > div {
-        font-size: 1.2rem;
-      }
     }
 
     & > div:nth-child(3) {
@@ -100,12 +88,12 @@ const FooterBoxMiddle = styled.div`
       gap: 5px;
 
       & > div:nth-child(1) {
-        font-family: "SCD-6";
-        font-size: 1.5rem;
+        font-family: "NanumGothic-Bold";
+        font-size: 0.9rem;
       }
       & > div:nth-child(2) {
-        font-family: "SCD-4";
-        font-size: 1.5rem;
+        font-family: "NanumGothic-Regular";
+        font-size: 0.9rem;
         color: #c0c0c0;
       }
     }
@@ -116,7 +104,7 @@ const FooterBoxBottom = styled.div`
   width: 1920px;
   display: flex;
   flex-direction: column;
-  color: ${Theme.lightblack};
+  color: rgba(82, 82, 82, 1);
 
   & > hr {
     width: 1920px;
@@ -144,8 +132,8 @@ const FooterBoxBottom = styled.div`
         gap: 20px;
 
         & > div {
-          font-family: "SCD-4";
-          font-size: 1.4rem;
+          font-family: "NanumGothic-Regular";
+          font-size: 0.8rem;
           text-align: center;
           line-height: 20px;
         }
@@ -157,11 +145,11 @@ const FooterBoxBottom = styled.div`
       flex-direction: column;
       gap: 10px;
       & > div:nth-child(1) {
-        font-family: "SCD-6";
+        font-family: "NanumGothic-Bold";
       }
       & > div:nth-child(2) {
-        font-family: "SCD-4";
-        font-size: 1.4rem;
+        font-family: "NanumGothic-Regular";
+        font-size: 0.8rem;
       }
     }
   }
@@ -182,7 +170,7 @@ const Footer = () => {
         </FooterBoxTop>
         <FooterBoxMiddle>
           <div>
-            <img src="/img/logo-2.svg" alt="이미지 없음"></img>
+            <img src="/img/logo.svg" alt="이미지 없음"></img>
           </div>
           <div>
             <div>농담(농업을 담다)</div>
