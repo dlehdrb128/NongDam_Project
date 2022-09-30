@@ -6,19 +6,30 @@ const MainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 3px solid red;
+  font-family: 'SCD-6';
 
   & > div {
     width: 1280px;
     height: 650px;
+    border: 3px solid red;
+    background-color: pink;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+  }
+`;
 
-    & > div > h1 {
-      width: inherit;
-      height: 80px;
-      text-align: center;
-    }
+const HeadlineBox = styled.div`
+  width: inherit;
+  height: 80px;
+  text-align: center;
+  border: 3px solid red;
+  background-color: aquamarine;
+
+  & > h1 {
+    font-size: 4rem;
   }
 `;
 
@@ -27,6 +38,9 @@ const StoreIconMainBox = styled.div`
   height: 470px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  background-color: aqua;
 
   & > div {
     width: 296px;
@@ -40,7 +54,9 @@ const AdminMain = () => {
   return (
     <MainBox>
       <div>
-        <h1>스토어관리</h1>
+        <HeadlineBox>
+          <h1>스토어관리</h1>
+        </HeadlineBox>
         <StoreIconMainBox>
           <div></div>
           <div></div>
