@@ -43,7 +43,7 @@ const PromotionTitle = styled.div`
   }
 
   & > div:nth-child(3) {
-    font-size: 0.95rem;
+    font-size: 1.5rem;
     font-family: "NanumGothic-Regular";
     color: rgba(149, 149, 149, 1);
   }
@@ -57,7 +57,7 @@ const PromotionTitle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.95rem;
+    font-size: 1.5rem;
     font-family: "NanumGothic-Bold";
     color: rgba(255, 255, 255, 1);
 

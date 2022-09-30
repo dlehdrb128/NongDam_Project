@@ -1,0 +1,39 @@
+import styled from "styled-components";
+const Theme = {
+  green: "rgba(128,195,66,1)",
+  lightgray: "rgba(192,192,192,1)",
+  gray: "rgba(149,149,149,1)",
+  lightblack: "rgba(82,82,82,1)",
+  white: "rgba(242,242,242,1)",
+  orange: "rgba(243,152,0,1)",
+  red: "rgba(255,0,0,1)",
+  black: "rgba(0, 0, 0, 1)",
+  realWhite: "rgba(255, 255, 255, 1)",
+
+  fontSize_60: "6rem",
+  fontSize_50: "5rem",
+  fontSize_40: "4rem",
+  fontSize_30: "3rem",
+  fontSize_25: "2.5rem",
+  fontSize_20: "2rem",
+  btnTransition: "ease-in 0.3s",
+};
+
+export const StyledButton = styled.button`
+  color: ${Theme.realWhite};
+  font-size: ${(props) => props.fs};
+  font-family: YANGJIN;
+  background: ${Theme.green};
+  width: ${(props) => props.wd};
+  height: ${(props) => props.ht};
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1);
+  transition: ${Theme.btnTransition};
+  cursor: pointer;
+  &:hover {
+    background: ${Theme.orange};
+  }
+`;
+
+export default Theme;
