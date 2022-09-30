@@ -89,7 +89,7 @@ const Introsec5 = () => {
           </p>
         </div>
       </div>
-      <StyledButton wd='200px' ht='200px'></StyledButton>
+      <StyledButton wd='40rem' ht='8rem' fs='3rem'>제보하러 가기</StyledButton>
     </Section5>
   );
 };

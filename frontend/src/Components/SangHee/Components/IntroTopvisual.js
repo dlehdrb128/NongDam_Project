@@ -1,9 +1,10 @@
 import '../../../App/App';
-import { Common } from './Common';
+import { Theme } from '../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
-const { Maincol, white, fontSize_60, fontSize_30 } = Common;
+// const { Maincol, white, fontSize_60, fontSize_30 } = Common;
+const { green, white, fontSize_60, fontSize_30 } = Theme
 
 //Topvisual
 const Introvisual = styled.div`
@@ -31,7 +32,7 @@ const Introvisual = styled.div`
     align-items: center;
     & > span {
       font-size: ${fontSize_60};
-      color: ${Maincol};
+      color: ${green};
     }
     &::after {
       content: '';
