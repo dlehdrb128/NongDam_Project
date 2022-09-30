@@ -16,11 +16,10 @@ const FooterBoxTop = styled.div`
   flex-direction: column;
   & > div {
     width: 1280px;
-    height: 50px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     font-family: "SCD-4";
     color: ${Theme.lightblack};
     gap: 100px;
@@ -171,6 +170,7 @@ const Footer = () => {
     <>
       <FooterBox>
         <FooterBoxTop>
+          <hr></hr>
           <div>
             <Link>개인정보처리방침</Link>
             <Link>이용약관</Link>
