@@ -19,7 +19,7 @@ const Theme = {
   btnTransition: "ease-in 0.3s",
 };
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   color: ${Theme.realWhite};
   font-size: ${(props) => props.fs};
   font-family: YANGJIN;
@@ -36,4 +36,25 @@ export const StyledButton = styled.button`
   }
 `;
 
+// & a {
+//   &:link {
+//     text-decoration: none;
+//     color: black;
+//   }
+//   &:visited {
+//     text-decoration: none;
+//     color: black;
+//   }
+//   &:active {
+//     text-decoration: none;
+//     color: black;
+//   }
+
+//   &:hover {
+//     cursor: pointer;
+//     color: ${Theme.green};
+//   }
+// }
+
+export { Theme, StyledButton };
 export default Theme;
