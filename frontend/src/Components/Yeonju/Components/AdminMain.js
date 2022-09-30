@@ -60,6 +60,12 @@ const StoreIconMainBox = styled.div`
     align-items: center;
     box-shadow: 0.1rem 0.1rem 0.5rem rgba(149, 149, 149, 0.65);
 
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(149, 149, 149, 0.1);
+      border: 0;
+    }
+
     & > img {
       width: 6rem;
       height: 6rem;
