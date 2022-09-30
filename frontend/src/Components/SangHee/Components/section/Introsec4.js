@@ -1,10 +1,12 @@
 import '../../../../App/App.css';
-import { Common } from '../Common';
+import { Theme } from '../../../../theme/theme';
 import styled from 'styled-components';
 
 //color,font Asset
-const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_20 } =
-  Common;
+// const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_20 } =
+//   Common;
+
+const { green, lightblack, fontSize_60, fontSize_50, fontSize_30, fontSize_20 } = Theme;
 
 //section4
 const Section4 = styled.section`
@@ -15,7 +17,7 @@ const Section4 = styled.section`
     font-family: YANGJIN;
     font-size: ${fontSize_50};
     margin-bottom: 4rem;
-    color: ${text};
+    color: ${lightblack};
     letter-spacing: 0.4rem;
   }
   //sec4_contents
@@ -31,7 +33,7 @@ const Section4 = styled.section`
     & > div:nth-child(2) {
       & > div {
         margin-bottom: 6rem;
-        color: ${text};
+        color: ${Theme.lightblack};
         & > p {
           word-break: keep-all;
           font-size: ${fontSize_20};
@@ -49,24 +51,24 @@ const Section4 = styled.section`
         font-size: ${fontSize_30};
         text-align: right;
         line-height: 4.48rem;
-        color: ${Maincol};
+        color: ${green};
         letter-spacing: 0.15rem;
         margin-bottom: 6rem;
       }
       & > h1:nth-child(3) {
         font-size: ${fontSize_60};
-        color: ${text};
+        color: ${lightblack};
         letter-spacing: 0.3rem;
         & > span {
           font-size: ${fontSize_60};
-          color: ${Maincol};
+          color: ${green};
         }
       }
     }
   }
   //common
   p {
-    color: ${text};
+    color: ${lightblack};
     letter-spacing: 0.025rem;
   }
 `;

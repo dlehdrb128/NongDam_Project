@@ -1,10 +1,11 @@
-import '../../../../index.css';
 import '../../../../App/App.css';
-import { Common } from '../Common';
+import { Theme } from '../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
-const { Maincol, text, fontSize_50, fontSize_30, fontSize_20 } = Common;
+// const { Maincol, text, fontSize_50, fontSize_30, fontSize_20 } = Common;
+
+const { green, lightblack, fontSize_50, fontSize_30, fontSize_20 } = Theme;
 
 //section2
 const Section2 = styled.section`
@@ -16,11 +17,11 @@ const Section2 = styled.section`
     font-size: ${fontSize_50};
     margin-bottom: 4rem;
     text-align: right;
-    color: ${text};
+    color: ${lightblack};
     letter-spacing: 0.4rem;
     & > span {
       font-size: ${fontSize_50};
-      color: ${Maincol};
+      color: ${green};
     }
   }
   //sec2_contents
@@ -31,7 +32,7 @@ const Section2 = styled.section`
     & > div:nth-child(1) {
       & > div {
         margin-bottom: 6rem;
-        color: ${text};
+        color: ${lightblack};
         & > p {
           word-break: keep-all;
           font-size: ${fontSize_20};
@@ -49,10 +50,10 @@ const Section2 = styled.section`
         font-size: ${fontSize_30};
         text-align: left;
         line-height: 4.48rem;
-        color: ${text};
+        color: ${lightblack};
         letter-spacing: 0.15rem;
         & > span {
-          color: ${Maincol};
+          color: ${green};
           font-size: ${fontSize_30};
         }
       }
@@ -64,7 +65,7 @@ const Section2 = styled.section`
     }
   } //common
   p {
-    color: ${text};
+    color: ${lightblack};
     letter-spacing: 0.025rem;
   }
 `;

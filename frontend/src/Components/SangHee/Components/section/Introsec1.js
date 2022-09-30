@@ -1,9 +1,10 @@
 import '../../../../App/App.css';
-import { Common } from '../Common';
+import { Theme } from '../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
-const { Maincol, text, fontSize_50, fontSize_30, fontSize_20 } = Common;
+// const { Maincol, text, fontSize_50, fontSize_30, fontSize_20 } = Common;
+const { green, lightblack, fontSize_50, fontSize_30, fontSize_20 } = Theme;
 
 //section1
 const Section1 = styled.section`
@@ -15,7 +16,7 @@ const Section1 = styled.section`
     font-family: YANGJIN;
     font-size: ${fontSize_50};
     margin-bottom: 4rem;
-    color: ${text};
+    color: ${lightblack};
     letter-spacing: 0.4rem;
   }
 
@@ -32,7 +33,7 @@ const Section1 = styled.section`
     & > div:nth-child(2) {
       & > div {
         margin-bottom: 6rem;
-        color: ${text};
+        color: ${lightblack};
         & > p {
           word-break: keep-all;
           font-size: ${fontSize_20};
@@ -50,7 +51,7 @@ const Section1 = styled.section`
         font-size: ${fontSize_30};
         text-align: right;
         line-height: 4.48rem;
-        color: ${Maincol};
+        color: ${green};
         letter-spacing: 0.15rem;
         & > p {
           font-size: ${fontSize_30};
@@ -60,7 +61,7 @@ const Section1 = styled.section`
   }
   //common
   p {
-    color: ${text};
+    color: ${lightblack};
     letter-spacing: 0.025rem;
   }
 `;

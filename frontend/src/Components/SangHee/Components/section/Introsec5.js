@@ -1,10 +1,9 @@
 import '../../../../App/App.css';
-import { Common } from '../Common';
+import { Theme, StyledButton } from '../../../../theme/theme';
 import styled from 'styled-components';
 
 //color,font Asset
-const { Maincol, orange, white, fontSize_60, fontSize_40, fontSize_25, fontSize_30, btnTransition } =
-  Common;
+const { green, orange, white, fontSize_40, fontSize_25 } = Theme;
 
 //section5
 const Section5 = styled.section`
@@ -16,7 +15,7 @@ const Section5 = styled.section`
   //title
   & > h1 {
     font-family: YANGJIN;
-    font-size: ${fontSize_60};
+    font-size: ${Theme.fontSize_60};
     letter-spacing: 0.3rem;
     color: ${orange};
     text-align: center;
@@ -47,7 +46,7 @@ const Section5 = styled.section`
         text-align: center;
         font-size: ${fontSize_40};
         font-family: YANGJIN;
-        color: ${Maincol};
+        color: ${green};
         line-height: 6rem;
         letter-spacing: 0.2rem;
         margin-bottom: 8rem;
@@ -67,23 +66,6 @@ const Section5 = styled.section`
         line-height: 3.5rem;
         letter-spacing: 0.15rem;
       }
-    }
-  }
-  //button
-  &>button{
-    color: ${white};
-    font-size: ${fontSize_30};
-    font-family: YANGJIN;
-    background: ${Maincol};
-    width: 40rem;
-    height: 8rem;
-    border:none;
-    border-radius: 1rem;
-    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1);
-    transition: ${btnTransition};
-    cursor: pointer;
-    &:hover{
-      background:${orange};
     }
   }
 `;
@@ -107,7 +89,7 @@ const Introsec5 = () => {
           </p>
         </div>
       </div>
-      <button>제보하러 가기</button>
+      <StyledButton wd='40rem' ht='8rem' fs='3rem'>제보하러 가기</StyledButton>
     </Section5>
   );
 };
