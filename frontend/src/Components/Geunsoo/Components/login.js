@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import "../../../../src/index.css";
-import { Link } from "react-router-dom";
+import Theme from "../../../theme/theme";
 
 // 가장 진한 회색 rgba(82,82,82,1)
 // 중간 회색 rgba(149,149,149,1)
@@ -11,17 +11,17 @@ import { Link } from "react-router-dom";
 // ?? rgba(242,242,242,1)
 const Login = () => {
   const LoginHeader = styled.div`
-    width: 1277px;
+    width: 1230px;
     height: 80px;
     text-align: center;
     font-size: 3rem;
-    font-family: lotteHappyBold;
+    font-family: YANGJIN;
     color: rgba(82, 82, 82, 1);
     border-bottom: 1px solid rgba(192, 192, 192, 1);
     margin-top: 80px;
   `;
   const LoginResponse = styled.div`
-    width: 625px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -31,33 +31,32 @@ const Login = () => {
     bottom: 5px;
   `;
   const LoginBox = styled.input`
-    width: 625px;
+    width: 600px;
     height: 60px;
     border-radius: 10px;
     border: 1px solid rgba(192, 192, 192, 1);
     margin: 10px;
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-family: NanumGothic-Regular;
-    & ::placeholder {
-      padding-left: 10px;
-    }
+    padding-left: 20px;
   `;
   const A = styled.a`
     text-decoration: none;
     color: rgba(82, 82, 82, 1);
-    font-size: 1rem;
+    font-size: 1.5em;
     font-family: NanumGothic-Regular;
   `;
   const OprionMenu = styled.div`
-    width: 620px;
+    width: 600px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   `;
   const LoginFind = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
   `;
   const IdOption = styled.div`
     display: flex;
@@ -65,7 +64,7 @@ const Login = () => {
     align-items: center;
   `;
   const Ppl = styled.div`
-    width: 625px;
+    width: 600px;
     height: 625px;
     background-color: #ccc;
     margin-left: 10px;
@@ -84,33 +83,32 @@ const Login = () => {
   `;
   const P = styled.p`
     color: rgba(82, 82, 82, 1);
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: NanumGothic-Regular;
   `;
   const LoginButton = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 625px;
+    width: 620px;
     height: 60px;
     border: 1px solid rgba(128, 195, 66, 1);
     border-radius: 10px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: NanumGothic-bold;
     text-decoration: none;
     background-color: rgba(128, 195, 66, 1);
     color: white;
-    margin-top: 5px;
   `;
   const Security = styled.div`
-    width: 625px;
-    height: inherit;
+    width: 600px;
+    height: 50px;
     display: flex;
     justify-content: right;
     align-items: center;
   `;
   const SignupGuide = styled.div`
-    width: 625px;
+    width: 620px;
     height: 120px;
     border-bottom: 1px solid rgba(192, 192, 192, 1);
     padding-bottom: 15px;
@@ -120,12 +118,12 @@ const Login = () => {
     align-items: flex-start;
   `;
   const NongdamMember = styled.div`
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-family: NanumGothic-Regular;
     color: rgba(82, 82, 82, 1);
   `;
   const MemberBenefits = styled.div`
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: NanumGothic-Regular;
     color: rgba(82, 82, 82, 1);
   `;
@@ -138,7 +136,7 @@ const Login = () => {
     margin-top: 5px;
     color: rgba(128, 195, 66, 1);
     display: flex;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: NanumGothic-Regular;
     justify-content: center;
     align-items: center;
@@ -148,13 +146,18 @@ const Login = () => {
     width: 200px;
     justify-content: space-around;
     align-items: center;
+    margin-top: 10px;
+  `;
+  const SNSLogin = styled.div`
+    font-size: 2rem;
+    font-family: NanumGothic-Regular;
   `;
   const SNSBox = styled.div`
-    width: 625px;
+    width: 600px;
     height: 150px;
     margin-top: 10px;
     text-align: left;
-    font-size: 1.3rem;
+    font-size: 2rem;
     color: rgba(82, 82, 82, 1);
     display: flex;
     flex-direction: column;
@@ -172,7 +175,7 @@ const Login = () => {
     align-items: center;
   `;
   const SignupPlease = styled.div`
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: rgba(255, 0, 0, 1);
   `;
   const NaverLogo = styled.img`
@@ -187,18 +190,18 @@ const Login = () => {
   `;
   const AppleLogo = styled.img`
     position: absolute;
-    left: 7px;
-    top: 5px;
-    width: 42px;
-    height: 42px;
+    left: 5px;
+    top: 4px;
+    width: 40px;
+    height: 40px;
   `;
   return (
     <>
       <LoginHeader>로그인</LoginHeader>
       <LoginMain>
         <LoginResponse>
-          <LoginBox placeholder="&nbsp;&nbsp;아이디"></LoginBox>
-          <LoginBox placeholder="&nbsp;&nbsp;비밀번호"></LoginBox>
+          <LoginBox placeholder="아이디"></LoginBox>
+          <LoginBox placeholder="비밀번호"></LoginBox>
           <OprionMenu>
             <IdOption>
               <Button></Button>
@@ -221,10 +224,9 @@ const Login = () => {
               회원이 되시면 다양한 혜택을 누리실 수 있습니다.
             </MemberBenefits>
             <SignupButton href="http://naver.com">회원가입</SignupButton>
-            <Link to="/signUpEnd">회원가입 완료</Link>
           </SignupGuide>
           <SNSBox>
-            <div>SNS 로그인</div>
+            <SNSLogin>SNS 로그인</SNSLogin>
             <SignupPlease>
               사업자회원님은 아래 네이버, 카카오, 애플 로그인들이 사용 불가
               하오니
