@@ -19,7 +19,7 @@ const Theme = {
   btnTransition: "ease-in 0.3s",
 };
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   color: ${Theme.realWhite};
   font-size: ${(props) => props.fs};
   font-family: YANGJIN;
@@ -36,4 +36,4 @@ export const StyledButton = styled.button`
   }
 `;
 
-export default Theme;
+export { Theme, StyledButton };

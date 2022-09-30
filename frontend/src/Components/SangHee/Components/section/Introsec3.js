@@ -1,10 +1,12 @@
 import '../../../../App/App.css';
-import { Common } from '../Common';
+import { Theme } from '../../../../theme/theme';
 import styled from 'styled-components';
 
 //color,font Asset
-const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } =
-  Common;
+// const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } =
+//   Common;
+
+const { green, lightblack, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } = Theme;
 
 //section3
 const Section3 = styled.section`
@@ -15,18 +17,18 @@ const Section3 = styled.section`
   & > h1 {
     text-align: center;
     font-size: ${fontSize_50};
-    color: ${text};
+    color: ${lightblack};
     font-family: YANGJIN;
     letter-spacing: 0.4rem;
     margin-bottom: 3rem;
     & > span {
-      color: ${Maincol};
+      color: ${green};
       font-size: ${fontSize_50};
     }
   }
   //sec3_con
   p {
-    color: ${text};
+    color: ${lightblack};
     font-family: SCD-4;
     text-align: center;
   }
@@ -48,7 +50,7 @@ const Section3 = styled.section`
     line-height: ${fontSize_60};
     & > span {
       font-size: ${fontSize_30};
-      color: ${Maincol};
+      color: ${green};
     }
   }
 `;
