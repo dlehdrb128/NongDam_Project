@@ -6,6 +6,7 @@ import Theme from "./../../../../theme/theme";
 const ProductItemBox = styled.div`
   & > *:hover {
     cursor: pointer;
+    font-weight: bold;
   }
 
   & > a:link {

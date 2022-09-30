@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Theme from "./../../../../../theme/theme";
+import { StyledButton } from "./../../../../../theme/theme";
 
 const MainArticleBox = styled.div`
   width: 1280px;
@@ -52,24 +53,6 @@ const MainArticleTitle = styled.div`
     font-size: 1.92rem;
     color: ${Theme.green};
   }
-  & > div:nth-child(6) {
-    width: 248px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "YANGJIN";
-    font-size: 1.7rem;
-    color: ${Theme.white};
-    background-color: ${Theme.orange};
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-    &:hover {
-      cursor: pointer;
-      background-color: ${Theme.green};
-    }
-  }
 `;
 
 const MainArticleImg = styled.img``;
@@ -91,7 +74,9 @@ const MainArticle = () => {
             속편한 구조이니 자연히 폐기가 늘어나지요.<br></br>
           </div>
           <div>농담은 20% 비싸게 사서 20% 싸게팔아요.</div>
-          <div>농담은 함께하길 원해요</div>
+          <StyledButton fs={"1.8rem"} wd={"250px"} ht={"50px"}>
+            농담은 함께하길 원해요
+          </StyledButton>
         </MainArticleTitle>
         <MainArticleImg
           src="/img/MainArticle.png"
