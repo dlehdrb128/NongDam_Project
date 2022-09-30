@@ -8,6 +8,7 @@ import Intro from "../Components/SangHee/Components/Intro";
 import AllProduct from "../Components/Yehoon/Components/ProductPage/AllProduct";
 import ProductPage from "../Components/Yehoon/Components/ProductPage/ProductPage";
 import AdminMain from "./../Components/Yeonju/Components/AdminMain";
+import SignUpEnd from "./../Components/Geunsoo/Components/signUpEnd";
 import "./App.css";
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
           <Route path="/all" element={<AllProduct />}></Route>
           <Route path="/product/:id" element={<ProductPage />}></Route>
           <Route path="/admin" element={<AdminMain />}></Route>
-
+          <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route element={<Footer />} />
         </Route>
       </Routes>

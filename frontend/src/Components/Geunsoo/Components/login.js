@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import '../../../../src/index.css';
+import styled from "styled-components";
+import "../../../../src/index.css";
+import { Link } from "react-router-dom";
 
 // 가장 진한 회색 rgba(82,82,82,1)
 // 중간 회색 rgba(149,149,149,1)
@@ -196,30 +197,31 @@ const Login = () => {
       <LoginHeader>로그인</LoginHeader>
       <LoginMain>
         <LoginResponse>
-          <LoginBox placeholder='&nbsp;&nbsp;아이디'></LoginBox>
-          <LoginBox placeholder='&nbsp;&nbsp;비밀번호'></LoginBox>
+          <LoginBox placeholder="&nbsp;&nbsp;아이디"></LoginBox>
+          <LoginBox placeholder="&nbsp;&nbsp;비밀번호"></LoginBox>
           <OprionMenu>
             <IdOption>
               <Button></Button>
               <P>&nbsp;아이디 저장</P>
             </IdOption>
             <LoginFind>
-              <A href='http://naver.com'>아이디 찾기</A>
+              <A href="http://naver.com">아이디 찾기</A>
               <P>&nbsp;|&nbsp;</P>
-              <A href='http://naver.com'>비밀번호 찾기</A>
+              <A href="http://naver.com">비밀번호 찾기</A>
             </LoginFind>
           </OprionMenu>
-          <LoginButton href='http://naver.com'>로그인</LoginButton>
+          <LoginButton href="http://naver.com">로그인</LoginButton>
           <Security>
             <P>&nbsp;🔒&nbsp;</P>
-            <A href='http://naver.com'>보안접속</A>
+            <A href="http://naver.com">보안접속</A>
           </Security>
           <SignupGuide>
             <NongdamMember>아직 농담 회원이 아니신가요?</NongdamMember>
             <MemberBenefits>
               회원이 되시면 다양한 혜택을 누리실 수 있습니다.
             </MemberBenefits>
-            <SignupButton href='http://naver.com'>회원가입</SignupButton>
+            <SignupButton href="http://naver.com">회원가입</SignupButton>
+            <Link to="/signUpEnd">회원가입 완료</Link>
           </SignupGuide>
           <SNSBox>
             <div>SNS 로그인</div>
@@ -230,14 +232,14 @@ const Login = () => {
               부탁드립니다.
             </SignupPlease>
             <IconBox>
-              <SNSIcon href='http://naver.com'>
-                <NaverLogo src='/img/naverLogo.png' alt='네이버' />
+              <SNSIcon href="http://naver.com">
+                <NaverLogo src="/img/naverLogo.png" alt="네이버" />
               </SNSIcon>
-              <SNSIcon href='http://naver.com'>
-                <KakaotalkLogo src='/img/kakaoTalk.png' alt='카카오톡' />
+              <SNSIcon href="http://naver.com">
+                <KakaotalkLogo src="/img/kakaoTalk.png" alt="카카오톡" />
               </SNSIcon>
-              <SNSIcon href='http://naver.com'>
-                <AppleLogo src='/img/apple.png' alt='애플' />
+              <SNSIcon href="http://naver.com">
+                <AppleLogo src="/img/apple.png" alt="애플" />
               </SNSIcon>
             </IconBox>
           </SNSBox>
