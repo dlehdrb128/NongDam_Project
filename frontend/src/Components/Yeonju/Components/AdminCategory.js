@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Theme from "../../../../theme/theme";
+import styled from 'styled-components';
+import Theme from '../../../theme/theme';
 
 const MainBox = styled.div`
   width: 25rem;
@@ -9,7 +9,7 @@ const MainBox = styled.div`
   justify-content: center;
 
   & > h1 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     color: ${Theme.lightblack};
     font-size: 4rem;
     padding-bottom: 4.5rem;
