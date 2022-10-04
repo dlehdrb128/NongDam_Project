@@ -62,23 +62,12 @@ const Login = () => {
     justify-content: center;
     align-items: center;
   `;
-  const Ppl = styled.div`
-    width: 600px;
-    height: 600px;
-    background-color: #ccc;
-    margin-left: 10px;
-  `;
   const LoginMain = styled.div`
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 80px;
-  `;
-  const Button = styled.button`
-    border: 1px solid rgba(192, 192, 192, 1);
-    width: 20px;
-    height: 20px;
   `;
   const P = styled.p`
     color: rgba(82, 82, 82, 1);
@@ -157,7 +146,7 @@ const Login = () => {
   const SNSBox = styled.div`
     width: 600px;
     height: 150px;
-
+    text-align: center;
     text-align: left;
     font-size: 2rem;
     color: rgba(82, 82, 82, 1);
@@ -202,11 +191,12 @@ const Login = () => {
       <LoginHeader>로그인</LoginHeader>
       <LoginMain>
         <LoginResponse>
-          <LoginBox placeholder="아이디"></LoginBox>
-          <LoginBox placeholder="비밀번호"></LoginBox>
+          <LoginBox type="text" placeholder="아이디"></LoginBox>
+          <LoginBox type="password" placeholder="비밀번호"></LoginBox>
           <OprionMenu>
             <IdOption>
-              <Button></Button>
+              <input type="checkbox" id="login"></input>
+              <label for="login"></label>
               <P>&nbsp;아이디 저장</P>
             </IdOption>
             <LoginFind>
@@ -216,6 +206,7 @@ const Login = () => {
             </LoginFind>
           </OprionMenu>
           <LoginButton href="http://naver.com">로그인</LoginButton>
+
           <Security>
             <P>&nbsp;🔒&nbsp;</P>
             <A href="http://naver.com">보안접속</A>
@@ -248,7 +239,6 @@ const Login = () => {
             </IconBox>
           </SNSBox>
         </LoginResponse>
-        <Ppl></Ppl>
       </LoginMain>
     </>
   );
