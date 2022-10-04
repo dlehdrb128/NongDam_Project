@@ -45,7 +45,6 @@ const Section1 = styled.section`
         background: url('/img/Fdays_sec1_roof.png') no-repeat center;
         background-size: cover;
         position: relative;
-        z-index: 2;
       }
     }
   }

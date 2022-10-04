@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import FivedaysMakretTopvisual from './FiveDaysMarketTopvisual';
 import FivedaysMakretsec1 from './section/FivedaysMarketsec1';
 import FivedaysMarketsec2 from './section/FivedaysMarketsec2';
+import Remocon from '../Components/Remocon';
+import { useState, useEffect } from 'react';
 
 const Main = styled.main`
   width: inherit;
@@ -20,6 +22,7 @@ const FivedaysMakret = () => {
   return (
     <>
       <FivedaysMakretTopvisual />
+      <Remocon />
       {/* Visual */}
       <Main>
         <FivedaysMakretsec1 />
