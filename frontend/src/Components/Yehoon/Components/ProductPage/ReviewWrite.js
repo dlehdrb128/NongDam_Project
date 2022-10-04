@@ -26,6 +26,17 @@ const ValueBox = styled.div`
   }
 `;
 
+let TextInput = styled.input`
+  width: 985px;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid ${Theme.gray};
+  color: ${Theme.lightblack};
+  font-size: 1.5rem;
+  font-family: "SCD-3";
+  padding-left: 10px;
+`;
+
 const ReviewWrite = () => {
   const [hovered, setHovered] = useState(null);
   const [clicked, setClicked] = useState(null);
@@ -48,17 +59,6 @@ const ReviewWrite = () => {
       />
     );
   });
-
-  let TextInput = styled.input`
-    width: 985px;
-    height: 80px;
-    border-radius: 10px;
-    border: 1px solid ${Theme.gray};
-    color: ${Theme.lightblack};
-    font-size: 1.5rem;
-    font-family: "SCD-3";
-    padding-left: 10px;
-  `;
 
   return (
     <ReviewWriteBox>

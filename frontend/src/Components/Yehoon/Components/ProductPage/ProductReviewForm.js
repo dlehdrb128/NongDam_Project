@@ -28,7 +28,15 @@ const ProductReviewBox = styled.div`
 const ReviewBox = styled.div`
   width: 1280px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+
+  & > h1 {
+    font-family: "SCD-7";
+    font-size: 4rem;
+    margin: 50px auto;
+  }
 `;
 
 const ProductReviewForm = ({ data }) => {
@@ -59,12 +67,14 @@ const ProductReviewForm = ({ data }) => {
     <ProductReviewBox>
       <div>상품 후기</div>
       <div>
-        {average !== undefined ? average : 0} / 5{" "}
+        {average >= 0 ? average : 0} / 5
         <span>
           ({data.review !== undefined ? data.review.length : 0}개의 후기)
         </span>
       </div>
-      <ReviewBox>{reviewItem}</ReviewBox>
+      <ReviewBox>
+        {reviewItem.length >= 1 ? reviewItem : <h1>리뷰가 없습니다</h1>}
+      </ReviewBox>
       <ReviewWrite></ReviewWrite>
     </ProductReviewBox>
   );
