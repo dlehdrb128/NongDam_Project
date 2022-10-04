@@ -17,15 +17,15 @@ const LatestProductItemBox = styled.div`
   & a {
     &:link {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:visited {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:active {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
 
     &:hover {

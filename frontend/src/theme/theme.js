@@ -37,24 +37,23 @@ const StyledButton = styled.button`
 `;
 
 // & a {
-//   &:link {
-//     text-decoration: none;
-//     color: black;
-//   }
-//   &:visited {
-//     text-decoration: none;
-//     color: black;
-//   }
-//   &:active {
-//     text-decoration: none;
-//     color: black;
-//   }
+//     &:link {
+//       text-decoration: none;
+//       color: ${Theme.lightblack};
+//     }
+//     &:visited {
+//       text-decoration: none;
+//       color: ${Theme.lightblack};
+//     }
+//     &:active {
+//       text-decoration: none;
+//       color: ${Theme.lightblack};
+//     }
 
-//   &:hover {
-//     cursor: pointer;
-//     color: ${Theme.green};
-//   }
-// }
+//     &:hover {
+//       cursor: pointer;
+//       color: ${Theme.green};
+//     }
 
 export { Theme, StyledButton };
 export default Theme;
