@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Theme from "../../../../theme/theme";
+import styled from 'styled-components';
+import Theme from '../../../../theme/theme';
 
 const MainBox = styled.div`
   width: 83.3rem;
@@ -9,7 +9,7 @@ const MainBox = styled.div`
 
   // form 제목
   & > h1 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     color: ${Theme.lightblack};
     font-size: 2.5rem;
     padding-bottom: 1.5rem;
@@ -42,14 +42,14 @@ const ContentBox = styled.div`
     width: 14.1rem;
     height: 8rem;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 3rem 0 3rem 1.8rem;
     background-color: ${Theme.white};
     border-bottom: 0.1rem solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -60,7 +60,7 @@ const ContentBox = styled.div`
     align-items: center;
     border-left: 0.1rem solid ${Theme.liglightgray};
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 30rem;
       height: 4rem;
       border: 0.1rem solid ${Theme.gray};
@@ -69,7 +69,7 @@ const ContentBox = styled.div`
       font-size: 1.5rem;
     }
     & > span {
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
       font-size: 1.3rem;
       padding-left: 0.5rem;
     }
@@ -87,14 +87,14 @@ const BusinessAdd = styled.div`
     width: 14.1rem;
     height: 20.8rem;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 3rem 0 3rem 1.8rem;
     background-color: ${Theme.white};
     border-bottom: 0.1rem solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -108,7 +108,7 @@ const BusinessAdd = styled.div`
     justify-content: space-between;
 
     & > div > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 30rem;
       height: 4rem;
       border: 0.1rem solid ${Theme.gray};
@@ -120,7 +120,7 @@ const BusinessAdd = styled.div`
       width: 12rem;
       height: 4rem;
       font-size: 1.5rem;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       color: ${Theme.realWhite};
       background-color: ${Theme.green};
       border: none;
@@ -130,7 +130,7 @@ const BusinessAdd = styled.div`
       cursor: pointer;
     }
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 30rem;
       height: 4rem;
       border: 0.1rem solid ${Theme.gray};
@@ -153,14 +153,14 @@ const TelBox = styled.div`
     width: 14.1rem;
     height: 8rem;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 3rem 0 3rem 1.8rem;
     background-color: ${Theme.white};
     border-bottom: 0.1rem solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -173,7 +173,7 @@ const TelBox = styled.div`
     border-left: 0.1rem solid ${Theme.lightblack};
 
     & > select {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 10rem;
       height: 4rem;
       border: 0.1rem solid ${Theme.gray};
@@ -182,7 +182,7 @@ const TelBox = styled.div`
       font-size: 1.5rem;
     }
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 10rem;
       height: 4rem;
       border: 0.1rem solid ${Theme.gray};
@@ -191,14 +191,14 @@ const TelBox = styled.div`
       font-size: 1.5rem;
     }
     & > span {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       padding: 0 1rem 0 1rem;
       font-size: 1.5rem;
     }
     & > button {
       width: 12rem;
       height: 4rem;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
       color: ${Theme.realWhite};
       background-color: ${Theme.green};
@@ -223,14 +223,14 @@ const RadioBox = styled.div`
     width: 14.1rem;
     height: 8rem;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 3rem 0 3rem 1.8rem;
     background-color: ${Theme.white};
     border-bottom: 0.1rem solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -254,7 +254,7 @@ const RadioBox = styled.div`
       background-color: ${Theme.green};
     }
     & > label {
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
       font-size: 1.3rem;
       padding: 0 2rem 0 0.5rem;
     }
@@ -266,7 +266,7 @@ const RegButton = styled.button`
   height: 5rem;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   font-size: 1.8rem;
   border: none;
   border-radius: 0.3rem;
@@ -291,7 +291,7 @@ const StoreOpenForm = () => {
             <span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='text' required></input>
             <span>
               (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
             </span>
@@ -302,7 +302,7 @@ const StoreOpenForm = () => {
             대표 휴대전화<span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='tel' required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -310,7 +310,7 @@ const StoreOpenForm = () => {
             대표 이메일<span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='email' required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -318,7 +318,7 @@ const StoreOpenForm = () => {
             이름<span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='text' required></input>
           </div>
         </ContentBox>
         <BusinessAdd>
@@ -327,11 +327,11 @@ const StoreOpenForm = () => {
           </h2>
           <div>
             <div>
-              <input placeholder="우편번호"></input>
+              <input placeholder='우편번호'></input>
               <button>주소검색</button>
             </div>
             <input></input>
-            <input placeholder="나머지 주소(선택 입력 가능)"></input>
+            <input placeholder='나머지 주소(선택 입력 가능)'></input>
           </div>
         </BusinessAdd>
         <TelBox>
@@ -370,7 +370,7 @@ const StoreOpenForm = () => {
             수신전용 이메일<span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='email' required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -378,7 +378,7 @@ const StoreOpenForm = () => {
             발신전용 이메일<span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='email' required></input>
           </div>
         </ContentBox>
         <RadioBox>
@@ -387,9 +387,9 @@ const StoreOpenForm = () => {
             <span> *</span>
           </h2>
           <div>
-            <input type="radio" name="check"></input>
+            <input type='radio' name='check'></input>
             <label>신고함</label>
-            <input type="radio" name="check"></input>
+            <input type='radio' name='check'></input>
             <label>신고안함</label>
           </div>
         </RadioBox>
@@ -417,7 +417,7 @@ const StoreOpenForm = () => {
             상담 이메일<span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='email' required></input>
           </div>
         </ContentBox>
         <TelBox>
@@ -458,3 +458,4 @@ const StoreOpenForm = () => {
 };
 
 export default StoreOpenForm;
+<input type='submit'></input>
