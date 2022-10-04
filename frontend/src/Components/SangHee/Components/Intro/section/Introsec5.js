@@ -1,5 +1,5 @@
-import '../../../../App/App.css';
-import { Theme, StyledButton } from '../../../../theme/theme';
+import '../../../../../App/App.css';
+import { Theme, StyledButton } from '../../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
@@ -16,27 +16,26 @@ const Section5 = styled.section`
   & > h1 {
     font-family: YANGJIN;
     font-size: ${Theme.fontSize_60};
-    letter-spacing: 0.3rem;
     color: ${orange};
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 30px;
   }
   //sec5_contents
   & > div:nth-child(2) {
     width: 100%;
-    height: 58.4rem;
-    background: url('https://lh3.googleusercontent.com/drive-viewer/AJc5JmSO5zlxwGaLiNbopmkmkYv7GHrWANZy_GToUOx_AhRXOLXsZpIrd9ke-SOwYLATJA8Epfi-UcQ=w1920-h966')
+    height: 584px;
+    background: url('/img/Intro_sec5_img.png')
       no-repeat center;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8rem;
+    margin-bottom: 80px;
     //text_con_wrap
     & > div {
       background: rgba(21, 21, 21, 0.71);
-      width: 68.5rem;
-      height: 58.3rem;
+      width: 685px;
+      height: 583px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -47,9 +46,7 @@ const Section5 = styled.section`
         font-size: ${fontSize_40};
         font-family: YANGJIN;
         color: ${green};
-        line-height: 6rem;
-        letter-spacing: 0.2rem;
-        margin-bottom: 8rem;
+        margin-bottom: 80px;
         & > span {
           font-size: ${fontSize_40};
           color: ${white};
@@ -57,14 +54,12 @@ const Section5 = styled.section`
       }
       //text
       & > p {
-        width: 41.2rem;
+        width: 412px;
         word-break: keep-all;
         font-family: SCD-4;
         font-size: ${fontSize_25};
         color: ${white};
         text-align: center;
-        line-height: 3.5rem;
-        letter-spacing: 0.15rem;
       }
     }
   }
@@ -89,7 +84,7 @@ const Introsec5 = () => {
           </p>
         </div>
       </div>
-      <StyledButton wd='40rem' ht='8rem' fs='3rem'>제보하러 가기</StyledButton>
+      <StyledButton wd='400px' ht='80px' fs='3rem'>제보하러 가기</StyledButton>
     </Section5>
   );
 };

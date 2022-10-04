@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   user-select: none;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 img {
   -webkit-user-drag: none;

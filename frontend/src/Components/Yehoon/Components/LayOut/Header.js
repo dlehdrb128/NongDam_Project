@@ -130,7 +130,7 @@ const Header = () => {
 
             <Link to="/all">못난이 장터</Link>
             <div>못난이 활용법</div>
-            <div>온라인 5일장</div>
+            <Link to="/FivedaysMakret">온라인 5일장</Link>
           </HeaderBoxMid>
           <HeaderBoxRight>
             <Link to="/admin">

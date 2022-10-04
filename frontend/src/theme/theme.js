@@ -16,6 +16,7 @@ const Theme = {
   fontSize_30: "3rem",
   fontSize_25: "2.5rem",
   fontSize_20: "2rem",
+  fontSize_45: "4.5rem",
   btnTransition: "ease-in 0.3s",
 };
 

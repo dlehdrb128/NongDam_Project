@@ -1,23 +1,21 @@
-import '../../../../App/App.css';
-import { Theme } from '../../../../theme/theme'
+import '../../../../../App/App.css';
+import { Theme } from '../../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
-// const { Maincol, text, fontSize_50, fontSize_30, fontSize_20 } = Common;
 const { green, lightblack, fontSize_50, fontSize_30, fontSize_20 } = Theme;
 
 //section1
 const Section1 = styled.section`
   width: inherit;
-  margin-bottom: 18rem;
+  margin-bottom: 180px;
 
   //title
   & > h1 {
     font-family: YANGJIN;
     font-size: ${fontSize_50};
-    margin-bottom: 4rem;
+    margin-bottom: 40px;
     color: ${lightblack};
-    letter-spacing: 0.4rem;
   }
 
   //sec1_contents
@@ -26,18 +24,18 @@ const Section1 = styled.section`
     justify-content: space-between;
     //img
     & > img {
-      width: 70rem;
-      height: 72rem;
+      width: 700px;
+      height: 720px;
     }
     //text
     & > div:nth-child(2) {
       & > div {
-        margin-bottom: 6rem;
+        margin-bottom: 60px;
         color: ${lightblack};
         & > p {
           word-break: keep-all;
           font-size: ${fontSize_20};
-          width: 50.4rem;
+          width: 504px;
           text-align: right;
           font-family: SCD-4;
         }
@@ -50,9 +48,7 @@ const Section1 = styled.section`
         font-family: YANGJIN;
         font-size: ${fontSize_30};
         text-align: right;
-        line-height: 4.48rem;
         color: ${green};
-        letter-spacing: 0.15rem;
         & > p {
           font-size: ${fontSize_30};
         }
@@ -62,7 +58,6 @@ const Section1 = styled.section`
   //common
   p {
     color: ${lightblack};
-    letter-spacing: 0.025rem;
   }
 `;
 
