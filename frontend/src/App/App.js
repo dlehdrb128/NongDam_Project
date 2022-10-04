@@ -29,7 +29,6 @@ function App() {
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
-
           <Route path="/cart" element={<CartMain />}></Route>
 
           <Route element={<Footer />} />
