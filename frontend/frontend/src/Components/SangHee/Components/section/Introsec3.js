@@ -1,19 +1,12 @@
-import "../../../../App/App.css";
-import { Theme } from "../../../../theme/theme";
-import styled from "styled-components";
+import '../../../../App/App.css';
+import { Theme } from '../../../../theme/theme';
+import styled from 'styled-components';
 
 //color,font Asset
 // const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } =
 //   Common;
 
-const {
-  green,
-  lightblack,
-  fontSize_60,
-  fontSize_50,
-  fontSize_30,
-  fontSize_25,
-} = Theme;
+const { green, lightblack, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } = Theme;
 
 //section3
 const Section3 = styled.section`
@@ -75,8 +68,8 @@ const Introsec3 = () => {
         <br />그 심각성이 짐작이 가나요?
       </p>
       <img
-        src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmTCW3_NGqzMcTA-7o6PUT5Jq3fJVrtyYPHr0tqJ5ASy-tXqQ0CCrlFQr5ipu3R6NEkeErB1fH8=w1920-h969"
-        alt="sec3_img"
+        src='https://lh3.googleusercontent.com/drive-viewer/AJc5JmTCW3_NGqzMcTA-7o6PUT5Jq3fJVrtyYPHr0tqJ5ASy-tXqQ0CCrlFQr5ipu3R6NEkeErB1fH8=w1920-h969'
+        alt='sec3_img'
       ></img>
       <p>
         <span>못난이 농산물</span>을 이용한다면
