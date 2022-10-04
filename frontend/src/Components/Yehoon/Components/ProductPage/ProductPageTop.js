@@ -163,7 +163,7 @@ const ProductPageTop = ({ ProductData }) => {
         <div>[{ProductData.local}]</div>
         <div>{ProductData.name}</div>
         <hr></hr>
-        <div>{ProductData.price}원</div>
+        <div>{ProductData.price.toLocaleString()}원</div>
         <ProductPageCountBox>
           <div>수량</div>
           <div>
@@ -175,7 +175,7 @@ const ProductPageTop = ({ ProductData }) => {
         <ProductPageTotalPrice>
           <div>총 합계금액 (수량) :</div>
           <div>
-            <div>{ProductData.price * count}원</div>
+            <div>{(ProductData.price * count).toLocaleString()}원</div>
             <div>({count}개)</div>
           </div>
         </ProductPageTotalPrice>
