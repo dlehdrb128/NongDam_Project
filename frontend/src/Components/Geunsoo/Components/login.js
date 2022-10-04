@@ -191,8 +191,8 @@ const Login = () => {
       <LoginHeader>로그인</LoginHeader>
       <LoginMain>
         <LoginResponse>
-          <LoginBox placeholder="아이디"></LoginBox>
-          <LoginBox placeholder="비밀번호"></LoginBox>
+          <LoginBox type="text" placeholder="아이디"></LoginBox>
+          <LoginBox type="password" placeholder="비밀번호"></LoginBox>
           <OprionMenu>
             <IdOption>
               <input type="checkbox" id="login"></input>
@@ -206,6 +206,7 @@ const Login = () => {
             </LoginFind>
           </OprionMenu>
           <LoginButton href="http://naver.com">로그인</LoginButton>
+
           <Security>
             <P>&nbsp;🔒&nbsp;</P>
             <A href="http://naver.com">보안접속</A>

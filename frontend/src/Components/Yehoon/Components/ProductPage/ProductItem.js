@@ -1,7 +1,7 @@
 import { memo } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Theme from "./../../../../theme/theme";
+import { Theme } from "./../../../../theme/theme";
 
 const ProductItemBox = styled.div`
   & > *:hover {

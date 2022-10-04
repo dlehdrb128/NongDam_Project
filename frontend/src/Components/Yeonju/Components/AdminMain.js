@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Theme from "../../../theme/theme";
 
@@ -9,6 +10,26 @@ const MainBox = styled.div`
   justify-content: center;
   font-family: "SCD-6";
   color: ${Theme.lightblack};
+
+  & a {
+    &:link {
+      text-decoration: none;
+      color: ${Theme.lightblack};
+    }
+    &:visited {
+      text-decoration: none;
+      color: ${Theme.lightblack};
+    }
+    &:active {
+      text-decoration: none;
+      color: ${Theme.lightblack};
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: ${Theme.orange};
+    }
+  }
 
   & > div {
     width: 128rem;
@@ -93,17 +114,19 @@ const AdminMain = () => {
           <div></div>
         </HeadlineBox>
         <StoreIconMainBox>
+          <Link to="create">
+            <div className="box">
+              <img
+                src="https:lh3.googleusercontent.com/drive-viewer/AJc5JmTkfZHxQY1yecWNjq2rRFJIVtNLaVrb-DYVFbVXvMxqqPkBP_kvkhxiPswvh8so_RFxpKn5CXE=w1416-h959"
+                alt="icon"
+              ></img>
+              <h1>스토어개설</h1>
+              <span>기본 스토어 개설</span>
+            </div>
+          </Link>
           <div className="box">
             <img
-              src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmTkfZHxQY1yecWNjq2rRFJIVtNLaVrb-DYVFbVXvMxqqPkBP_kvkhxiPswvh8so_RFxpKn5CXE=w1416-h959"
-              alt="icon"
-            ></img>
-            <h1>스토어개설</h1>
-            <span>기본 스토어 개설</span>
-          </div>
-          <div className="box">
-            <img
-              src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmSsCn2Iop_9xC9IAjxUDobSxGoA70TJt5zmkkVjfW9lccDW1BkDtFDKgirbI7GnhA8xfPr_Ugg=w1416-h959"
+              src="https:lh3.googleusercontent.com/drive-viewer/AJc5JmSsCn2Iop_9xC9IAjxUDobSxGoA70TJt5zmkkVjfW9lccDW1BkDtFDKgirbI7GnhA8xfPr_Ugg=w1416-h959"
               alt="icon"
             ></img>
             <h1>스토어관리</h1>
@@ -111,7 +134,7 @@ const AdminMain = () => {
           </div>
           <div className="box">
             <img
-              src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmQTJEb-w1mZcJimPhpFRfDFSUwPhi9q-G7aYizQ_JDvDxu5o_fwdjZXLtCRGr-OJzSnWNqowAc=w1416-h959"
+              src="https:lh3.googleusercontent.com/drive-viewer/AJc5JmQTJEb-w1mZcJimPhpFRfDFSUwPhi9q-G7aYizQ_JDvDxu5o_fwdjZXLtCRGr-OJzSnWNqowAc=w1416-h959"
               alt="icon"
             ></img>
             <h1>상품관리</h1>
@@ -119,7 +142,7 @@ const AdminMain = () => {
           </div>
           <div className="box">
             <img
-              src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmR9-R0sRo28duLqnNBLTn1ardIlRsy5w5N0_qyjzxIo1AQCV2PF1ZCxQhcSFF5VoTyCIgkqSfk=w1416-h959"
+              src="https:lh3.googleusercontent.com/drive-viewer/AJc5JmR9-R0sRo28duLqnNBLTn1ardIlRsy5w5N0_qyjzxIo1AQCV2PF1ZCxQhcSFF5VoTyCIgkqSfk=w1416-h959"
               alt="icon"
             ></img>
             <h1>게시판관리</h1>
@@ -127,7 +150,7 @@ const AdminMain = () => {
           </div>
           <div className="box">
             <img
-              src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmRcHw0W9ZwscrJC03Y_x15p7HYWMVdSVED0wKMneZENlmqogm8Jzr8J1rFRX-IuvLO3lAAxPPc=w1416-h959"
+              src="https:lh3.googleusercontent.com/drive-viewer/AJc5JmRcHw0W9ZwscrJC03Y_x15p7HYWMVdSVED0wKMneZENlmqogm8Jzr8J1rFRX-IuvLO3lAAxPPc=w1416-h959"
               alt="icon"
             ></img>
             <h1>정산</h1>
@@ -135,7 +158,7 @@ const AdminMain = () => {
           </div>
           <div className="box">
             <img
-              src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmSqrXVtl7h6cIyVbw2JDBfM2fTPSt3X2v8_DrDFUzYA4AmVoTItbrsPyPFUg0n6ouhLdXmcBYk=w1416-h959"
+              src="https:lh3.googleusercontent.com/drive-viewer/AJc5JmSqrXVtl7h6cIyVbw2JDBfM2fTPSt3X2v8_DrDFUzYA4AmVoTItbrsPyPFUg0n6ouhLdXmcBYk=w1416-h959"
               alt="icon"
             ></img>
             <h1>마이페이지</h1>

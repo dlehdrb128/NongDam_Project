@@ -27,11 +27,10 @@ function App() {
           <Route path="/all" element={<AllProduct />}></Route>
           <Route path="/product/:id" element={<ProductPage />}></Route>
           <Route path="/admin" element={<AdminMain />}></Route>
+          <Route path="/admin/create" element={<StoreOpenMain />}></Route>
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
-
-          <Route path="/store" element={<StoreOpenMain />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
 
           <Route element={<Footer />} />

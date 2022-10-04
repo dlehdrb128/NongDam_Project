@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import ProductItem from "./ProductItem";
-import Theme from "../../../../theme/theme";
+import { Theme } from "../../../../theme/theme";
+import { useState } from "react";
+
 // import { useEffect } from "react";
 // import { productAll } from "../Slice/getData";
 // import { useDispatch, useSelector } from "react-redux";
@@ -70,6 +72,17 @@ const ProductBox = styled.div`
 `;
 
 const AllProduct = () => {
+  const [localSelected, setLocalSelected] = useState("local");
+  const [typeSelected, setTypeSelected] = useState("type");
+
+  const localSelectChange = (event) => {
+    setLocalSelected(event.target.value);
+  };
+
+  const typeSelectChange = (event) => {
+    setTypeSelected(event.target.value);
+  };
+
   //   const disPatch = useDispatch();
 
   //   useEffect(() => {
@@ -130,24 +143,57 @@ const AllProduct = () => {
     },
   ];
 
+  let localData = [
+    "경기도",
+    "강원도",
+    "충청북도",
+    "충청남도",
+    "전라북도",
+    "전라남도",
+    "경상북도",
+    "경상남도",
+  ];
+
+  let typeData = ["전체 상품", "지역 특산품", "과일", "채소"];
+
+  let localOption = localData.map((value, index) => {
+    return (
+      <option value={value} key={index}>
+        {value}
+      </option>
+    );
+  });
+
+  let typeOption = typeData.map((value, index) => {
+    return (
+      <option value={value} key={index}>
+        {value}
+      </option>
+    );
+  });
+
   return (
     <>
       <ProductTop>
         <ProductItemLeft>
-          <h1>충청북도 상품</h1>
-          <div>생명과 태양의 땅! 충청북도 입니다</div>
+          <h1>{localSelected === "local" ? "전체" : localSelected} 상품</h1>
           <div>
-            <select>
-              <option>지역</option>
-              <option>제주도</option>
+            {localSelected === "local"
+              ? "농담의 모든 못난이 상품을 만나 보세요!"
+              : `생명과 태양의 땅! ${localSelected} 입니다`}
+          </div>
+          <div>
+            <select value={localSelected} onChange={localSelectChange}>
+              <option value="local" disabled={true}>
+                지역
+              </option>
+              {localOption}
             </select>
-            <select>
-              <option>종류</option>
-              <option>지역 특산품</option>
-            </select>
-            <select>
-              <option>가격</option>
-              <option>50,000원 이상</option>
+            <select value={typeSelected} onChange={typeSelectChange}>
+              <option value="type" disabled={true}>
+                종류
+              </option>
+              {typeOption}
             </select>
           </div>
         </ProductItemLeft>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Theme from "./../../../../theme/theme";
+import { Theme } from "./../../../../theme/theme";
 
 const HeaderBox = styled.div`
   width: 1920px;
@@ -17,11 +17,11 @@ const HeaderBox = styled.div`
     }
     &:visited {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:active {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
 
     &:hover {
@@ -71,10 +71,6 @@ const HeaderBoxRight = styled.div`
   font-family: "SCD-4";
   margin-bottom: 5px;
 
-  & > div {
-    font-size: 1.7rem;
-  }
-
   & > div:hover {
     cursor: pointer;
     opacity: 60%;
@@ -99,18 +95,19 @@ const HeaderBoxRight = styled.div`
   & > a {
     & > div {
       font-size: 1.6rem;
+      color: ${Theme.lightblack};
     }
     &:link {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:visited {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:active {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
 
     &:hover {
