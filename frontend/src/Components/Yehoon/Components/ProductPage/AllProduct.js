@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ProductItem from "./ProductItem";
-import Theme from "../../../../theme/theme";
+import { Theme } from "../../../../theme/theme";
 // import { useEffect } from "react";
 // import { productAll } from "../Slice/getData";
 // import { useDispatch, useSelector } from "react-redux";

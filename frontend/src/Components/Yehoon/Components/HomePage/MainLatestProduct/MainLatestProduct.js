@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import LatestProductItem from "./LatestProductItem";
-import Theme from "./../../../../../theme/theme";
+import { Theme } from "./../../../../../theme/theme";
 
 const MainLatestProductBox = styled.div`
   width: 1920px;
@@ -62,24 +62,28 @@ const LatestProductItemBox = styled.div`
 const MainLatestProduct = () => {
   let dummyData = [
     {
+      product_id: "1",
       image: "/img/exam-1.png",
       local: "경남",
       name: "22년 수확 햇 사과 3kg...",
       price: "10,400원",
     },
     {
+      product_id: "2",
       image: "/img/exam-2.png",
       local: "전북",
       name: "국내산 깐마늘 2kg...",
       price: "4,500원",
     },
     {
+      product_id: "3",
       image: "/img/exam-3.png",
       local: "전남",
       name: "마늘팟 양파  3kg...",
       price: "6,600원",
     },
     {
+      product_id: "4",
       image: "/img/exam-4.png",
       local: "충북",
       name: "청결 22년 햇 건고추 6kg",

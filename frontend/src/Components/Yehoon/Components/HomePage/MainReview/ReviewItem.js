@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Theme from "./../../../../../theme/theme";
+import { Theme } from "./../../../../../theme/theme";
 
 const ReviewItemBox = styled.div`
   width: 350px;
