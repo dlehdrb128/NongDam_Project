@@ -23,8 +23,10 @@ const FivedaysMakret = () => {
       {/* Visual */}
       <Main>
         <FivedaysMakretsec1 />
+        {/* section1 */}
         <div className='sec_wrap'>
           <FivedaysMarketsec2 />
+          {/*section2 */}
         </div>
       </Main>
     </>

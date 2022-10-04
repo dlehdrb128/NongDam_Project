@@ -1,8 +1,9 @@
 import '../../../App/App.css';
-import Theme from '../../../theme/theme'
+import Theme from '../../../theme/theme';
 import styled from 'styled-components';
 
-const { orange, white, fontSize_60, fontSize_45 } = Theme;
+// color,font Asset
+const { orange, realWhite, fontSize_60, fontSize_45 } = Theme;
 
 const FivedaysmakretTopvisual = styled.div`
   width: inherit;
@@ -11,36 +12,35 @@ const FivedaysmakretTopvisual = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('/img/FivedaysMarketTopvisual.png')
-    no-repeat center;
+  background: url('/img/FivedaysMarketTopvisual.png') no-repeat center;
   background-size: cover;
   /* title */
-  &>h1{
+  & > h1 {
     font-size: ${fontSize_60};
     font-family: YANGJIN;
-    color: ${white};
+    color: ${realWhite};
     margin-bottom: 50px;
-    &>span{
+    & > span {
       color: ${orange};
       font-size: ${fontSize_60};
     }
   }
-  &>p{
+  & > p {
     font-size: ${fontSize_45};
     font-family: YANGJIN;
-    color: ${white};
+    color: ${realWhite};
   }
 `;
-
-
 
 const FivedaysMakretTopvisual = () => {
   return (
     <FivedaysmakretTopvisual>
-      <h1>오늘은 <span>충청,전라</span> 에서 왓슈~</h1>
+      <h1>
+        오늘은 <span>충청,전라</span> 에서 왓슈~
+      </h1>
       <p>다음 지역까지 00 : 00</p>
     </FivedaysmakretTopvisual>
-  )
-}
+  );
+};
 
-export default FivedaysMakretTopvisual
+export default FivedaysMakretTopvisual;

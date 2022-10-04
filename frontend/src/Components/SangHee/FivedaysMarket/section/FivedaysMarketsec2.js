@@ -12,6 +12,7 @@ const Section2 = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  //common
   & > div {
     display: flex;
     align-items: center;
@@ -22,6 +23,7 @@ const Section2 = styled.section`
     border-radius: 30px;
     padding-top: 35px;
     position: relative;
+    //decoTItle
     & > div:nth-child(1) {
       width: 186px;
       height: 123px;
@@ -35,6 +37,7 @@ const Section2 = styled.section`
       font-family: YANGJIN;
       padding: 63px 66px 0;
     }
+    //local name
     & > h2 {
       font-size: ${fontSize_30};
       color: ${orange};
@@ -58,17 +61,20 @@ const FivedaysMarketsec2 = () => {
   return (
     <Section2>
       <div>
+        {/* section2_con */}
         <div>충청</div>
         <h2>반가워요 충청도에유!</h2>
         <FivedaysMarketsec2con />
       </div>
       <div>
+        {/* section2_con */}
         <div>전라</div>
         <h2>아따 전라도 특산물 구경해 보랑께~</h2>
         <FivedaysMarketsec2con2 />
       </div>
     </Section2>
   );
+  // section2 end
 };
 
 export default FivedaysMarketsec2;
