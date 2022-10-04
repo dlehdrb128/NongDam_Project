@@ -1,6 +1,7 @@
 import '../../../App/App.css';
 import styled from 'styled-components';
 import Theme from '../../../theme/theme';
+import { useState } from 'react';
 
 const { gray, orange, realWhite } = Theme;
 
@@ -96,6 +97,17 @@ const Remote = styled.div`
 `;
 
 const Remocon = () => {
+  const [ScrollY, setScrollY] = useState(0);
+
+  //Top btn func
+  const MoveTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    setScrollY(0);
+  };
+
   return (
     <Remote>
       <div>
@@ -113,7 +125,7 @@ const Remocon = () => {
           <p>마이페이지</p>
         </div>
       </div>
-      <div>TOP</div>
+      <div onClick={MoveTop}>TOP</div>
     </Remote>
   );
 };
