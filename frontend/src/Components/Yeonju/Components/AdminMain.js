@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Theme from '../../../theme/theme';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Theme from "../../../theme/theme";
 
 // 메인박스 / 화면 전체 박스
 const MainBox = styled.div`
@@ -9,7 +9,7 @@ const MainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'SCD-6';
+  font-family: "SCD-6";
   color: ${Theme.lightblack};
 
   & a {
@@ -98,12 +98,12 @@ const StoreIconMainBox = styled.div`
     }
     & > h1 {
       font-size: 1.8rem;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       color: ${Theme.green};
     }
     & > span {
       font-size: 1.8rem;
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
     }
   }
 `;
@@ -117,53 +117,35 @@ const AdminMain = () => {
           <div></div>
         </HeadlineBox>
         <StoreIconMainBox>
-          <Link to='create'>
-            <div className='box'>
-              <img
-                src='https:lh3.googleusercontent.com/drive-viewer/AJc5JmTkfZHxQY1yecWNjq2rRFJIVtNLaVrb-DYVFbVXvMxqqPkBP_kvkhxiPswvh8so_RFxpKn5CXE=w1416-h959'
-                alt='icon'
-              ></img>
+          <Link to="create">
+            <div className="box">
+              <img src="/img/Admin_icon1.png" alt="icon"></img>
               <h1>스토어개설</h1>
               <span>기본 스토어 개설</span>
             </div>
           </Link>
-          <div className='box'>
-            <img
-              src='https:lh3.googleusercontent.com/drive-viewer/AJc5JmSsCn2Iop_9xC9IAjxUDobSxGoA70TJt5zmkkVjfW9lccDW1BkDtFDKgirbI7GnhA8xfPr_Ugg=w1416-h959'
-              alt='icon'
-            ></img>
+          <div className="box">
+            <img src="/img/Admin_icon2.png" alt="icon"></img>
             <h1>스토어관리</h1>
             <span>기존 스토어 관리</span>
           </div>
-          <div className='box'>
-            <img
-              src='https:lh3.googleusercontent.com/drive-viewer/AJc5JmQTJEb-w1mZcJimPhpFRfDFSUwPhi9q-G7aYizQ_JDvDxu5o_fwdjZXLtCRGr-OJzSnWNqowAc=w1416-h959'
-              alt='icon'
-            ></img>
+          <div className="box">
+            <img src="/img/Admin_icon3.png" alt="icon"></img>
             <h1>상품관리</h1>
             <span>상품등록, 수정</span>
           </div>
-          <div className='box'>
-            <img
-              src='https:lh3.googleusercontent.com/drive-viewer/AJc5JmR9-R0sRo28duLqnNBLTn1ardIlRsy5w5N0_qyjzxIo1AQCV2PF1ZCxQhcSFF5VoTyCIgkqSfk=w1416-h959'
-              alt='icon'
-            ></img>
+          <div className="box">
+            <img src="/img/Admin_icon4.png" alt="icon"></img>
             <h1>게시판관리</h1>
             <span>공지사항, 후기 관련</span>
           </div>
-          <div className='box'>
-            <img
-              src='https:lh3.googleusercontent.com/drive-viewer/AJc5JmRcHw0W9ZwscrJC03Y_x15p7HYWMVdSVED0wKMneZENlmqogm8Jzr8J1rFRX-IuvLO3lAAxPPc=w1416-h959'
-              alt='icon'
-            ></img>
+          <div className="box">
+            <img src="/img/Admin_icon5.png" alt="icon"></img>
             <h1>정산</h1>
             <span>판매현황, 금액 관리</span>
           </div>
-          <div className='box'>
-            <img
-              src='https:lh3.googleusercontent.com/drive-viewer/AJc5JmSqrXVtl7h6cIyVbw2JDBfM2fTPSt3X2v8_DrDFUzYA4AmVoTItbrsPyPFUg0n6ouhLdXmcBYk=w1416-h959'
-              alt='icon'
-            ></img>
+          <div className="box">
+            <img src="/img/Admin_icon6.png" alt="icon"></img>
             <h1>마이페이지</h1>
             <span>나의 회원정보 수정</span>
           </div>

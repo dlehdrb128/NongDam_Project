@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import Theme from '../../../../theme/theme';
+import styled from "styled-components";
+import Theme from "../../../../theme/theme";
 
 // 금액 나타나는 제일 큰 박스
 const MainBox = styled.div`
   width: inherit;
-  height: 13.7rem;
+  height: 137px;
   background-color: ${Theme.white};
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@ const MainBox = styled.div`
 // 해당가격의이름 + 해당가격 : 하나의 박스로 묶음
 const Pricebox = styled.div`
   width: 246px;
-  height: 137px;
+  height: inherit;
   padding-left: 60px;
   display: flex;
   flex-direction: column;
@@ -23,12 +23,12 @@ const Pricebox = styled.div`
   // 해당가격 이름
   & > p:nth-child(1) {
     font-size: 2rem;
-    font-family: 'SCD-3';
+    font-family: "SCD-3";
   }
   // 해당 가격
   & > p:nth-child(2) {
     font-size: 3rem;
-    font-family: 'SCD-5';
+    font-family: "SCD-5";
   }
 `;
 
@@ -41,7 +41,7 @@ const OperatorBox = styled.div`
   align-items: center;
   & > p {
     font-size: 3rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
   }
 `;
 
