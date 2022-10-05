@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Theme from "../../../theme/theme";
 const SignUpParent = styled.form`
+  /* 회원가입창 부모 설정 */
   width: 1230px;
   display: flex;
   flex-direction: column;
@@ -31,6 +32,7 @@ const SignUpParent = styled.form`
   }
 `;
 const MemberType = styled.div`
+  /* 회원구분 */
   width: 1230px;
   height: 50px;
   display: flex;
@@ -50,6 +52,7 @@ const MemberType = styled.div`
   }
 `;
 const SideBar = styled.div`
+  /* 왼쪽 회원구분 */
   width: 200px;
   height: inherit;
   color: ${Theme.lightblack};
@@ -67,6 +70,7 @@ const SideBar = styled.div`
   }
 `;
 const BasicInfo = styled.div`
+  /* 기본정보 */
   width: 1230px;
   height: inherit;
   display: flex;
@@ -86,6 +90,7 @@ const BasicInfo = styled.div`
     }
   }
   & > div:nth-child(5) {
+    /* 주소 */
     & > div:nth-child(2) {
       display: flex;
       flex-direction: column;
@@ -113,6 +118,7 @@ const BasicInfo = styled.div`
     }
   }
   & > div:nth-child(7) {
+    /* 휴대전화 */
     & > button {
       width: 150px;
       height: 30px;
@@ -125,6 +131,7 @@ const BasicInfo = styled.div`
     }
   }
   & > div:nth-child(9) {
+    /* 평생회원 */
     width: inherit;
     height: inherit;
     border-bottom: 2px solid ${Theme.lightblack};
@@ -136,6 +143,7 @@ const BasicInfo = styled.div`
   }
 `;
 const MiddleBox = styled.div`
+  /* 왼쪽 목록 작은 사이즈 */
   width: 200px;
   height: 50px;
   color: ${Theme.lightblack};
@@ -151,6 +159,7 @@ const MiddleBox = styled.div`
   }
 `;
 const LongBox = styled.div`
+  /* 왼쪽 목록 큰 사이즈 */
   width: 200px;
   height: 150px;
   color: ${Theme.lightblack};
@@ -162,6 +171,7 @@ const LongBox = styled.div`
   display: flex;
 `;
 const InputText = styled.input`
+  /* 작성란 */
   width: 300px;
   height: 30px;
   position: relative;
@@ -171,6 +181,7 @@ const InputText = styled.input`
   font-family: SCD-3;
 `;
 const Phone = styled.input`
+  /* 폰번호 작성란 */
   width: 300px;
   height: 30px;
   color: ${Theme.lightblack};
@@ -180,6 +191,7 @@ const Phone = styled.input`
   margin-left: 10px;
 `;
 const MoreInfo = styled.div`
+  /* 추가정보 */
   width: inherit;
   height: inherit;
   border-top: 2px solid ${Theme.lightblack};
@@ -207,6 +219,7 @@ const MoreInfo = styled.div`
   }
 `;
 const Terms = styled.div`
+  /* 약관동의 */
   width: inherit;
   display: flex;
   flex-direction: column;
@@ -233,6 +246,7 @@ const Terms = styled.div`
   }
 `;
 const InputClick = styled.input`
+  /* 선택 버튼 */
   accent-color: green;
 `;
 const SignUp = () => {
@@ -243,14 +257,18 @@ const SignUp = () => {
       name="sign-up"
       method="get"
     >
+      {/* 회원가입창 부모 설정 */}
       <h1>회원가입</h1>
       <br />
       <MemberType>
+        {/* 회원구분  */}
         <SideBar>
+          {/* 왼쪽 회원구분 */}
           회원구분<span>*</span>
         </SideBar>
         <div>
           <InputClick type={"radio"} name="member"></InputClick>
+          {/* 선택 버튼 */}
           &nbsp;개인회원 &nbsp;&nbsp;
           <InputClick type={"radio"} name="member"></InputClick>
           &nbsp;사업자회원
@@ -260,11 +278,14 @@ const SignUp = () => {
       <h2>기본정보</h2>
       <br />
       <BasicInfo>
+        {/* 기본정보 */}
         <div>
           <MiddleBox>
+            {/* 왼쪽 목록 작은 사이즈 */}
             아이디<span>*</span>
           </MiddleBox>
           <InputText></InputText>
+          {/* 작성란 */}
           <p>(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</p>
         </div>
         <div>
@@ -287,6 +308,7 @@ const SignUp = () => {
         </div>
         <div>
           <LongBox>주소</LongBox>
+          {/* 왼쪽 목록 큰 사이즈 */}
           <div>
             <div>
               <input type="text" placeholder="우편번호"></input>
@@ -319,6 +341,7 @@ const SignUp = () => {
             placeholder="핸드폰번호 입력('-'제외)"
             maxLength={11}
           />
+          {/* 폰번호 작성란 */}
           &nbsp;&nbsp;&nbsp;
           <button>인증번호받기</button>
         </div>
@@ -345,6 +368,7 @@ const SignUp = () => {
       <h2>추가정보</h2>
       <br />
       <MoreInfo>
+        {/* 추가정보 */}
         <div>
           <MiddleBox>생년월일</MiddleBox>
           <input type={"date"}></input>
@@ -363,6 +387,7 @@ const SignUp = () => {
       <h2>약관동의</h2>
       <br />
       <Terms>
+        {/* 약관동의 */}
         <div>
           <InputClick type={"checkbox"}></InputClick>
           &nbsp;&nbsp;
