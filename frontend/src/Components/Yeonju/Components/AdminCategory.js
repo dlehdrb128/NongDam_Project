@@ -33,6 +33,7 @@ const Categoty = styled.div`
     font-family: "SCD-3";
     font-size: 1.5rem;
     padding-bottom: 10px;
+    cursor: pointer;
   }
 `;
 

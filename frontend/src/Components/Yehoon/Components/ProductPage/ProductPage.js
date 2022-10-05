@@ -11,6 +11,8 @@ import { useRef } from "react";
 
 const ProductPageBox = styled.div``;
 
+// 상품 상세페이지 컴포넌트
+
 const ProductPage = () => {
   const { id } = useParams();
   const productDetail = useRef(null);
@@ -114,6 +116,7 @@ const ProductPage = () => {
     },
   ];
 
+  // 카테고리의 버튼을 누르면 인자에 따라 스크롤을 이동시킨다
   const categoryMove = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };

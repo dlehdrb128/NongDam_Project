@@ -1,29 +1,30 @@
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import Theme from '../../../../../theme/theme'
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Theme from '../../../../../theme/theme';
 
-const { fontSize_40, fontSize_15, fontSize_18, lightblack, gray } = Theme
+const { fontSize_40, fontSize_15, fontSize_18, lightblack, gray } = Theme;
 
-const Section1 = styled.div`
-  &>h1:nth-child(1){
+const Section1 = styled.section`
+  margin-right: 30px;
+  & > h1:nth-child(1) {
     font-family: SCD-6;
     font-size: ${fontSize_40};
     color: ${lightblack};
     margin-bottom: 60px;
   }
-  &>div{
+  & > div {
     width: 189px;
-    &>div{
+    & > div {
       border-top: 1px solid ${gray};
       padding: 20px 0;
-      &>h2{
+      & > h2 {
         font-family: SCD-6;
         font-size: ${fontSize_18};
         color: ${lightblack};
         margin-bottom: 17px;
       }
-      &>div{
-        &>a{
+      & > div {
+        & > a {
           font-family: SCD-3;
           display: block;
           font-size: ${fontSize_15};
@@ -31,16 +32,16 @@ const Section1 = styled.div`
           color: ${gray};
           cursor: pointer;
         }
-        &>a:last-child{
+        & > a:last-child {
           margin-bottom: 0;
         }
       }
     }
-    &>div:last-child{
+    & > div:last-child {
       padding: 20px 0 0;
     }
   }
-`
+`;
 const Mypagesec1 = () => {
   return (
     <Section1>
@@ -51,7 +52,7 @@ const Mypagesec1 = () => {
           <div>
             <Link>주문내역</Link>
             <Link>취소/교환/반품내역</Link>
-            <Link to="/cart">장바구니</Link>
+            <Link to='/cart'>장바구니</Link>
             <Link>관심상품</Link>
           </div>
         </div>
@@ -81,7 +82,7 @@ const Mypagesec1 = () => {
         </div>
       </div>
     </Section1>
-  )
-}
+  );
+};
 
-export default Mypagesec1
+export default Mypagesec1;

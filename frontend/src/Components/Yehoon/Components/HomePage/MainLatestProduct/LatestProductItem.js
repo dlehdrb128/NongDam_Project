@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Theme } from "./../../../../../theme/theme";
 import { Link } from "react-router-dom";
 
+// 최근에 들어온 상품 아이템 박스
 const LatestProductItemBox = styled.div`
   width: 180px;
   height: 296px;
@@ -9,11 +10,13 @@ const LatestProductItemBox = styled.div`
   flex-direction: column;
   gap: 10px;
 
+  /* 마우스 오버시 폰트 강조 */
   &:hover {
     font-weight: bold;
     cursor: pointer;
   }
 
+  /* Link 속성 초기화 */
   & a {
     &:link {
       text-decoration: none;
@@ -28,16 +31,13 @@ const LatestProductItemBox = styled.div`
       color: ${Theme.lightblack};
     }
 
-    &:hover {
-      cursor: pointer;
-      color: ${Theme.green};
-    }
-
+    /* 이미지 규격 설정 */
     & > img {
       width: 163px;
       height: 168px;
     }
 
+    /* 지역 글꼴 */
     & > div:nth-child(2) {
       & > div:nth-child(1) {
         font-family: "SCD-6";
@@ -45,12 +45,14 @@ const LatestProductItemBox = styled.div`
         color: ${Theme.green};
       }
 
+      /* 제품명 글꼴 */
       & > div:nth-child(2) {
         font-family: "SCD-3";
         font-size: 1.6rem;
         color: ${Theme.lightblack};
       }
     }
+    /* 가격 글꼴 */
     & > div:nth-child(3) {
       font-family: "SCD-7";
       font-size: 1.9rem;
@@ -68,7 +70,7 @@ const LatestProductItem = ({ data }) => {
           <div>[{data.local}]</div>
           <div>{data.name}</div>
         </div>
-        <div>{data.price}</div>
+        <div>{data.price.toLocaleString()}원</div>
       </Link>
     </LatestProductItemBox>
   );
