@@ -1,4 +1,4 @@
-import { Wrapper, Text } from "../common";
+import { Wrapper, Text } from '../common';
 
 const Title = () => {
   return (
@@ -9,7 +9,7 @@ const Title = () => {
       margin={`0 0 5px 0`}
     >
       <Wrapper flex={`1`} dir={`column`}>
-        <Text margin={`0px`} fontFamily={"SCD-6"}>
+        <Text margin={`0px`} fontFamily={'SCD-6'}>
           OOO님은 <br />
           [개인회원]입니다.
         </Text>
@@ -54,8 +54,8 @@ const Title = () => {
           al={`center`}
           ju={`space-between`}
         >
-          <Wrapper cursor={"pointer"}>
-            <img src="/img/heart.png" alt="heart" />
+          <Wrapper cursor={'pointer'}>
+            <img src='/img/heart.png' alt='heart' />
           </Wrapper>
 
           <Wrapper dir={`column`} ju={`flex-end`}>
