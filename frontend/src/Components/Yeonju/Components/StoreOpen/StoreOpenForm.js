@@ -1,30 +1,29 @@
-import styled from 'styled-components';
-import Theme from '../../../../theme/theme';
+import styled from "styled-components";
+import Theme from "../../../../theme/theme";
 
 const MainBox = styled.div`
-  width: 83.3rem;
-  padding: 24rem 0 7rem 0;
+  width: 843px;
+  padding: 240px 0 70px 0;
   display: flex;
   flex-direction: column;
 
   // form 제목
   & > h1 {
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     color: ${Theme.lightblack};
     font-size: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 0.2rem solid ${Theme.lightblack};
+    padding-bottom: 15px;
+    border-bottom: 2px solid ${Theme.lightblack};
   }
 
   // form 으로 묶어서 아래에 한 줄씩 추가
   & > form {
-    width: 84.4rem;
-    padding-bottom: 3.6rem;
+    padding-bottom: 36px;
   }
 
   // 맨 아래(수정, 등록 박스)
   & > div {
-    padding-top: 3.5rem;
+    padding-top: 35px;
     display: flex;
     justify-content: center;
   }
@@ -32,110 +31,110 @@ const MainBox = styled.div`
 
 // 각각 기입내용 한 줄로 박스화시켰음
 const ContentBox = styled.div`
-  width: 84.3rem;
-  height: 8rem;
+  width: inherit;
+  height: 80px;
   display: flex;
-  border-bottom: 0.1rem solid ${Theme.lightgray};
+  border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
   & > h2 {
-    width: 14.1rem;
-    height: 8rem;
+    width: 141px;
+    height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
-    padding: 3rem 0 3rem 1.8rem;
+    padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
-    border-bottom: 0.1rem solid ${Theme.lightgray};
+    border-bottom: 1px solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
   & > div {
-    width: 70.2rem;
+    width: 702px;
     display: flex;
-    padding: 2rem;
+    padding: 20px;
     align-items: center;
-    border-left: 0.1rem solid ${Theme.liglightgray};
+    border-left: 1px solid ${Theme.liglightgray};
     & > input {
-      font-family: 'SCD-4';
-      width: 30rem;
-      height: 4rem;
-      border: 0.1rem solid ${Theme.gray};
-      border-radius: 0.3rem;
-      padding: 0.5rem;
+      font-family: "SCD-4";
+      width: 300px;
+      height: 40px;
+      border: 1px solid ${Theme.gray};
+      border-radius: 3px;
+      padding: 5px;
       font-size: 1.5rem;
     }
     & > span {
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
       font-size: 1.3rem;
-      padding-left: 0.5rem;
+      padding-left: 5px;
     }
   }
 `;
 // 사업장 주소 박스
 const BusinessAdd = styled.div`
-  width: 84.3rem;
-  height: 20.8rem;
+  width: inherit;
+  height: 208px;
   display: flex;
-  border-bottom: 0.1rem solid ${Theme.lightgray};
+  border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
   & > h2 {
-    width: 14.1rem;
-    height: 20.8rem;
+    width: 141px;
+    height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
-    padding: 3rem 0 3rem 1.8rem;
+    padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
     border-bottom: 0.1rem solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
 
   & > div {
-    width: 70.2rem;
-    padding: 2.2rem 2rem 2.2rem 2rem;
-    border-left: 0.1rem solid ${Theme.lightblack};
+    width: inherit;
+    padding: 22px 20px 22px 20px;
+    border-left: 1px solid ${Theme.lightblack};
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     & > div > input {
-      font-family: 'SCD-4';
-      width: 30rem;
-      height: 4rem;
-      border: 0.1rem solid ${Theme.gray};
-      border-radius: 0.3rem;
-      padding: 0.5rem;
+      font-family: "SCD-4";
+      width: 300px;
+      height: 40px;
+      border: 1px solid ${Theme.gray};
+      border-radius: 3px;
+      padding: 5px;
       font-size: 1.5rem;
     }
     & > div > button {
-      width: 12rem;
-      height: 4rem;
+      width: 120px;
+      height: 40px;
       font-size: 1.5rem;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       color: ${Theme.realWhite};
       background-color: ${Theme.green};
       border: none;
-      border-radius: 0.3rem;
-      margin-left: 1.5rem;
-      padding: 0.5rem;
+      border-radius: 3px;
+      margin-left: 15px;
+      padding: 5px;
       cursor: pointer;
     }
     & > input {
-      font-family: 'SCD-4';
-      width: 30rem;
-      height: 4rem;
-      border: 0.1rem solid ${Theme.gray};
-      border-radius: 0.3rem;
-      padding: 0.5rem;
+      font-family: "SCD-4";
+      width: 300px;
+      height: 40px;
+      border: 1px solid ${Theme.gray};
+      border-radius: 3px;
+      padding: 5px;
       font-size: 1.5rem;
     }
   }
@@ -143,69 +142,69 @@ const BusinessAdd = styled.div`
 
 // 전화번호 들어가는 박스
 const TelBox = styled.div`
-  width: 84.3rem;
-  height: 8rem;
+  width: inherit;
+  height: 80px;
   display: flex;
-  border-bottom: 0.1rem solid ${Theme.lightgray};
+  border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
   & > h2 {
-    width: 14.1rem;
-    height: 8rem;
+    width: 141px;
+    height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
-    padding: 3rem 0 3rem 1.8rem;
+    padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
-    border-bottom: 0.1rem solid ${Theme.lightgray};
+    border-bottom: 1px solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
 
   & > div {
-    width: 70.2rem;
+    width: 702px;
     display: flex;
-    padding: 2rem;
+    padding: 20px;
     align-items: center;
-    border-left: 0.1rem solid ${Theme.lightblack};
+    border-left: 1px solid ${Theme.lightblack};
 
     & > select {
-      font-family: 'SCD-4';
-      width: 10rem;
-      height: 4rem;
-      border: 0.1rem solid ${Theme.gray};
+      font-family: "SCD-4";
+      width: 100px;
+      height: 40px;
+      border: 1px solid ${Theme.gray};
       border-radius: 0.3rem;
-      padding: 0.5rem;
+      padding: 5px;
       font-size: 1.5rem;
     }
     & > input {
-      font-family: 'SCD-4';
-      width: 10rem;
-      height: 4rem;
-      border: 0.1rem solid ${Theme.gray};
-      border-radius: 0.3rem;
-      padding: 0.5rem;
+      font-family: "SCD-4";
+      width: 100px;
+      height: 40px;
+      border: 1px solid ${Theme.gray};
+      border-radius: 3px;
+      padding: 5px;
       font-size: 1.5rem;
     }
     & > span {
-      font-family: 'SCD-4';
-      padding: 0 1rem 0 1rem;
+      font-family: "SCD-4";
+      padding: 0 10px 0 10px;
       font-size: 1.5rem;
     }
     & > button {
-      width: 12rem;
-      height: 4rem;
-      font-family: 'SCD-6';
+      width: 120px;
+      height: 40px;
+      font-family: "SCD-6";
       font-size: 1.5rem;
       color: ${Theme.realWhite};
       background-color: ${Theme.green};
       border: none;
-      border-radius: 0.3rem;
-      padding: 0.5rem;
-      margin-left: 1.5rem;
+      border-radius: 3px;
+      padding: 5px;
+      margin-left: 15px;
       cursor: pointer;
     }
   }
@@ -213,71 +212,71 @@ const TelBox = styled.div`
 
 // 라디오 버튼 들어가는 박스
 const RadioBox = styled.div`
-  width: 84.3rem;
-  height: 8rem;
+  width: inherit;
+  height: 80px;
   display: flex;
-  border-bottom: 0.1rem solid ${Theme.lightgray};
+  border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
   & > h2 {
-    width: 14.1rem;
-    height: 8rem;
+    width: 141px;
+    height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
-    padding: 3rem 0 3rem 1.8rem;
+    padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
-    border-bottom: 0.1rem solid ${Theme.lightgray};
+    border-bottom: 1px solid ${Theme.lightgray};
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
   & > div {
-    width: 70.2rem;
+    width: 702px;
     display: flex;
-    padding: 2rem;
+    padding: 20px;
     align-items: center;
-    border-left: 0.1rem solid ${Theme.lightblack};
+    border-left: 1px solid ${Theme.lightblack};
 
     & > input {
       appearance: none;
 
       border-radius: 100%;
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 18px;
+      height: 18px;
 
-      border: 0.1rem solid ${Theme.gray};
+      border: 1px solid ${Theme.gray};
     }
     & > input:checked {
       background-color: ${Theme.green};
     }
     & > label {
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
       font-size: 1.3rem;
-      padding: 0 2rem 0 0.5rem;
+      padding: 0 20px 0 5px;
     }
   }
 `;
 // 등록 버튼
 const RegButton = styled.button`
-  width: 18.7rem;
-  height: 5rem;
+  width: 187px;
+  height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: 'SCD-6';
+  font-family: "SCD-6";
   font-size: 1.8rem;
   border: none;
-  border-radius: 0.3rem;
-  margin: 0 1.5rem 0 1.5rem;
-  padding: 0.5rem;
+  border-radius: 3px;
+  margin: 0 15px 0 15px;
+  padding: 5px;
   cursor: pointer;
 `;
 
 // 등록버튼에 테두리만 줘서 수정버튼을 만듬
 const EditButton = styled(RegButton)`
-  border: 0.1rem solid ${Theme.lightblack};
+  border: 1px solid ${Theme.lightblack};
 `;
 
 const StoreOpenForm = () => {
@@ -291,7 +290,7 @@ const StoreOpenForm = () => {
             <span> *</span>
           </h2>
           <div>
-            <input type='text' required></input>
+            <input type="text" required></input>
             <span>
               (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
             </span>
@@ -302,7 +301,7 @@ const StoreOpenForm = () => {
             대표 휴대전화<span> *</span>
           </h2>
           <div>
-            <input type='tel' required></input>
+            <input type="tel" required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -310,7 +309,7 @@ const StoreOpenForm = () => {
             대표 이메일<span> *</span>
           </h2>
           <div>
-            <input type='email' required></input>
+            <input type="email" required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -318,7 +317,7 @@ const StoreOpenForm = () => {
             이름<span> *</span>
           </h2>
           <div>
-            <input type='text' required></input>
+            <input type="text" required></input>
           </div>
         </ContentBox>
         <BusinessAdd>
@@ -327,11 +326,11 @@ const StoreOpenForm = () => {
           </h2>
           <div>
             <div>
-              <input placeholder='우편번호'></input>
+              <input placeholder="우편번호"></input>
               <button>주소검색</button>
             </div>
             <input></input>
-            <input placeholder='나머지 주소(선택 입력 가능)'></input>
+            <input placeholder="나머지 주소(선택 입력 가능)"></input>
           </div>
         </BusinessAdd>
         <TelBox>
@@ -370,7 +369,7 @@ const StoreOpenForm = () => {
             수신전용 이메일<span> *</span>
           </h2>
           <div>
-            <input type='email' required></input>
+            <input type="email" required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -378,7 +377,7 @@ const StoreOpenForm = () => {
             발신전용 이메일<span> *</span>
           </h2>
           <div>
-            <input type='email' required></input>
+            <input type="email" required></input>
           </div>
         </ContentBox>
         <RadioBox>
@@ -387,9 +386,9 @@ const StoreOpenForm = () => {
             <span> *</span>
           </h2>
           <div>
-            <input type='radio' name='check'></input>
+            <input type="radio" name="check"></input>
             <label>신고함</label>
-            <input type='radio' name='check'></input>
+            <input type="radio" name="check"></input>
             <label>신고안함</label>
           </div>
         </RadioBox>
@@ -417,7 +416,7 @@ const StoreOpenForm = () => {
             상담 이메일<span> *</span>
           </h2>
           <div>
-            <input type='email' required></input>
+            <input type="email" required></input>
           </div>
         </ContentBox>
         <TelBox>
@@ -458,4 +457,4 @@ const StoreOpenForm = () => {
 };
 
 export default StoreOpenForm;
-<input type='submit'></input>
+<input type="submit"></input>;
