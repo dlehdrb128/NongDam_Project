@@ -262,15 +262,22 @@ const Login = () => {
             </SignupButton>
           </SignupGuide>
           <SNSBox>
-            <SNSLogin>SNS 로그인</SNSLogin>
+            {/* sns설명글 부모값설정 */}
+            <SNSLogin>
+              {/* sns로그인 제목 */}
+              SNS 로그인
+            </SNSLogin>
             <SignupPlease>
+              {/* sns로그인(빨간글씨) 상세설명 */}
               사업자회원님은 아래 네이버, 카카오, 애플 로그인들이 사용 불가
               하오니
               <br />위 회원가입 버튼 클릭 후 사업자 회원으로 정식 회원가입을
               부탁드립니다.
             </SignupPlease>
             <IconBox>
+              {/* sns 아이콘 전채 부모 설정값 */}
               <SNSIcon href="http://naver.com">
+                {/* sns아이콘 원형모양 링크버튼 */}
                 <NaverLogo src="/img/naverLogo.png" alt="네이버" />
               </SNSIcon>
               <SNSIcon href="http://naver.com">
