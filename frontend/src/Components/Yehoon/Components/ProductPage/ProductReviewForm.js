@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ProductReview from "./ProductReview";
 import Theme from "./../../../../theme/theme";
 import ReviewWrite from "./ReviewWrite";
+import { forwardRef } from "react";
 
 const ProductReviewBox = styled.div`
   width: 1280px;
@@ -39,7 +40,7 @@ const ReviewBox = styled.div`
   }
 `;
 
-const ProductReviewForm = ({ data }) => {
+const ProductReviewForm = forwardRef(({ data }, ref) => {
   const getAverage = () => {
     if (data.review !== undefined) {
       let totalValue = 0;
@@ -64,7 +65,7 @@ const ProductReviewForm = ({ data }) => {
   }
 
   return (
-    <ProductReviewBox>
+    <ProductReviewBox ref={ref}>
       <div>상품 후기</div>
       <div>
         {average >= 0 ? average : 0} / 5
@@ -78,6 +79,6 @@ const ProductReviewForm = ({ data }) => {
       <ReviewWrite></ReviewWrite>
     </ProductReviewBox>
   );
-};
+});
 
 export default ProductReviewForm;

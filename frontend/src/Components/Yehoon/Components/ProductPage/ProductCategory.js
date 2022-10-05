@@ -39,12 +39,28 @@ const CategoryBox = styled.div`
   }
 `;
 
-const ProductCategory = () => {
+const ProductCategory = ({ categoryMove, productDetail, productReview }) => {
+  const clickEvents = (target) => {
+    categoryMove(target);
+  };
+
   return (
     <CategoryBox>
       <div>
-        <div>상품 상세</div>
-        <div>상품 후기</div>
+        <div
+          onClick={() => {
+            clickEvents(productDetail);
+          }}
+        >
+          상품 상세
+        </div>
+        <div
+          onClick={() => {
+            clickEvents(productReview);
+          }}
+        >
+          상품 후기
+        </div>
         <div>상품 문의</div>
       </div>
       <hr></hr>

@@ -6,6 +6,7 @@ import { useState } from "react";
 // import { useEffect } from "react";
 // import { productAll } from "../Slice/getData";
 // import { useDispatch, useSelector } from "react-redux";
+import Remocon from "./../../../SangHee/Components/Remocon";
 
 const ProductTop = styled.div`
   width: 1280px;
@@ -211,6 +212,7 @@ const AllProduct = () => {
           return <ProductItem key={index} data={value}></ProductItem>;
         })}
       </ProductBox>
+      <Remocon></Remocon>
     </>
   );
 };

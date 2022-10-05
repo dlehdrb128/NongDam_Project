@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { forwardRef } from "react";
 
 const ProductDetailBox = styled.div`
   padding-top: 200px;
@@ -10,9 +11,9 @@ const ProductDetailBox = styled.div`
   }
 `;
 
-const ProductDetail = ({ data }) => {
+const ProductDetail = forwardRef(({ data }, ref) => {
   return (
-    <ProductDetailBox>
+    <ProductDetailBox ref={ref}>
       {data.detailImage === undefined ? (
         <h1>상품 상세이미지가 없습니다</h1>
       ) : (
@@ -20,6 +21,6 @@ const ProductDetail = ({ data }) => {
       )}
     </ProductDetailBox>
   );
-};
+});
 
 export default ProductDetail;
