@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 import Theme from '../../../../../theme/theme';
-const {
-  fontSize_40,
-  fontSize_18,
-  fontSize_13,
-  fontSize_15,
-  lightblack,
-  gray,
-  white,
-} = Theme;
+const { fontSize_13, lightblack, gray } = Theme;
 
 const OrderItem = styled.div`
   width: inherit;
