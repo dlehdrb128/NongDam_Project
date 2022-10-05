@@ -3,6 +3,7 @@ import { useState } from "react";
 import Theme from "./../../../../theme/theme";
 import { StyledButton } from "../../../../theme/theme";
 
+// 새로운 리뷰를 작성하는 요소들을 담은 박스
 const ReviewWriteBox = styled.div`
   width: 1250px;
   height: 125px;
@@ -17,6 +18,7 @@ const ReviewWriteBox = styled.div`
   }
 `;
 
+// 별점 설정 박스
 const ValueBox = styled.div`
   width: 125px;
   display: flex;
@@ -26,6 +28,7 @@ const ValueBox = styled.div`
   }
 `;
 
+// 리뷰 작성 Input 속성
 let TextInput = styled.input`
   width: 985px;
   height: 80px;

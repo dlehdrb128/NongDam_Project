@@ -6,6 +6,7 @@ import MainEventMarket from "./MainEventMarket/MainEventMarket";
 import MainReview from "./MainReview/MainReview";
 import Remocon from "../../../SangHee/Components/Remocon";
 
+// 홈페이지
 const MainBox = styled.main`
   width: 1920px;
   display: flex;

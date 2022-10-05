@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// 프로모션 상품
+
 const MainPromotionBox = styled.div`
   width: 1280px;
   height: 326px;

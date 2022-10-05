@@ -3,6 +3,7 @@ import styled from "styled-components";
 const MainLogoBox = styled.div``;
 const MainLogoItem = styled.img``;
 
+// 메인 로고
 const MainLogo = () => {
   return (
     <MainLogoBox>
