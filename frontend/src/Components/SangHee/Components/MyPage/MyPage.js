@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Mypagesec1 from './section/Mypagesec1';
 import Mypagesec2 from './section/Mypagesec2';
 
@@ -9,10 +9,9 @@ const Main = styled.main`
   align-items: center;
   justify-content: center;
   & > div.sec_wrap {
-    width: 1062px;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
   }
 `;
@@ -25,7 +24,7 @@ const Mypage = () => {
         <Mypagesec2 />
       </div>
     </Main>
-  )
-}
+  );
+};
 
-export default Mypage
+export default Mypage;

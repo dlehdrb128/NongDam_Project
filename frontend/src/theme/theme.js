@@ -9,6 +9,7 @@ const Theme = {
   red: 'rgba(255,0,0,1)',
   black: 'rgba(0, 0, 0, 1)',
   realWhite: 'rgba(255, 255, 255, 1)',
+  lightgreen: 'rgba(197,223,173,1)',
 
   fontSize_60: '6rem',
   fontSize_50: '5rem',
