@@ -13,6 +13,7 @@ const ItemBox = styled.div`
   & > div:nth-child(1) {
     width: 79px;
     padding-left: 20px;
+
     & > input {
       width: 24px;
       height: 24px;

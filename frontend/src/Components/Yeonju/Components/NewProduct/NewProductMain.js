@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import AdminCategory from "../AdminCategory";
-import NewProductForm from "./NewProductForm";
+import styled from 'styled-components';
+import AdminCategory from '../AdminCategory';
+import NewProductForm from './NewProductForm';
 
 const MainBox = styled.div`
   width: inherit;
@@ -12,6 +12,7 @@ const NewProductMain = () => {
   return (
     <MainBox>
       <AdminCategory></AdminCategory>
+      <NewProductForm></NewProductForm>
     </MainBox>
   );
 };
