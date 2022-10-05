@@ -1,27 +1,7 @@
 import styled from "styled-components";
 import Theme from "../../../theme/theme";
-// const Theme = {
-//   green: "rgba(128,195,66,1)",
-//   lightgray: "rgba(192,192,192,1)",
-//   gray: "rgba(149,149,149,1)",
-//   lightblack: "rgba(82,82,82,1)",
-//   white: "rgba(242,242,242,1)",
-//   orange: "rgba(243,152,0,1)",
-//   red: "rgba(255,0,0,1)",
-//   black: "rgba(0, 0, 0, 1)",
-//   realWhite: "rgba(255, 255, 255, 1)",
-
-//   fontSize_60: "6rem",
-//   fontSize_50: "5rem",
-//   fontSize_40: "4rem",
-//   fontSize_30: "3rem",
-//   fontSize_25: "2.5rem",
-//   fontSize_20: "2rem",
-//   btnTransition: "ease-in 0.3s",
-// };
 const SignUpParent = styled.form`
   width: 1230px;
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -29,14 +9,14 @@ const SignUpParent = styled.form`
   margin-top: 150px;
   & > h1 {
     font-size: 3rem;
-    font-family: lotteHappyBold;
+    font-family: YANGJIN;
     color: ${Theme.lightblack};
   }
   & > h2 {
     width: inherit;
     text-align: left;
     font-size: 2rem;
-    font-family: lotteHappyBold;
+    font-family: YANGJIN;
     color: ${Theme.lightblack};
   }
   & > button {
@@ -252,6 +232,9 @@ const Terms = styled.div`
     }
   }
 `;
+const InputClick = styled.input`
+  accent-color: green;
+`;
 const SignUp = () => {
   return (
     <SignUpParent
@@ -267,9 +250,9 @@ const SignUp = () => {
           회원구분<span>*</span>
         </SideBar>
         <div>
-          <input type={"radio"}></input>
+          <InputClick type={"radio"} name="member"></InputClick>
           &nbsp;개인회원 &nbsp;&nbsp;
-          <input type={"radio"}></input>
+          <InputClick type={"radio"} name="member"></InputClick>
           &nbsp;사업자회원
         </div>
       </MemberType>
@@ -307,7 +290,7 @@ const SignUp = () => {
           <div>
             <div>
               <input type="text" placeholder="우편번호"></input>
-              &nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
               <button>주소검색</button>
             </div>
             <br />
@@ -336,7 +319,7 @@ const SignUp = () => {
             placeholder="핸드폰번호 입력('-'제외)"
             maxLength={11}
           />
-          &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;
           <button>인증번호받기</button>
         </div>
         <div>
@@ -347,9 +330,9 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>평생회원</MiddleBox>
-          <input type={"radio"}></input>
+          <InputClick type={"radio"} name="agree"></InputClick>
           &nbsp;동의함&nbsp;&nbsp;
-          <input type={"radio"}></input>
+          <InputClick type={"radio"} name="agree"></InputClick>
           &nbsp;동의안함
           <br />
           <p>
@@ -366,9 +349,9 @@ const SignUp = () => {
           <MiddleBox>생년월일</MiddleBox>
           <input type={"date"}></input>
           &nbsp;&nbsp;&nbsp;
-          <input type={"radio"} />
+          <InputClick type={"radio"} name="calendar" />
           &nbsp;양력 &nbsp;&nbsp;
-          <input type={"radio"} />
+          <InputClick type={"radio"} name="calendar" />
           &nbsp;음력
         </div>
         <div>
@@ -381,7 +364,7 @@ const SignUp = () => {
       <br />
       <Terms>
         <div>
-          <input type={"checkbox"}></input>
+          <InputClick type={"checkbox"}></InputClick>
           &nbsp;&nbsp;
           <p>
             이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두
@@ -389,21 +372,21 @@ const SignUp = () => {
           </p>
         </div>
         <div>
-          <input type={"checkbox"}></input>
+          <InputClick type={"checkbox"}></InputClick>
           &nbsp;&nbsp;
           <p>[필수] 이용약관 동의</p>
         </div>
         <div>
-          <input type={"checkbox"}></input>
+          <InputClick type={"checkbox"}></InputClick>
           &nbsp;&nbsp;
           <p>[필수] 개인정보 수집 및 이용 동의</p>
         </div>
         <div>
-          <input type={"checkbox"}></input>
+          <InputClick type={"checkbox"}></InputClick>
           &nbsp;&nbsp;
           <p>[선택] SMS 수신을 동의하십니까?</p>
           &nbsp;&nbsp;&nbsp;
-          <input type={"checkbox"}></input>
+          <InputClick type={"checkbox"}></InputClick>
           &nbsp;&nbsp;
           <p>[선택] 이메일 수신을 동의하십니까?</p>
         </div>
