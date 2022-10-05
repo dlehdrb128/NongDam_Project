@@ -2,16 +2,25 @@ import styled from "styled-components";
 import "../../../../src/index.css";
 import Theme from "../../../theme/theme";
 const LoginHeader = styled.div`
+  /* 최상단 "로그인" 제목 값 */
   width: 1230px;
   height: 80px;
   text-align: center;
   font-size: 3rem;
   font-family: YANGJIN;
-  color: rgba(82, 82, 82, 1);
-  border-bottom: 1px solid rgba(192, 192, 192, 1);
+  color: ${Theme.lightblack};
+  border-bottom: 1px solid ${Theme.lightgray};
   margin-top: 80px;
 `;
+const LoginMain = styled.div`
+  /* Header를 제외한 전체 설정값(감싸는 용도) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80px;
+`;
 const LoginResponse = styled.div`
+  /* 로그인창 전체 부모 설정값 */
   width: 600px;
   height: 625px;
   display: flex;
@@ -21,76 +30,81 @@ const LoginResponse = styled.div`
   margin-right: 10px;
 `;
 const LoginBox = styled.input`
+  /* 아이디 비밀번호 입력창 */
   width: 600px;
   height: 60px;
   border-radius: 10px;
-  border: 1px solid rgba(192, 192, 192, 1);
+  border: 1px solid ${Theme.lightgray};
   margin: 10px;
   font-size: 2rem;
-  font-family: NanumGothic-Regular;
+  font-family: SCD-3;
   padding-left: 20px;
 `;
-const A = styled.a`
-  text-decoration: none;
-  color: rgba(82, 82, 82, 1);
-  font-size: 1.5em;
-  font-family: NanumGothic-Regular;
-`;
-const OprionMenu = styled.div`
+const OptionMenu = styled.div`
+  /* 아이디 저장, checkbox, 아이디/비밀번호찾기 전체 설정값 */
   width: 600px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 `;
+const IdOption = styled.div`
+  /* 아이디 저장,checkbox 부모 설정값 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > input {
+    accent-color: green;
+  }
+`;
 const LoginFind = styled.div`
+  /* 아이디/비밀번호찾기 링크 부모 설정값 */
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
 `;
-const IdOption = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const LoginMain = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 80px;
+const A = styled.a`
+  /* 아이디찾기, 비밀번호 찾기, 보안접속 링크 설정값 */
+  text-decoration: none;
+  color: ${Theme.lightblack};
+  font-size: 1.5em;
+  font-family: SCD-3;
 `;
 const P = styled.p`
-  color: rgba(82, 82, 82, 1);
+  /* "아이디 저장", "|" 문자 설정값 */
+  color: ${Theme.lightblack};
   font-size: 1.5rem;
-  font-family: NanumGothic-Regular;
+  font-family: SCD-3;
   position: relative;
   bottom: 1px;
 `;
 const LoginButton = styled.a`
+  /* 로그인 버튼 */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 600px;
   height: 60px;
-  border: 1px solid rgba(128, 195, 66, 1);
+  border: 1px solid ${Theme.green};
   border-radius: 10px;
-  font-size: 2rem;
-  font-family: NanumGothic-bold;
+  font-size: 2.5rem;
+  font-family: SCD-5;
   text-decoration: none;
-  background-color: rgba(128, 195, 66, 1);
+  background-color: ${Theme.green};
   color: white;
 `;
 const Security = styled.div`
+  /* 보안접속 링크 전체 설정값 */
   width: 600px;
   display: flex;
   justify-content: right;
   align-items: center;
 `;
 const SignupGuide = styled.div`
+  /* 회원가입링크 전체 부모 설정값 */
   width: 600px;
   height: 120px;
-  border-bottom: 1px solid rgba(192, 192, 192, 1);
+  border-bottom: 1px solid ${Theme.lightgray};
   padding-bottom: 15px;
   display: flex;
   flex-direction: column;
@@ -98,57 +112,69 @@ const SignupGuide = styled.div`
   align-items: flex-start;
 `;
 const NongdamMember = styled.div`
+  /* 아직 농담 회원이 아니신가요? */
   font-size: 2rem;
-  font-family: NanumGothic-Regular;
-  color: rgba(82, 82, 82, 1);
+  font-family: SCD-3;
+  color: ${Theme.lightblack};
   margin-bottom: 10px;
 `;
 const MemberBenefits = styled.div`
+  /* 회원이 되시면 다양한 혜택을 누리실 수 있습니다. */
   font-size: 1.5rem;
-  font-family: NanumGothic-Regular;
-  color: rgba(82, 82, 82, 1);
+  font-family: SCD-3;
+  color: ${Theme.lightblack};
   margin-bottom: 5px;
 `;
 const SignupButton = styled.a`
+  /* 회원가입 링크 버튼 */
   text-decoration: none;
   width: 150px;
   height: 50px;
-  border: 1px solid rgba(128, 195, 66, 1);
+  border: 1px solid ${Theme.green};
   border-radius: 5px;
   margin-top: 5px;
-  color: rgba(128, 195, 66, 1);
+  color: ${Theme.green};
   display: flex;
   font-size: 1.5rem;
-  font-family: NanumGothic-Regular;
+  font-family: SCD-3;
   justify-content: center;
   align-items: center;
 `;
+const SNSBox = styled.div`
+  /* sns설명글 부모값설정 */
+  width: 600px;
+  height: 150px;
+  text-align: center;
+  text-align: left;
+  font-size: 2rem;
+  color: ${Theme.lightblack};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+const SNSLogin = styled.div`
+  /* sns로그인 제목 */
+  font-size: 2rem;
+  font-family: SCD-3;
+`;
+const SignupPlease = styled.div`
+  /* sns로그인(빨간글씨) 상세설명 */
+  font-size: 1.5rem;
+  color: ${Theme.red};
+`;
 const IconBox = styled.div`
+  /* sns 아이콘 전채 부모 설정값 */
   display: flex;
   width: 200px;
   justify-content: space-around;
   align-items: center;
   margin-top: 5px;
 `;
-const SNSLogin = styled.div`
-  font-size: 2rem;
-  font-family: NanumGothic-Regular;
-`;
-const SNSBox = styled.div`
-  width: 600px;
-  height: 150px;
-  text-align: center;
-  text-align: left;
-  font-size: 2rem;
-  color: rgba(82, 82, 82, 1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
 const SNSIcon = styled.a`
+  /* sns아이콘 원형모양 링크버튼 */
   width: 55px;
   height: 55px;
-  border: 1px solid rgba(192, 192, 192, 1);
+  border: 1px solid ${Theme.lightgray};
   border-radius: 100%;
   position: relative;
   right: 4px;
@@ -156,68 +182,84 @@ const SNSIcon = styled.a`
   justify-content: center;
   align-items: center;
 `;
-const SignupPlease = styled.div`
-  font-size: 1.5rem;
-  color: rgba(255, 0, 0, 1);
-`;
 const NaverLogo = styled.img`
+  /* 네이버로고 */
   position: absolute;
   width: 55px;
   height: 55px;
 `;
 const KakaotalkLogo = styled.img`
+  /* 카카오로고 */
   position: absolute;
   width: 40px;
   height: 40px;
 `;
 const AppleLogo = styled.img`
+  /* 애플로고 */
   position: absolute;
-  left: 5px;
-  top: 4px;
+  left: 6px;
+  top: 5px;
   width: 40px;
   height: 40px;
 `;
-
-// 가장 진한 회색 rgba(82,82,82,1)
-// 중간 회색 rgba(149,149,149,1)
-// 가장 옅은 회색 rgba(192,192,192,1)
-// 초록색 rgba(128,195,66,1)
-// 빨간색 rgba(255,0,0,1)
-// 오렌지색 rgba(243,152,0,1)
-// ?? rgba(242,242,242,1)
 const Login = () => {
   return (
     <>
       <LoginHeader>로그인</LoginHeader>
+      {/*최상단 "로그인" 제목 값*/}
       <LoginMain>
+        {/* Header를 제외한 전체 설정값(감싸는 용도) */}
         <LoginResponse>
+          {/* 로그인창 전체 부모 설정값 */}
           <LoginBox type="text" placeholder="아이디"></LoginBox>
+          {/* 아이디 입력창 */}
           <LoginBox type="password" placeholder="비밀번호"></LoginBox>
-          <OprionMenu>
+          {/* 비밀번호 입력창 */}
+          <OptionMenu>
+            {/* 아이디 저장, checkbox, 아이디/비밀번호찾기 전체 설정값 */}
             <IdOption>
-              <label>
-                <input type="checkbox" id="login"></input>
-              </label>
+              {/* 아이디 저장,checkbox 부모 설정값 */}
+              <input type="checkbox"></input>
               <P>&nbsp;아이디 저장</P>
             </IdOption>
             <LoginFind>
-              <A href="http://naver.com">아이디 찾기</A>
-              <P>&nbsp;|&nbsp;</P>
-              <A href="http://naver.com">비밀번호 찾기</A>
+              {/* 아이디/비밀번호찾기 링크 부모 설정값 */}
+              <A href="http://naver.com">
+                {/* 아이디찾기 링크 설정값 */}
+                아이디 찾기
+              </A>
+              <P>
+                {/* "아이디 저장", "|" 문자 설정값 */}
+                &nbsp;|&nbsp;
+              </P>
+              <A href="http://naver.com">
+                {/* 비밀번호 찾기 링크 설정값 */}
+                비밀번호 찾기
+              </A>
             </LoginFind>
-          </OprionMenu>
-          <LoginButton href="http://naver.com">로그인</LoginButton>
-
+          </OptionMenu>
+          <LoginButton href="http://naver.com">
+            {/* 로그인 버튼 */}
+            로그인
+          </LoginButton>
           <Security>
+            {/* 보안접속 링크 전체 설정값 */}
             <P>&nbsp;🔒&nbsp;</P>
-            <A href="http://naver.com">보안접속</A>
+            <A href="http://naver.com">
+              {/* 아이디찾기, 비밀번호 찾기, 보안접속 링크 설정값 */}
+              보안접속
+            </A>
           </Security>
           <SignupGuide>
+            {/* 회원가입링크 전체 부모 설정값 */}
             <NongdamMember>아직 농담 회원이 아니신가요?</NongdamMember>
             <MemberBenefits>
               회원이 되시면 다양한 혜택을 누리실 수 있습니다.
             </MemberBenefits>
-            <SignupButton href="http://naver.com">회원가입</SignupButton>
+            <SignupButton href="http://naver.com">
+              {/* 회원가입 링크 버튼 */}
+              회원가입
+            </SignupButton>
           </SignupGuide>
           <SNSBox>
             <SNSLogin>SNS 로그인</SNSLogin>

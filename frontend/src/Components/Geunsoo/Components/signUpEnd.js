@@ -11,7 +11,7 @@ const SignUpEndBox = styled.div`
   margin-top: 100px;
   & > h2 {
     font-size: 2rem;
-    font-family: NanumGothic-ExtraBold;
+    font-family: SCD-3;
     color: ${Theme.green};
   }
   & > div:nth-child(2) > img {
@@ -20,7 +20,7 @@ const SignUpEndBox = styled.div`
   & > div:nth-child(4) {
     text-align: center;
     font-size: 1.5rem;
-    font-family: NanumGothic-Regular;
+    font-family: SCD-3;
     color: ${Theme.gray};
   }
   & > a:nth-child(5) {
@@ -32,15 +32,15 @@ const SignUpEndBox = styled.div`
     color: ${Theme.realWhite};
     display: flex;
     font-size: 1.5rem;
-    font-family: NanumGothic-ExtraBold;
+    font-family: SCD-5;
     justify-content: center;
     align-items: center;
   }
 `;
 const SignUpEndHead = styled.div`
   font-size: 3rem;
-  font-family: lotteHappyBold;
-  color: ${Theme.lightBlack};
+  font-family: YANGJIN;
+  color: ${Theme.lightblack};
 `;
 const SignUpEnd = () => {
   return (
