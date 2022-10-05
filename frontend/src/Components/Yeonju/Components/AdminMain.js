@@ -32,7 +32,7 @@ const MainBox = styled.div`
     }
   }
 
-  // 스토어관리 + 네모박스 전체 감싼 div
+  // ( 스토어관리 + 각 스토어관리 네모박스) ->  전체 감싼 div
   & > div {
     width: inherit;
     display: flex;
@@ -40,29 +40,29 @@ const MainBox = styled.div`
     align-items: center;
     justify-content: space-between;
     padding-bottom: 45px;
-  }
-`;
 
-// 스토어관리(h1) + 밑줄용 div 묶은 div
-const HeadlineBox = styled.div`
-  width: inherit;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    // 스토어 관리  + 밑줄용 div
+    & > div:nth-child(1) {
+      width: inherit;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-  // 스토어관리
-  & > h1 {
-    width: inherit;
-    height: 77px;
-    font-size: 4rem;
-  }
-  // 밑줄용 div
-  & > div {
-    width: 900px;
-    height: 68px;
-    border-top: 1px solid;
-    color: ${Theme.lightgray};
+      // 스토어관리
+      & > h1 {
+        width: inherit;
+        height: 77px;
+        font-size: 4rem;
+      }
+      // 밑줄용 div
+      & > div {
+        width: 900px;
+        height: 68px;
+        border-top: 1px solid;
+        color: ${Theme.lightgray};
+      }
+    }
   }
 `;
 
@@ -74,7 +74,7 @@ const StoreIconMainBox = styled.div`
   justify-content: space-between;
   align-content: space-between;
 
-  .box {
+  & div {
     width: 296px;
     height: 224px;
     border: 1px solid ${Theme.realWhite};
@@ -112,10 +112,10 @@ const AdminMain = () => {
   return (
     <MainBox>
       <div>
-        <HeadlineBox>
+        <div>
           <h1>스토어관리</h1>
           <div></div>
-        </HeadlineBox>
+        </div>
         <StoreIconMainBox>
           <Link to="create">
             <div className="box">
@@ -124,31 +124,35 @@ const AdminMain = () => {
               <span>기본 스토어 개설</span>
             </div>
           </Link>
-          <div className="box">
+          <div>
             <img src="/img/Admin_icon2.png" alt="icon"></img>
             <h1>스토어관리</h1>
             <span>기존 스토어 관리</span>
           </div>
-          <div className="box">
-            <img src="/img/Admin_icon3.png" alt="icon"></img>
-            <h1>상품관리</h1>
-            <span>상품등록, 수정</span>
-          </div>
-          <div className="box">
+          <Link to="newproduct">
+            <div>
+              <img src="/img/Admin_icon3.png" alt="icon"></img>
+              <h1>상품관리</h1>
+              <span>상품등록, 수정</span>
+            </div>
+          </Link>
+          <div>
             <img src="/img/Admin_icon4.png" alt="icon"></img>
             <h1>게시판관리</h1>
             <span>공지사항, 후기 관련</span>
           </div>
-          <div className="box">
+          <div>
             <img src="/img/Admin_icon5.png" alt="icon"></img>
             <h1>정산</h1>
             <span>판매현황, 금액 관리</span>
           </div>
-          <div className="box">
-            <img src="/img/Admin_icon6.png" alt="icon"></img>
-            <h1>마이페이지</h1>
-            <span>나의 회원정보 수정</span>
-          </div>
+          <Link to="mypage">
+            <div>
+              <img src="/img/Admin_icon6.png" alt="icon"></img>
+              <h1>마이페이지</h1>
+              <span>나의 회원정보 수정</span>
+            </div>
+          </Link>
         </StoreIconMainBox>
       </div>
     </MainBox>

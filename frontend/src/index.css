@@ -14,7 +14,7 @@
 body {
   width: 1920px;
   min-width: 1920px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 img {
   -webkit-user-drag: none;

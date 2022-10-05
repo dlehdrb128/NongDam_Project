@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import Theme from "../../../../theme/theme";
 
+// 메인박스로 묶음
 const MainBox = styled.div`
   width: 843px;
   padding: 240px 0 70px 0;
   display: flex;
   flex-direction: column;
 
-  // form 제목
+  // 각 form의 제목을 h1으로 스타일링 해주었다
   & > h1 {
     font-family: "SCD-6";
     color: ${Theme.lightblack};
@@ -16,12 +17,13 @@ const MainBox = styled.div`
     border-bottom: 2px solid ${Theme.lightblack};
   }
 
-  // form 으로 묶어서 아래에 한 줄씩 추가
+  // 각각의 form으로 묶은 후 해당 form의 내용은
+  // ContentBox로 묶어서 아래에 한 줄씩 추가
   & > form {
     padding-bottom: 36px;
   }
 
-  // 맨 아래(수정, 등록 박스)
+  // 해당페이지에 제일 아래 수정,등록버튼을 묶은 div
   & > div {
     padding-top: 35px;
     display: flex;
@@ -37,6 +39,7 @@ const ContentBox = styled.div`
   border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
+  // 기입내용의 제목을 h2
   & > h2 {
     width: 141px;
     height: inherit;
@@ -46,18 +49,23 @@ const ContentBox = styled.div`
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
     border-bottom: 1px solid ${Theme.lightgray};
+    // 필수 기입내용 *로 표현한 부분을 span으로 감싸줌
+    // span있는거만 적용됨
     & > span {
       color: red;
       font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
+
+  // 기입내용 input을 div로 묶음
   & > div {
     width: 702px;
     display: flex;
     padding: 20px;
     align-items: center;
     border-left: 1px solid ${Theme.liglightgray};
+    // 기입내용 input 박스 설정
     & > input {
       font-family: "SCD-4";
       width: 300px;
@@ -67,6 +75,8 @@ const ContentBox = styled.div`
       padding: 5px;
       font-size: 1.5rem;
     }
+    //  input박스 뒤에 따로 특이사항 붙는 부분
+    // span 추가해서 설정하면되고, 없어도 상관없음
     & > span {
       font-family: "SCD-3";
       font-size: 1.3rem;
@@ -74,7 +84,8 @@ const ContentBox = styled.div`
     }
   }
 `;
-// 사업장 주소 박스
+
+// 사업장 주소 input부분은 형식이 달라서 따로 지정
 const BusinessAdd = styled.div`
   width: inherit;
   height: 208px;
@@ -82,6 +93,7 @@ const BusinessAdd = styled.div`
   border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
+  // 큰 틀을 비슷
   & > h2 {
     width: 141px;
     height: inherit;
@@ -91,13 +103,14 @@ const BusinessAdd = styled.div`
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
     border-bottom: 0.1rem solid ${Theme.lightgray};
+    // 이거 역시 필수기입내용 * 표시
     & > span {
       color: red;
       font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
-
+  // 사업장 주소를 입력 받을 박스
   & > div {
     width: inherit;
     padding: 22px 20px 22px 20px;
@@ -106,6 +119,7 @@ const BusinessAdd = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
+    // 우편번호 창
     & > div > input {
       font-family: "SCD-4";
       width: 300px;
@@ -115,6 +129,7 @@ const BusinessAdd = styled.div`
       padding: 5px;
       font-size: 1.5rem;
     }
+    // 주소 검색 버튼
     & > div > button {
       width: 120px;
       height: 40px;
@@ -128,6 +143,7 @@ const BusinessAdd = styled.div`
       padding: 5px;
       cursor: pointer;
     }
+    // 전체주와 나머지 주소 받을 input
     & > input {
       font-family: "SCD-4";
       width: 300px;
@@ -148,6 +164,7 @@ const TelBox = styled.div`
   border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
+  // 전화번호 타이틀
   & > h2 {
     width: 141px;
     height: inherit;
@@ -157,20 +174,21 @@ const TelBox = styled.div`
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
     border-bottom: 1px solid ${Theme.lightgray};
+    // *로 된 필수입력사항
     & > span {
       color: red;
       font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
-
+  // input을 묶은 div
   & > div {
     width: 702px;
     display: flex;
     padding: 20px;
     align-items: center;
     border-left: 1px solid ${Theme.lightblack};
-
+    // 번호의 맨 앞자리 선택박스
     & > select {
       font-family: "SCD-4";
       width: 100px;
@@ -180,6 +198,7 @@ const TelBox = styled.div`
       padding: 5px;
       font-size: 1.5rem;
     }
+    // 전화번호 개인 입력창
     & > input {
       font-family: "SCD-4";
       width: 100px;
@@ -189,11 +208,13 @@ const TelBox = styled.div`
       padding: 5px;
       font-size: 1.5rem;
     }
+    // 전화번호 사이사이 - 표시
     & > span {
       font-family: "SCD-4";
       padding: 0 10px 0 10px;
       font-size: 1.5rem;
     }
+    // 인증번호 받는 버튼
     & > button {
       width: 120px;
       height: 40px;
@@ -217,7 +238,7 @@ const RadioBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
-
+  // 타이틀
   & > h2 {
     width: 141px;
     height: inherit;
@@ -227,12 +248,14 @@ const RadioBox = styled.div`
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
     border-bottom: 1px solid ${Theme.lightgray};
+    // * 표시 필수입력사항
     & > span {
       color: red;
       font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
+  // input 묶을 div
   & > div {
     width: 702px;
     display: flex;
@@ -240,6 +263,7 @@ const RadioBox = styled.div`
     align-items: center;
     border-left: 1px solid ${Theme.lightblack};
 
+    // 라디오 버튼 스타일링
     & > input {
       appearance: none;
 
@@ -249,9 +273,11 @@ const RadioBox = styled.div`
 
       border: 1px solid ${Theme.gray};
     }
+    // 체크되면 달라지는 스타일링
     & > input:checked {
       background-color: ${Theme.green};
     }
+    // 라디오 버튼의 내용
     & > label {
       font-family: "SCD-3";
       font-size: 1.3rem;
@@ -338,7 +364,23 @@ const StoreOpenForm = () => {
           <div>
             <select>
               <option>02</option>
+              <option>031</option>
+              <option>032</option>
+              <option>033</option>
+              <option>041</option>
               <option>042</option>
+              <option>043</option>
+              <option>044</option>
+              <option>051</option>
+              <option>052</option>
+              <option>054</option>
+              <option>055</option>
+              <option>061</option>
+              <option>062</option>
+              <option>063</option>
+              <option>063</option>
+              <option>070</option>
+              <option>010</option>
             </select>
             <span>-</span>
             <input></input>
@@ -356,6 +398,11 @@ const StoreOpenForm = () => {
             <select>
               <option>010</option>
               <option>011</option>
+              <option>016</option>
+              <option>017</option>
+              <option>018</option>
+              <option>019</option>
+              <option>070</option>
             </select>
             <span>-</span>
             <input></input>
@@ -403,7 +450,23 @@ const StoreOpenForm = () => {
           <div>
             <select>
               <option>02</option>
+              <option>031</option>
+              <option>032</option>
+              <option>033</option>
+              <option>041</option>
               <option>042</option>
+              <option>043</option>
+              <option>044</option>
+              <option>051</option>
+              <option>052</option>
+              <option>054</option>
+              <option>055</option>
+              <option>061</option>
+              <option>062</option>
+              <option>063</option>
+              <option>063</option>
+              <option>070</option>
+              <option>010</option>
             </select>
             <span>-</span>
             <input></input>
@@ -427,7 +490,23 @@ const StoreOpenForm = () => {
           <div>
             <select>
               <option>02</option>
+              <option>031</option>
+              <option>032</option>
+              <option>033</option>
+              <option>041</option>
               <option>042</option>
+              <option>043</option>
+              <option>044</option>
+              <option>051</option>
+              <option>052</option>
+              <option>054</option>
+              <option>055</option>
+              <option>061</option>
+              <option>062</option>
+              <option>063</option>
+              <option>063</option>
+              <option>070</option>
+              <option>010</option>
             </select>
             <span>-</span>
             <input></input>

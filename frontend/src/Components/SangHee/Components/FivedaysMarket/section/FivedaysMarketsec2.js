@@ -1,6 +1,6 @@
-import '../../../../App/App.css';
+import '../../../../../App/App.css';
 import styled from 'styled-components';
-import Theme from '../../../../theme/theme';
+import Theme from '../../../../../theme/theme';
 import FivedaysMarketsec2con from './FivedaysMarketsec2con';
 import FivedaysMarketsec2con2 from './FivedaysMarketsec2con2';
 

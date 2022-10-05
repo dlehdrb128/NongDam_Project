@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { forwardRef } from "react";
 
+// 상품 상세 요소가 담긴 박스
 const ProductDetailBox = styled.div`
   padding-top: 200px;
   display: flex;
@@ -10,9 +12,10 @@ const ProductDetailBox = styled.div`
   }
 `;
 
-const ProductDetail = ({ data }) => {
+const ProductDetail = forwardRef(({ data }, ref) => {
   return (
-    <ProductDetailBox>
+    // 이미지가 없으면 h1태그를 반환한다
+    <ProductDetailBox ref={ref}>
       {data.detailImage === undefined ? (
         <h1>상품 상세이미지가 없습니다</h1>
       ) : (
@@ -20,6 +23,6 @@ const ProductDetail = ({ data }) => {
       )}
     </ProductDetailBox>
   );
-};
+});
 
 export default ProductDetail;

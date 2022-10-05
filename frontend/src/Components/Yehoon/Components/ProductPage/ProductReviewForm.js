@@ -2,29 +2,36 @@ import styled from "styled-components";
 import ProductReview from "./ProductReview";
 import Theme from "./../../../../theme/theme";
 import ReviewWrite from "./ReviewWrite";
+import { forwardRef } from "react";
 
+// 상품 리뷰의 최상위 부모 컨테이너
 const ProductReviewBox = styled.div`
   width: 1280px;
   display: flex;
   flex-direction: column;
   padding-top: 100px;
 
+  /* 상품 후기 */
   & > div:nth-child(1) {
     font-family: "SCD-7";
     font-size: 2rem;
     color: ${Theme.green};
   }
+
+  /* 별점 */
   & > div:nth-child(2) {
     font-family: "SCD-6";
     font-size: 3rem;
     color: ${Theme.lightblack};
 
+    /* (??개의 후기) */
     & > span {
       font-size: 1.5rem;
     }
   }
 `;
 
+// 리뷰들을 담은 박스
 const ReviewBox = styled.div`
   width: 1280px;
   display: flex;
@@ -39,7 +46,7 @@ const ReviewBox = styled.div`
   }
 `;
 
-const ProductReviewForm = ({ data }) => {
+const ProductReviewForm = forwardRef(({ data }, ref) => {
   const getAverage = () => {
     if (data.review !== undefined) {
       let totalValue = 0;
@@ -64,7 +71,7 @@ const ProductReviewForm = ({ data }) => {
   }
 
   return (
-    <ProductReviewBox>
+    <ProductReviewBox ref={ref}>
       <div>상품 후기</div>
       <div>
         {average >= 0 ? average : 0} / 5
@@ -78,6 +85,6 @@ const ProductReviewForm = ({ data }) => {
       <ReviewWrite></ReviewWrite>
     </ProductReviewBox>
   );
-};
+});
 
 export default ProductReviewForm;

@@ -3,6 +3,9 @@ import { Theme } from "./../../../../../theme/theme";
 import { StyledButton } from "./../../../../../theme/theme";
 import { Link } from "react-router-dom";
 
+// 메인 홈페이지 Article
+
+// 요소 전체를 담은 박스
 const MainArticleBox = styled.div`
   width: 1280px;
   height: 807px;
@@ -11,11 +14,13 @@ const MainArticleBox = styled.div`
   justify-content: flex-end;
 `;
 
+// 요소의 아이템을 담은 박스
 const MainArticleItemBox = styled.div`
   display: flex;
   gap: 110px;
 `;
 
+// 왼쪽 타이틀 박스
 const MainArticleTitle = styled.div`
   width: 436px;
   height: 522px;
@@ -24,23 +29,27 @@ const MainArticleTitle = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
+  /* 멀쩡한거 왜버려유? */
   & > div:nth-child(1) {
     font-family: "YANGJIN";
     font-size: 4.5rem;
     color: ${Theme.green};
   }
 
+  /* 아까워 죽겠슈 */
   & > div:nth-child(2) {
     font-family: "YANGJIN";
     font-size: 4.5rem;
     color: ${Theme.lightblack};
   }
 
+  /* 구분선 */
   & > hr {
     width: 436px;
     border: 1px solid ${Theme.lightgray};
   }
 
+  /* 못난이 농산물이 버려지는... */
   & > div:nth-child(4) {
     display: flex;
     text-align: end;
@@ -49,6 +58,7 @@ const MainArticleTitle = styled.div`
     color: ${Theme.lightblack};
   }
 
+  /* 농담은 20% 비싸게... */
   & > div:nth-child(5) {
     font-family: "SCD-5";
     font-size: 1.92rem;
@@ -56,6 +66,7 @@ const MainArticleTitle = styled.div`
   }
 `;
 
+// 오른쪽 이미지
 const MainArticleImg = styled.img``;
 
 const MainArticle = () => {
@@ -75,6 +86,7 @@ const MainArticle = () => {
             속편한 구조이니 자연히 폐기가 늘어나지요.<br></br>
           </div>
           <div>농담은 20% 비싸게 사서 20% 싸게팔아요.</div>
+          {/* 링크를 사용해 intro 페이지로 이동하게 설정, 버튼은 공통 컴포넌트인 StyledButton을 사용했다 */}
           <Link to={"/intro"}>
             <StyledButton fs={"1.8rem"} wd={"250px"} ht={"50px"}>
               농담은 함께하길 원해요

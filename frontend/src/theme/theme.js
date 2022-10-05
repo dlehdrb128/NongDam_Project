@@ -9,6 +9,7 @@ const Theme = {
   red: 'rgba(255,0,0,1)',
   black: 'rgba(0, 0, 0, 1)',
   realWhite: 'rgba(255, 255, 255, 1)',
+  lightgreen: 'rgba(197,223,173,1)',
 
   fontSize_60: '6rem',
   fontSize_50: '5rem',
@@ -17,6 +18,9 @@ const Theme = {
   fontSize_25: '2.5rem',
   fontSize_20: '2rem',
   fontSize_45: '4.5rem',
+  fontSize_15: '1.5rem',
+  fontSize_18: '1.8rem',
+  fontSize_13: '1.3rem',
   btnTransition: 'ease-in 0.3s',
 };
 

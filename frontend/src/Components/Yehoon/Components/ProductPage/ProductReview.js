@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Theme from "./../../../../theme/theme";
 
+// 제품 후기 아이템을 담은 박스
 const ReviewItemBox = styled.div`
   width: 1280px;
   height: 310px;
@@ -9,6 +10,7 @@ const ReviewItemBox = styled.div`
   align-items: center;
   padding-top: 10px;
 
+  /* 후기 텍스트, 이미지를 담은 박스  */
   & > div:nth-child(2) {
     width: 95%;
     height: 95%;
@@ -17,16 +19,19 @@ const ReviewItemBox = styled.div`
     flex-direction: column;
     gap: 20px;
 
+    /* 후기 텍스트 설정 */
     & > div:nth-child(1) {
       font-family: "SCD-3";
       font-size: 1.8rem;
       color: ${Theme.lightblack};
     }
 
+    /* 후기 이미지 들을 담은 박스 */
     & > div:nth-child(2) {
       display: flex;
       gap: 30px;
 
+      /* 후기 이미지 규격 설정 */
       & > img {
         width: 188px;
         height: 152px;
@@ -35,6 +40,7 @@ const ReviewItemBox = styled.div`
   }
 `;
 
+// 후기 정보 (id, 별점, 작성 날짜)를 담은 박스
 const InforMation = styled.div`
   width: 1280px;
   height: 60px;
@@ -45,12 +51,14 @@ const InforMation = styled.div`
   color: ${Theme.lightblack};
   border-radius: 10px;
 
+  /* 유저 id */
   & > div:nth-child(1) {
     font-family: "SCD-6";
     font-size: 2rem;
     margin-left: 20px;
   }
 
+  /* 별점, 날짜를 담은 박스 */
   & > div:nth-child(2) {
     display: flex;
     align-items: center;
@@ -58,6 +66,7 @@ const InforMation = styled.div`
     margin-right: 20px;
     gap: 10px;
 
+    /* 별점 */
     & > div:nth-child(1) {
       font-family: "SCD-6";
       padding-top: 3px;
@@ -66,6 +75,7 @@ const InforMation = styled.div`
       font-size: 1rem;
     }
 
+    /* 날짜 */
     & > div:nth-child(2) {
       font-family: "SCD-6";
       font-size: 1.5rem;

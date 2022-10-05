@@ -1,6 +1,6 @@
-import '../../../../App/App.css';
+import '../../../../../App/App.css';
 import styled from 'styled-components';
-import Theme from '../../../../theme/theme';
+import Theme from '../../../../../theme/theme';
 
 // color,font Asset
 const { fontSize_25, orange, lightblack } = Theme;
@@ -16,6 +16,8 @@ const Section2con = styled.div`
   //constructor limit
   & > div {
     width: 210px;
+    cursor: pointer;
+    //img
     & > img {
       width: inherit;
       height: 211px;
@@ -24,6 +26,7 @@ const Section2con = styled.div`
     }
     //Product name
     & > p:nth-child(2) {
+      //Product local
       & > span {
         display: inline-block;
         margin-right: 5px;
@@ -56,69 +59,71 @@ const Section2con = styled.div`
     }
   }
 `;
+
 // dummy object
 const ProductData = {
-  Chungchung: [
+  Jeonla: [
     {
-      local: '충북',
+      local: '전북',
       name: '아주싱싱한푸드리퍼브상품 1kg',
-      sale: '15%',
-      price: '10,000',
-      img: '/img/Fday_sec2_img_1.png',
+      sale: 30 + '%',
+      price: 10000,
+      img: '/img/Fday_sec2_img_8.png',
     },
     {
-      local: '충남',
+      local: '전남',
       name: '아주싱싱한푸드리퍼브상품 1kg',
-      price: '20,000',
-      img: '/img/Fday_sec2_img_2.png',
-    },
-    {
-      local: '충북',
-      name: '아주싱싱한푸드리퍼브상품 1kg',
-      price: '15,000',
-      img: '/img/Fday_sec2_img_3.png',
-    },
-    {
-      local: '충북',
-      name: '아주싱싱한푸드리퍼브상품 1kg',
-      sale: '10%',
-      price: '10,000',
-      img: '/img/Fday_sec2_img_4.png',
-    },
-    {
-      local: '충북',
-      name: '아주싱싱한푸드리퍼브상품 1kg',
-      price: '18,000',
-      img: '/img/Fday_sec2_img_5.png',
-    },
-    {
-      local: '충남',
-      name: '아주싱싱한푸드리퍼브상품 1kg',
-      price: '13,000',
-      img: '/img/Fday_sec2_img_6.png',
-    },
-    {
-      local: '충남',
-      name: '아주싱싱한푸드리퍼브상품 1kg',
-      price: '23,000',
+      sale: 20 + '%',
+      price: 20000,
       img: '/img/Fday_sec2_img_7.png',
     },
     {
-      local: '충북',
+      local: '전북',
       name: '아주싱싱한푸드리퍼브상품 1kg',
-      sale: '30%',
-      price: '9,000',
-      img: '/img/Fday_sec2_img_8.png',
+      price: 15000,
+      img: '/img/Fday_sec2_img_4.png',
+    },
+    {
+      local: '전북',
+      name: '아주싱싱한푸드리퍼브상품 1kg',
+      price: 10000,
+      img: '/img/Fday_sec2_img_6.png',
+    },
+    {
+      local: '전북',
+      name: '아주싱싱한푸드리퍼브상품 1kg',
+      price: 18000,
+      img: '/img/Fday_sec2_img_5.png',
+    },
+    {
+      local: '전남',
+      name: '아주싱싱한푸드리퍼브상품 1kg',
+      sale: 15 + '%',
+      price: 13000,
+      img: '/img/Fday_sec2_img_3.png',
+    },
+    {
+      local: '전남',
+      name: '아주싱싱한푸드리퍼브상품 1kg',
+      price: 23000,
+      img: '/img/Fday_sec2_img_1.png',
+    },
+    {
+      local: '전북',
+      name: '아주싱싱한푸드리퍼브상품 1kg',
+      sale: 10 + '%',
+      price: 9000,
+      img: '/img/Fday_sec2_img_2.png',
     },
   ],
 };
-const FivedaysMarketsec2con = () => {
-  const { Chungchung } = ProductData;
+const FivedaysMarketsec2con2 = () => {
+  const { Jeonla } = ProductData;
   return (
     <Section2con>
-      {Chungchung.map((value) => {
+      {Jeonla.map((value, index) => {
         return (
-          <div>
+          <div key={index}>
             <img src={value.img} alt='Product'></img>
             <p>
               <span>[{value.local}]</span>
@@ -126,7 +131,7 @@ const FivedaysMarketsec2con = () => {
             </p>
             <h2>
               <span>{value.sale}</span>
-              {value.price}원
+              {value.price.toLocaleString()}원
             </h2>
           </div>
         );
@@ -135,4 +140,4 @@ const FivedaysMarketsec2con = () => {
   );
 };
 
-export default FivedaysMarketsec2con;
+export default FivedaysMarketsec2con2;

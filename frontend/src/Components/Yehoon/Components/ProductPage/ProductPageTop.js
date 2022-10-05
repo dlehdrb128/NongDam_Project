@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { StyledButton, Theme } from "./../../../../theme/theme";
 import { useState } from "react";
 
+// 상품 상세 페이지 상단 요소 박스
 const ProductPageTopBox = styled.div`
   width: 1280px;
   height: 500px;
@@ -10,6 +11,7 @@ const ProductPageTopBox = styled.div`
   gap: 100px;
 `;
 
+// 상단 요소의 왼쪽 (이미지) 박스
 const ProductPageTopLeft = styled.div`
   width: 45%;
   height: 100%;
@@ -22,32 +24,39 @@ const ProductPageTopLeft = styled.div`
   }
 `;
 
+// 상단 요소의 오른쪽 박스 (스토어 이름부터 구매하기, 장바구니까지)
 const ProductPageTopRight = styled.div`
   width: 50%;
   height: 100%;
 
+  /* 스토어 이름 */
   & > div:nth-child(1) {
     font-family: "SCD-3";
     font-size: 2rem;
     color: ${Theme.lightblack};
   }
+
+  /* 지역 */
   & > div:nth-child(2) {
     margin-top: 25px;
     font-family: "SCD-6";
     font-size: 3rem;
     color: ${Theme.green};
   }
+  /* 상품 이름 */
   & > div:nth-child(3) {
     font-family: "SCD-6";
     font-size: 3rem;
     color: ${Theme.lightblack};
   }
 
+  /* 구분선 */
   & > hr {
     border: 1px solid ${Theme.lightgray};
     margin-top: 25px;
   }
 
+  /* 가격 */
   & > div:nth-child(5) {
     font-family: "SCD-7";
     font-size: 4rem;
@@ -56,6 +65,7 @@ const ProductPageTopRight = styled.div`
   }
 `;
 
+// 수량 박스
 const ProductPageCountBox = styled.div`
   width: 625px;
   height: 80px;
@@ -65,12 +75,14 @@ const ProductPageCountBox = styled.div`
   background-color: ${Theme.white};
   margin-top: 30px;
 
+  /* 수량 */
   & > div:nth-child(1) {
     margin-left: 30px;
     font-family: "SCD-6";
     font-size: 1.9rem;
   }
 
+  /* - 0 + 박스 */
   & > div:nth-child(2) {
     width: 370px;
     height: 31px;
@@ -79,12 +91,12 @@ const ProductPageCountBox = styled.div`
     justify-content: space-between;
     background-color: ${Theme.realWhite};
 
+    /* 버튼 - + */
     & > button {
       width: 31px;
       height: 30px;
       background-color: ${Theme.realWhite};
       border: 1px solid ${Theme.lightgray};
-
       font-size: 2.4rem;
       display: flex;
       justify-content: center;
@@ -95,6 +107,7 @@ const ProductPageCountBox = styled.div`
       }
     }
 
+    /* 수량 텍스트 */
     & > div {
       display: flex;
       justify-content: center;
@@ -106,12 +119,14 @@ const ProductPageCountBox = styled.div`
   }
 `;
 
+// 총 합계금액을 담은 박스
 const ProductPageTotalPrice = styled.div`
   margin: 15px 30px 0px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  /* 총 합계금액 텍스트 */
   & > div:nth-child(1) {
     font-family: "SCD-6";
     font-size: 1.7rem;
@@ -121,12 +136,14 @@ const ProductPageTotalPrice = styled.div`
     display: flex;
     gap: 10px;
 
+    /* 총 가격 */
     & > div:nth-child(1) {
       font-family: "SCD-6";
       font-size: 3rem;
       color: ${Theme.lightblack};
     }
 
+    /* 개수 */
     & > div:nth-child(2) {
       font-size: 1.5rem;
       font-family: "SCD-3";
@@ -136,6 +153,8 @@ const ProductPageTotalPrice = styled.div`
     }
   }
 `;
+
+// 구매하기, 장바구니 버튼 박스
 const ProductPageButtonBox = styled.div`
   padding-top: 20px;
   display: flex;

@@ -20,9 +20,10 @@ const Title = styled.div`
   & > div:nth-child(1) {
     width: 298px;
     padding-left: 20px;
+    display: flex;
 
     & > input {
-      width: 25px;
+      width: 24px;
       height: 24px;
       border: 1px solid ${Theme.lightblack};
     }

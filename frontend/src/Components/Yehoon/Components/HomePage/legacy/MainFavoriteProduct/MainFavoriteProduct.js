@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import MainFavoriteItem from "./MainFavoriteItem";
 
+// 즐겨찾는 상품
+
 const MainFavoriteProductBox = styled.div`
   width: 1280px;
   height: 531px;
