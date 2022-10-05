@@ -132,6 +132,18 @@ const BasicInfo = styled.div`
       }
     }
   }
+  & > div:nth-child(7) {
+    & > button {
+      width: 150px;
+      height: 30px;
+      border-radius: 3px;
+      border: none;
+      background-color: ${Theme.green};
+      color: ${Theme.realWhite};
+      font-family: SCD-3;
+      font-size: 1.5rem;
+    }
+  }
   & > div:nth-child(9) {
     width: inherit;
     height: inherit;
@@ -178,6 +190,15 @@ const InputText = styled.input`
   font-size: 1.5rem;
   font-family: SCD-3;
 `;
+const Phone = styled.input`
+  width: 300px;
+  height: 30px;
+  color: ${Theme.lightblack};
+  font-size: 1.5rem;
+  font-family: SCD-3;
+  padding-left: 10px;
+  margin-left: 10px;
+`;
 const MoreInfo = styled.div`
   width: inherit;
   height: inherit;
@@ -185,6 +206,20 @@ const MoreInfo = styled.div`
   border-bottom: 2px solid ${Theme.lightblack};
   & > div:nth-child(1) {
     border-bottom: 2px solid ${Theme.lightblack};
+    display: flex;
+    align-items: center;
+    color: ${Theme.lightblack};
+    font-size: 1.5rem;
+    font-family: SCD-3;
+    & > input:nth-child(2) {
+      width: 180px;
+      height: 30px;
+      padding-left: 10px;
+      margin-left: 10px;
+      color: ${Theme.lightblack};
+      font-size: 1.5rem;
+      font-family: SCD-3;
+    }
   }
   & > div:nth-child(2) {
     display: flex;
@@ -286,11 +321,23 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>일반전화</MiddleBox>
+          <Phone
+            type={"text"}
+            placeholder="전화번호 입력('-'제외)"
+            maxLength={11}
+          />
         </div>
         <div>
           <MiddleBox>
             휴대전화<span>*</span>
           </MiddleBox>
+          <Phone
+            type={"text"}
+            placeholder="핸드폰번호 입력('-'제외)"
+            maxLength={11}
+          />
+          &nbsp;&nbsp;
+          <button>인증번호받기</button>
         </div>
         <div>
           <MiddleBox>
@@ -317,7 +364,12 @@ const SignUp = () => {
       <MoreInfo>
         <div>
           <MiddleBox>생년월일</MiddleBox>
-          <div></div>
+          <input type={"date"}></input>
+          &nbsp;&nbsp;&nbsp;
+          <input type={"radio"} />
+          &nbsp;양력 &nbsp;&nbsp;
+          <input type={"radio"} />
+          &nbsp;음력
         </div>
         <div>
           <MiddleBox>추천인 아이디</MiddleBox>
