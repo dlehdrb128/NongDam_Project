@@ -177,7 +177,6 @@ const Footer = () => {
             <Link>이용약관</Link>
             <Link>이용안내</Link>
             <Link>입점문의</Link>
-            <Link>농담</Link>
           </div>
           <hr></hr>
         </FooterBoxTop>

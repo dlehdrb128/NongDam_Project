@@ -42,6 +42,7 @@ const ItemSliderBox = styled(MainReviewItemBox)``;
 const MainReview = () => {
   let reviewData = [
     {
+      product_id: "1",
       image: "/img/review-exam-1.png",
       userId: "sangho8241",
       reviewText:
@@ -49,6 +50,7 @@ const MainReview = () => {
       productName: "충북 영동 꿀 사과 1호 7.5kg (9-10과)...",
     },
     {
+      product_id: "2",
       image: "/img/review-exam-2.png",
       userId: "geunsoo1106",
       reviewText:
@@ -56,6 +58,7 @@ const MainReview = () => {
       productName: "중전마마 나주 배 1호 7.5kg (9-10과)...",
     },
     {
+      product_id: "3",
       image: "/img/review-exam-3.png",
       userId: "yehoon1022",
       reviewText:

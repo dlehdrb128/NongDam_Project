@@ -14,6 +14,7 @@ import OrderDetail from "../Components/Sangho/Components/orderDetail";
 import CartMain from "../Components/Yeonju/Components/Cart/CartMain";
 import StoreOpenMain from "../Components/Yeonju/Components/StoreOpen/StoreOpenMain";
 import FivedaysMakret from "../Components/SangHee/FivedaysMarket/FivedaysMarket";
+import SignUp from "../Components/Geunsoo/Components/signUp";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/product/:id" element={<ProductPage />}></Route>
           <Route path="/admin" element={<AdminMain />}></Route>
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
+          <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
