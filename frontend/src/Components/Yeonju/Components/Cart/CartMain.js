@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Theme from '../../../../theme/theme';
 import CartTem from './CartTem';
 import CartPrice from './CartPrice';
+
 const MainBox = styled.div`
   width: inherit;
   padding-top: 130px;
