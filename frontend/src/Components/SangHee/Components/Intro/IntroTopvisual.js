@@ -1,20 +1,19 @@
-import '../../../App/App';
-import Theme from '../../../theme/theme'
+import '../../../../App/App.css';
+import Theme from '../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
-// const { Maincol, white, fontSize_60, fontSize_30 } = Common;
 const { green, white, fontSize_60, fontSize_30 } = Theme
 
 //Topvisual
 const Introvisual = styled.div`
   width: inherit;
-  height: 58.4rem;
+  height: 584px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('https://lh3.googleusercontent.com/drive-viewer/AJc5JmQWuRb5tiuRhF_ExgOHafqIEfoROyg99aR8hdFbqEmBnxsSGdUxoC3iiMG5EMKbrT07ufmHlJI=w1915-h968')
+  background: url('/img/Intro_visualTop.png')
     no-repeat center;
   background-size: cover;
   //title
@@ -23,8 +22,7 @@ const Introvisual = styled.div`
     font-family: YANGJIN;
     color: ${white};
     font-size: ${fontSize_60};
-    letter-spacing: 0.28rem;
-    margin-bottom: 8rem;
+    margin-bottom: 80px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -38,16 +36,15 @@ const Introvisual = styled.div`
       content: '';
       position: absolute;
       background-color: ${white};
-      width: 38.6rem;
+      width: 386px;
       height: 1px;
-      top: 18.7rem;
+      top: 187px;
     }
   }
   //text
   & > span:nth-child(2) {
     font-size: ${fontSize_30};
     color: ${white};
-    letter-spacing: 0.016rem;
   }
 `;
 

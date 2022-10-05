@@ -1,24 +1,21 @@
-import '../../../../App/App.css';
-import { Theme } from '../../../../theme/theme'
+import '../../../../../App/App.css';
+import { Theme } from '../../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
-// const { Maincol, text, fontSize_50, fontSize_30, fontSize_20 } = Common;
-
 const { green, lightblack, fontSize_50, fontSize_30, fontSize_20 } = Theme;
 
 //section2
 const Section2 = styled.section`
   width: inherit;
-  margin-bottom: 18rem;
+  margin-bottom: 180px;
   //title
   & > h1 {
     font-family: YANGJIN;
     font-size: ${fontSize_50};
-    margin-bottom: 4rem;
+    margin-bottom: 40px;
     text-align: right;
     color: ${lightblack};
-    letter-spacing: 0.4rem;
     & > span {
       font-size: ${fontSize_50};
       color: ${green};
@@ -31,12 +28,12 @@ const Section2 = styled.section`
     //text
     & > div:nth-child(1) {
       & > div {
-        margin-bottom: 6rem;
+        margin-bottom: 60px;
         color: ${lightblack};
         & > p {
           word-break: keep-all;
           font-size: ${fontSize_20};
-          width: 50.4rem;
+          width: 504px;
           text-align: left;
           font-family: SCD-4;
         }
@@ -49,9 +46,7 @@ const Section2 = styled.section`
         font-family: YANGJIN;
         font-size: ${fontSize_30};
         text-align: left;
-        line-height: 4.48rem;
         color: ${lightblack};
-        letter-spacing: 0.15rem;
         & > span {
           color: ${green};
           font-size: ${fontSize_30};
@@ -60,13 +55,12 @@ const Section2 = styled.section`
     }
     //img
     & > img {
-      width: 70rem;
-      height: 65rem;
+      width: 700px;
+      height: 650px;
     }
   } //common
   p {
     color: ${lightblack};
-    letter-spacing: 0.025rem;
   }
 `;
 
@@ -92,7 +86,7 @@ const Introsec2 = () => {
           </h1>
         </div>
         <img
-          src='https://lh3.googleusercontent.com/drive-viewer/AJc5JmRvnF9TrzFhLZSAjuPA5lTWUZR1BwnyhXRf_dtKYTxj43HU5_7qQMQ1DTha-yR4HaZm-L_vvDw=w1915-h968'
+          src='/img/Intro_sec2_img.png'
           alt='sec2_img'
         ></img>
       </div>
