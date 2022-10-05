@@ -10,7 +10,7 @@ import ProductPage from "../Components/Yehoon/Components/ProductPage/ProductPage
 import AdminMain from "./../Components/Yeonju/Components/AdminMain";
 import SignUpEnd from "./../Components/Geunsoo/Components/signUpEnd";
 import "./App.css";
-import OrderDetail from "../Components/Sangho/Components/orderDetail";
+import OrderDetail from "../Components/Sangho/Components/Order/OrderDetail";
 import CartMain from "../Components/Yeonju/Components/Cart/CartMain";
 import StoreOpenMain from "../Components/Yeonju/Components/StoreOpen/StoreOpenMain";
 import FivedaysMakret from "../Components/SangHee/Components/FivedaysMarket/FivedaysMarket";
