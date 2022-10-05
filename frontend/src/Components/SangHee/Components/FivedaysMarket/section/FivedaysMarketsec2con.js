@@ -1,6 +1,6 @@
-import '../../../../App/App.css';
+import '../../../../../App/App.css';
 import styled from 'styled-components';
-import Theme from '../../../../theme/theme';
+import Theme from '../../../../../theme/theme';
 
 // color,font Asset
 const { fontSize_25, orange, lightblack } = Theme;
@@ -17,7 +17,6 @@ const Section2con = styled.div`
   & > div {
     width: 210px;
     cursor: pointer;
-    //img
     & > img {
       width: inherit;
       height: 211px;
@@ -26,7 +25,6 @@ const Section2con = styled.div`
     }
     //Product name
     & > p:nth-child(2) {
-      //Product local
       & > span {
         display: inline-block;
         margin-right: 5px;
@@ -59,71 +57,69 @@ const Section2con = styled.div`
     }
   }
 `;
-
 // dummy object
 const ProductData = {
-  Jeonla: [
+  Chungchung: [
     {
-      local: '전북',
+      local: '충북',
       name: '아주싱싱한푸드리퍼브상품 1kg',
-      sale: 30 + '%',
+      sale: 15 + '%',
       price: 10000,
-      img: '/img/Fday_sec2_img_8.png',
+      img: '/img/Fday_sec2_img_1.png',
     },
     {
-      local: '전남',
+      local: '충남',
       name: '아주싱싱한푸드리퍼브상품 1kg',
-      sale: 20 + '%',
       price: 20000,
-      img: '/img/Fday_sec2_img_7.png',
+      img: '/img/Fday_sec2_img_2.png',
     },
     {
-      local: '전북',
+      local: '충북',
       name: '아주싱싱한푸드리퍼브상품 1kg',
       price: 15000,
+      img: '/img/Fday_sec2_img_3.png',
+    },
+    {
+      local: '충북',
+      name: '아주싱싱한푸드리퍼브상품 1kg',
+      sale: 10 + '%',
+      price: 10000,
       img: '/img/Fday_sec2_img_4.png',
     },
     {
-      local: '전북',
-      name: '아주싱싱한푸드리퍼브상품 1kg',
-      price: 10000,
-      img: '/img/Fday_sec2_img_6.png',
-    },
-    {
-      local: '전북',
+      local: '충북',
       name: '아주싱싱한푸드리퍼브상품 1kg',
       price: 18000,
       img: '/img/Fday_sec2_img_5.png',
     },
     {
-      local: '전남',
+      local: '충남',
       name: '아주싱싱한푸드리퍼브상품 1kg',
-      sale: 15 + '%',
       price: 13000,
-      img: '/img/Fday_sec2_img_3.png',
+      img: '/img/Fday_sec2_img_6.png',
     },
     {
-      local: '전남',
+      local: '충남',
       name: '아주싱싱한푸드리퍼브상품 1kg',
       price: 23000,
-      img: '/img/Fday_sec2_img_1.png',
+      img: '/img/Fday_sec2_img_7.png',
     },
     {
-      local: '전북',
+      local: '충북',
       name: '아주싱싱한푸드리퍼브상품 1kg',
-      sale: 10 + '%',
+      sale: 30 + '%',
       price: 9000,
-      img: '/img/Fday_sec2_img_2.png',
+      img: '/img/Fday_sec2_img_8.png',
     },
   ],
 };
-const FivedaysMarketsec2con2 = () => {
-  const { Jeonla } = ProductData;
+const FivedaysMarketsec2con = () => {
+  const { Chungchung } = ProductData;
   return (
     <Section2con>
-      {Jeonla.map((value, index) => {
+      {Chungchung.map((value) => {
         return (
-          <div key={index}>
+          <div>
             <img src={value.img} alt='Product'></img>
             <p>
               <span>[{value.local}]</span>
@@ -140,4 +136,4 @@ const FivedaysMarketsec2con2 = () => {
   );
 };
 
-export default FivedaysMarketsec2con2;
+export default FivedaysMarketsec2con;

@@ -13,7 +13,7 @@ import './App.css';
 import OrderDetail from '../Components/Sangho/Components/orderDetail';
 import CartMain from '../Components/Yeonju/Components/Cart/CartMain';
 import StoreOpenMain from '../Components/Yeonju/Components/StoreOpen/StoreOpenMain';
-import FivedaysMakret from '../Components/SangHee/FivedaysMarket/FivedaysMarket';
+import FivedaysMakret from '../Components/SangHee/Components/FivedaysMarket/FivedaysMarket'
 import SignUp from '../Components/Geunsoo/Components/signUp';
 import NewProductMain from '../Components/Yeonju/Components/NewProduct/NewProductMain';
 

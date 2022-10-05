@@ -1,5 +1,5 @@
-import '../../../App/App.css';
-import Theme from '../../../theme/theme';
+import '../../../../App/App.css';
+import Theme from '../../../../theme/theme';
 import styled from 'styled-components';
 
 // color,font Asset

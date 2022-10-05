@@ -1,6 +1,6 @@
-import '../../../../App/App.css';
+import '../../../../../App/App.css';
 import styled from 'styled-components';
-import Theme from '../../../../theme/theme';
+import Theme from '../../../../../theme/theme';
 import FivedaysMarektsec1con from './FivedaysMarketsec1con';
 
 //color,font Asset

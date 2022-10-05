@@ -1,9 +1,9 @@
-import '../../../App/App.css';
+import '../../../../App/App.css';
 import styled from 'styled-components';
 import FivedaysMakretTopvisual from './FiveDaysMarketTopvisual';
 import FivedaysMakretsec1 from './section/FivedaysMarketsec1';
 import FivedaysMarketsec2 from './section/FivedaysMarketsec2';
-import Remocon from '../Components/Remocon';
+import Remocon from '../Remocon';
 
 const Main = styled.main`
   width: inherit;
