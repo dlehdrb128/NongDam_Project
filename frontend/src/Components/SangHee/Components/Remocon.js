@@ -1,7 +1,7 @@
-import '../../../App/App.css';
-import styled from 'styled-components';
-import Theme from '../../../theme/theme';
-import { useState } from 'react';
+import "../../../App/App.css";
+import styled from "styled-components";
+import Theme from "../../../theme/theme";
+import { useState } from "react";
 
 const { gray, orange, realWhite } = Theme;
 
@@ -14,16 +14,17 @@ const Remote = styled.div`
   flex-direction: column;
   align-items: center;
   & > div:nth-child(1) {
-    width: 128px;
-    height: 415px;
+    width: 76px;
+    height: 360px;
     border: 1px solid ${gray};
     border-radius: 30px;
     background: ${realWhite};
     overflow: hidden;
     margin-bottom: 30px;
+
     & > div {
       width: inherit;
-      height: calc(415px / 3);
+      height: calc(360px / 3);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -31,14 +32,22 @@ const Remote = styled.div`
       border-bottom: 1px solid ${gray};
       position: relative;
       cursor: pointer;
+
+      &:hover {
+        font-weight: bold;
+
+        & > p {
+          color: ${Theme.green};
+        }
+      }
       & > img {
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
         margin-bottom: 10px;
       }
       & > p {
         color: ${gray};
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         font-family: SCD-3;
       }
       & > span {
@@ -50,7 +59,7 @@ const Remote = styled.div`
         text-align: center;
         padding-top: 1px;
         color: ${realWhite};
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         font-family: SCD-4;
         bottom: 59px;
         right: 42px;
@@ -58,8 +67,8 @@ const Remote = styled.div`
     }
   }
   & > div:nth-child(2) {
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,26 +77,30 @@ const Remote = styled.div`
     padding-top: 18px;
     position: relative;
     color: ${realWhite};
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-family: SCD-5;
     cursor: pointer;
+
+    &:hover {
+      background-color: ${Theme.green};
+    }
     &::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: 18px;
-      left: 31.5px;
-      transform: rotate(45deg);
+      top: 15px;
+      left: 33.5px;
+      transform: rotate(145deg);
       background: ${realWhite};
       border-radius: 1px;
       width: 2px;
       height: 15px;
     }
     &::after {
-      content: '';
+      content: "";
       position: absolute;
-      top: 18px;
-      right: 31.5px;
-      transform: rotate(-45deg);
+      top: 15px;
+      right: 33px;
+      transform: rotate(-145deg);
       background: ${realWhite};
       border-radius: 1px;
       width: 2px;
@@ -103,25 +116,25 @@ const Remocon = () => {
   const MoveTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
     setScrollY(0);
   };
 
   return (
-    <Remote id='Remote'>
+    <Remote id="Remote">
       <div>
         <div>
-          <img src='/img/deliverycar.svg' alt='Delivery'></img>
+          <img src="/img/deliverycar.svg" alt="Delivery"></img>
           <p>주문조회</p>
         </div>
         <div>
-          <img src='/img/marketbasket.svg' alt='Marketbasket'></img>
+          <img src="/img/marketbasket.svg" alt="Marketbasket"></img>
           <p>장바구니</p>
           <span>0</span>
         </div>
         <div>
-          <img src='/img/mypage_gray.svg' alt='Mypage'></img>
+          <img src="/img/mypage_gray.svg" alt="Mypage"></img>
           <p>마이페이지</p>
         </div>
       </div>

@@ -6,11 +6,15 @@ import ProductPageTop from "./ProductPageTop";
 import ProductCategory from "./ProductCategory";
 import ProductDetail from "./ProductDetail";
 import ProductReviewForm from "./ProductReviewForm";
+import Remocon from "./../../../SangHee/Components/Remocon";
+import { useRef } from "react";
 
 const ProductPageBox = styled.div``;
 
 const ProductPage = () => {
   const { id } = useParams();
+  const productDetail = useRef(null);
+  const productReview = useRef(null);
 
   let dummyData = [
     {
@@ -110,6 +114,10 @@ const ProductPage = () => {
     },
   ];
 
+  const categoryMove = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   //   // const disPatch = useDispatch();
 
   //   // useEffect(() => {
@@ -146,9 +154,17 @@ const ProductPage = () => {
   return (
     <ProductPageBox>
       <ProductPageTop ProductData={ProductData}></ProductPageTop>
-      <ProductCategory></ProductCategory>
-      <ProductDetail data={ProductData}></ProductDetail>
-      <ProductReviewForm data={ProductData}></ProductReviewForm>
+      <ProductCategory
+        categoryMove={categoryMove}
+        productDetail={productDetail}
+        productReview={productReview}
+      ></ProductCategory>
+      <ProductDetail data={ProductData} ref={productDetail}></ProductDetail>
+      <ProductReviewForm
+        data={ProductData}
+        ref={productReview}
+      ></ProductReviewForm>
+      <Remocon></Remocon>
     </ProductPageBox>
   );
 };
