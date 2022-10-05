@@ -51,7 +51,7 @@ const Mypagesec2OrderItem = ({ data }) => {
         <p>{data.number}</p>
       </div>
       <img src={data.img} alt='Productt'></img>
-      <p>일동후디스 그릭 요거트 플레인 2개입</p>
+      <p>{data.name}</p>
       <p>{data.count}개</p>
       <p>{data.price.toLocaleString()}원</p>
       <p>{data.delivery}</p>
