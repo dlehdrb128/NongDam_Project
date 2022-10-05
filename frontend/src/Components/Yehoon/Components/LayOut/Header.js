@@ -9,6 +9,8 @@ const HeaderBox = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 4;
 
   & a {
     &:link {

@@ -16,7 +16,6 @@ const Section1con = styled.div`
   border: 12px solid ${green};
   border-radius: 30px;
   box-shadow: 10px 20px 50px rgba(0, 0, 0, 0.1);
-  z-index: -1;
   //market Thumbnail
   & > img {
     width: 625px;

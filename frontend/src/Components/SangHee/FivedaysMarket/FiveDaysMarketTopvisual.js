@@ -15,7 +15,7 @@ const FivedaysmakretTopvisual = styled.div`
   background: url('/img/FivedaysMarketTopvisual.png') no-repeat center;
   background-size: cover;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   /* title */
   & > h1 {
     font-size: ${fontSize_60};

@@ -9,7 +9,7 @@ const Remote = styled.div`
   position: fixed;
   top: 150px;
   right: 2.3vw;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,7 +109,7 @@ const Remocon = () => {
   };
 
   return (
-    <Remote>
+    <Remote id='Remote'>
       <div>
         <div>
           <img src='/img/deliverycar.svg' alt='Delivery'></img>
