@@ -1,4 +1,4 @@
-import '../../../App/App.css';
+import '../../../../App/App.css';
 import styled from 'styled-components';
 import IntroTopvisual from './IntroTopvisual';
 import Introsec1 from './section/Introsec1';
@@ -16,6 +16,7 @@ const Main = styled.main`
   flex-direction: column;
   & > div.sec_wrap {
     width: 1280px;
+    position: relative;
   }
 `;
 

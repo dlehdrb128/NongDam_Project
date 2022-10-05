@@ -1,17 +1,14 @@
-import '../../../../App/App.css';
-import { Theme } from '../../../../theme/theme';
+import '../../../../../App/App.css';
+import { Theme } from '../../../../../theme/theme'
 import styled from 'styled-components';
 
 //color,font Asset
-// const { Maincol, text, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } =
-//   Common;
-
 const { green, lightblack, fontSize_60, fontSize_50, fontSize_30, fontSize_25 } = Theme;
 
 //section3
 const Section3 = styled.section`
   width: inherit;
-  margin-bottom: 18rem;
+  margin-bottom: 180px;
 
   //title
   & > h1 {
@@ -19,8 +16,7 @@ const Section3 = styled.section`
     font-size: ${fontSize_50};
     color: ${lightblack};
     font-family: YANGJIN;
-    letter-spacing: 0.4rem;
-    margin-bottom: 3rem;
+    margin-bottom: 30px;
     & > span {
       color: ${green};
       font-size: ${fontSize_50};
@@ -34,14 +30,13 @@ const Section3 = styled.section`
   }
   & > p:nth-child(2) {
     font-size: ${fontSize_25};
-    letter-spacing: 0.125rem;
-    margin-bottom: 4.5rem;
+    margin-bottom: 45px;
   }
   //img
   & > img {
     width: 100%;
-    height: 50.9rem;
-    margin-bottom: 4.5rem;
+    height: 509px;
+    margin-bottom: 45px;
   }
   //text_bold
   & > p:nth-child(4) {
@@ -68,7 +63,7 @@ const Introsec3 = () => {
         <br />그 심각성이 짐작이 가나요?
       </p>
       <img
-        src='https://lh3.googleusercontent.com/drive-viewer/AJc5JmTCW3_NGqzMcTA-7o6PUT5Jq3fJVrtyYPHr0tqJ5ASy-tXqQ0CCrlFQr5ipu3R6NEkeErB1fH8=w1920-h969'
+        src='/img/Intro_sec3_img.png'
         alt='sec3_img'
       ></img>
       <p>
