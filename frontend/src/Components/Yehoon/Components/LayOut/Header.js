@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Theme } from "./../../../../theme/theme";
 
+// 헤더 박스
 const HeaderBox = styled.div`
   width: 1920px;
   height: 103px;
@@ -12,6 +13,7 @@ const HeaderBox = styled.div`
   position: relative;
   z-index: 4;
 
+  /* Link 속성 */
   & a {
     &:link {
       text-decoration: none;
@@ -32,6 +34,7 @@ const HeaderBox = styled.div`
     }
   }
 
+  /* 헤더의 요소들을 담은 박스 */
   & > div {
     position: relative;
     width: 1280px;
@@ -45,6 +48,7 @@ const HeaderBox = styled.div`
   }
 `;
 
+// 헤더의 중간 박스 (함께 둘러보는 농담...)
 const HeaderBoxMid = styled.div`
   display: flex;
   gap: 66px;
@@ -65,6 +69,7 @@ const HeaderBoxMid = styled.div`
   }
 `;
 
+// 헤더의 오른쪽 박스 (회원가입...)
 const HeaderBoxRight = styled.div`
   display: flex;
   align-items: center;
@@ -73,15 +78,7 @@ const HeaderBoxRight = styled.div`
   font-family: "SCD-4";
   margin-bottom: 5px;
 
-  & > div:hover {
-    cursor: pointer;
-    opacity: 60%;
-  }
-
-  & > div:nth-child(1) {
-    color: ${Theme.lightblack};
-  }
-
+  /* 로그인 */
   & > a:nth-child(2) > div {
     color: rgba(255, 255, 255, 1);
     width: 79px;
@@ -91,9 +88,9 @@ const HeaderBoxRight = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
   }
 
+  /* 회원가입, 로그인 폰트 속성*/
   & > a {
     & > div {
       font-size: 1.6rem;

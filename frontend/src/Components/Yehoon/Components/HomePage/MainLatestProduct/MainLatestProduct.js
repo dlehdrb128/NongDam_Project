@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LatestProductItem from "./LatestProductItem";
 import { Theme } from "./../../../../../theme/theme";
 
+// 방금 들어온 못난이들의 최상위 부모 컨테이너
 const MainLatestProductBox = styled.div`
   width: 1920px;
   height: 545px;
@@ -12,6 +13,7 @@ const MainLatestProductBox = styled.div`
   align-items: center;
 `;
 
+// 아이템들을 담은 박스
 const LatestProductBox = styled.div`
   position: relative;
   width: 1280px;
@@ -19,6 +21,7 @@ const LatestProductBox = styled.div`
   display: flex;
   gap: 70px;
 
+  /* 뒤에 초록 네모 박스 */
   & > div:nth-child(1) {
     & > div {
       position: relative;
@@ -29,6 +32,8 @@ const LatestProductBox = styled.div`
       border: 3px solid ${Theme.green};
       border-radius: 10px;
     }
+
+    /* 박스 위의 사진 */
     & > img {
       position: relative;
       bottom: 350px;
@@ -40,10 +45,12 @@ const LatestProductBox = styled.div`
     }
   }
 
+  /* 이미지와 LatestProductItemBox를 담은 박스 */
   & > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     gap: 120px;
+    /* 방금 들어온 못난이들 */
     & > img {
       padding-top: 10px;
       width: 477px;
@@ -52,6 +59,7 @@ const LatestProductBox = styled.div`
   }
 `;
 
+// 최근 들어온 상품들을 담은 박스
 const LatestProductItemBox = styled.div`
   width: 900px;
   height: 296px;
@@ -66,28 +74,28 @@ const MainLatestProduct = () => {
       image: "/img/exam-1.png",
       local: "경남",
       name: "22년 수확 햇 사과 3kg...",
-      price: "10,400원",
+      price: 10400,
     },
     {
       product_id: "2",
       image: "/img/exam-2.png",
       local: "전북",
       name: "국내산 깐마늘 2kg...",
-      price: "4,500원",
+      price: 4500,
     },
     {
       product_id: "3",
       image: "/img/exam-3.png",
       local: "전남",
       name: "마늘팟 양파  3kg...",
-      price: "6,600원",
+      price: 6600,
     },
     {
       product_id: "4",
       image: "/img/exam-4.png",
       local: "충북",
       name: "청결 22년 햇 건고추 6kg",
-      price: "80,000원",
+      price: 80000,
     },
   ];
 
