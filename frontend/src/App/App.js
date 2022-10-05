@@ -14,7 +14,7 @@ import OrderDetail from "../Components/Sangho/Components/orderDetail";
 import CartMain from "../Components/Yeonju/Components/Cart/CartMain";
 import StoreOpenMain from "../Components/Yeonju/Components/StoreOpen/StoreOpenMain";
 import SignUp from "../Components/Geunsoo/Components/signUp";
-
+import Recipe from "../Components/Geunsoo/Components/recipe";
 function App() {
   return (
     <>
@@ -30,6 +30,7 @@ function App() {
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
+          <Route path="/recipe" element={<Recipe />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
 
