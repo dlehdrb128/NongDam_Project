@@ -1,7 +1,7 @@
 import { memo } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Theme from "./../../../../theme/theme";
+import { Theme } from "./../../../../theme/theme";
 
 const ProductItemBox = styled.div`
   & > *:hover {
@@ -85,7 +85,7 @@ const ProductItem = ({ data }) => {
         <div>[{data.local}]</div>
         <div>{data.name}</div>
         <div>
-          <div>{data.price}</div>
+          <div>{data.price.toLocaleString()}원</div>
           <div>
             <div>
               <span>★</span> {data.value} / 5

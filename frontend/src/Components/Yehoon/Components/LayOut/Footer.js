@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Theme from "./../../../../theme/theme";
+import { Theme } from "./../../../../theme/theme";
 
 const FooterBox = styled.div`
   width: 1920px;
@@ -11,6 +11,7 @@ const FooterBox = styled.div`
 `;
 
 const FooterBoxTop = styled.div`
+  width: inherit;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -176,7 +177,6 @@ const Footer = () => {
             <Link>이용약관</Link>
             <Link>이용안내</Link>
             <Link>입점문의</Link>
-            <Link>농담</Link>
           </div>
           <hr></hr>
         </FooterBoxTop>

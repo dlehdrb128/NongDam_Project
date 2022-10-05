@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Theme from "./../../../../../theme/theme";
+import { Theme } from "./../../../../../theme/theme";
 import { StyledButton } from "./../../../../../theme/theme";
 
 const MainEventMarketBox = styled.div`
@@ -7,6 +7,8 @@ const MainEventMarketBox = styled.div`
   width: 1920px;
   height: 948px;
   background: url("/img/mainEventMarketBg.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
   display: flex;
   justify-content: center;
   align-items: center;

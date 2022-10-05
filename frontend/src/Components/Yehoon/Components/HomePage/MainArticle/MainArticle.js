@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Theme from "./../../../../../theme/theme";
+import { Theme } from "./../../../../../theme/theme";
 import { StyledButton } from "./../../../../../theme/theme";
+import { Link } from "react-router-dom";
 
 const MainArticleBox = styled.div`
   width: 1280px;
@@ -74,9 +75,11 @@ const MainArticle = () => {
             속편한 구조이니 자연히 폐기가 늘어나지요.<br></br>
           </div>
           <div>농담은 20% 비싸게 사서 20% 싸게팔아요.</div>
-          <StyledButton fs={"1.8rem"} wd={"250px"} ht={"50px"}>
-            농담은 함께하길 원해요
-          </StyledButton>
+          <Link to={"/intro"}>
+            <StyledButton fs={"1.8rem"} wd={"250px"} ht={"50px"}>
+              농담은 함께하길 원해요
+            </StyledButton>
+          </Link>
         </MainArticleTitle>
         <MainArticleImg
           src="/img/MainArticle.png"

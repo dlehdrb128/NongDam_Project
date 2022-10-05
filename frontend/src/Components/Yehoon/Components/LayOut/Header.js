@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Theme from "./../../../../theme/theme";
+import { Theme } from "./../../../../theme/theme";
 
 const HeaderBox = styled.div`
   width: 1920px;
@@ -9,6 +9,8 @@ const HeaderBox = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 4;
 
   & a {
     &:link {
@@ -17,11 +19,11 @@ const HeaderBox = styled.div`
     }
     &:visited {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:active {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
 
     &:hover {
@@ -71,10 +73,6 @@ const HeaderBoxRight = styled.div`
   font-family: "SCD-4";
   margin-bottom: 5px;
 
-  & > div {
-    font-size: 1.7rem;
-  }
-
   & > div:hover {
     cursor: pointer;
     opacity: 60%;
@@ -99,18 +97,19 @@ const HeaderBoxRight = styled.div`
   & > a {
     & > div {
       font-size: 1.6rem;
+      color: ${Theme.lightblack};
     }
     &:link {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:visited {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
     &:active {
       text-decoration: none;
-      color: black;
+      color: ${Theme.lightblack};
     }
 
     &:hover {
@@ -133,7 +132,7 @@ const Header = () => {
 
             <Link to="/all">못난이 장터</Link>
             <div>못난이 활용법</div>
-            <div>온라인 5일장</div>
+            <Link to="/FivedaysMakret">온라인 5일장</Link>
           </HeaderBoxMid>
           <HeaderBoxRight>
             <Link to="/admin">
