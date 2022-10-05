@@ -2,27 +2,32 @@ import styled from "styled-components";
 import Theme from "../../../theme/theme";
 
 const RecipeParent = styled.div`
+  /* 레시피 페이지 전체 부모 설정값 */
   width: 1230px;
-  height: 2000px;
+  height: 1800px;
   margin-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   & > div:nth-child(1) {
+    /* head부분 전체 설정(이번주 추천레시피, 뭐가땡기나요, 이번주 채소, 과일목록) */
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 1230px;
     height: 600px;
     & > div:nth-child(1) {
+      /* 이번주 추천 레시피 전체 설정 */
       & > h1 {
+        /* 제목 폰트 */
         font-size: 3rem;
         font-family: YANGJIN;
         color: ${Theme.lightblack};
       }
     }
     & > div:nth-child(2) {
+      /* (뭐가땡기나요/ 이번주 채소, 과일목록) 전체 설정 */
       height: 550px;
       display: flex;
       flex-direction: column;
@@ -30,6 +35,7 @@ const RecipeParent = styled.div`
       align-items: center;
       & > div:nth-child(2) {
         & > h1 {
+          /* 제목 폰트 */
           font-size: 3rem;
           font-family: YANGJIN;
           color: ${Theme.lightblack};
@@ -45,6 +51,7 @@ const RecipeParent = styled.div`
   }
 `;
 const PostPage = styled.div`
+  /* 게시글 전체 설정 */
   width: 1030px;
   height: inherit;
   display: flex;
@@ -53,6 +60,7 @@ const PostPage = styled.div`
   align-items: center;
 `;
 const ImgWrapper = styled.div`
+  /* 이번주 추천 레시피 배경이미지, 추천레시피 당첨 게시글 폰트 */
   background-image: url(/img/감자전.jpg);
   background-size: cover;
   width: 600px;
@@ -73,6 +81,8 @@ const ImgWrapper = styled.div`
     & > h3 {
       font-size: 2.5rem;
       font-family: SCD-3;
+      display: flex;
+      align-items: center;
     }
     & > p {
       font-size: 2rem;
@@ -81,6 +91,7 @@ const ImgWrapper = styled.div`
   }
 `;
 const WantSearch = styled.div`
+  /* 뭐가 땡기나요 검색창 설정 */
   & > h1 {
     font-family: YANGJIN;
     font-size: 3rem;
@@ -115,6 +126,7 @@ const WantSearch = styled.div`
   }
 `;
 const FruitVegetable = styled.div`
+  /* 이번주 추천 채소, 과일 페이지 설정 */
   width: 550px;
   height: 350px;
   border: 2px solid ${Theme.gray};
@@ -140,8 +152,8 @@ const FruitVegetable = styled.div`
   }
 `;
 const TitleButton = styled.div`
+  /* 총 000개의 맛있는 레시피가 있습니다, 최신순/추천순 버튼 */
   width: 1030px;
-  /* height: 80px; */
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -172,6 +184,7 @@ const TitleButton = styled.div`
   }
 `;
 const Profile = styled.div`
+  /* 게시글 작성자 프로필 */
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -179,6 +192,7 @@ const Profile = styled.div`
   background-size: cover;
 `;
 const PostList = styled.div`
+  /* 낱개 게시글 설정 */
   color: ${Theme.lightblack};
   & > img {
     width: 200px;
@@ -200,6 +214,7 @@ const PostList = styled.div`
   }
 `;
 const FooterButton = styled.div`
+  /* 게시글 다음/이전 페이지 이동 버튼 */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -218,20 +233,27 @@ const FooterButton = styled.div`
 const Recipe = () => {
   return (
     <RecipeParent>
-      <div id="해드">
-        <div id="이번주 추천레시피">
+      {/* 레시피 페이지 전체 부모 설정값 */}
+      <div>
+        {/* 해드 */}
+        <div>
           <h1>이번주 추천 레시피</h1>
           <br />
           <ImgWrapper>
+            {/* 이번주 추천 레시피 배경이미지, 추천레시피 당첨 게시글 폰트 */}
             <div>
               <h2>상희누나의 단짠단짠 감자전</h2>
-              <h3>둔산동 고든램지</h3>
+              <h3>
+                <Profile></Profile>&nbsp;둔산동 고든램지
+                {/* 게시글 작성자 프로필 */}
+              </h3>
               <p>⭐(5.0)/5</p>
             </div>
           </ImgWrapper>
         </div>
-        <div id="뭐땡기는거랑 채소과일목록">
+        <div>
           <WantSearch>
+            {/* 뭐가 땡기나요 검색창 설정 */}
             <h1>뭐가 땡기나요?</h1>
             &nbsp;
             <div id="검색창">
@@ -245,6 +267,7 @@ const Recipe = () => {
             <h1>이번주 채소, 과일목록</h1>
             &nbsp;
             <FruitVegetable>
+              {/* 이번주 추천 채소, 과일 페이지 설정 */}
               <button>두리안</button>
               <button>불로초</button>
               <button>산삼</button>
@@ -256,6 +279,7 @@ const Recipe = () => {
       <div>
         {/* 밑에 게시물 부모 */}
         <TitleButton>
+          {/* 총 000개의 맛있는 레시피가 있습니다, 최신순/추천순 버튼 */}
           <h2>
             총 <span>OOO</span>개의 맛있는 레시피가 있읍니다.
           </h2>
@@ -266,11 +290,14 @@ const Recipe = () => {
           </div>
         </TitleButton>
         <PostPage>
+          {/* 게시글 전체 설정 */}
           <PostList>
+            {/* 낱개 게시글 설정 */}
             <img src="/img/감자전.jpg"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
+              {/* 게시글 작성자 프로필 */}
               &nbsp; 둔산동 고든램지
             </div>
             <p>⭐(4.5)/5</p>
@@ -405,6 +432,7 @@ const Recipe = () => {
       </div>
       <div>
         <FooterButton>
+          {/* 게시글 다음/이전 페이지 이동 버튼 */}
           <button>1</button>
           <button>2</button>
           <button>3</button>
