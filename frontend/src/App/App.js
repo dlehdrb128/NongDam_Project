@@ -13,9 +13,10 @@ import './App.css';
 import OrderDetail from '../Components/Sangho/Components/orderDetail';
 import CartMain from '../Components/Yeonju/Components/Cart/CartMain';
 import StoreOpenMain from '../Components/Yeonju/Components/StoreOpen/StoreOpenMain';
-import FivedaysMakret from '../Components/SangHee/FivedaysMarket/FivedaysMarket';
+import FivedaysMakret from '../Components/SangHee/Components/FivedaysMarket/FivedaysMarket'
 import SignUp from '../Components/Geunsoo/Components/signUp';
 import NewProductMain from '../Components/Yeonju/Components/NewProduct/NewProductMain';
+import Mypage from '../Components/SangHee/Components/MyPage/MyPage'
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path='/cart' element={<CartMain />}></Route>
           <Route path='/FivedaysMakret' element={<FivedaysMakret />}></Route>
           <Route path='/admin/newproduct' element={<NewProductMain />}></Route>
+          <Route path='/admin/mypage' element={<Mypage />}></Route>
           <Route element={<Footer />} />
         </Route>
       </Routes>

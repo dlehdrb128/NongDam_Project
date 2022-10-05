@@ -144,11 +144,13 @@ const AdminMain = () => {
             <h1>정산</h1>
             <span>판매현황, 금액 관리</span>
           </div>
-          <div className="box">
-            <img src="/img/Admin_icon6.png" alt="icon"></img>
-            <h1>마이페이지</h1>
-            <span>나의 회원정보 수정</span>
-          </div>
+          <Link to="mypage">
+            <div className="box">
+              <img src="/img/Admin_icon6.png" alt="icon"></img>
+              <h1>마이페이지</h1>
+              <span>나의 회원정보 수정</span>
+            </div>
+          </Link>
         </StoreIconMainBox>
       </div>
     </MainBox>
