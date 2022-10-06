@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../../../theme/theme';
 
+// 상품 목록 전체 박스
 const ItemBox = styled.div`
   width: inherit;
   height: 237px;
@@ -14,12 +15,14 @@ const ItemBox = styled.div`
     width: 79px;
     padding-left: 20px;
 
+    // 체크박스 사이즈 조정
     & > input {
       width: 24px;
       height: 24px;
     }
   }
   // 상품이미지
+
   & > div:nth-child(2) {
     width: 219px;
     & > img {
@@ -100,7 +103,8 @@ const ItemBox = styled.div`
     }
   }
 `;
-// 수량에 따라 숫자 카운트 되는 걸 크게 박스로 묶음
+// 수량부분 박스화
+
 const CountBox = styled.div`
   width: 139px;
   display: flex;
@@ -120,15 +124,20 @@ const CountBox = styled.div`
   }
 `;
 
-const Item = () => {
+//
+const CartItem = () => {
+  //수량
   const [number, setNumber] = useState(1);
 
+  // 값 바뀔때마다 number로 받고 있는 input창 변화
   const onChange = (e) => setNumber(e.target.value);
 
+  // 플러스버튼 누르면 1씩 증가
   const clickPlus = () => {
     setNumber(number + 1);
   };
 
+  // 마이너스버튼 누르면 1씩 감소
   const clickMinus = () => {
     setNumber(number - 1);
   };
@@ -165,4 +174,4 @@ const Item = () => {
   );
 };
 
-export default Item;
+export default CartItem;
