@@ -5,6 +5,7 @@ import Theme from '../../../../../theme/theme';
 // color,font Asset
 const { fontSize_25, orange, lightblack } = Theme;
 
+//섹션2 상품 콘텐츠(전라) 컨테이너(사이즈,위치조정)
 const Section2con = styled.div`
   //common constructor
   width: 934px;
@@ -13,20 +14,20 @@ const Section2con = styled.div`
   row-gap: 40px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 300px 300px;
-  //constructor limit
+  //상품 컨테이너(사이즈 조정)
   & > div {
     width: 210px;
     cursor: pointer;
-    //img
+    //상품 이미지(사이즈조정)
     & > img {
       width: inherit;
       height: 211px;
       border-radius: 10px;
       margin-bottom: 30px;
     }
-    //Product name
+    //상품 이름(사이즈,글간격,컬러,폰트,위치조정)
     & > p:nth-child(2) {
-      //Product local
+      //상품 지역명(폰트,위치조정)
       & > span {
         display: inline-block;
         margin-right: 5px;
@@ -42,9 +43,9 @@ const Section2con = styled.div`
       margin-bottom: 10px;
       font-family: SCD-4;
     }
-    //Product Price
+    //상품 가격(폰트,글정렬조정)
     & > h2:nth-child(3) {
-      //Product sale
+      //상품 할인율(사이즈,글정렬,폰트,컬러조정)
       & > span {
         width: 28%;
         display: inline-block;
@@ -118,18 +119,23 @@ const ProductData = {
   ],
 };
 const FivedaysMarketsec2con2 = () => {
+  // 객체 구조분해 할당
   const { Jeonla } = ProductData;
   return (
     <Section2con>
+      {/* 맵 사용 해서 태그 생성 */}
       {Jeonla.map((value, index) => {
         return (
           <div key={index}>
+            {/* 상품이미지 */}
             <img src={value.img} alt='Product'></img>
             <p>
+              {/* 상품이름 및 지역 */}
               <span>[{value.local}]</span>
               {value.name}
             </p>
             <h2>
+              {/* 상품 가격 및 할인율 */}
               <span>{value.sale}</span>
               {value.price.toLocaleString()}원
             </h2>
@@ -139,5 +145,6 @@ const FivedaysMarketsec2con2 = () => {
     </Section2con>
   );
 };
+//end
 
 export default FivedaysMarketsec2con2;

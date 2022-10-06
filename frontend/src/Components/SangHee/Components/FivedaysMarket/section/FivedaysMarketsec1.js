@@ -6,13 +6,16 @@ import FivedaysMarektsec1con from './FivedaysMarketsec1con';
 //color,font Asset
 const { fontSize_60, fontSize_20, lightblack, orange } = Theme;
 
+
+// FDM 섹션 1 컨테이너
 const Section1 = styled.section`
-  //top billboard title
+  //섹션1 콘텐츠 컨테이너
   & > div {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    //상단 장식 빌보드(사이즈,백그라운드,위치조정)
     & > div:nth-child(1) {
       width: 603px;
       height: 311px;
@@ -22,18 +25,20 @@ const Section1 = styled.section`
       flex-direction: column;
       align-items: center;
       padding-top: 56px;
+      //상단 장식 빌보드 타이틀(폰트,컬러조정)
       & > h1 {
         font-size: ${fontSize_60};
         font-family: YANGJIN;
         color: ${orange};
       }
+      //상단 장식 빌보드 텍스트(폰트,컬러조정)
       & > span {
         font-size: ${fontSize_20};
         color: ${lightblack};
         font-family: SCD-4;
       }
     }
-    //decorative roof
+    //상단 지붕장식(사이즈,위치,z-index조정)
     & > div:nth-child(2) {
       display: flex;
       flex-direction: column;
@@ -54,20 +59,25 @@ const Section1 = styled.section`
 const FivedaysMakretsec1 = () => {
   return (
     <Section1>
+      {/* 섹션1 콘텐츠 컨테이너 */}
       <div>
+        {/* 상단 장식 빌보드 */}
         <div>
+          {/* 빌보드 타이틀 */}
           <h1>오늘의시장</h1>
+          {/* 빌보드 텓스트 */}
           <span>우리나라의 다양한 시장을 소개해드리겠구먼유</span>
         </div>
+        {/* 상단 지붕작식 */}
         <div>
           <div></div>
-          {/* section1_con */}
+          {/* 섹션1 콘텐츠 컴포넌트 Import */}
           <FivedaysMarektsec1con />
         </div>
       </div>
     </Section1>
   );
-  // section1 end
 };
+// end
 
 export default FivedaysMakretsec1;
