@@ -7,6 +7,8 @@ import Introsec3 from './section/Introsec3';
 import Introsec4 from './section/Introsec4';
 import Introsec5 from './section/Introsec5';
 
+
+// 메인 컨테이너
 const Main = styled.main`
   width: inherit;
   padding-top: 200px;
@@ -14,6 +16,7 @@ const Main = styled.main`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  //섹션 컨테이너
   & > div.sec_wrap {
     width: 1280px;
     position: relative;
@@ -42,5 +45,6 @@ const Intro = () => {
     </>
   );
 };
+//end
 
 export default Intro;

@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import Theme from '../../../../../theme/theme';
 
+
+//color,font Asset
 const { fontSize_18, fontSize_13, lightblack, gray, lightgreen, realWhite } =
   Theme;
 
+//섹션2 콘텐츠1 주문처리현황 컨테이너(사이즈,백그라운드,위치조정)
 const Info = styled.div`
   width: inherit;
   height: 120px;
@@ -14,8 +17,10 @@ const Info = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  // 콘텐츠1 회원 등급 및 적립금 컨테이너(사이즈조정) 
   & > div:nth-child(1) {
     width: 150px;
+    //회원이름(사이즈,글정렬,폰트,위치조정)
     & > h1 {
       width: inherit;
       color: ${lightblack};
@@ -24,6 +29,7 @@ const Info = styled.div`
       font-size: ${fontSize_18};
       margin-bottom: 10px;
     }
+    //적립금(폰트,컬러조정)
     & > span {
       color: ${gray};
       font-family: SCD-3;
@@ -31,6 +37,7 @@ const Info = styled.div`
       word-break: keep-all;
     }
   }
+  // 콘텐츠1 쿠폰,선호상품,적립금 컨테이너(사이즈조정 및 위치, 테두리조정) 
   & > div:nth-child(2) {
     background: ${realWhite};
     width: 550px;
@@ -38,11 +45,13 @@ const Info = styled.div`
     border-radius: 10px;
     display: flex;
     overflow: hidden;
+    //쿠폰,적립금,선호상품 컨테이너(사이즈,위치조정)
     & > div {
       width: calc(100% / 3);
       height: inherit;
       position: relative;
       padding: 15px 26px;
+      //정보 텍스트(폰트,글정렬,위치조정)
       & > p {
         font-family: SCD-6;
         font-size: ${fontSize_18};
@@ -53,6 +62,7 @@ const Info = styled.div`
       }
       & > p:nth-child(1) {
         &::after {
+          //화살표아이콘(백그라운드,사이즈,위치조정)
           content: '';
           background: url('/img/Direction.png') no-repeat center;
           background-size: cover;
@@ -63,6 +73,7 @@ const Info = styled.div`
           right: -20px;
         }
       }
+     //쿠폰,적립금,선호상품 분류선(사이즈,위치조정)
       &::after {
         content: '';
         background: ${lightgreen};
@@ -73,6 +84,7 @@ const Info = styled.div`
         top: 15px;
       }
     }
+    //각각 아이콘 배치(사이즈,위치,백그라운드조정)
     & > div:nth-child(1) {
       &::before {
         content: '';
@@ -101,6 +113,7 @@ const Info = styled.div`
         position: absolute;
       }
     }
+    //마지막 (선호상품) 위치 조정 및 분류선 제거
     & > div:nth-child(3) {
       & > p {
         margin-right: 0;
@@ -115,6 +128,7 @@ const Info = styled.div`
   }
 `;
 
+//dummy object
 const member = {
   PersonalMember: [
     {
@@ -129,9 +143,11 @@ const member = {
 };
 
 const Mypagesec2Info = () => {
+  //구조분해할당
   const { PersonalMember } = member;
   return (
     <Info>
+      {/* 회원정보 */}
       <div>
         <h1>
           {PersonalMember[0].name}님은[{PersonalMember[0].membership}]입니다.
@@ -141,6 +157,7 @@ const Mypagesec2Info = () => {
           {PersonalMember[0].TotoalCount}회)
         </span>
       </div>
+      {/* 쿠폰,적립금,관심상품 */}
       <div>
         <div>
           <p>쿠폰</p>
@@ -157,5 +174,6 @@ const Mypagesec2Info = () => {
     </Info>
   );
 };
+//end
 
 export default Mypagesec2Info;
