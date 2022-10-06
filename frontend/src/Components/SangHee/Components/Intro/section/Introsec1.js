@@ -5,12 +5,12 @@ import styled from 'styled-components';
 //color,font Asset
 const { green, lightblack, fontSize_50, fontSize_30, fontSize_20 } = Theme;
 
-//section1
+//Intro 섹션1 컨테이너 (너비,위치조정)
 const Section1 = styled.section`
   width: inherit;
   margin-bottom: 180px;
 
-  //title
+  //섹션1 왼쪽상단 타이틀(폰트,폰트사이즈,위치,컬러조정) 
   & > h1 {
     font-family: YANGJIN;
     font-size: ${fontSize_50};
@@ -18,20 +18,22 @@ const Section1 = styled.section`
     color: ${lightblack};
   }
 
-  //sec1_contents
+  //섹션1 콘텐츠 컨테이너(위치조정)
   & > div:nth-child(2) {
     display: flex;
     justify-content: space-between;
-    //img
+    //섹션1 콘텐츠 왼쪽 이미지(크기조정)
     & > img {
       width: 700px;
       height: 720px;
     }
-    //text
+    //섹션1 콘텐츠 텍스트 콘텐츠 컨테이너
     & > div:nth-child(2) {
+      //섹션1 텍스트 컨테이너(글씨컬러,위치)
       & > div {
         margin-bottom: 60px;
         color: ${lightblack};
+        //섹션1 텍스트(내용,글정렬,폰트,너비조정)
         & > p {
           word-break: keep-all;
           font-size: ${fontSize_20};
@@ -39,23 +41,25 @@ const Section1 = styled.section`
           text-align: right;
           font-family: SCD-4;
         }
+        //섹션1 텍스트 위치조정
         & > p:nth-child(1) {
           margin-bottom: 3rem;
         }
       }
-      //bold text
+      //섹션1 포인트텍스트(폰트,컬러,텍스트정렬)
       & > h1 {
         font-family: YANGJIN;
         font-size: ${fontSize_30};
         text-align: right;
         color: ${green};
+          //섹션1 포인트텍스트2(,텍스트정렬)
         & > p {
           font-size: ${fontSize_30};
         }
       }
     }
   }
-  //common
+  //Common
   p {
     color: ${lightblack};
   }
@@ -64,14 +68,20 @@ const Section1 = styled.section`
 const Introsec1 = () => {
   return (
     <Section1>
+      {/* 왼쪽상단 타이틀 */}
       <h1>워매~ 아까운거</h1>
+      {/* 섹션1 콘텐츠컨테이너 */}
       <div>
+        {/* 섹션1 콘텐츠 왼쪽 이미지 */}
         <img
           src='https://lh3.googleusercontent.com/drive-viewer/AJc5JmT3pV0ORYOOLX4j1iEqb1exodDLsoe_8JNfG90iAQhgeMmp56Di2T01LXMsqKDQ8zpb3UAgabI=w1920-h966'
           alt='sec1_img'
         ></img>
+        {/* 섹션1 텍스트 콘텐츠 컨테이너*/}
         <div>
+          {/* 섹션1 텍스트 컨테이너 */}
           <div>
+            {/* 섹션1 텍스트 */}
             <p>
               못난이 농산물이 버려지는 근본적인 원인은 농가의 소득문제 입니다.
               가공공장으로 판로가 존재하지만 낮은 수매단가로 인해 충분한 수익을
@@ -82,6 +92,7 @@ const Introsec1 = () => {
               자연히 폐기가 늘어나는 구조입니다.
             </p>
           </div>
+          {/* 섹션1 포인트 텍스트 */}
           <h1>
             못난이 농산물
             <br />
@@ -92,4 +103,6 @@ const Introsec1 = () => {
     </Section1>
   );
 };
+//end
+
 export default Introsec1;
