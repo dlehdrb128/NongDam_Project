@@ -256,10 +256,10 @@ const Recipe = () => {
             {/* 뭐가 땡기나요 검색창 설정 */}
             <h1>뭐가 땡기나요?</h1>
             &nbsp;
-            <div id="검색창">
+            <div>
               <input type={"text"} placeholder="검색어 입력"></input>
               <button>
-                <img src="/img/검색아이콘.png"></img>
+                <img src="/img/검색아이콘.png" alt="검색"></img>
               </button>
             </div>
           </WantSearch>
@@ -293,7 +293,7 @@ const Recipe = () => {
           {/* 게시글 전체 설정 */}
           <PostList>
             {/* 낱개 게시글 설정 */}
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -303,7 +303,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -312,7 +312,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -321,7 +321,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -330,7 +330,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -339,7 +339,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -348,7 +348,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -357,7 +357,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -366,7 +366,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -375,7 +375,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -384,7 +384,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -393,7 +393,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -402,7 +402,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -411,7 +411,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
@@ -420,7 +420,7 @@ const Recipe = () => {
             <p>⭐(4.5)/5</p>
           </PostList>
           <PostList>
-            <img src="/img/감자전.jpg"></img>
+            <img src="/img/감자전.jpg" alt="감자전"></img>
             <h3>상희누나의 단짠단짠 감자전</h3>
             <div>
               <Profile></Profile>
