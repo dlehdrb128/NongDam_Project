@@ -176,7 +176,7 @@ const FooterBoxBottom = styled.div`
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 15px;
       /* 소비자 피해... */
       & > div:nth-child(1) {
         font-family: "SCD-6";
@@ -269,11 +269,12 @@ const Footer = () => {
             <div>
               <div>소비자피해보상보험 SGI서울보증</div>
               <div>
-                고객님의 안전거래를 위해 현금 등으로 결제 시 결제금액 전액에
-                대해 저희 쇼핑몰에서 가입한 소비자 피해 보상
+                고객님의 안전거래를 위해 현금 등으로 결제 시
                 <br />
-                보험 서비스를 이용하실 수 있습니다. 보상대상 : 미배송/반품,환불
-                거부/쇼핑몰부도
+                저희 쇼핑몰에서 가입한 소비자 피해 보상 보험 서비스를 이용하실
+                수 있습니다.
+                <br />
+                보상대상 : 미배송/반품,환불 거부/쇼핑몰부도
               </div>
             </div>
           </div>
