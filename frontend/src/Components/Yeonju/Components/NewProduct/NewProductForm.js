@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Theme from "../../../../theme/theme";
+import styled from 'styled-components';
+import Theme from '../../../../theme/theme';
 
 // 폼제목과 폼을 메인박스로 묶었다
 const MainBox = styled.div`
@@ -10,7 +10,7 @@ const MainBox = styled.div`
 
   // form 제목
   & > h1 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     color: ${Theme.lightblack};
     font-size: 2.5rem;
     padding-bottom: 15px;
@@ -42,7 +42,7 @@ const ContentBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
@@ -50,7 +50,7 @@ const ContentBox = styled.div`
     // 필수입력사항 *로 표시
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -63,13 +63,18 @@ const ContentBox = styled.div`
     border-left: 1px solid ${Theme.liglightgray};
     // 내용 담기는 input
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 300px;
       height: 40px;
       border: 1px solid ${Theme.gray};
       border-radius: 3px;
       padding: 5px;
       font-size: 1.5rem;
+    }
+    & > span {
+      font-family: 'SCD-3';
+      font-size: 1.5rem;
+      padding-left: 5px;
     }
   }
 `;
@@ -87,7 +92,7 @@ const ImgBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
@@ -95,7 +100,7 @@ const ImgBox = styled.div`
     // 필수기입사항
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -121,7 +126,7 @@ const ImgBox = styled.div`
       }
       // 이미지 권장 사이즈 안내
       & > p {
-        font-family: "SCD-5";
+        font-family: 'SCD-5';
         text-align: center;
       }
     }
@@ -140,7 +145,7 @@ const ImgBox = styled.div`
         color: ${Theme.realWhite};
         text-align: center;
         border-radius: 3px;
-        font-family: "SCD-6";
+        font-family: 'SCD-6';
         font-size: 1.5rem;
         display: flex;
         justify-content: center;
@@ -149,7 +154,7 @@ const ImgBox = styled.div`
       }
       // 등록이미지 안내
       & > p {
-        font-family: "SCD-5";
+        font-family: 'SCD-5';
         font-size: 1rem;
       }
     }
@@ -168,7 +173,7 @@ const RadioBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
@@ -176,7 +181,7 @@ const RadioBox = styled.div`
     // 필수입력사항
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -203,13 +208,15 @@ const RadioBox = styled.div`
     }
     //
     & > label {
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
       font-size: 1.3rem;
       padding: 0 20px 0 5px;
     }
   }
 `;
 
+// 할인적용 - 할인유형을 고를 수 있는 select
+// 전체 큰 박스로 묶음
 const SelectBox = styled.div`
   width: inherit;
   height: 80px;
@@ -217,17 +224,19 @@ const SelectBox = styled.div`
   border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
+  // 할인유형
   & > h2 {
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
     border-bottom: 1px solid ${Theme.lightgray};
   }
 
+  // select 박스부분 전체 묶은 div
   & > div {
     width: 702px;
     display: flex;
@@ -235,8 +244,9 @@ const SelectBox = styled.div`
     align-items: center;
     border-left: 1px solid ${Theme.lightblack};
 
+    // select박스 부분
     & > select {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 100px;
       height: 40px;
       border: 1px solid ${Theme.gray};
@@ -246,7 +256,7 @@ const SelectBox = styled.div`
     }
   }
 `;
-
+// 할인적용 - 기간 설정 부분
 const PeriodSet = styled.div`
   width: inherit;
   height: 208px;
@@ -254,16 +264,18 @@ const PeriodSet = styled.div`
   border-bottom: 1px solid ${Theme.lightgray};
   color: ${Theme.lightblack};
 
+  // 기간설정
   & > h2 {
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${Theme.white};
     border-bottom: 0.1rem solid ${Theme.lightgray};
   }
+  // 기간설정 세부내용 다 묶은 박스
   & > div {
     width: 702px;
     height: inherit;
@@ -272,10 +284,13 @@ const PeriodSet = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    //첫번쨰 div - 라디오 버튼 묶은 것
     & > div:nth-child(1) {
       display: flex;
       width: inherit;
       height: 50px;
+      // 라디오 버튼
       & > input {
         appearance: none;
 
@@ -285,34 +300,41 @@ const PeriodSet = styled.div`
 
         border: 1px solid ${Theme.gray};
       }
+      // 라이도 버튼 체크 됬을때 스타일링
       & > input:checked {
         background-color: ${Theme.green};
       }
+      // 각 라디오버튼의 내용 스타일링
       & > label {
-        font-family: "SCD-3";
+        font-family: 'SCD-3';
         font-size: 1.3rem;
         padding: 0 20px 0 5px;
       }
     }
+    // 날짜 박스 묶은 div 두 개 있는 데 둘 다 같은 구조로 되어있어서
+    // div로 같이 설정
     & > div {
       display: flex;
       width: inherit;
       height: 50px;
       align-items: center;
 
-      & div:nth-child(1) {
+      // input 박스가 들어있는 div
+      & > div:nth-child(1) {
+        // input 설정
         & > input {
           width: 187px;
           height: 40px;
           border-radius: 3px;
-          font-family: "SCD-3";
+          font-family: 'SCD-3';
           font-size: 1.3rem;
           padding: 5px;
           margin-right: 10px;
         }
       }
+      // select 스타일링
       & > select {
-        font-family: "SCD-3";
+        font-family: 'SCD-3';
         width: 68px;
         height: 40px;
         border: 1px solid ${Theme.gray};
@@ -321,8 +343,9 @@ const PeriodSet = styled.div`
         font-size: 1.5rem;
         margin-right: 10px;
       }
+      // select 박스 뒤에 글자들 ex)시, 분
       & > span {
-        font-family: "SCD-3";
+        font-family: 'SCD-3';
         font-size: 1.5rem;
         margin-right: 10px;
       }
@@ -336,7 +359,7 @@ const RegButton = styled.input`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -359,13 +382,13 @@ const NewProductForm = () => {
             상품명<span> *</span>
           </h2>
           <div>
-            <input type="text" required></input>
+            <input type='text' required></input>
           </div>
         </ContentBox>
         <ContentBox>
           <h2>상품요약설명</h2>
           <div>
-            <input type="text"></input>
+            <input type='text'></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -373,7 +396,7 @@ const NewProductForm = () => {
             판매가<span> *</span>
           </h2>
           <div>
-            <input type="number" required></input>
+            <input type='number' required></input>
           </div>
         </ContentBox>
         <ImgBox>
@@ -386,12 +409,12 @@ const NewProductForm = () => {
               <p>권장 500px * 500px</p>
             </div>
             <div>
-              <label for="input-file">등록</label>
+              <label for='input-file'>등록</label>
               <input
-                type="file"
-                id="input-file"
-                accept="image/jpeg,gif,png,jpg"
-                style={{ display: "none" }}
+                type='file'
+                id='input-file'
+                accept='image/jpeg,gif,png,jpg'
+                style={{ display: 'none' }}
               ></input>
               <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
             </div>
@@ -406,9 +429,9 @@ const NewProductForm = () => {
             <span> *</span>
           </h2>
           <div>
-            <input type="radio" name="check"></input>
+            <input type='radio' name='check'></input>
             <label>할인 적용</label>
-            <input type="radio" name="check"></input>
+            <input type='radio' name='check'></input>
             <label>적용 안함</label>
           </div>
         </RadioBox>
@@ -424,7 +447,7 @@ const NewProductForm = () => {
         <ContentBox>
           <h2>할인율/ 할인금액</h2>
           <div>
-            <input type="text"></input>
+            <input type='text'></input>
             <span>원</span>
           </div>
         </ContentBox>
@@ -432,14 +455,14 @@ const NewProductForm = () => {
           <h2>기간설정</h2>
           <div>
             <div>
-              <input type="radio" name="check"></input>
+              <input type='radio' name='check'></input>
               <label>사용함</label>
-              <input type="radio" name="check"></input>
+              <input type='radio' name='check'></input>
               <label>사용안함</label>
             </div>
             <div>
               <div>
-                <input type="date"></input>
+                <input type='date'></input>
               </div>
               <select>
                 <option>00</option>
@@ -485,7 +508,7 @@ const NewProductForm = () => {
             </div>
             <div>
               <div>
-                <input type="date"></input>
+                <input type='date'></input>
               </div>
               <select>
                 <option>00</option>
@@ -534,16 +557,16 @@ const NewProductForm = () => {
       </form>
       <div>
         <EditButton
-          type="submit"
-          id="editbutton"
-          value="수정"
+          type='submit'
+          id='editbutton'
+          value='수정'
           col={Theme.lightblack}
           bgcol={Theme.realWhite}
         ></EditButton>
         <RegButton
-          type="submit"
-          id="regbutton"
-          value="등록"
+          type='submit'
+          id='regbutton'
+          value='등록'
           col={Theme.realWhite}
           bgcol={Theme.green}
         ></RegButton>
