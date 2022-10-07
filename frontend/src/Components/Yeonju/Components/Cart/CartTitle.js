@@ -62,10 +62,11 @@ const Title = styled.div`
 `;
 
 const CartTitle = () => {
+
   return (
     <Title>
       <div>
-        <input type='checkbox'></input>
+        <input type='checkbox' name='product'></input>
       </div>
       <div>상품정보</div>
       <div>판매가</div>
