@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Remote = styled.div`
@@ -107,15 +106,9 @@ const Remote = styled.div`
 `;
 
 const Remocon = () => {
-  const [ScrollY, setScrollY] = useState(0);
-
   //Top btn func
   const MoveTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-    setScrollY(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

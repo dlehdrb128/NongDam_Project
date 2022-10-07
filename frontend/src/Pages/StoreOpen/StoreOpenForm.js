@@ -4,7 +4,7 @@ import Theme from "../../Theme/theme";
 // 메인박스로 묶음
 const MainBox = styled.div`
   width: 843px;
-  padding: 240px 0 70px 0;
+  padding: 180px 0 70px 0;
   display: flex;
   flex-direction: column;
 
