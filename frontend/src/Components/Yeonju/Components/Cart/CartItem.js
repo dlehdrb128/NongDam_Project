@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../../../theme/theme';
+import CartPrice from './CartPrice';
 
 // 상품 목록 전체 박스
 const ItemBox = styled.div`
@@ -125,12 +126,16 @@ const CountBox = styled.div`
 `;
 
 //
-const CartItem = () => {
+const CartItem = ({ product }) => {
   //수량
   const [number, setNumber] = useState(1);
 
   // 값 바뀔때마다 number로 받고 있는 input창 변화
-  const onChange = (e) => setNumber(e.target.value);
+  const onChange = (e) => {
+    if (e.target.value > 0) {
+      setNumber(e.target.value);
+    }
+  };
 
   // 플러스버튼 누르면 1씩 증가
   const clickPlus = () => {
@@ -139,38 +144,51 @@ const CartItem = () => {
 
   // 마이너스버튼 누르면 1씩 감소
   const clickMinus = () => {
-    setNumber(number - 1);
+    if (number > 1) {
+      setNumber(number - 1);
+    }
   };
 
   return (
-    <ItemBox>
-      <div>
-        <input type='checkbox'></input>
-      </div>
-      <div>
-        <img src='/img/cart1.png' alt='productimage'></img>
-      </div>
-      <div>[전북] 서영암농협 학이 머문 유기농 쌀(일 미) 4kg, 2021년산...</div>
-      <div>9,500원</div>
-      <CountBox>
-        <button onClick={clickMinus}>-</button>
-        <input value={number} onChange={onChange}></input>
-        <button onClick={clickPlus}>+</button>
-      </CountBox>
-      <div>0원</div>
-      <div>9,500원</div>
-      <div>
-        <button>바로구매</button>
+    <>
+      <ItemBox>
         <div>
+          <input type='checkbox' name='product'></input>
+        </div>
+        <div>
+          <img src={product.img} alt='productimage'></img>
+        </div>
+        <div>{product.name}</div>
+        <div>{(product.price * number).toLocaleString()}원</div>
+        <CountBox>
+          <button onClick={clickMinus}>-</button>
+          <input value={number} onChange={onChange}></input>
+          <button onClick={clickPlus}>+</button>
+        </CountBox>
+        <div>
+          {((product.price / product.discount) * number).toLocaleString()}원
+        </div>
+        <div>
+          {(
+            (product.price - product.price / product.discount) *
+            number
+          ).toLocaleString()}
+          원
+        </div>
+        <div>
+          <button>바로구매</button>
           <div>
-            <img src='/img/cart_heart.png' alt='icon'></img>
-          </div>
-          <div>
-            <img src='img/cart_trash.png' alt='icon'></img>
+            <div>
+              <img src='/img/cart_heart.png' alt='icon'></img>
+            </div>
+            <div>
+              <img src={'img/cart_trash.png'} alt='icon'></img>
+            </div>
           </div>
         </div>
-      </div>
-    </ItemBox>
+      </ItemBox>
+      <CartPrice product={product} number={number}></CartPrice>
+    </>
   );
 };
 
