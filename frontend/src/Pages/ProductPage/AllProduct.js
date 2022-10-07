@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ProductItem from "./ProductItem";
 import { useState } from "react";
 import Remocon from "../../LayOut/Remocon";
-
 // import { useEffect } from "react";
 // import { productAll } from "../Slice/getData";
 // import { useDispatch, useSelector } from "react-redux";
@@ -207,8 +206,7 @@ const AllProduct = () => {
         </ProductItemLeft>
         <ProductItemRight
           src="/img/chungcheonbuk-do.svg"
-          alt="이미지 없음"
-        ></ProductItemRight>
+          alt="이미지 없음"></ProductItemRight>
       </ProductTop>
       <ProductBox>
         {/* {realValue.map((value, index) => {

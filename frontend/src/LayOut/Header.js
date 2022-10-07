@@ -126,7 +126,7 @@ const Header = () => {
           <HeaderBoxMid>
             <Link to="/intro">함께 둘러보는 농담</Link>
 
-            <Link to="/all">못난이 장터</Link>
+            <Link to="/product">못난이 장터</Link>
             <Link to="/recipe">못난이 활용법</Link>
             <Link to="/FivedaysMakret">온라인 5일장</Link>
             <Link to="/admin">스토어 관리</Link>
