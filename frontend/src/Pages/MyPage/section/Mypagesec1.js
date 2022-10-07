@@ -52,11 +52,11 @@ const Section1 = styled.section`
     }
   }
 `;
-const Mypagesec1 = () => {
+const Mypagesec1 = ({ Text }) => {
   return (
     <Section1>
       {/* 섹션1 타이틀 */}
-      <h1>마이페이지</h1>
+      <h1>{Text ? Text : "마이페이지"}</h1>
       <div>
         {/* 메뉴 콘텐츠 */}
         <div>

@@ -1,9 +1,9 @@
 import React from "react";
 import OrderInfo from "../Order/OrderInfo";
-import Menu from "../Order/Menu";
 import OrderTitle from "./OrderTitle";
 import OrderPayment from "./OrderPaymentInfo";
 import OrderPerson from "./OrderPerson";
+import Mypagesec1 from "../MyPage/section/Mypagesec1";
 
 import { RsWrapper, Wrapper } from "../../Theme/common";
 
@@ -11,13 +11,9 @@ const OrderDetail = () => {
   return (
     <Wrapper>
       <RsWrapper>
-        <Wrapper ju={`start`} margin={`30px 0 20px 0`} fontFamily={`SCD-6`}>
-          주문상세
-        </Wrapper>
-
         <Wrapper>
           {/* 메뉴 */}
-          <Menu />
+          <Mypagesec1 Text={`주문상세`} />
 
           <Wrapper dir={`column`} ju={`flex-start`}>
             <Wrapper dir={`column`}>
@@ -28,8 +24,7 @@ const OrderDetail = () => {
                 ju={`flex-start`}
                 fontSize={`1.8rem`}
                 padding={`10px`}
-                fontFamily={`SCD-6`}
-              >
+                fontFamily={`SCD-6`}>
                 주문 정보
               </Wrapper>
             </Wrapper>
