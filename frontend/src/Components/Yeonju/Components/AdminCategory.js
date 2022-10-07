@@ -8,7 +8,7 @@ const MainBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  // 메인 제목 ( 스토어관리 카테고리 타이틀)
   & > h1 {
     font-family: "SCD-6";
     color: ${Theme.lightblack};
@@ -18,17 +18,24 @@ const MainBox = styled.div`
 `;
 
 // 카테고리 박스
+// 각각 카테고리 구조 똑같아서 하나로 다 가능
+// 각각 스토어관리를 하나씩 박스로 구성
+
 const Categoty = styled.div`
   width: 189px;
   padding: 23px 0 23px 0;
   border-top: 1px solid;
   color: ${Theme.lightblack};
 
+  // 스토어관리 타이틀
   & > h2 {
     font-family: "SCD-6";
     font-size: 1.8rem;
     padding-bottom: 13px;
   }
+    // 스토어관리 타이틀 안에 세부 카테고리
+  // 세부 카테고리 개수와 상관없이 몇 개가 설정되도
+  // 간격 유지 가능
   & > p {
     font-family: "SCD-3";
     font-size: 1.5rem;
