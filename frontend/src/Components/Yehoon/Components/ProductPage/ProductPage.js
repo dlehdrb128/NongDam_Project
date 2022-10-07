@@ -6,11 +6,17 @@ import ProductPageTop from "./ProductPageTop";
 import ProductCategory from "./ProductCategory";
 import ProductDetail from "./ProductDetail";
 import ProductReviewForm from "./ProductReviewForm";
+import Remocon from "./../../../SangHee/Components/Remocon";
+import { useRef } from "react";
 
 const ProductPageBox = styled.div``;
 
+// 상품 상세페이지 컴포넌트
+
 const ProductPage = () => {
   const { id } = useParams();
+  const productDetail = useRef(null);
+  const productReview = useRef(null);
 
   let dummyData = [
     {
@@ -106,31 +112,14 @@ const ProductPage = () => {
       value: "4.8",
       reviewCount: "39",
       detailImage: undefined,
-      review: [
-        {
-          user: "Geunsoo",
-          text: "빠른 배송 감사합니다^^ 엄마가 너무 맛있다며 껍질까지 다 먹었다고 하네요~~맛있게 잘 먹겠습니다!!",
-          value: 4,
-          date: "2022.09.22",
-          image: ["/img/exam-1.png", "/img/exam-2.png", "/img/exam-3.png"],
-        },
-        {
-          user: "yesli4278",
-          text: "여태 사먹어본 그 어떤 곳 보다 품질도 맛도 좋았습니다. 재주문하러 가요.",
-          value: 4,
-          date: "2022.09.22",
-          image: ["/img/exam-4.png", "/img/exam-1.png", "/img/exam-2.png"],
-        },
-        {
-          user: "injung7714",
-          text: "넘 맛있어요… 최고에요 또 시켜먹고 싶어요 또 시켜먹을게요",
-          value: 5,
-          date: "2022.09.22",
-          image: ["/img/exam-3.png", "/img/exam-2.png", "/img/exam-4.png"],
-        },
-      ],
+      review: [],
     },
   ];
+
+  // 카테고리의 버튼을 누르면 인자에 따라 스크롤을 이동시킨다
+  const categoryMove = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   //   // const disPatch = useDispatch();
 
@@ -168,9 +157,17 @@ const ProductPage = () => {
   return (
     <ProductPageBox>
       <ProductPageTop ProductData={ProductData}></ProductPageTop>
-      <ProductCategory></ProductCategory>
-      <ProductDetail data={ProductData}></ProductDetail>
-      <ProductReviewForm data={ProductData}></ProductReviewForm>
+      <ProductCategory
+        categoryMove={categoryMove}
+        productDetail={productDetail}
+        productReview={productReview}
+      ></ProductCategory>
+      <ProductDetail data={ProductData} ref={productDetail}></ProductDetail>
+      <ProductReviewForm
+        data={ProductData}
+        ref={productReview}
+      ></ProductReviewForm>
+      <Remocon></Remocon>
     </ProductPageBox>
   );
 };

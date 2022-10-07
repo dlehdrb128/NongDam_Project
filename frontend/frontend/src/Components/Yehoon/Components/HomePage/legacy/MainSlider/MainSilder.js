@@ -3,6 +3,8 @@ import styled from "styled-components";
 import EventNavItem from "./EventNavItem";
 import SliderImg from "./SliderImg";
 
+// 메인 슬라이더 (useInterval CustomHooks 사용)
+
 const SliderBox = styled.div`
   width: 1920px;
   height: 570px;

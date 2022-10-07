@@ -3,6 +3,7 @@ import { useState } from "react";
 import Theme from "./../../../../theme/theme";
 import { StyledButton } from "../../../../theme/theme";
 
+// 새로운 리뷰를 작성하는 요소들을 담은 박스
 const ReviewWriteBox = styled.div`
   width: 1250px;
   height: 125px;
@@ -17,6 +18,7 @@ const ReviewWriteBox = styled.div`
   }
 `;
 
+// 별점 설정 박스
 const ValueBox = styled.div`
   width: 125px;
   display: flex;
@@ -24,6 +26,18 @@ const ValueBox = styled.div`
   &:hover {
     cursor: pointer;
   }
+`;
+
+// 리뷰 작성 Input 속성
+let TextInput = styled.input`
+  width: 985px;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid ${Theme.gray};
+  color: ${Theme.lightblack};
+  font-size: 1.5rem;
+  font-family: "SCD-3";
+  padding-left: 10px;
 `;
 
 const ReviewWrite = () => {
@@ -48,17 +62,6 @@ const ReviewWrite = () => {
       />
     );
   });
-
-  let TextInput = styled.input`
-    width: 985px;
-    height: 80px;
-    border-radius: 10px;
-    border: 1px solid ${Theme.gray};
-    color: ${Theme.lightblack};
-    font-size: 1.5rem;
-    font-family: "SCD-3";
-    padding-left: 10px;
-  `;
 
   return (
     <ReviewWriteBox>

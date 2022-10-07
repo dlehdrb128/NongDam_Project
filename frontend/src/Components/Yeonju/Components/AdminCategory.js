@@ -3,36 +3,44 @@ import Theme from "../../../theme/theme";
 
 // 메인 박스
 const MainBox = styled.div`
-  width: 25rem;
-  padding-top: 13rem;
+  width: 250px;
+  padding-top: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  // 메인 제목 ( 스토어관리 카테고리 타이틀)
   & > h1 {
     font-family: "SCD-6";
     color: ${Theme.lightblack};
     font-size: 4rem;
-    padding-bottom: 4.5rem;
+    padding-bottom: 45px;
   }
 `;
 
 // 카테고리 박스
+// 각각 카테고리 구조 똑같아서 하나로 다 가능
+// 각각 스토어관리를 하나씩 박스로 구성
+
 const Categoty = styled.div`
-  width: 18.9rem;
-  padding: 2.3rem 0 2.3rem 0;
-  border-top: 0.1rem solid;
+  width: 189px;
+  padding: 23px 0 23px 0;
+  border-top: 1px solid;
   color: ${Theme.lightblack};
 
+  // 스토어관리 타이틀
   & > h2 {
     font-family: "SCD-6";
     font-size: 1.8rem;
-    padding-bottom: 1.3rem;
+    padding-bottom: 13px;
   }
+    // 스토어관리 타이틀 안에 세부 카테고리
+  // 세부 카테고리 개수와 상관없이 몇 개가 설정되도
+  // 간격 유지 가능
   & > p {
     font-family: "SCD-3";
     font-size: 1.5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 10px;
+    cursor: pointer;
   }
 `;
 

@@ -4,17 +4,20 @@ import MainLayout from "../Components/Yehoon/Components/LayOut/MainLayout";
 import Header from "../Components/Yehoon/Components/LayOut/Header";
 import Footer from "../Components/Yehoon/Components/LayOut/Footer";
 import Login from "../Components/Geunsoo/Components/login";
-import Intro from "../Components/SangHee/Components/Intro";
+import Intro from "../Components/SangHee/Components/Intro/Intro";
 import AllProduct from "../Components/Yehoon/Components/ProductPage/AllProduct";
 import ProductPage from "../Components/Yehoon/Components/ProductPage/ProductPage";
 import AdminMain from "./../Components/Yeonju/Components/AdminMain";
 import SignUpEnd from "./../Components/Geunsoo/Components/signUpEnd";
 import "./App.css";
-import OrderDetail from "../Components/Sangho/Components/orderDetail";
+import OrderDetail from "../Components/Sangho/Components/Order/OrderDetail";
 import CartMain from "../Components/Yeonju/Components/Cart/CartMain";
 import StoreOpenMain from "../Components/Yeonju/Components/StoreOpen/StoreOpenMain";
+import FivedaysMakret from "../Components/SangHee/Components/FivedaysMarket/FivedaysMarket";
 import SignUp from "../Components/Geunsoo/Components/signUp";
-
+import NewProductMain from "../Components/Yeonju/Components/NewProduct/NewProductMain";
+import Mypage from "../Components/SangHee/Components/MyPage/MyPage";
+import Recipe from "../Components/Geunsoo/Components/recipe";
 function App() {
   return (
     <>
@@ -30,9 +33,12 @@ function App() {
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
+          <Route path="/recipe" element={<Recipe />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
-
+          <Route path="/FivedaysMakret" element={<FivedaysMakret />}></Route>
+          <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
+          <Route path="/admin/mypage" element={<Mypage />}></Route>
           <Route element={<Footer />} />
         </Route>
       </Routes>

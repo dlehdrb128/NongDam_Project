@@ -6,7 +6,9 @@ import { useState } from "react";
 // import { useEffect } from "react";
 // import { productAll } from "../Slice/getData";
 // import { useDispatch, useSelector } from "react-redux";
+import Remocon from "./../../../SangHee/Components/Remocon";
 
+// 상품 검색페이지의 상단
 const ProductTop = styled.div`
   width: 1280px;
   display: flex;
@@ -14,28 +16,33 @@ const ProductTop = styled.div`
   margin-top: 100px;
 `;
 
+// 상단 왼쪽 (전체 상품...)
 const ProductItemLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
 
+  /* 전체 상품 */
   & > h1 {
     font-family: "YANGJIN";
     font-size: 4.5rem;
     color: ${Theme.green};
   }
 
+  /* 농담의 모든... */
   & > div:nth-child(2) {
     font-family: "SCD-4";
     font-size: 2.1rem;
     color: ${Theme.lightblack};
   }
 
+  /* 지역, 종류를 담은 박스 */
   & > div:nth-child(3) {
     display: flex;
     flex-direction: row;
     gap: 50px;
 
+    /* 지역, 종류 select 속성 */
     & > select {
       width: 150px;
       height: 40px;
@@ -43,6 +50,7 @@ const ProductItemLeft = styled.div`
       color: ${Theme.lightblack};
       font-size: 1.9rem;
 
+      /* select의 option 속성 */
       & > option {
         font-size: 1.6rem;
       }
@@ -61,6 +69,7 @@ const ProductItemLeft = styled.div`
 
 const ProductItemRight = styled.img``;
 
+// 상품 검색페이지의 상품들을 담는 컨테이너
 const ProductBox = styled.div`
   margin-top: 150px;
   width: 1280px;
@@ -110,7 +119,7 @@ const AllProduct = () => {
       image: "/img/exam-1.png",
       local: "경남",
       name: "22년 수확 햇 사과 3kg...",
-      price: "10,400원",
+      price: 10400,
       value: "4.2",
       reviewCount: "73",
     },
@@ -119,7 +128,7 @@ const AllProduct = () => {
       image: "/img/exam-2.png",
       local: "전북",
       name: "국내산 깐마늘 2kg...",
-      price: "4,500원",
+      price: 4500,
       value: "3.9",
       reviewCount: "146",
     },
@@ -128,7 +137,7 @@ const AllProduct = () => {
       image: "/img/exam-3.png",
       local: "전남",
       name: "마늘팟 양파  3kg...",
-      price: "6,600원",
+      price: 6600,
       value: "4.6",
       reviewCount: "281",
     },
@@ -137,7 +146,7 @@ const AllProduct = () => {
       image: "/img/exam-4.png",
       local: "충북",
       name: "청결 22년 햇 건고추 6kg",
-      price: "80,000원",
+      price: 80000,
       value: "4.8",
       reviewCount: "39",
     },
@@ -211,6 +220,7 @@ const AllProduct = () => {
           return <ProductItem key={index} data={value}></ProductItem>;
         })}
       </ProductBox>
+      <Remocon></Remocon>
     </>
   );
 };

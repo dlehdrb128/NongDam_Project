@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Theme from '../../../../theme/theme';
-import Item from './Item';
 
+// 각각의 타이틀을 담을 박스를 만들고
 const Title = styled.div`
   width: inherit;
   height: 41px;
@@ -11,7 +11,7 @@ const Title = styled.div`
   border-top: 2px solid ${Theme.gray};
   border-bottom: 1px solid ${Theme.gray};
 
-  // 공통 스타일링 부분
+  // 공통 스타일링 부분 - 각 div안에 이름 폰트사이즈
   & > div {
     font-size: 1.5rem;
   }
@@ -20,9 +20,10 @@ const Title = styled.div`
   & > div:nth-child(1) {
     width: 298px;
     padding-left: 20px;
+    display: flex;
 
     & > input {
-      width: 25px;
+      width: 24px;
       height: 24px;
       border: 1px solid ${Theme.lightblack};
     }
@@ -60,27 +61,21 @@ const Title = styled.div`
   }
 `;
 
-const CartTem = () => {
+const CartTitle = () => {
+
   return (
-    <>
-      <Title>
-        <div>
-          <input type='checkbox'></input>
-        </div>
-        <div>상품정보</div>
-        <div>판매가</div>
-        <div>수량</div>
-        <div>할인금액</div>
-        <div>합계</div>
-        <div>선택</div>
-      </Title>
-      {/* 제목? */}
-      <Item></Item>
-      {/* 상품목록 */}
-      <div></div>
-      {/* 가격 */}
-    </>
+    <Title>
+      <div>
+        <input type='checkbox' name='product'></input>
+      </div>
+      <div>상품정보</div>
+      <div>판매가</div>
+      <div>수량</div>
+      <div>할인금액</div>
+      <div>합계</div>
+      <div>선택</div>
+    </Title>
   );
 };
 
-export default CartTem;
+export default CartTitle;

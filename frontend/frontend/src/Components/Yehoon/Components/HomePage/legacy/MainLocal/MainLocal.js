@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// 지역별 상품 알아보기 (지도)
+
 const MainLocalBox = styled.div`
   width: 1920px;
   height: 990px;

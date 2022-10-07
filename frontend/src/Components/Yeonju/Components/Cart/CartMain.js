@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import Theme from '../../../../theme/theme';
-import CartTem from './CartTem';
-import CartPrice from './CartPrice';
+import CartTitle from './CartTitle';
+import CartItem from './CartItem';
+
+// 장바구니 메인 큰 박스
 const MainBox = styled.div`
   width: inherit;
   padding-top: 130px;
@@ -12,9 +14,12 @@ const MainBox = styled.div`
   color: ${Theme.lightblack};
 `;
 
+// 장바구니 전체로 묶음
+
 const CartMainBox = styled.div`
   width: 1280px;
 
+  // 메인 이름 - 장바구니
   & > h1 {
     font-family: 'SCD-6';
     font-size: 4rem;
@@ -22,6 +27,7 @@ const CartMainBox = styled.div`
     padding-bottom: 80px;
   }
 
+  // 선택주문, 전체주문 담을 박스
   .buttonBox {
     width: inherit;
     height: 130px;
@@ -50,14 +56,27 @@ const AllOrderButton = styled.button`
 const SelectOrderButton = styled(AllOrderButton)`
   border: 1px solid ${Theme.lightblack};
 `;
-
+// 전체적인 구성
+//  h1 장바구니 + 상품 정보 이름 담을 (CartTitle.js)  + + 상품금액 담길 목록(CartPrice.js) + 상품 가격(CartPrice.js)
 const CartMain = () => {
+  const productList = [
+    {
+      name: '[전북] 서영암농협 학이 머문 유기농 쌀(일 미) 4kg, 2021년산...',
+      price: 9500,
+      discount: 10,
+      img: '/img/cart1.png',
+    },
+  ];
+
   return (
     <MainBox>
       <CartMainBox>
         <h1>장바구니</h1>
-        <CartTem></CartTem>
-        <CartPrice></CartPrice>
+        <CartTitle></CartTitle>
+        {productList.map((product) => {
+          return <CartItem product={product}></CartItem>;
+        })}
+
         <div className='buttonBox'>
           <SelectOrderButton col={Theme.green} bgcol={Theme.realWhite}>
             선택주문
