@@ -1,23 +1,24 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../Components/Yehoon/Components/HomePage/HomePage";
-import MainLayout from "../Components/Yehoon/Components/LayOut/MainLayout";
-import Header from "../Components/Yehoon/Components/LayOut/Header";
-import Footer from "../Components/Yehoon/Components/LayOut/Footer";
-import Login from "../Components/Geunsoo/Components/login";
-import Intro from "../Components/SangHee/Components/Intro/Intro";
-import AllProduct from "../Components/Yehoon/Components/ProductPage/AllProduct";
-import ProductPage from "../Components/Yehoon/Components/ProductPage/ProductPage";
-import AdminMain from "./../Components/Yeonju/Components/AdminMain";
-import SignUpEnd from "./../Components/Geunsoo/Components/signUpEnd";
+import MainLayout from "../LayOut/MainLayout";
+import Header from "../LayOut/Header";
+import Footer from "../LayOut/Footer";
+import HomePage from "../Pages/HomePage/HomePage";
+import Login from "../Pages/Login/login";
+import Intro from "../Pages/Intro/Intro";
+import AllProduct from "../Pages/ProductPage/AllProduct";
+import ProductPage from "../Pages/ProductPage/ProductPage";
+import AdminMain from "../Pages/Admin/AdminMain";
+import StoreOpenMain from "../Pages/StoreOpen/StoreOpenMain";
+import SignUp from "../Pages/SignUp/signUp";
+import SignUpEnd from "../Pages/SignUp/signUpEnd";
+import Recipe from "../Pages/Recipe/recipe";
+import OrderDetail from "../Pages/Order/OrderDetail";
+import CartMain from "../Pages/Cart/CartMain";
+import FivedaysMakret from "../Pages/FivedaysMarket/FivedaysMarket";
+import NewProductMain from "../Pages/NewProduct/NewProductMain";
+import Mypage from "../Pages/MyPage/MyPage";
 import "./App.css";
-import OrderDetail from "../Components/Sangho/Components/Order/OrderDetail";
-import CartMain from "../Components/Yeonju/Components/Cart/CartMain";
-import StoreOpenMain from "../Components/Yeonju/Components/StoreOpen/StoreOpenMain";
-import FivedaysMakret from "../Components/SangHee/Components/FivedaysMarket/FivedaysMarket";
-import SignUp from "../Components/Geunsoo/Components/signUp";
-import NewProductMain from "../Components/Yeonju/Components/NewProduct/NewProductMain";
-import Mypage from "../Components/SangHee/Components/MyPage/MyPage";
-import Recipe from "../Components/Geunsoo/Components/recipe";
+
 function App() {
   return (
     <>
