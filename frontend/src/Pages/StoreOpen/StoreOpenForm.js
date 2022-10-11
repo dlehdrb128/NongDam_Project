@@ -1,5 +1,7 @@
-import styled from "styled-components";
-import Theme from "../../Theme/theme";
+import { useState } from 'react';
+import styled from 'styled-components';
+import Theme from '../../Theme/theme';
+import axios from 'axios';
 
 // 메인박스로 묶음
 const MainBox = styled.div`
@@ -10,7 +12,7 @@ const MainBox = styled.div`
 
   // 각 form의 제목을 h1으로 스타일링 해주었다
   & > h1 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     color: ${({ theme }) => theme.lightblack};
     font-size: 2.5rem;
     padding-bottom: 15px;
@@ -44,7 +46,7 @@ const ContentBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -53,7 +55,7 @@ const ContentBox = styled.div`
     // span있는거만 적용됨
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -67,7 +69,7 @@ const ContentBox = styled.div`
     border-left: 1px solid ${({ theme }) => theme.liglightgray};
     // 기입내용 input 박스 설정
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -78,7 +80,7 @@ const ContentBox = styled.div`
     //  input박스 뒤에 따로 특이사항 붙는 부분
     // span 추가해서 설정하면되고, 없어도 상관없음
     & > span {
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
       font-size: 1.3rem;
       padding-left: 5px;
     }
@@ -98,7 +100,7 @@ const BusinessAdd = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -106,7 +108,7 @@ const BusinessAdd = styled.div`
     // 이거 역시 필수기입내용 * 표시
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -121,7 +123,7 @@ const BusinessAdd = styled.div`
 
     // 우편번호 창
     & > div > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -134,7 +136,7 @@ const BusinessAdd = styled.div`
       width: 120px;
       height: 40px;
       font-size: 1.5rem;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       color: ${({ theme }) => theme.realWhite};
       background-color: ${({ theme }) => theme.green};
       border: none;
@@ -145,7 +147,7 @@ const BusinessAdd = styled.div`
     }
     // 전체주와 나머지 주소 받을 input
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -169,7 +171,7 @@ const TelBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -177,7 +179,7 @@ const TelBox = styled.div`
     // *로 된 필수입력사항
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -190,7 +192,7 @@ const TelBox = styled.div`
     border-left: 1px solid ${({ theme }) => theme.lightblack};
     // 번호의 맨 앞자리 선택박스
     & > select {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 100px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -200,7 +202,7 @@ const TelBox = styled.div`
     }
     // 전화번호 개인 입력창
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 100px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -210,7 +212,7 @@ const TelBox = styled.div`
     }
     // 전화번호 사이사이 - 표시
     & > span {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       padding: 0 10px 0 10px;
       font-size: 1.5rem;
     }
@@ -218,7 +220,7 @@ const TelBox = styled.div`
     & > button {
       width: 120px;
       height: 40px;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
       color: ${({ theme }) => theme.realWhite};
       background-color: ${({ theme }) => theme.green};
@@ -243,7 +245,7 @@ const RadioBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -251,7 +253,7 @@ const RadioBox = styled.div`
     // * 표시 필수입력사항
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -279,7 +281,7 @@ const RadioBox = styled.div`
     }
     // 라디오 버튼의 내용
     & > label {
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
       font-size: 1.3rem;
       padding: 0 20px 0 5px;
     }
@@ -291,7 +293,7 @@ const RegButton = styled.button`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -306,6 +308,20 @@ const EditButton = styled(RegButton)`
 `;
 
 const StoreOpenForm = () => {
+  const [value, setValue] = useState('');
+  const onchange = (e) => {
+    console.log(value);
+    setValue(e.target.value);
+  };
+
+  const data1 = {
+    test1: value,
+  };
+
+  const onClick = () => {
+    const data = axios.post('http://localhost:8080/storeOpen', data1);
+  };
+
   return (
     <MainBox>
       <h1>스토어 정보</h1>
@@ -316,7 +332,13 @@ const StoreOpenForm = () => {
             <span> *</span>
           </h2>
           <div>
-            <input type="text" required></input>
+            <input
+              type='text'
+              name='storeName'
+              required
+              onChange={onchange}
+            ></input>
+            <button onClick={onClick}>등록</button>
             <span>
               (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
             </span>
@@ -327,7 +349,7 @@ const StoreOpenForm = () => {
             대표 휴대전화<span> *</span>
           </h2>
           <div>
-            <input type="tel" required></input>
+            <input type='tel' name='mobilephone' required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -335,7 +357,7 @@ const StoreOpenForm = () => {
             대표 이메일<span> *</span>
           </h2>
           <div>
-            <input type="email" required></input>
+            <input type='email' name='email' required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -343,7 +365,7 @@ const StoreOpenForm = () => {
             이름<span> *</span>
           </h2>
           <div>
-            <input type="text" required></input>
+            <input type='text' name='name' required></input>
           </div>
         </ContentBox>
         <BusinessAdd>
@@ -352,11 +374,11 @@ const StoreOpenForm = () => {
           </h2>
           <div>
             <div>
-              <input placeholder="우편번호"></input>
+              <input placeholder='우편번호'></input>
               <button>주소검색</button>
             </div>
             <input></input>
-            <input placeholder="나머지 주소(선택 입력 가능)"></input>
+            <input placeholder='나머지 주소(선택 입력 가능)'></input>
           </div>
         </BusinessAdd>
         <TelBox>
@@ -416,7 +438,7 @@ const StoreOpenForm = () => {
             수신전용 이메일<span> *</span>
           </h2>
           <div>
-            <input type="email" required></input>
+            <input type='email' name='receiveEmail' required></input>
           </div>
         </ContentBox>
         <ContentBox>
@@ -424,7 +446,7 @@ const StoreOpenForm = () => {
             발신전용 이메일<span> *</span>
           </h2>
           <div>
-            <input type="email" required></input>
+            <input type='email' name='outgoingEmail' required></input>
           </div>
         </ContentBox>
         <RadioBox>
@@ -433,9 +455,9 @@ const StoreOpenForm = () => {
             <span> *</span>
           </h2>
           <div>
-            <input type="radio" name="check"></input>
+            <input type='radio' name='check'></input>
             <label>신고함</label>
-            <input type="radio" name="check"></input>
+            <input type='radio' name='check'></input>
             <label>신고안함</label>
           </div>
         </RadioBox>
@@ -479,7 +501,7 @@ const StoreOpenForm = () => {
             상담 이메일<span> *</span>
           </h2>
           <div>
-            <input type="email" required></input>
+            <input type='email' name='csEmail' required></input>
           </div>
         </ContentBox>
         <TelBox>
@@ -519,15 +541,19 @@ const StoreOpenForm = () => {
             CS 운영시간<span> *</span>
           </h2>
           <div>
-            <input></input>
+            <input type='text' name='csHours'></input>
           </div>
         </ContentBox>
       </form>
       <div>
-        <EditButton col={Theme.lightblack} bgcol={Theme.realWhite}>
+        <EditButton
+          type='submit'
+          col={Theme.lightblack}
+          bgcol={Theme.realWhite}
+        >
           수정
         </EditButton>
-        <RegButton col={Theme.realWhite} bgcol={Theme.green}>
+        <RegButton type='submit' col={Theme.realWhite} bgcol={Theme.green}>
           등록
         </RegButton>
       </div>
@@ -536,4 +562,4 @@ const StoreOpenForm = () => {
 };
 
 export default StoreOpenForm;
-<input type="submit"></input>;
+<input type='submit'></input>;
