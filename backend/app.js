@@ -1,18 +1,21 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const Main = require("./Server/Router/Main/index");
-const path = require("path");
-const cors = require("cors");
-const fs = require("fs");
-const multer = require("multer");
+const path = require('path');
+const cors = require('cors');
+const fs = require('fs');
+const multer = require('multer');
+const db = require('./db/index');
+
+const Main = require('./Server/Router/Main/index');
+const Order = require('./Server/Router/SangHo/order');
 
 const PORT = process.env.PORT || 8080;
 
 try {
-  fs.readdirSync("uploads");
+  fs.readdirSync('uploads');
 } catch (error) {
-  fs.mkdirSync("uploads");
-  console.log("uploads 파일이 없어서 생성합니다!");
+  fs.mkdirSync('uploads');
+  console.log('uploads 파일이 없어서 생성합니다!');
 }
 
 // Request full drive access.
@@ -31,7 +34,7 @@ try {
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "uploads");
+      cb(null, 'uploads');
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + path.extname(file.originalname));
@@ -40,20 +43,24 @@ const upload = multer({
 });
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/", Main);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.post("/upload", upload.single("img"), (req, res) => {
+app.use('/', Main);
+app.use('/order', Order);
+
+app.post('/upload', upload.single('img'), (req, res) => {
   console.log(req.file);
   console.log(req.body);
-  console.dir(req.header("Content-Type"));
+  console.dir(req.header('Content-Type'));
   // console.log(req.files);
 
-  res.send("ok");
+  res.send('ok');
 });
 
-app.get("/test", (req, res) => {
-  res.send(decode);
+app.get('/test', (req, res) => {
+  res.send('에러처리');
 });
 
 app.listen(PORT, () => {
