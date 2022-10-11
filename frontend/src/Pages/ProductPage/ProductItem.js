@@ -80,7 +80,7 @@ const ProductItemBox = styled.div`
         /* 리뷰 */
         & > div:nth-child(2) {
           font-family: "SCD-4";
-          font-size: 1rem;
+          font-size: 1.3rem;
           color: ${({ theme }) => theme.black};
         }
       }
@@ -91,17 +91,17 @@ const ProductItemBox = styled.div`
 const ProductItem = ({ data }) => {
   return (
     <ProductItemBox>
-      <Link to={`/product/${data.product_id}`}>
-        <img src={data.image} alt="이미지 없음"></img>
-        <div>[{data.local}]</div>
-        <div>{data.name}</div>
+      <Link to={`/product/detail/${data.product_id}`}>
+        <img src={"/" + data.product_image} alt="이미지 없음"></img>
+        <div>[{data.product_local}]</div>
+        <div>{data.product_name}</div>
         <div>
-          <div>{data.price.toLocaleString()}원</div>
+          <div>{data.product_price.toLocaleString()}원</div>
           <div>
             <div>
-              <span>★</span> {data.value} / 5
+              <span>★</span> {data.product_value} / 5
             </div>
-            <div>리뷰 {data.reviewCount}</div>
+            <div>리뷰 {data.product_reviewCount}</div>
           </div>
         </div>
       </Link>
