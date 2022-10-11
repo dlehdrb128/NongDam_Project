@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const multer = require("multer");
+const Product = require("./Server/Router/Yehoon/Product/index");
 
 const PORT = process.env.PORT || 8080;
 
@@ -42,6 +43,8 @@ const upload = multer({
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", Main);
+
+app.use("/product", Product);
 
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);

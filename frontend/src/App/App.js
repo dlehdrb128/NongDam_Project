@@ -28,8 +28,8 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/intro" element={<Intro />}></Route>
-          <Route path="/product" element={<AllProduct />}></Route>
-          <Route path="/product/:id" element={<ProductPage />}></Route>
+          <Route path="/product/:category" element={<AllProduct />}></Route>
+          <Route path="/product/detail/:id" element={<ProductPage />}></Route>
           <Route path="/admin" element={<AdminMain />}></Route>
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
