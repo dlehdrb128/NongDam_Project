@@ -56,7 +56,6 @@ app.post("/upload", upload.single("img"), (req, res) => {
   res.send("하이");
 });
 
-
 app.post("/storeOpen", (req, res) => {
   // console.log(req.body);
   // console.log("ggg");
@@ -66,10 +65,9 @@ app.post("/storeOpen", (req, res) => {
     if (err) throw err;
     console.log(storeName);
     res.send("성공");
-  res.send("ok?");
+    res.send("ok?");
+  });
 });
-}
-
 
 app.listen(PORT, () => {
   console.log(`EXPRESS SERVER START ${PORT} `);
