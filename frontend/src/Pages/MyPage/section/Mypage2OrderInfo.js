@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Mypagesec2OrderItem from "./Mypagesec2OrderItem";
+import styled from 'styled-components';
+import Mypagesec2OrderItem from './Mypagesec2OrderItem';
 
 //섹션2 콘텐츠3 최근주문정보 컨테이너(사이즈조정)
 const OrderInfo = styled.div`
@@ -65,49 +65,49 @@ const OrderInfo = styled.div`
 //dummy object
 const dummyData = [
   {
-    date: "2022.9.11",
+    date: '2022.9.11',
     number: 1000151095787,
-    img: "/img/ProductExample.png",
-    name: "일동후디스 그릭 요거트 플레인 2개입",
+    img: '/img/ProductExample.png',
+    name: '일동후디스 그릭 요거트 플레인 2개입',
     count: 2,
     price: 10600,
-    delivery: "배송 완료",
+    delivery: '배송 완료',
   },
   {
-    date: "2022.9.11",
+    date: '2022.9.11',
     number: 1000151095787,
-    img: "/img/ProductExample.png",
-    name: "일동후디스 그릭 요거트 플레인 2개입",
+    img: '/img/ProductExample.png',
+    name: '일동후디스 그릭 요거트 플레인 2개입',
     count: 2,
     price: 10600,
-    delivery: "배송 완료",
+    delivery: '배송 완료',
   },
   {
-    date: "2022.9.11",
+    date: '2022.9.11',
     number: 1000151095787,
-    img: "/img/ProductExample.png",
-    name: "일동후디스 그릭 요거트 플레인 2개입",
+    img: '/img/ProductExample.png',
+    name: '일동후디스 그릭 요거트 플레인 2개입',
     count: 2,
     price: 10600,
-    delivery: "배송 완료",
+    delivery: '배송 완료',
   },
   {
-    date: "2022.9.11",
+    date: '2022.9.11',
     number: 1000151095787,
-    img: "/img/ProductExample.png",
-    name: "일동후디스 그릭 요거트 플레인 2개입",
+    img: '/img/ProductExample.png',
+    name: '일동후디스 그릭 요거트 플레인 2개입',
     count: 2,
     price: 10600,
-    delivery: "배송 완료",
+    delivery: '배송 완료',
   },
   {
-    date: "2022.9.11",
+    date: '2022.9.11',
     number: 1000151095787,
-    img: "/img/ProductExample.png",
-    name: "일동후디스 그릭 요거트 플레인 2개입",
+    img: '/img/ProductExample.png',
+    name: '일동후디스 그릭 요거트 플레인 2개입',
     count: 2,
     price: 10600,
-    delivery: "배송 완료",
+    delivery: '배송 완료',
   },
 ];
 

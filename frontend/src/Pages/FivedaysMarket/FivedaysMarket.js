@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import FivedaysMakretTopvisual from "./FiveDaysMarketTopvisual";
-import FivedaysMakretsec1 from "./section/FivedaysMarketsec1";
-import FivedaysMarketsec2 from "./section/FivedaysMarketsec2";
-import Remocon from "../../LayOut/Remocon";
+import styled from 'styled-components';
+import FivedaysMakretTopvisual from './FiveDaysMarketTopvisual';
+import FivedaysMakretsec1 from './section/FivedaysMarketsec1';
+import FivedaysMarketsec2 from './section/FivedaysMarketsec2';
+import Remocon from '../../LayOut/Remocon';
 
 // 메인 컨테이너
 const Main = styled.main`
@@ -27,7 +27,7 @@ const FivedaysMakret = () => {
       <Main>
         <FivedaysMakretsec1 />
         {/* section1 */}
-        <div className="sec_wrap">
+        <div className='sec_wrap'>
           <FivedaysMarketsec2 />
           {/*section2 */}
         </div>
