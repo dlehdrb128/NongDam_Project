@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const Main = require("./Server/Router/Main/index");
+const FDM = require("./Server/Router/YANGSANGHEE/Data");
 const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
@@ -42,6 +43,7 @@ const upload = multer({
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", Main);
+app.use('/Fivedaysmarket', FDM)
 
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);
@@ -52,7 +54,7 @@ app.post("/upload", upload.single("img"), (req, res) => {
   res.send("ok");
 });
 
-app.get("/test", (req, res) => {
+app.get("/", (req, res) => {
   res.send(decode);
 });
 
