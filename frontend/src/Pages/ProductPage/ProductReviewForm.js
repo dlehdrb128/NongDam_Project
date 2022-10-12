@@ -47,14 +47,14 @@ const ReviewBox = styled.div`
 
 const ProductReviewForm = forwardRef(({ data }, ref) => {
   const getAverage = () => {
-    if (data.review !== undefined) {
+    if (data !== undefined) {
       let totalValue = 0;
 
-      data.review.forEach((value) => {
-        totalValue += value.value;
+      data.forEach((value) => {
+        totalValue += value.review_value;
       });
 
-      totalValue = totalValue / data.review.length;
+      totalValue = totalValue / data.length;
 
       return totalValue.toFixed(2);
     }
@@ -63,8 +63,8 @@ const ProductReviewForm = forwardRef(({ data }, ref) => {
   let average = getAverage();
   let reviewItem;
 
-  if (data.review !== undefined) {
-    reviewItem = data.review.map((value, index) => {
+  if (data !== undefined) {
+    reviewItem = data.map((value, index) => {
       return <ProductReview data={value} key={index}></ProductReview>;
     });
   }
@@ -74,9 +74,7 @@ const ProductReviewForm = forwardRef(({ data }, ref) => {
       <div>상품 후기</div>
       <div>
         {average >= 0 ? average : 0} / 5
-        <span>
-          ({data.review !== undefined ? data.review.length : 0}개의 후기)
-        </span>
+        <span>({data !== undefined ? data.length : 0}개의 후기)</span>
       </div>
       <ReviewBox>
         {reviewItem.length >= 1 ? reviewItem : <h1>리뷰가 없습니다</h1>}
