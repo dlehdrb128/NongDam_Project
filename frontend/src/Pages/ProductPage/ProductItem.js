@@ -49,6 +49,9 @@ const ProductItemBox = styled.div`
       font-family: "SCD-4";
       font-size: 2.1rem;
       color: ${({ theme }) => theme.lightblack};
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     /* 가격, 별점, 리뷰를 담은 박스 */
