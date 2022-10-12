@@ -34,6 +34,7 @@ const LatestProductItemBox = styled.div`
     & > img {
       width: 163px;
       height: 168px;
+      border-radius: 10px;
     }
 
     /* 지역 글꼴 */

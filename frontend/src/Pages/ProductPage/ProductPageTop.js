@@ -188,7 +188,7 @@ const ProductPageTop = ({ ProductData }) => {
         <div>[{ProductData.product_local}]</div>
         <div>{ProductData.product_name}</div>
         <hr></hr>
-        <div>{ProductData.product_price}원</div>
+        <div>{ProductData.product_price.toLocaleString()}원</div>
         <ProductPageCountBox>
           <div>수량</div>
           <div>

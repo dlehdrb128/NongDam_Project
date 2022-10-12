@@ -34,6 +34,7 @@ const ReviewItemBox = styled.div`
       & > img {
         width: 188px;
         height: 152px;
+        border-radius: 10px;
       }
     }
   }
