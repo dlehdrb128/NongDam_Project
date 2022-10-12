@@ -1,4 +1,6 @@
+import { useCallback, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 const LoginHeader = styled.div`
   /* 최상단 "로그인" 제목 값 */
   width: 1230px;
@@ -90,6 +92,7 @@ const LoginButton = styled.a`
   text-decoration: none;
   background-color: ${({ theme }) => theme.green};
   color: white;
+  cursor: pointer;
 `;
 const Security = styled.div`
   /* 보안접속 링크 전체 설정값 */
@@ -202,6 +205,23 @@ const AppleLogo = styled.img`
 `;
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const onSubmitLogin = async () => {
+    console.log(email, "submit");
+    const data = await axios.post("http://localhost:8080/login", {
+      email,
+      password,
+    });
+  };
+
   return (
     <>
       <LoginHeader>로그인</LoginHeader>
@@ -210,9 +230,17 @@ const Login = () => {
         {/* Header를 제외한 전체 설정값(감싸는 용도) */}
         <LoginResponse>
           {/* 로그인창 전체 부모 설정값 */}
-          <LoginBox type="text" placeholder="아이디"></LoginBox>
+          <LoginBox
+            type="text"
+            placeholder="아이디"
+            onChange={onChangeEmail}
+          ></LoginBox>
           {/* 아이디 입력창 */}
-          <LoginBox type="password" placeholder="비밀번호"></LoginBox>
+          <LoginBox
+            type="password"
+            placeholder="비밀번호"
+            onChange={onChangePassword}
+          ></LoginBox>
           {/* 비밀번호 입력창 */}
           <OptionMenu>
             {/* 아이디 저장, checkbox, 아이디/비밀번호찾기 전체 설정값 */}
@@ -237,7 +265,7 @@ const Login = () => {
               </A>
             </LoginFind>
           </OptionMenu>
-          <LoginButton href="/">
+          <LoginButton as={"button"} onClick={onSubmitLogin}>
             {/* 로그인 버튼 */}
             로그인
           </LoginButton>

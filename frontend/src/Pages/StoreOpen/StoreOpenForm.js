@@ -440,6 +440,7 @@ const StoreOpenForm = () => {
           </div>
         </RadioBox>
       </form>
+
       <h1>고객센터 정보안내 설정</h1>
       <form>
         <TelBox>
