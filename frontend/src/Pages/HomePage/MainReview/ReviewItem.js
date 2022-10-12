@@ -26,6 +26,7 @@ const ReviewItemBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
     gap: 20px;
     &:link {
       text-decoration: none;
@@ -44,6 +45,7 @@ const ReviewItemBox = styled.div`
     & > img {
       width: inherit;
       height: 250px;
+      border-radius: 10px;
     }
 
     /* 텍스트 박스 */
