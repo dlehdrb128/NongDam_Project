@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Theme from "../../Theme/theme";
 
@@ -9,23 +10,27 @@ const MainBox = styled.div`
   flex-direction: column;
 
   // form 제목
-  & > h1 {
-    font-family: "SCD-6";
-    color: ${({ theme }) => theme.lightblack};
-    font-size: 2.5rem;
-    padding-bottom: 15px;
-    border-bottom: 2px solid ${({ theme }) => theme.lightblack};
-  }
-  // form 으로 묶어서 아래에 한 줄씩 추가
   & > form {
-    padding-bottom: 36px;
-  }
-
-  // 맨 아래 수정 등록 버튼을 묶은 박스
-  & > div {
-    padding-top: 35px;
-    display: flex;
-    justify-content: center;
+    & > h1 {
+      font-family: "SCD-6";
+      color: ${({ theme }) => theme.lightblack};
+      font-size: 2.5rem;
+      padding-bottom: 15px;
+      border-bottom: 2px solid ${({ theme }) => theme.lightblack};
+    }
+    // form 으로 묶어서 아래에 한 줄씩 추가
+    & > div:nth-child(2) {
+      padding-bottom: 36px;
+    }
+    & > div:nth-child(4) {
+      padding-bottom: 36px;
+    }
+    // 맨 아래 수정 등록 버튼을 묶은 박스
+    & > div:nth-child(5) {
+      padding-top: 35px;
+      display: flex;
+      justify-content: center;
+    }
   }
 `;
 
@@ -373,204 +378,239 @@ const EditButton = styled(RegButton)`
   border: 1px solid ${({ theme }) => theme.lightblack};
 `;
 const NewProductForm = () => {
+  const hourList = [
+    "00",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+  ];
+  const minuteList = [
+    "00",
+    "05",
+    "10",
+    "15",
+    "20",
+    "25",
+    "30",
+    "35",
+    "40",
+    "45",
+    "50",
+    "55",
+  ];
+  const [inputData, setInputData] = useState({
+    productName: "",
+    productExp: "",
+    productPrice: "",
+    startHour: "00",
+    startminute: "00",
+    endHour: "23",
+    endminute: "55",
+  });
+  const {
+    productName,
+    productExp,
+    productPrice,
+    startHour,
+    startMinute,
+    endHour,
+    endMinute,
+  } = inputData;
+
+  const onchange = (e) => {
+    const { value, name } = e.target;
+    setInputData({
+      ...inputData,
+      [name]: value,
+    });
+  };
+  const data = {
+    productName: productName,
+    productExp: productExp,
+    productPrice: productPrice,
+  };
+  // const onClick = () => {
+  //   const response = axios.post("http://localhost:8080/admin/newproduct", data);
+  // };
   return (
     <MainBox>
-      <h1>상품 등록</h1>
       <form>
-        <ContentBox>
-          <h2>
-            상품명<span> *</span>
-          </h2>
-          <div>
-            <input type="text" required></input>
-          </div>
-        </ContentBox>
-        <ContentBox>
-          <h2>상품요약설명</h2>
-          <div>
-            <input type="text"></input>
-          </div>
-        </ContentBox>
-        <ContentBox>
-          <h2>
-            판매가<span> *</span>
-          </h2>
-          <div>
-            <input type="number" required></input>
-          </div>
-        </ContentBox>
-        <ImgBox>
-          <h2>
-            대표이미지 등록<span> *</span>
-          </h2>
-          <div>
+        <h1>상품 등록</h1>
+        <div>
+          <ContentBox>
+            <h2>
+              상품명<span> *</span>
+            </h2>
             <div>
-              <div></div>
-              <p>권장 500px * 500px</p>
+              <input type="text" onChange={onchange} name="productName"></input>
             </div>
+          </ContentBox>
+          <ContentBox>
+            <h2>상품요약설명</h2>
             <div>
-              <label>등록</label>
+              <input type="text" onChange={onchange} name="productExp"></input>
+            </div>
+          </ContentBox>
+          <ContentBox>
+            <h2>
+              판매가<span> *</span>
+            </h2>
+            <div>
               <input
-                type="file"
-                id="input-file"
-                accept="image/jpeg,gif,png,jpg"
-                style={{ display: "none" }}
+                type="number"
+                onChange={onchange}
+                name="productPrice"
               ></input>
-              <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
+              <span>원</span>
             </div>
-          </div>
-        </ImgBox>
-      </form>
-      <h1>할인 적용</h1>
-      <form>
-        <RadioBox>
-          <h2>
-            할인 적용 여부
-            <span> *</span>
-          </h2>
-          <div>
-            <input type="radio" name="check"></input>
-            <label>할인 적용</label>
-            <input type="radio" name="check"></input>
-            <label>적용 안함</label>
-          </div>
-        </RadioBox>
-        <SelectBox>
-          <h2>할인 유형</h2>
-          <div>
-            <select>
-              <option>금액 할인</option>
-              <option>정률 할인</option>
-            </select>
-          </div>
-        </SelectBox>
-        <ContentBox>
-          <h2>할인율/ 할인금액</h2>
-          <div>
-            <input type="text"></input>
-            <span>원</span>
-          </div>
-        </ContentBox>
-        <PeriodSet>
-          <h2>기간설정</h2>
-          <div>
-            <div>
-              <input type="radio" name="check"></input>
-              <label>사용함</label>
-              <input type="radio" name="check"></input>
-              <label>사용안함</label>
-            </div>
+          </ContentBox>
+          <ImgBox>
+            <h2>
+              대표이미지 등록<span> *</span>
+            </h2>
             <div>
               <div>
-                <input type="date"></input>
+                <div></div>
+                <p>권장 500px * 500px</p>
               </div>
-              <select>
-                <option>00</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-                <option>06</option>
-                <option>07</option>
-                <option>08</option>
-                <option>09</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-              </select>
-              <span>시</span>
-              <select>
-                <option>00</option>
-                <option>05</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-                <option>25</option>
-                <option>30</option>
-                <option>35</option>
-                <option>40</option>
-                <option>45</option>
-                <option>50</option>
-                <option>55</option>
-              </select>
-              <span>분 ~</span>
+              <div>
+                <label>등록</label>
+                <input
+                  type="file"
+                  id="input-file"
+                  accept="image/jpeg,gif,png,jpg"
+                  style={{ display: "none" }}
+                ></input>
+                <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
+              </div>
             </div>
+          </ImgBox>
+        </div>
+        <h1>할인 적용</h1>
+        <div>
+          <RadioBox>
+            <h2>
+              할인 적용 여부
+              <span> *</span>
+            </h2>
+            <div>
+              <input type="radio" name="discount"></input>
+              <label>할인 적용</label>
+              <input type="radio" name="discount"></input>
+              <label>적용 안함</label>
+            </div>
+          </RadioBox>
+          <SelectBox>
+            <h2>할인 유형</h2>
+            <div>
+              <select>
+                <option>금액 할인</option>
+                <option>정률 할인</option>
+              </select>
+            </div>
+          </SelectBox>
+          <ContentBox>
+            <h2>할인율/ 할인금액</h2>
+            <div>
+              <input type="text"></input>
+              <span>원</span>
+            </div>
+          </ContentBox>
+          <PeriodSet>
+            <h2>기간설정</h2>
             <div>
               <div>
-                <input type="date"></input>
+                <input type="radio" name="use"></input>
+                <label>사용함</label>
+                <input type="radio" name="use"></input>
+                <label>사용안함</label>
               </div>
-              <select>
-                <option>00</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-                <option>06</option>
-                <option>07</option>
-                <option>08</option>
-                <option>09</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-              </select>
-              <span>시</span>
-              <select>
-                <option>00</option>
-                <option>05</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-                <option>25</option>
-                <option>30</option>
-                <option>35</option>
-                <option>40</option>
-                <option>45</option>
-                <option>50</option>
-                <option>55</option>
-              </select>
-              <span>분</span>
+              <div>
+                <div>
+                  <input type="date"></input>
+                </div>
+                <select value={startHour} onChange={onchange} name="startHour">
+                  {hourList.map((item) => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <span>시</span>
+                <select
+                  value={startMinute}
+                  onChange={onchange}
+                  name="startminute"
+                >
+                  {minuteList.map((item) => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <span>분 ~</span>
+              </div>
+              <div>
+                <div>
+                  <input type="date"></input>
+                </div>
+                <select value={endHour} onChange={onchange} name="endHour">
+                  {hourList.map((item) => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <span>시</span>
+                <select value={endMinute} onChange={onchange} name="endMinute">
+                  {minuteList.map((item) => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <span>분</span>
+              </div>
             </div>
-          </div>
-        </PeriodSet>
+          </PeriodSet>
+        </div>
+        <div>
+          <EditButton
+            type="submit"
+            id="editbutton"
+            value="수정"
+            col={Theme.lightblack}
+            bgcol={Theme.realWhite}
+          ></EditButton>
+          <RegButton
+            type="submit"
+            id="regbutton"
+            value="등록"
+            col={Theme.realWhite}
+            bgcol={Theme.green}
+          ></RegButton>
+        </div>
       </form>
-      <div>
-        <EditButton
-          type="submit"
-          id="editbutton"
-          value="수정"
-          col={Theme.lightblack}
-          bgcol={Theme.realWhite}
-        ></EditButton>
-        <RegButton
-          type="submit"
-          id="regbutton"
-          value="등록"
-          col={Theme.realWhite}
-          bgcol={Theme.green}
-        ></RegButton>
-      </div>
     </MainBox>
   );
 };
