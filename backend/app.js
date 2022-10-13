@@ -100,6 +100,23 @@ app.post("/storeOpen", (req, res) => {
 app.get("/admin/newproduct", (req, res) => {
   console.log("연결성공");
   console.log(req.body);
+  const {
+    productName,
+    productExp,
+    productPrice,
+    startHour,
+    startMinute,
+    endHour,
+    endMinute,
+    discountType,
+    discountPrice,
+    discount,
+  } = req.body;
+  const SQL = `INSERT INTO test VALUES(null,'${productName}','${productExp}','${productPrice}','${startHour}','${startMinute}','${endHour}','${endMinute}','${discountType}','${discountPrice}','${discount}')`;
+  db.query(SQL, (err, row, fild) => {
+    if (err) throw err;
+    console.log(row);
+  });
 });
 
 app.listen(PORT, () => {

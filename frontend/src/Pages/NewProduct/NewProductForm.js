@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Theme from "../../Theme/theme";
 
@@ -126,7 +127,6 @@ const ImgBox = styled.div`
       & > div {
         width: 164px;
         height: 164px;
-        background-color: ${({ theme }) => theme.lightgray};
         border-radius: 3px;
       }
       // 이미지 권장 사이즈 안내
@@ -359,7 +359,7 @@ const PeriodSet = styled.div`
 `;
 
 // 등록 버튼
-const RegButton = styled.input`
+const RegButton = styled.button`
   width: 187px;
   height: 50px;
   color: ${(props) => props.col};
@@ -378,6 +378,41 @@ const EditButton = styled(RegButton)`
   border: 1px solid ${({ theme }) => theme.lightblack};
 `;
 const NewProductForm = () => {
+  const [files, setfiles] = useState("");
+
+  const onLoadFile = (e) => {
+    const file = e.target.files;
+    console.log(file);
+    setfiles(file);
+  };
+
+  const handleClick = (e) => {
+    const formdata = new FormData();
+    formdata.append("uploadImage", files[0]);
+
+    const config = {
+      Headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    axios.post(`api`, formdata, config);
+  };
+
+  useEffect(() => {
+    preview();
+    return () => preview();
+  });
+  const preview = () => {
+    if (!files) return false;
+    const imgEl = document.querySelector(".img__box");
+    const reader = new FileReader();
+    reader.onload = () =>
+      (imgEl.style.backgroundImag = `url(${reader.result})`);
+    reader.readAsDataURL(files[0]);
+    console.log(reader);
+  };
+  const discountTypeList = ["금액할인", "정률할인"];
+
   const hourList = [
     "00",
     "01",
@@ -426,6 +461,12 @@ const NewProductForm = () => {
     startminute: "00",
     endHour: "23",
     endminute: "55",
+    discountType: "금액할인",
+    discountPrice: "",
+    discount: "",
+    use: "",
+    startDate: "",
+    endDate: "",
   });
   const {
     productName,
@@ -435,6 +476,12 @@ const NewProductForm = () => {
     startMinute,
     endHour,
     endMinute,
+    discountType,
+    discountPrice,
+    discount,
+    use,
+    startDate,
+    endDate,
   } = inputData;
 
   const onchange = (e) => {
@@ -448,12 +495,23 @@ const NewProductForm = () => {
     productName: productName,
     productExp: productExp,
     productPrice: productPrice,
+    startDate: `${startDate} ${startHour}시 ${startMinute}분`,
+    endDate: `${endDate} ${endHour}시 ${endMinute}분`,
+    discountType: discountType,
+    discountPrice: discountPrice,
+    use: use === "true" ? 1 : 0,
+    discount: discount === "true" ? 1 : 0,
   };
-  // const onClick = () => {
-  //   const response = axios.post("http://localhost:8080/admin/newproduct", data);
-  // };
+
   return (
     <MainBox>
+      <button
+        onClick={() => {
+          console.log(data);
+        }}
+      >
+        데이터 확인
+      </button>
       <form>
         <h1>상품 등록</h1>
         <div>
@@ -476,35 +534,37 @@ const NewProductForm = () => {
               판매가<span> *</span>
             </h2>
             <div>
-              <input
-                type="number"
-                onChange={onchange}
-                name="productPrice"
-              ></input>
+              <input onChange={onchange} name="productPrice"></input>
               <span>원</span>
             </div>
           </ContentBox>
-          <ImgBox>
-            <h2>
-              대표이미지 등록<span> *</span>
-            </h2>
-            <div>
+          <form className="custom__img">
+            <ImgBox>
+              <h2>
+                대표이미지 등록<span> *</span>
+              </h2>
               <div>
-                <div></div>
-                <p>권장 500px * 500px</p>
+                <div>
+                  <div className="img__box">
+                    <img src="" alt="" />
+                  </div>
+                  <p>권장 500px * 500px</p>
+                </div>
+                <div>
+                  <input
+                    type="file"
+                    id="input-file"
+                    accept="image/jpeg,gif,png,jpg"
+                    onChange={onLoadFile}
+                    style={{ display: "none" }}
+                  ></input>
+                  <label for="input-file">등록</label>
+                  <button onClick={handleClick}>저장하기</button>;
+                  <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
+                </div>
               </div>
-              <div>
-                <label>등록</label>
-                <input
-                  type="file"
-                  id="input-file"
-                  accept="image/jpeg,gif,png,jpg"
-                  style={{ display: "none" }}
-                ></input>
-                <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
-              </div>
-            </div>
-          </ImgBox>
+            </ImgBox>
+          </form>
         </div>
         <h1>할인 적용</h1>
         <div>
@@ -514,25 +574,48 @@ const NewProductForm = () => {
               <span> *</span>
             </h2>
             <div>
-              <input type="radio" name="discount"></input>
+              <input
+                type="radio"
+                name="discount"
+                value="true"
+                checked={discount === "true"}
+                onChange={onchange}
+              ></input>
               <label>할인 적용</label>
-              <input type="radio" name="discount"></input>
+              <input
+                type="radio"
+                name="discount"
+                value="false"
+                checked={discount === "false"}
+                onChange={onchange}
+              ></input>
               <label>적용 안함</label>
             </div>
           </RadioBox>
           <SelectBox>
             <h2>할인 유형</h2>
             <div>
-              <select>
-                <option>금액 할인</option>
-                <option>정률 할인</option>
+              <select
+                onChange={onchange}
+                value={discountType}
+                name="discountType"
+              >
+                {discountTypeList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
               </select>
             </div>
           </SelectBox>
           <ContentBox>
             <h2>할인율/ 할인금액</h2>
             <div>
-              <input type="text"></input>
+              <input
+                type="text"
+                onChange={onchange}
+                name="discount Price"
+              ></input>
               <span>원</span>
             </div>
           </ContentBox>
@@ -540,14 +623,30 @@ const NewProductForm = () => {
             <h2>기간설정</h2>
             <div>
               <div>
-                <input type="radio" name="use"></input>
+                <input
+                  type="radio"
+                  name="use"
+                  value="true"
+                  checked={use === "true"}
+                  onChange={onchange}
+                ></input>
                 <label>사용함</label>
-                <input type="radio" name="use"></input>
+                <input
+                  type="radio"
+                  name="use"
+                  value="false"
+                  checked={use === "false"}
+                  onChange={onchange}
+                ></input>
                 <label>사용안함</label>
               </div>
               <div>
                 <div>
-                  <input type="date"></input>
+                  <input
+                    type="date"
+                    onChange={onchange}
+                    name="startDate"
+                  ></input>
                 </div>
                 <select value={startHour} onChange={onchange} name="startHour">
                   {hourList.map((item) => (
@@ -572,7 +671,7 @@ const NewProductForm = () => {
               </div>
               <div>
                 <div>
-                  <input type="date"></input>
+                  <input type="date" onChange={onchange} name="endDate"></input>
                 </div>
                 <select value={endHour} onChange={onchange} name="endHour">
                   {hourList.map((item) => (
@@ -595,20 +694,16 @@ const NewProductForm = () => {
           </PeriodSet>
         </div>
         <div>
-          <EditButton
-            type="submit"
-            id="editbutton"
-            value="수정"
-            col={Theme.lightblack}
-            bgcol={Theme.realWhite}
-          ></EditButton>
+          <EditButton col={Theme.lightblack} bgcol={Theme.realWhite}>
+            수정
+          </EditButton>
           <RegButton
-            type="submit"
-            id="regbutton"
-            value="등록"
+            onClick={onclick}
             col={Theme.realWhite}
             bgcol={Theme.green}
-          ></RegButton>
+          >
+            등록
+          </RegButton>
         </div>
       </form>
     </MainBox>
