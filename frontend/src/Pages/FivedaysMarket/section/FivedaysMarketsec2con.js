@@ -22,7 +22,8 @@ const FivedaysMarketsec2con = () => {
     const Product = async () => {
       try {
         let response = await axios.get('http://localhost:8080/FIvedaysMarket');
-        setData(response.data);
+        console.log(response.data[0]);
+        setData(response.data[0])
       } catch (e) {
         console.log(e);
       }

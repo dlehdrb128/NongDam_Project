@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 
 // 섹션1 콘텐츠 컨테이너(너비,위치,그림자 조정)
@@ -57,25 +59,43 @@ const Section1con = styled.div`
 `;
 
 //dummy Text
-const Market = {
-  name: "'청주 육거리시장'",
-  imgurl: `/img/Fdays_sec1_img1.png`,
-  contents: `우리나라의 다양한 시장을 소개합니다.\n육거리 종합시장은 대표적인 전통 시장이자\n전국 5대 재래시장에 꼽힐 만큼 규모가 크고\n점포수, 방문객 수가 많은 시장입니다.\n12개의 시장이 합쳐져 전통시장의 현대화에\n 성공한 시장으로도 꼽힙니다.\n기와지붕과 청사 초롱을 달아놓은 입구에서\n우리나라 전통시장의 이미지를 느낄 수 있답니다.`,
-};
 
 const FivedaysMarektsec1con = () => {
-  const { name, imgurl, contents } = Market;
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    setLoading(true);
+    const Product = async () => {
+      try {
+        let response = await axios.get('http://localhost:8080/FIvedaysMarket');
+        setData(response.data[1])
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    Product();
+  }, []);
+
+  if (loading) {
+    return <h1>준비중입니다.</h1>;
+  }
+  if (data === undefined) {
+    return <h1>상품이 존재하지 않습니다.</h1>;
+  }
+
   return (
     <Section1con>
       {/* 시장이미지 */}
-      <img src={imgurl} alt="sec1_img" />
+      <img src={data[0].marketimg} alt="sec1_img" />
       {/* 텍스트 콘테이너 */}
       <div>
         <div>
           {/* 타이틀 */}
-          <h1>{name}</h1>
+          <h1>{data[0].marketname}</h1>
           {/* 내용 */}
-          <p>{contents}</p>
+          <p>{data[0].marketdesc}</p>
         </div>
         {/* <div></div> MAP API용 div*/}
         {/* 지도이미지 */}
