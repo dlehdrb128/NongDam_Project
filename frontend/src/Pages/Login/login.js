@@ -1,6 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import HomePage from "../HomePage/HomePage";
 const LoginHeader = styled.div`
   /* 최상단 "로그인" 제목 값 */
   width: 1230px;
@@ -207,6 +209,22 @@ const AppleLogo = styled.img`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  var config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+      withCredentials: "true",
+    },
+  };
+
+  const getData = async () => {
+    const data = await axios.get("http://localhost:8080/login", {
+      withCredentials: "true",
+    });
+    return data;
+  };
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -214,12 +232,21 @@ const Login = () => {
   const onChangePassword = (e) => {
     setPassword(e.target.value);
   };
+
   const onSubmitLogin = async () => {
-    console.log(email, "submit");
-    const data = await axios.post("http://localhost:8080/login", {
-      email,
-      password,
-    });
+    const data = await axios.post(
+      "http://localhost:8080/login",
+      {
+        email,
+        password,
+      },
+      { withCredentials: "true" }
+    );
+
+    if (data.status) {
+      const LoginData = await getData();
+      console.log(LoginData);
+    }
   };
 
   return (

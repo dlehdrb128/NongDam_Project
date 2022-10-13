@@ -11,6 +11,7 @@ const session = require("express-session");
 const Main = require("./Server/Router/Main/index");
 const Order = require("./Server/Router/SangHo/order");
 const login = require("./Server/Router/SangHo/login");
+const { MemoryStore } = require("express-session");
 
 const PORT = process.env.PORT || 8080;
 
@@ -45,7 +46,12 @@ const upload = multer({
   }),
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -55,6 +61,11 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      httpOnly: true, // 자바스크립트를 통해 세션 쿠키를 사용할 수
+      Secure: true,
+    },
+    store: new MemoryStore(),
   })
 );
 
