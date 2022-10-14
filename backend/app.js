@@ -1,19 +1,19 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const Main = require("./Server/Router/Main/index");
-const path = require("path");
-const cors = require("cors");
-const fs = require("fs");
-const multer = require("multer");
-const db = require("./DB/index");
+const Main = require('./Server/Router/Main/index');
+const path = require('path');
+const cors = require('cors');
+const fs = require('fs');
+const multer = require('multer');
+const db = require('./DB/index');
 
 const PORT = process.env.PORT || 8080;
 
 try {
-  fs.readdirSync("uploads");
+  fs.readdirSync('uploads');
 } catch (error) {
-  fs.mkdirSync("uploads");
-  console.log("uploads 파일이 없어서 생성합니다!");
+  fs.mkdirSync('uploads');
+  console.log('uploads 파일이 없어서 생성합니다!');
 }
 
 // Request full drive access.
@@ -32,7 +32,7 @@ try {
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "uploads");
+      cb(null, 'uploads');
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + path.extname(file.originalname));
@@ -41,22 +41,23 @@ const upload = multer({
 });
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/", Main);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', Main);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.post("/upload", upload.single("img"), (req, res) => {
+app.post('/upload', upload.single('img'), (req, res) => {
   console.log(req.file);
   console.log(req.body);
-  console.dir(req.header("Content-Type"));
+  console.dir(req.header('Content-Type'));
   // console.log(req.files);
 
-  res.send("하이");
+  res.send('하이');
 });
 
-app.post("/storeOpen", (req, res) => {
+app.post('/storeOpen', (req, res) => {
+  console.log('storeopen 성공');
   const {
     storeName,
     mobilePhone,
@@ -97,22 +98,22 @@ app.post("/storeOpen", (req, res) => {
   });
 });
 
-app.get("/admin/newproduct", (req, res) => {
-  console.log("연결성공");
+app.post('/admin/newproduct', (req, res) => {
+  console.log('new product 연결성공');
   console.log(req.body);
   const {
     productName,
     productExp,
     productPrice,
-    startHour,
-    startMinute,
-    endHour,
-    endMinute,
+    discount,
     discountType,
     discountPrice,
-    discount,
+    startDate,
+    endDate,
+    dateUse,
   } = req.body;
-  const SQL = `INSERT INTO test VALUES(null,'${productName}','${productExp}','${productPrice}','${startHour}','${startMinute}','${endHour}','${endMinute}','${discountType}','${discountPrice}','${discount}')`;
+
+  const SQL = `INSERT INTO newProduct VALUES(null,'${productName}','${productExp}',${productPrice},${discount},'${discountType}',${discountPrice},${dateUse},'${startDate}','${endDate}');`;
   db.query(SQL, (err, row, fild) => {
     if (err) throw err;
     console.log(row);

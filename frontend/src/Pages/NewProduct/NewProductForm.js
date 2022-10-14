@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Theme from "../../Theme/theme";
+import axios from 'axios';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Theme from '../../Theme/theme';
 
 // 폼제목과 폼을 메인박스로 묶었다
 const MainBox = styled.div`
@@ -13,7 +13,7 @@ const MainBox = styled.div`
   // form 제목
   & > form {
     & > h1 {
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       color: ${({ theme }) => theme.lightblack};
       font-size: 2.5rem;
       padding-bottom: 15px;
@@ -48,7 +48,7 @@ const ContentBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -56,7 +56,7 @@ const ContentBox = styled.div`
     // 필수입력사항 *로 표시
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -69,7 +69,7 @@ const ContentBox = styled.div`
     border-left: 1px solid ${({ theme }) => theme.liglightgray};
     // 내용 담기는 input
     & > input {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -78,7 +78,7 @@ const ContentBox = styled.div`
       font-size: 1.5rem;
     }
     & > span {
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
       font-size: 1.5rem;
       padding-left: 5px;
     }
@@ -98,7 +98,7 @@ const ImgBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -106,7 +106,7 @@ const ImgBox = styled.div`
     // 필수기입사항
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -123,15 +123,24 @@ const ImgBox = styled.div`
       height: 182px;
       display: flex;
       flex-direction: column;
+
       //사진미리보기 부분/ 지금은 회색 박스
       & > div {
         width: 164px;
         height: 164px;
         border-radius: 3px;
+        border: 1px solid ${({ theme }) => theme.liglightgray};
+
+        & > img {
+          width: 100%;
+          height: 100%;
+          margin: 'auto';
+        }
       }
+
       // 이미지 권장 사이즈 안내
       & > p {
-        font-family: "SCD-5";
+        font-family: 'SCD-5';
         text-align: center;
       }
     }
@@ -150,7 +159,7 @@ const ImgBox = styled.div`
         color: ${({ theme }) => theme.realWhite};
         text-align: center;
         border-radius: 3px;
-        font-family: "SCD-6";
+        font-family: 'SCD-6';
         font-size: 1.5rem;
         display: flex;
         justify-content: center;
@@ -159,7 +168,7 @@ const ImgBox = styled.div`
       }
       // 등록이미지 안내
       & > p {
-        font-family: "SCD-5";
+        font-family: 'SCD-5';
         font-size: 1rem;
       }
     }
@@ -178,7 +187,7 @@ const RadioBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -186,7 +195,7 @@ const RadioBox = styled.div`
     // 필수입력사항
     & > span {
       color: red;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       font-size: 1.5rem;
     }
   }
@@ -213,7 +222,7 @@ const RadioBox = styled.div`
     }
     //
     & > label {
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
       font-size: 1.3rem;
       padding: 0 20px 0 5px;
     }
@@ -234,7 +243,7 @@ const SelectBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -251,7 +260,7 @@ const SelectBox = styled.div`
 
     // select박스 부분
     & > select {
-      font-family: "SCD-4";
+      font-family: 'SCD-4';
       width: 100px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -274,7 +283,7 @@ const PeriodSet = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -311,7 +320,7 @@ const PeriodSet = styled.div`
       }
       // 각 라디오버튼의 내용 스타일링
       & > label {
-        font-family: "SCD-3";
+        font-family: 'SCD-3';
         font-size: 1.3rem;
         padding: 0 20px 0 5px;
       }
@@ -331,7 +340,7 @@ const PeriodSet = styled.div`
           width: 187px;
           height: 40px;
           border-radius: 3px;
-          font-family: "SCD-3";
+          font-family: 'SCD-3';
           font-size: 1.3rem;
           padding: 5px;
           margin-right: 10px;
@@ -339,7 +348,7 @@ const PeriodSet = styled.div`
       }
       // select 스타일링
       & > select {
-        font-family: "SCD-3";
+        font-family: 'SCD-3';
         width: 68px;
         height: 40px;
         border: 1px solid ${({ theme }) => theme.gray};
@@ -350,7 +359,7 @@ const PeriodSet = styled.div`
       }
       // select 박스 뒤에 글자들 ex)시, 분
       & > span {
-        font-family: "SCD-3";
+        font-family: 'SCD-3';
         font-size: 1.5rem;
         margin-right: 10px;
       }
@@ -364,7 +373,7 @@ const RegButton = styled.button`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -378,95 +387,82 @@ const EditButton = styled(RegButton)`
   border: 1px solid ${({ theme }) => theme.lightblack};
 `;
 const NewProductForm = () => {
-  const [files, setfiles] = useState("");
+  const [imgBase64, setImgBase64] = useState('');
+  const [imgFile, setImgFile] = useState('');
 
-  const onLoadFile = (e) => {
-    const file = e.target.files;
-    console.log(file);
-    setfiles(file);
-  };
-
-  const handleClick = (e) => {
-    const formdata = new FormData();
-    formdata.append("uploadImage", files[0]);
-
-    const config = {
-      Headers: {
-        "content-type": "multipart/form-data",
-      },
+  const onchangeFile = (e) => {
+    let reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result;
+      if (base64) {
+        setImgBase64(base64.toString()); // 파일 base64 상태 업데이트
+      }
     };
-    axios.post(`api`, formdata, config);
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+      setImgFile(e.target.files[0]);
+    }
   };
+  /**
+   *
+   */
 
-  useEffect(() => {
-    preview();
-    return () => preview();
-  });
-  const preview = () => {
-    if (!files) return false;
-    const imgEl = document.querySelector(".img__box");
-    const reader = new FileReader();
-    reader.onload = () =>
-      (imgEl.style.backgroundImag = `url(${reader.result})`);
-    reader.readAsDataURL(files[0]);
-    console.log(reader);
-  };
-  const discountTypeList = ["금액할인", "정률할인"];
+  const discountTypeList = ['금액할인', '정률할인'];
 
   const hourList = [
-    "00",
-    "01",
-    "02",
-    "03",
-    "04",
-    "05",
-    "06",
-    "07",
-    "08",
-    "09",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20",
-    "21",
-    "22",
-    "23",
+    '00',
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
   ];
   const minuteList = [
-    "00",
-    "05",
-    "10",
-    "15",
-    "20",
-    "25",
-    "30",
-    "35",
-    "40",
-    "45",
-    "50",
-    "55",
+    '00',
+    '05',
+    '10',
+    '15',
+    '20',
+    '25',
+    '30',
+    '35',
+    '40',
+    '45',
+    '50',
+    '55',
   ];
   const [inputData, setInputData] = useState({
-    productName: "",
-    productExp: "",
-    productPrice: "",
-    startHour: "00",
-    startminute: "00",
-    endHour: "23",
-    endminute: "55",
-    discountType: "금액할인",
-    discountPrice: "",
-    discount: "",
-    use: "",
-    startDate: "",
-    endDate: "",
+    productName: '',
+    productExp: '',
+    productPrice: '',
+    startHour: '00',
+    startMinute: '00',
+    endHour: '23',
+    endMinute: '55',
+    discountType: '금액할인',
+    discountPrice: '',
+    discount: '',
+    use: '',
+    startDate: '',
+    endDate: '',
   });
   const {
     productName,
@@ -499,8 +495,12 @@ const NewProductForm = () => {
     endDate: `${endDate} ${endHour}시 ${endMinute}분`,
     discountType: discountType,
     discountPrice: discountPrice,
-    use: use === "true" ? 1 : 0,
-    discount: discount === "true" ? 1 : 0,
+    dateUse: use === 'true' ? 1 : 0,
+    discount: discount === 'true' ? 1 : 0,
+  };
+
+  const onclick = () => {
+    const response = axios.post('http://localhost:8080/admin/newproduct', data);
   };
 
   return (
@@ -520,13 +520,13 @@ const NewProductForm = () => {
               상품명<span> *</span>
             </h2>
             <div>
-              <input type="text" onChange={onchange} name="productName"></input>
+              <input type='text' onChange={onchange} name='productName'></input>
             </div>
           </ContentBox>
           <ContentBox>
             <h2>상품요약설명</h2>
             <div>
-              <input type="text" onChange={onchange} name="productExp"></input>
+              <input type='text' onChange={onchange} name='productExp'></input>
             </div>
           </ContentBox>
           <ContentBox>
@@ -534,37 +534,34 @@ const NewProductForm = () => {
               판매가<span> *</span>
             </h2>
             <div>
-              <input onChange={onchange} name="productPrice"></input>
+              <input onChange={onchange} name='productPrice'></input>
               <span>원</span>
             </div>
           </ContentBox>
-          <form className="custom__img">
-            <ImgBox>
-              <h2>
-                대표이미지 등록<span> *</span>
-              </h2>
+          <ImgBox>
+            <h2>
+              대표이미지 등록<span> *</span>
+            </h2>
+            <div>
               <div>
-                <div>
-                  <div className="img__box">
-                    <img src="" alt="" />
-                  </div>
-                  <p>권장 500px * 500px</p>
+                <div className='imgBox'>
+                  <img alt='sample' src={''} />
                 </div>
-                <div>
-                  <input
-                    type="file"
-                    id="input-file"
-                    accept="image/jpeg,gif,png,jpg"
-                    onChange={onLoadFile}
-                    style={{ display: "none" }}
-                  ></input>
-                  <label for="input-file">등록</label>
-                  <button onClick={handleClick}>저장하기</button>;
-                  <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
-                </div>
+                <p>권장 500px * 500px</p>
               </div>
-            </ImgBox>
-          </form>
+              <div>
+                <input
+                  type='file'
+                  id='input-file'
+                  accept='image/jpeg,gif,png,jpg'
+                  onChange={onchangeFile}
+                  style={{ display: 'none' }}
+                ></input>
+                <label for='input-file'>등록</label>
+                <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
+              </div>
+            </div>
+          </ImgBox>
         </div>
         <h1>할인 적용</h1>
         <div>
@@ -575,18 +572,18 @@ const NewProductForm = () => {
             </h2>
             <div>
               <input
-                type="radio"
-                name="discount"
-                value="true"
-                checked={discount === "true"}
+                type='radio'
+                name='discount'
+                value='true'
+                checked={discount === 'true'}
                 onChange={onchange}
               ></input>
               <label>할인 적용</label>
               <input
-                type="radio"
-                name="discount"
-                value="false"
-                checked={discount === "false"}
+                type='radio'
+                name='discount'
+                value='false'
+                checked={discount === 'false'}
                 onChange={onchange}
               ></input>
               <label>적용 안함</label>
@@ -598,7 +595,7 @@ const NewProductForm = () => {
               <select
                 onChange={onchange}
                 value={discountType}
-                name="discountType"
+                name='discountType'
               >
                 {discountTypeList.map((item) => (
                   <option value={item} key={item}>
@@ -612,9 +609,9 @@ const NewProductForm = () => {
             <h2>할인율/ 할인금액</h2>
             <div>
               <input
-                type="text"
+                type='text'
                 onChange={onchange}
-                name="discount Price"
+                name='discountPrice'
               ></input>
               <span>원</span>
             </div>
@@ -624,18 +621,18 @@ const NewProductForm = () => {
             <div>
               <div>
                 <input
-                  type="radio"
-                  name="use"
-                  value="true"
-                  checked={use === "true"}
+                  type='radio'
+                  name='use'
+                  value='true'
+                  checked={use === 'true'}
                   onChange={onchange}
                 ></input>
                 <label>사용함</label>
                 <input
-                  type="radio"
-                  name="use"
-                  value="false"
-                  checked={use === "false"}
+                  type='radio'
+                  name='use'
+                  value='false'
+                  checked={use === 'false'}
                   onChange={onchange}
                 ></input>
                 <label>사용안함</label>
@@ -643,12 +640,12 @@ const NewProductForm = () => {
               <div>
                 <div>
                   <input
-                    type="date"
+                    type='date'
                     onChange={onchange}
-                    name="startDate"
+                    name='startDate'
                   ></input>
                 </div>
-                <select value={startHour} onChange={onchange} name="startHour">
+                <select value={startHour} onChange={onchange} name='startHour'>
                   {hourList.map((item) => (
                     <option value={item} key={item}>
                       {item}
@@ -659,10 +656,10 @@ const NewProductForm = () => {
                 <select
                   value={startMinute}
                   onChange={onchange}
-                  name="startminute"
+                  name='startminute'
                 >
                   {minuteList.map((item) => (
-                    <option value={item} key={item}>
+                    <option value={item} key={item} name='startMinute'>
                       {item}
                     </option>
                   ))}
@@ -671,9 +668,9 @@ const NewProductForm = () => {
               </div>
               <div>
                 <div>
-                  <input type="date" onChange={onchange} name="endDate"></input>
+                  <input type='date' onChange={onchange} name='endDate'></input>
                 </div>
-                <select value={endHour} onChange={onchange} name="endHour">
+                <select value={endHour} onChange={onchange} name='endHour'>
                   {hourList.map((item) => (
                     <option value={item} key={item}>
                       {item}
@@ -681,7 +678,7 @@ const NewProductForm = () => {
                   ))}
                 </select>
                 <span>시</span>
-                <select value={endMinute} onChange={onchange} name="endMinute">
+                <select value={endMinute} onChange={onchange} name='endMinute'>
                   {minuteList.map((item) => (
                     <option value={item} key={item}>
                       {item}
