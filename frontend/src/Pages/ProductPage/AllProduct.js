@@ -67,7 +67,12 @@ const ProductItemLeft = styled.div`
   }
 `;
 
-const ProductItemRight = styled.img``;
+const ProductItemRight = styled.img`
+  width: 650px;
+  height: 200px;
+  margin-right: 100px;
+  margin-bottom: 50px;
+`;
 
 // 상품 검색페이지의 상품들을 담는 컨테이너
 const ProductBox = styled.div`
@@ -106,14 +111,18 @@ const ProductSortBox = styled.div`
   & > div:nth-child(2) {
     display: flex;
     align-items: center;
+    color: ${({ theme }) => theme.lightblack};
     gap: 45px;
 
     & > div:hover {
+      cursor: pointer;
+      font-weight: bold;
     }
 
     & > div {
       font-family: "SCD-4";
       font-size: 1.5rem;
+      padding-right: 20px;
     }
   }
 `;
@@ -262,13 +271,17 @@ const AllProduct = () => {
           </div>
         </ProductItemLeft>
         <ProductItemRight
-          src="/img/chungcheonbuk-do.svg"
+          src={`http://localhost:8080/local/${params}.png`}
           alt="이미지 없음"
         ></ProductItemRight>
       </ProductTop>
 
       <ProductSortBox>
-        {loading === true ? null : <div>{data.length}개의 상품이 있습니다</div>}
+        {loading === true ? (
+          <div style={{ visibility: "hidden" }}></div>
+        ) : (
+          <div>{data.length}개의 상품이 있습니다</div>
+        )}
         <div>
           <div>인기순</div>
           <div>최신순</div>
