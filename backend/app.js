@@ -5,7 +5,10 @@ const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 const multer = require('multer');
-const db = require('./DB/index');
+const yjdb = require('./Server/Router/Admin/index');
+
+const Product = require('./Server/Router/Product/index');
+const uploadTest = require('./Server/Router/uploadTest');
 
 const PORT = process.env.PORT || 8080;
 
@@ -41,8 +44,11 @@ const upload = multer({
 });
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
+
 app.use('/', Main);
+app.use('/product', Product);
+app.use('/upload', uploadTest);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -54,6 +60,10 @@ app.post('/upload', upload.single('img'), (req, res) => {
   // console.log(req.files);
 
   res.send('하이');
+});
+
+app.get('/storOpen', (req, res) => {
+  res.send('storeOpen 페이지 연결');
 });
 
 app.post('/storeOpen', (req, res) => {
@@ -91,30 +101,9 @@ app.post('/storeOpen', (req, res) => {
    * csHours cs운영시간
    * business 통신판매업 신고
    */
-  const SQL = `INSERT INTO test VALUES(null,'${storeName}','${mobilePhone}','${email}','${name}','${address}','${huntingLine}','${mobile}','${receiveEmail}','${outgoingEmail}','${business}','${csTel}','${csEmail}','${faxTel}','${csHours}')`;
-  db.query(SQL, (err, row, fild) => {
-    if (err) throw err;
-    console.log(row);
-  });
-});
+  const SQL = `INSERT INTO admin VALUES(null,9,'사업자','${storeName}','${mobilePhone}','${email}','${name}','${address}','${huntingLine}','${mobile}','${receiveEmail}','${outgoingEmail}','${business}','${csTel}','${csEmail}','${faxTel}','${csHours}')`;
 
-app.post('/admin/newproduct', (req, res) => {
-  console.log('new product 연결성공');
-  console.log(req.body);
-  const {
-    productName,
-    productExp,
-    productPrice,
-    discount,
-    discountType,
-    discountPrice,
-    startDate,
-    endDate,
-    dateUse,
-  } = req.body;
-
-  const SQL = `INSERT INTO newProduct VALUES(null,'${productName}','${productExp}',${productPrice},${discount},'${discountType}',${discountPrice},${dateUse},'${startDate}','${endDate}');`;
-  db.query(SQL, (err, row, fild) => {
+  yjdb.query(SQL, (err, row, fild) => {
     if (err) throw err;
     console.log(row);
   });

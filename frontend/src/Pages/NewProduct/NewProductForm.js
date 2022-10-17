@@ -582,7 +582,7 @@ const NewProductForm = () => {
             <div>
               <div>
                 <div className='imgBox'>
-                  <img alt='sample' src={''} />
+                  <img/>
                 </div>
                 <p>권장 500px * 500px</p>
               </div>

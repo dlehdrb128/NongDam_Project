@@ -17,6 +17,8 @@ import CartMain from "../Pages/Cart/CartMain";
 import FivedaysMakret from "../Pages/FivedaysMarket/FivedaysMarket";
 import NewProductMain from "../Pages/NewProduct/NewProductMain";
 import Mypage from "../Pages/MyPage/MyPage";
+import RecipeReview from "../Pages/Recipe/recipeReview";
+import UploadTest from "../Pages/uploadTest/index";
 import "./App.css";
 
 function App() {
@@ -28,18 +30,21 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/intro" element={<Intro />}></Route>
-          <Route path="/product" element={<AllProduct />}></Route>
-          <Route path="/product/:id" element={<ProductPage />}></Route>
+          <Route path="/product/:category" element={<AllProduct />}></Route>
+          <Route path="/product/detail/:id" element={<ProductPage />}></Route>
           <Route path="/admin" element={<AdminMain />}></Route>
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route path="/recipe" element={<Recipe />}></Route>
+          <Route path="/recipeReview" element={<RecipeReview />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
           <Route path="/FivedaysMakret" element={<FivedaysMakret />}></Route>
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
+          <Route path="/upload" element={<UploadTest />}></Route>
+
           <Route element={<Footer />} />
         </Route>
       </Routes>
