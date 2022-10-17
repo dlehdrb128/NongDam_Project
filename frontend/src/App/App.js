@@ -17,6 +17,7 @@ import CartMain from "../Pages/Cart/CartMain";
 import FivedaysMakret from "../Pages/FivedaysMarket/FivedaysMarket";
 import NewProductMain from "../Pages/NewProduct/NewProductMain";
 import Mypage from "../Pages/MyPage/MyPage";
+import RecipeCreateReview from "../Pages/Recipe/recipeCreateReview";
 import RecipeReview from "../Pages/Recipe/recipeReview";
 import "./App.css";
 
@@ -36,6 +37,10 @@ function App() {
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route path="/recipe" element={<Recipe />}></Route>
+          <Route
+            path="/recipeCreateReview"
+            element={<RecipeCreateReview />}
+          ></Route>
           <Route path="/recipeReview" element={<RecipeReview />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
