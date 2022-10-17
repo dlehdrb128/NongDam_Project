@@ -6,6 +6,7 @@ const cors = require("cors");
 const fs = require("fs");
 const multer = require("multer");
 const Product = require("./Server/Router/Product/index");
+const uploadTest = require("./Server/Router/uploadTest");
 
 const PORT = process.env.PORT || 8080;
 
@@ -42,9 +43,13 @@ const upload = multer({
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, "uploads")));
-app.use("/", Main);
 
+
+
+
+app.use("/", Main);
 app.use("/product", Product);
+app.use("/upload", uploadTest);
 
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);
@@ -53,10 +58,6 @@ app.post("/upload", upload.single("img"), (req, res) => {
   // console.log(req.files);
 
   res.send("ok");
-});
-
-app.get("/test", (req, res) => {
-  res.send(decode);
 });
 
 app.listen(PORT, () => {
