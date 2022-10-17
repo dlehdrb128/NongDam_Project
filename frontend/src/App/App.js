@@ -18,6 +18,7 @@ import FivedaysMakret from "../Pages/FivedaysMarket/FivedaysMarket";
 import NewProductMain from "../Pages/NewProduct/NewProductMain";
 import Mypage from "../Pages/MyPage/MyPage";
 import RecipeReview from "../Pages/Recipe/recipeReview";
+import UploadTest from "../Pages/uploadTest/index";
 import "./App.css";
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
           <Route path="/FivedaysMakret" element={<FivedaysMakret />}></Route>
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
+          <Route path="/upload" element={<UploadTest />}></Route>
+
           <Route element={<Footer />} />
         </Route>
       </Routes>
