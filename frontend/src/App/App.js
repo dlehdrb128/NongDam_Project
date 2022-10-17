@@ -1,23 +1,26 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../Components/Yehoon/Components/HomePage/HomePage";
-import MainLayout from "../Components/Yehoon/Components/LayOut/MainLayout";
-import Header from "../Components/Yehoon/Components/LayOut/Header";
-import Footer from "../Components/Yehoon/Components/LayOut/Footer";
-import Login from "../Components/Geunsoo/Components/login";
-import Intro from "../Components/SangHee/Components/Intro/Intro";
-import AllProduct from "../Components/Yehoon/Components/ProductPage/AllProduct";
-import ProductPage from "../Components/Yehoon/Components/ProductPage/ProductPage";
-import AdminMain from "./../Components/Yeonju/Components/AdminMain";
-import SignUpEnd from "./../Components/Geunsoo/Components/signUpEnd";
+import MainLayout from "../LayOut/MainLayout";
+import Header from "../LayOut/Header";
+import Footer from "../LayOut/Footer";
+import HomePage from "../Pages/HomePage/HomePage";
+import Login from "../Pages/Login/login";
+import Intro from "../Pages/Intro/Intro";
+import AllProduct from "../Pages/ProductPage/AllProduct";
+import ProductPage from "../Pages/ProductPage/ProductPage";
+import AdminMain from "../Pages/Admin/AdminMain";
+import StoreOpenMain from "../Pages/StoreOpen/StoreOpenMain";
+import SignUp from "../Pages/SignUp/signUp";
+import SignUpEnd from "../Pages/SignUp/signUpEnd";
+import Recipe from "../Pages/Recipe/recipe";
+import OrderDetail from "../Pages/Order/OrderDetail";
+import CartMain from "../Pages/Cart/CartMain";
+import FivedaysMakret from "../Pages/FivedaysMarket/FivedaysMarket";
+import NewProductMain from "../Pages/NewProduct/NewProductMain";
+import Mypage from "../Pages/MyPage/MyPage";
+import RecipeReview from "../Pages/Recipe/recipeReview";
+import UploadTest from "../Pages/uploadTest/index";
 import "./App.css";
-import OrderDetail from "../Components/Sangho/Components/Order/OrderDetail";
-import CartMain from "../Components/Yeonju/Components/Cart/CartMain";
-import StoreOpenMain from "../Components/Yeonju/Components/StoreOpen/StoreOpenMain";
-import FivedaysMakret from "../Components/SangHee/Components/FivedaysMarket/FivedaysMarket";
-import SignUp from "../Components/Geunsoo/Components/signUp";
-import NewProductMain from "../Components/Yeonju/Components/NewProduct/NewProductMain";
-import Mypage from "../Components/SangHee/Components/MyPage/MyPage";
-import Recipe from "../Components/Geunsoo/Components/recipe";
+
 function App() {
   return (
     <>
@@ -27,18 +30,21 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/intro" element={<Intro />}></Route>
-          <Route path="/all" element={<AllProduct />}></Route>
-          <Route path="/product/:id" element={<ProductPage />}></Route>
+          <Route path="/product/:category" element={<AllProduct />}></Route>
+          <Route path="/product/detail/:id" element={<ProductPage />}></Route>
           <Route path="/admin" element={<AdminMain />}></Route>
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route path="/recipe" element={<Recipe />}></Route>
+          <Route path="/recipeReview" element={<RecipeReview />}></Route>
           <Route path="/orderDetail" element={<OrderDetail />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
           <Route path="/FivedaysMakret" element={<FivedaysMakret />}></Route>
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
-          <Route path="/admin/mypage" element={<Mypage />}></Route>
+          <Route path="/mypage" element={<Mypage />}></Route>
+          <Route path="/upload" element={<UploadTest />}></Route>
+
           <Route element={<Footer />} />
         </Route>
       </Routes>
