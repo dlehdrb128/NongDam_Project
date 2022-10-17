@@ -5,7 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const multer = require("multer");
-const Product = require("./Server/Router/Yehoon/Product/index");
+const Product = require("./Server/Router/Product/index");
 
 const PORT = process.env.PORT || 8080;
 

@@ -1,8 +1,6 @@
 const express = require("express");
-const mysql = require("mysql");
 const router = express.Router();
-const dbconfig = require("../db");
-const connection = mysql.createConnection(dbconfig);
+const connection = require("../../../db/db");
 
 router.get(`/:local`, (req, res) => {
   let local = req.params.local;
