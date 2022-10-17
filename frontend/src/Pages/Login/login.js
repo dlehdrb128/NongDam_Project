@@ -240,13 +240,13 @@ const Login = () => {
         email,
         password,
       },
-      { withCredentials: "true" }
+      { withCredentials: true }
     );
 
-    if (data.status) {
-      const LoginData = await getData();
-      console.log(LoginData);
-    }
+    // if (data.status) {
+    //   const LoginData = await getData();
+    //   console.log(LoginData);
+    // }
   };
 
   return (
