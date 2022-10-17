@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import FivedaysMaps from "./FivedaysMap";
 
 // 섹션1 콘텐츠 컨테이너(너비,위치,그림자 조정)
 const Section1con = styled.div`
@@ -63,7 +64,6 @@ const Section1con = styled.div`
 const FivedaysMarektsec1con = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
-
   useEffect(() => {
     setLoading(true);
     const Product = async () => {
@@ -99,7 +99,7 @@ const FivedaysMarektsec1con = () => {
         </div>
         {/* <div></div> MAP API용 div*/}
         {/* 지도이미지 */}
-        <img src="/img/Fday_sec1_Map_1.png" alt="Map"></img>
+        <FivedaysMaps></FivedaysMaps>
       </div>
     </Section1con>
   );
