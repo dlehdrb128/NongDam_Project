@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql");
-const dbconfig = require("../Yehoon/db");
-const connection = mysql.createConnection(dbconfig);
+const connection = require("../../../db/db");
 
 router.get("/", (req, res) => {
   res.send("하이");

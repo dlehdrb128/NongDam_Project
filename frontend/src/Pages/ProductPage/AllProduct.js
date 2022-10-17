@@ -92,11 +92,37 @@ const UndefinedBox = styled.div`
   }
 `;
 
+const ProductSortBox = styled.div`
+  width: 1280px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+
+  & > div:nth-child(1) {
+    font-family: "SCD-6";
+    font-size: 2rem;
+  }
+
+  & > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+
+    & > div:hover {
+    }
+
+    & > div {
+      font-family: "SCD-4";
+      font-size: 1.5rem;
+    }
+  }
+`;
+
 const AllProduct = () => {
   const [params, setParams] = useState(useParams().category);
   const [localSelected, setLocalSelected] = useState("local");
   const [loading, setLoading] = useState(false);
-  const [typeSelected, setTypeSelected] = useState("type");
+  // const [typeSelected, setTypeSelected] = useState("type");
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -127,9 +153,9 @@ const AllProduct = () => {
     // setLocalSelected(event.target.value);
   };
 
-  const typeSelectChange = (event) => {
-    setTypeSelected(event.target.value);
-  };
+  // const typeSelectChange = (event) => {
+  //   setTypeSelected(event.target.value);
+  // };
 
   //   const disPatch = useDispatch();
 
@@ -188,7 +214,7 @@ const AllProduct = () => {
     },
   ];
 
-  let typeData = ["전체 상품", "지역 특산품", "과일", "채소"];
+  // let typeData = ["전체 상품", "지역 특산품", "과일", "채소"];
 
   let localOption = localData.map((value, index) => {
     return (
@@ -198,13 +224,13 @@ const AllProduct = () => {
     );
   });
 
-  let typeOption = typeData.map((value, index) => {
-    return (
-      <option value={value} key={index}>
-        {value}
-      </option>
-    );
-  });
+  // let typeOption = typeData.map((value, index) => {
+  //   return (
+  //     <option value={value} key={index}>
+  //       {value}
+  //     </option>
+  //   );
+  // });
 
   if (data === undefined) {
     return <h1>로딩중입니다</h1>;
@@ -227,12 +253,12 @@ const AllProduct = () => {
               </option>
               {localOption}
             </select>
-            <select value={typeSelected} onChange={typeSelectChange}>
+            {/* <select value={typeSelected} onChange={typeSelectChange}>
               <option value="type" disabled={true}>
                 종류
               </option>
               {typeOption}
-            </select>
+            </select> */}
           </div>
         </ProductItemLeft>
         <ProductItemRight
@@ -240,6 +266,16 @@ const AllProduct = () => {
           alt="이미지 없음"
         ></ProductItemRight>
       </ProductTop>
+
+      <ProductSortBox>
+        {loading === true ? null : <div>{data.length}개의 상품이 있습니다</div>}
+        <div>
+          <div>인기순</div>
+          <div>최신순</div>
+          <div>가격높은순</div>
+          <div>가격낮은순</div>
+        </div>
+      </ProductSortBox>
       <ProductBox>
         {/* {realValue.map((value, index) => {
           return <ProductItem key={index} data={value}></ProductItem>;
