@@ -7,7 +7,7 @@ router.get(`/:local`, (req, res) => {
 
   if (local !== "all") {
     connection.query(
-      `SELECT * FROM product WHERE product_search_local = '${local}'`,
+      `SELECT * FROM product WHERE product_local_eng = '${local}'`,
       (err, rows, field) => {
         if (err) {
           throw err;
