@@ -6,7 +6,7 @@ const OrderInfo = () => {
     {
       id: 1,
       order_id: "1000151095787",
-      image: "/img/product_order_1.png",
+      image: "http://localhost:8080/product_order_1.png",
       productName: "일동후디스 그릭 요거트 플레인 2개입",
       productNum: 1,
       productPrice: 10600,

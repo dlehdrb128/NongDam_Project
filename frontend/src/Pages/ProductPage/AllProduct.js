@@ -2,9 +2,11 @@ import styled from "styled-components";
 import ProductItem from "./ProductItem";
 import { useState } from "react";
 import Remocon from "../../LayOut/Remocon";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 // import { productAll } from "../Slice/getData";
 // import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 // 상품 검색페이지의 상단
 const ProductTop = styled.div`
@@ -78,17 +80,82 @@ const ProductBox = styled.div`
   gap: 110px;
 `;
 
+const UndefinedBox = styled.div`
+  width: 1280px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > h1 {
+    font-size: 4rem;
+    font-family: "YANGJIN";
+  }
+`;
+
+const ProductSortBox = styled.div`
+  width: 1280px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+
+  & > div:nth-child(1) {
+    font-family: "SCD-6";
+    font-size: 2rem;
+  }
+
+  & > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+
+    & > div:hover {
+    }
+
+    & > div {
+      font-family: "SCD-4";
+      font-size: 1.5rem;
+    }
+  }
+`;
+
 const AllProduct = () => {
+  const [params, setParams] = useState(useParams().category);
   const [localSelected, setLocalSelected] = useState("local");
-  const [typeSelected, setTypeSelected] = useState("type");
+  const [loading, setLoading] = useState(false);
+  // const [typeSelected, setTypeSelected] = useState("type");
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      try {
+        let response = await axios.get(
+          `http://localhost:8080/product/${params}`
+        );
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+      setTimeout(() => {
+        setLoading(false);
+      }, 100);
+    };
+    getData();
+  }, [params]);
 
   const localSelectChange = (event) => {
-    setLocalSelected(event.target.value);
+    for (let key of event.target) {
+      if (key.value === event.target.value) {
+        setLocalSelected(key.textContent);
+        setParams(key.value);
+      }
+    }
+    // setLocalSelected(event.target.value);
   };
 
-  const typeSelectChange = (event) => {
-    setTypeSelected(event.target.value);
-  };
+  // const typeSelectChange = (event) => {
+  //   setTypeSelected(event.target.value);
+  // };
 
   //   const disPatch = useDispatch();
 
@@ -111,73 +178,63 @@ const AllProduct = () => {
   //     return null;
   //   }
 
-  let dummyData = [
-    {
-      product_id: "1",
-      image: "/img/exam-1.png",
-      local: "경남",
-      name: "22년 수확 햇 사과 3kg...",
-      price: 10400,
-      value: "4.2",
-      reviewCount: "73",
-    },
-    {
-      product_id: "2",
-      image: "/img/exam-2.png",
-      local: "전북",
-      name: "국내산 깐마늘 2kg...",
-      price: 4500,
-      value: "3.9",
-      reviewCount: "146",
-    },
-    {
-      product_id: "3",
-      image: "/img/exam-3.png",
-      local: "전남",
-      name: "마늘팟 양파  3kg...",
-      price: 6600,
-      value: "4.6",
-      reviewCount: "281",
-    },
-    {
-      product_id: "4",
-      image: "/img/exam-4.png",
-      local: "충북",
-      name: "청결 22년 햇 건고추 6kg",
-      price: 80000,
-      value: "4.8",
-      reviewCount: "39",
-    },
-  ];
-
   let localData = [
-    "경기도",
-    "강원도",
-    "충청북도",
-    "충청남도",
-    "전라북도",
-    "전라남도",
-    "경상북도",
-    "경상남도",
+    { category: "all", name: "전체" },
+    {
+      category: "gyeonggi",
+      name: "경기도",
+    },
+    {
+      category: "gangwon",
+      name: "강원도",
+    },
+    {
+      category: "chungbuk",
+      name: "충청북도",
+    },
+    {
+      category: "chungnam",
+      name: "충청남도",
+    },
+    {
+      category: "jeonbuk",
+      name: "전라북도",
+    },
+    {
+      category: "jeonnam",
+      name: "전라남도",
+    },
+    {
+      category: "gyeongbuk",
+      name: "경상북도",
+    },
+    {
+      category: "gyeongnam",
+      name: "경상남도",
+    },
   ];
 
-  let typeData = ["전체 상품", "지역 특산품", "과일", "채소"];
+  // let typeData = ["전체 상품", "지역 특산품", "과일", "채소"];
 
   let localOption = localData.map((value, index) => {
     return (
-      <option value={value} key={index}>
-        {value}
+      <option value={value.category} key={index}>
+        {value.name}
       </option>
     );
   });
 
-  let typeOption = typeData.map((value, index) => {
-    return (
-      <option value={value} key={index}>
-        {value}
-      </option>
-    );
-  });
+  // let typeOption = typeData.map((value, index) => {
+  //   return (
+  //     <option value={value} key={index}>
+  //       {value}
+  //     </option>
+  //   );
+  // });
+
+  if (data === undefined) {
+    return <h1>로딩중입니다</h1>;
+  }
 
   return (
     <>
@@ -185,37 +242,58 @@ const AllProduct = () => {
         <ProductItemLeft>
           <h1>{localSelected === "local" ? "전체" : localSelected} 상품</h1>
           <div>
-            {localSelected === "local"
+            {localSelected === "local" || localSelected === "전체"
               ? "농담의 모든 못난이 상품을 만나 보세요!"
               : `생명과 태양의 땅! ${localSelected} 입니다`}
           </div>
           <div>
-            <select value={localSelected} onChange={localSelectChange}>
+            <select value={params} onChange={localSelectChange}>
               <option value="local" disabled={true}>
                 지역
               </option>
               {localOption}
             </select>
-            <select value={typeSelected} onChange={typeSelectChange}>
+            {/* <select value={typeSelected} onChange={typeSelectChange}>
               <option value="type" disabled={true}>
                 종류
               </option>
               {typeOption}
-            </select>
+            </select> */}
           </div>
         </ProductItemLeft>
         <ProductItemRight
           src="/img/chungcheonbuk-do.svg"
-          alt="이미지 없음"></ProductItemRight>
+          alt="이미지 없음"
+        ></ProductItemRight>
       </ProductTop>
+
+      <ProductSortBox>
+        {loading === true ? null : <div>{data.length}개의 상품이 있습니다</div>}
+        <div>
+          <div>인기순</div>
+          <div>최신순</div>
+          <div>가격높은순</div>
+          <div>가격낮은순</div>
+        </div>
+      </ProductSortBox>
       <ProductBox>
         {/* {realValue.map((value, index) => {
           return <ProductItem key={index} data={value}></ProductItem>;
         })} */}
 
-        {dummyData.map((value, index) => {
-          return <ProductItem key={index} data={value}></ProductItem>;
-        })}
+        {loading === true ? (
+          <UndefinedBox>
+            <h1>로딩중입니다</h1>
+          </UndefinedBox>
+        ) : data[0] === undefined ? (
+          <UndefinedBox>
+            <h1>{localSelected}엔 상품이 없습니다</h1>
+          </UndefinedBox>
+        ) : (
+          data.map((value, index) => {
+            return <ProductItem key={index} data={value}></ProductItem>;
+          })
+        )}
       </ProductBox>
       <Remocon></Remocon>
     </>

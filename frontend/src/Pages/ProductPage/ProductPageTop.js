@@ -172,17 +172,23 @@ const ProductPageTop = ({ ProductData }) => {
   const down = () => {
     setCount((count) => count + 1);
   };
+
+  ProductData = ProductData[0];
+
   return (
     <ProductPageTopBox>
       <ProductPageTopLeft>
-        <img src={ProductData.image} alt="데이터를 찾을 수 없습니다"></img>
+        <img
+          src={"/" + ProductData.product_image}
+          alt="데이터를 찾을 수 없습니다"
+        ></img>
       </ProductPageTopLeft>
       <ProductPageTopRight>
-        <div>{ProductData.store_name}</div>
-        <div>[{ProductData.local}]</div>
-        <div>{ProductData.name}</div>
+        <div>상호네 농장</div>
+        <div>[{ProductData.product_local}]</div>
+        <div>{ProductData.product_name}</div>
         <hr></hr>
-        <div>{ProductData.price.toLocaleString()}원</div>
+        <div>{ProductData.product_price.toLocaleString()}원</div>
         <ProductPageCountBox>
           <div>수량</div>
           <div>
@@ -194,7 +200,7 @@ const ProductPageTop = ({ ProductData }) => {
         <ProductPageTotalPrice>
           <div>총 합계금액 (수량) :</div>
           <div>
-            <div>{(ProductData.price * count).toLocaleString()}원</div>
+            <div>{(ProductData.product_price * count).toLocaleString()}원</div>
             <div>({count}개)</div>
           </div>
         </ProductPageTotalPrice>

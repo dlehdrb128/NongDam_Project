@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { StyledButton } from "../../../Theme/theme";
+import { Link } from "react-router-dom";
 
 // 요소 전체를 담은 박스
 const MainEventMarketBox = styled.div`
@@ -74,10 +75,11 @@ const MainEventMarket = () => {
           <br></br>
           5일장으로 재래시장의 따뜻한 인심과 신선한 상품을 만나보세요!
         </div>
-
-        <StyledButton fs={"2rem"} wd={"248px"} ht={"50px"}>
-          장보러 가기
-        </StyledButton>
+        <Link to="/FivedaysMakret">
+          <StyledButton fs={"2rem"} wd={"248px"} ht={"50px"}>
+            장보러 가기
+          </StyledButton>
+        </Link>
         <div>
           오늘은 <span>{localData[0]}, </span>
           <span>{localData[1]}</span>장날이유 ~

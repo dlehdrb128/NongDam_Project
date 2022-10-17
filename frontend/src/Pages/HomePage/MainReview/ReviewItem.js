@@ -26,6 +26,7 @@ const ReviewItemBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
     gap: 20px;
     &:link {
       text-decoration: none;
@@ -44,6 +45,7 @@ const ReviewItemBox = styled.div`
     & > img {
       width: inherit;
       height: 250px;
+      border-radius: 10px;
     }
 
     /* 텍스트 박스 */
@@ -52,21 +54,36 @@ const ReviewItemBox = styled.div`
       height: 45%;
       display: flex;
       flex-direction: column;
-      gap: 30px;
-
       /* 유저 아이디, 텍스트 */
       & > div {
         font-family: "SCD-4";
         font-size: 1.6rem;
         color: ${({ theme }) => theme.lightblack};
-        word-break: keep-all;
+      }
+
+      /* 유저 아이디 */
+      & > div:nth-child(1) {
+        padding-bottom: 20px;
+      }
+
+      /* 유저 텍스트 */
+      & > div:nth-child(2) {
+        height: 115px;
+        width: 315px;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       /* 상품 이름 */
       & > div:nth-child(3) {
         position: relative;
         font-family: "SCD-7";
-        font-size: 1.7rem;
+        font-size: 2rem;
+        padding-top: 25px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
         color: ${({ theme }) => theme.orange};
       }
     }
@@ -76,12 +93,12 @@ const ReviewItemBox = styled.div`
 const ReviewItem = ({ data }) => {
   return (
     <ReviewItemBox>
-      <Link to={`/product/${data.product_id}`}>
-        <img src={data.image} alt="이미지 없음"></img>
+      <Link to={`/product/detail/${data.product_id}`}>
+        <img src={data.review_image} alt="이미지 없음"></img>
         <div>
-          <div>{data.userId}</div>
-          <div>{data.reviewText}</div>
-          <div>{data.productName}</div>
+          <div>{data.review_user}</div>
+          <div>{data.review_text}</div>
+          <div>{data.product_name}</div>
         </div>
       </Link>
     </ReviewItemBox>

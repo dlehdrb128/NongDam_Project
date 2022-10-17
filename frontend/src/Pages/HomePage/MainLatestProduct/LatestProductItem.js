@@ -34,6 +34,7 @@ const LatestProductItemBox = styled.div`
     & > img {
       width: 163px;
       height: 168px;
+      border-radius: 10px;
     }
 
     /* 지역 글꼴 */
@@ -49,6 +50,9 @@ const LatestProductItemBox = styled.div`
         font-family: "SCD-3";
         font-size: 1.6rem;
         color: ${({ theme }) => theme.lightblack};
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
     /* 가격 글꼴 */
@@ -63,13 +67,13 @@ const LatestProductItemBox = styled.div`
 const LatestProductItem = ({ data }) => {
   return (
     <LatestProductItemBox>
-      <Link to={`/product/${data.product_id}`}>
-        <img src={data.image} alt="이미지 없음"></img>
+      <Link to={`/product/detail/${data.product_id}`}>
+        <img src={data.product_image} alt="이미지 없음"></img>
         <div>
-          <div>[{data.local}]</div>
-          <div>{data.name}</div>
+          <div>[{data.product_local}]</div>
+          <div>{data.product_name}</div>
         </div>
-        <div>{data.price.toLocaleString()}원</div>
+        <div>{data.product_price.toLocaleString()}원</div>
       </Link>
     </LatestProductItemBox>
   );

@@ -34,6 +34,7 @@ const ReviewItemBox = styled.div`
       & > img {
         width: 188px;
         height: 152px;
+        border-radius: 10px;
       }
     }
   }
@@ -83,24 +84,26 @@ const InforMation = styled.div`
 `;
 
 const ProductReview = ({ data }) => {
-  const reviewImage = data.image.map((value, index) => {
-    return <img src={value} key={index} alt="이미지 없음"></img>;
-  });
+  const reviewImage = (
+    <img src={"/" + data.review_image} alt="이미지 없음"></img>
+  );
+
+  const newDate = data.review_date.split("T");
 
   return (
     <ReviewItemBox>
       <InforMation>
-        <div>{data.user}</div>
+        <div>{data.review_user}</div>
         <div>
           <div>
             <img src="/img/ProductDetail/star-fill.png" alt="이미지 없음"></img>
-            {data.value} / 5
+            {data.review_value} / 5
           </div>
-          <div>{data.date}</div>
+          <div>{newDate[0]}</div>
         </div>
       </InforMation>
       <div>
-        <div>{data.text}</div>
+        <div>{data.review_text}</div>
         <div>{reviewImage}</div>
       </div>
     </ReviewItemBox>

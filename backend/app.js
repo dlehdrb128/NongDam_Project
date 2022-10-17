@@ -5,8 +5,9 @@ const FDM = require('./Server/Router/YANGSANGHEE/FivedaysMarket/Data');
 const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
-const multer = require('multer');
-
+const Product = require("./Server/Router/Product/index");
+const uploadTest = require("./Server/Router/uploadTest");
+const multer = require("multer");
 const PORT = process.env.PORT || 8080;
 
 try {
@@ -41,9 +42,12 @@ const upload = multer({
 });
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', Main);
 app.use('/Fivedaysmarket', FDM);
+app.use(express.static(path.join(__dirname, "uploads")));
+
+app.use("/product", Product);
+app.use("/upload", uploadTest);
 
 app.post('/upload', upload.single('img'), (req, res) => {
   console.log(req.file);
