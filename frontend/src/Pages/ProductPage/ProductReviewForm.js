@@ -51,7 +51,7 @@ const ProductReviewForm = forwardRef(({ data }, ref) => {
       let totalValue = 0;
 
       data.forEach((value) => {
-        totalValue += value.review_value;
+        totalValue += Number(value.review_value);
       });
 
       totalValue = totalValue / data.length;
