@@ -530,8 +530,8 @@ const NewProductForm = () => {
     productName: productName,
     productLocal: productLocal,
     productPrice: productPrice,
-    //startDate: `${startDate} ${startHour}시 ${startMinute}분`,
-    // endDate: `${endDate} ${endHour}시 ${endMinute}분`,
+    //startDate: `${startDate} ${startHour}:${startMinute}:00`,
+    // endDate: `${endDate} ${endHour}:${endMinute}:00`,
     productDiscountSet: discount === 'true' ? 1 : 0,
     ProductDiscountPercent: ProductDiscountPercent,
   };

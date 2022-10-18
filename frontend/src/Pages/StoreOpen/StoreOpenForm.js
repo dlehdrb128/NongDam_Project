@@ -583,7 +583,11 @@ const StoreOpenForm = () => {
                 ></input>
                 <button>주소검색</button>
               </div>
-              <input onChange={onchange} name='address2'></input>
+              <input
+                onChange={onchange}
+                name='address2'
+                placeholder='기본주소'
+              ></input>
               <input
                 onChange={onchange}
                 name='address3'
@@ -652,7 +656,6 @@ const StoreOpenForm = () => {
               <input onChange={onchange} name='mobile2'></input>
               <span>-</span>
               <input onChange={onchange} name='mobile3'></input>
-              <button>인증번호받기</button>
             </div>
           </TelBox>
           <ContentBox>

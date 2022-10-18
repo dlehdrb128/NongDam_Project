@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 // 메인박스 / 화면 전체 박스
 const MainBox = styled.div`
@@ -8,7 +8,7 @@ const MainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   color: ${({ theme }) => theme.lightblack};
 
   & a {
@@ -101,13 +101,13 @@ const StoreIconMainBox = styled.div`
     // h1 ->  각 스토어관리 카테고리 타이틀
     & > h1 {
       font-size: 1.8rem;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       color: ${({ theme }) => theme.green};
     }
     // span -> 각 스토어관리 설명
     & > span {
       font-size: 1.8rem;
-      font-family: "SCD-3";
+      font-family: 'SCD-3';
     }
   }
 `;
@@ -121,38 +121,56 @@ const AdminMain = () => {
           <div></div>
         </div>
         <StoreIconMainBox>
-          <Link to="create">
-            <div className="box">
-              <img src="/img/Admin_icon1.png" alt="icon"></img>
+          <Link to='create'>
+            <div className='box'>
+              <img
+                src='http://localhost:8080/icon/Admin_icon1.png'
+                alt='icon'
+              ></img>
               <h1>스토어개설</h1>
               <span>기본 스토어 개설</span>
             </div>
           </Link>
           <div>
-            <img src="/img/Admin_icon2.png" alt="icon"></img>
+            <img
+              src='http://localhost:8080/icon/Admin_icon2.png'
+              alt='icon'
+            ></img>
             <h1>스토어관리</h1>
             <span>기존 스토어 관리</span>
           </div>
-          <Link to="newproduct">
+          <Link to='newproduct'>
             <div>
-              <img src="/img/Admin_icon3.png" alt="icon"></img>
+              <img
+                src='http://localhost:8080/icon/Admin_icon3.png'
+                alt='icon'
+              ></img>
               <h1>상품관리</h1>
               <span>상품등록, 수정</span>
             </div>
           </Link>
           <div>
-            <img src="/img/Admin_icon4.png" alt="icon"></img>
+            <img
+              src='http://localhost:8080/icon/Admin_icon4.png'
+              alt='icon'
+            ></img>
             <h1>게시판관리</h1>
             <span>공지사항, 후기 관련</span>
           </div>
           <div>
-            <img src="/img/Admin_icon5.png" alt="icon"></img>
+            <img
+              src='http://localhost:8080/icon/Admin_icon5.png'
+              alt='icon'
+            ></img>
             <h1>정산</h1>
             <span>판매현황, 금액 관리</span>
           </div>
-          <Link to="/">
+          <Link to='/'>
             <div>
-              <img src="/img/Admin_icon6.png" alt="icon"></img>
+              <img
+                src='http://localhost:8080/icon/Admin_icon6.png'
+                alt='icon'
+              ></img>
               <h1>마이페이지</h1>
               <span>나의 회원정보 수정</span>
             </div>
