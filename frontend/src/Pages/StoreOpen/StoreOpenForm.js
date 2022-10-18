@@ -415,8 +415,6 @@ const StoreOpenForm = () => {
       setImg(e.target.files[0]);
 
       reader.onload = (e) => {
-        console.log(e);
-        console.log(reader);
         imgSrc.current.src = reader.result;
       };
     }
@@ -513,6 +511,7 @@ const StoreOpenForm = () => {
     storeCeoEmail: email,
     storeCeoName: name,
     storeAddress: `${address1} ${address2} ${address3}`,
+    storeimg: ``,
     storeCall: `${huntingLine1}-${huntingLine2}-${huntingLine3}`,
     storePhone: `${mobile1}-${mobile2}-${mobile3}`,
     storeReceiveEmail: receiveEmail,
@@ -525,7 +524,18 @@ const StoreOpenForm = () => {
   };
 
   const onclick = () => {
-    axios.post('http://localhost:8080/admin/storeOpen/', data);
+    const formData = new FormData();
+    formData.append('img', img);
+
+    data.storeimg = formData;
+
+    axios.post('http://localhost:8080/admin/storeOpen', data);
+
+    // const request = await axios.post(URL, formData, {
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // });
   };
 
   return (
@@ -602,7 +612,17 @@ const StoreOpenForm = () => {
             <div>
               <div>
                 <div>
-                  <img src='' alt='' ref={imgSrc} />
+                  {img ? (
+                    <img src='' alt='' ref={imgSrc} />
+                  ) : (
+                    <div
+                      style={{
+                        width: '155px',
+                        height: '155px',
+                        backgroundColor: 'gray',
+                      }}
+                    ></div>
+                  )}
                 </div>
                 <p>권장 500px * 500px</p>
               </div>
@@ -613,6 +633,7 @@ const StoreOpenForm = () => {
                   accept='image/jpeg,gif,png,jpg'
                   style={{ display: 'none' }}
                   onChange={onChangeFile}
+                  name={'img'}
                 ></input>
                 <label for='input-file'>등록</label>
                 <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
