@@ -14,12 +14,13 @@ const OrderItem = styled.a`
   }
   //날짜,주문정보 컨테이너(위치조정)
   & > div {
-    margin-right: 48px;
+    width:111px;
+    margin-right: 39px;
   }
   //날짜,주문정보 (사이즈,위치조정)
   & > p:nth-child(3) {
     width: 130px;
-    margin-right: 45px;
+    margin-right: 44px;
   }
   //상품개수(사이즈,위치조정)
   & > p:nth-child(4) {
@@ -33,6 +34,8 @@ const OrderItem = styled.a`
   }
   //상품이미지
   img {
+    width: 64px;
+    height: 60px;
     margin-right: 30px;
   }
   //텍스트 공통(폰트,컬러조정)
@@ -45,23 +48,27 @@ const OrderItem = styled.a`
 `;
 
 const Mypagesec2OrderItem = ({ data }) => {
+  const datas = data.data[0];
+  const products = data.data[2];
+  console.log(data);
+  const img = `http://localhost:8080/product/${products[0].product_image}`
   return (
     <OrderItem href="/orderDetail">
       {/* 날짜,주문번호 */}
       <div>
-        <p>{data.date}</p>
-        <p>{data.number}</p>
+        <p>{datas[0].covert_date}</p>
+        <p>{datas[0].orders_number}</p>
       </div>
       {/* 상품이미지 */}
-      <img src={data.img} alt="Product"></img>
+      <img src={img} alt="Product"></img>
       {/* 상품명 */}
-      <p>{data.name}</p>
+      <p>{products[0].product_name}</p>
       {/* 상품구매갯수 */}
-      <p>{data.count}개</p>
+      <p>1개</p>
       {/* 가격 */}
-      <p>{data.price.toLocaleString()}원</p>
+      <p>{products[0].product_price}원</p>
       {/* 배송현황 */}
-      <p>{data.delivery}</p>
+      <p>{datas[0].orders_status}</p>
     </OrderItem>
   );
 };
