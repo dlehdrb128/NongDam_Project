@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const dbconfig = {
-  host: "localhost",
-  user: "root",
-  password: "yehoon123!@",
-  database: "nongdam_yehoon",
+  host: 'localhost',
+  user: 'root',
+  password: 'nongdam1234',
+  database: 'nongdam',
   multipleStatements: true,
 };
 
