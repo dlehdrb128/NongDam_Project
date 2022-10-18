@@ -20,10 +20,10 @@ router.get("/latest", (req, res) => {
 router.get("/review", (req, res) => {
   connection.query(
     // "select * from review ORDER BY review_value DESC, review_date limit 3; select * from product limit 3;",
-    "select review.review_user, review.review_text, review.review_image, product.product_name,product.product_id from review inner join product on review.product_id = product.product_id ORDER BY  review_date DESC,review.review_value DESC limit 3 ",
+    "select DISTINCT review.review_user_id, review.review_text, product.product_name,product.product_key, review_image from review inner join product on review.product_key = product.product_key join review_image on review.product_key = review_image.product_key ORDER BY  review_post_date DESC,review.review_value DESC limit 3 ",
+
     (err, row, field) => {
       res.json(row);
-      console.log(row);
     }
   );
 });
