@@ -204,7 +204,10 @@ const Footer = () => {
         </FooterBoxTop>
         <FooterBoxMiddle>
           <div>
-            <img src="/img/logo-2.svg" alt="이미지 없음"></img>
+            <img
+              src="http://localhost:8080/svg/logo-2.svg"
+              alt="이미지 없음"
+            ></img>
           </div>
           <div>
             <div>농담(농업을 담다)</div>
@@ -233,7 +236,10 @@ const Footer = () => {
           <div>
             <div>
               <div>
-                <img src="/img/gongjung.svg" alt="이미지 없음"></img>
+                <img
+                  src="http://localhost:8080/svg/gongjung.svg"
+                  alt="이미지 없음"
+                ></img>
                 <div>
                   공정거래위원회
                   <br />
@@ -241,7 +247,10 @@ const Footer = () => {
                 </div>
               </div>
               <div>
-                <img src="/img/yesSign.svg" alt="이미지 없음"></img>
+                <img
+                  src="http://localhost:8080/svg/yesSign.svg"
+                  alt="이미지 없음"
+                ></img>
                 <div>
                   금융결제원
                   <br />
@@ -249,7 +258,10 @@ const Footer = () => {
                 </div>
               </div>
               <div>
-                <img src="/img/kica.svg" alt="이미지 없음"></img>
+                <img
+                  src="http://localhost:8080/svg/kica.svg"
+                  alt="이미지 없음"
+                ></img>
                 <div>
                   KICA
                   <br />
@@ -257,7 +269,10 @@ const Footer = () => {
                 </div>
               </div>
               <div>
-                <img src="/img/gongjung.svg" alt="이미지 없음"></img>
+                <img
+                  src="http://localhost:8080/svg/gongjung.svg"
+                  alt="이미지 없음"
+                ></img>
                 <div>
                   한국온라인쇼핑협회
                   <br />
