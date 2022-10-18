@@ -4,89 +4,88 @@ const ReviewParent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 1265px;
+  height: 1265px;
+  & > div:nth-child(1) {
+    width: inherit;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    & > div:nth-child(1) {
+      & > h2 {
+        font-size: 3rem;
+        font-family: YANGJIN;
+        color: ${({ theme }) => theme.lightblack};
+        margin-bottom: 50px;
+      }
+      & > p {
+        font-size: 2rem;
+        font-family: SCD-5;
+        color: ${({ theme }) => theme.lightblack};
+      }
+    }
+    & > img:nth-child(2) {
+      width: 500px;
+      height: 500px;
+      border-radius: 20px;
+    }
+  }
+  & > div:nth-child(2) {
+    width: 1265px;
+    margin-bottom: 50px;
+    & > a {
+      font-size: 2rem;
+      font-family: SCD-5;
+      color: ${({ theme }) => theme.lightblack};
+    }
+  }
+  & > div:nth-child(3) {
+    width: 1265px;
+    font-size: 1.5rem;
+    font-family: SCD-5;
+    color: ${({ theme }) => theme.lightblack};
+    margin-bottom: 50px;
+  }
+  & > div:nth-child(4) {
+    width: 1265px;
+    & > img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+  }
 `;
+
 const RecipeReview = () => {
   return (
     <ReviewParent>
-      {/* 전체 부모 */}
-      <div>게시글 작성</div>
-      {/* 헤드 */}
-      <form>
-        {/* 메인 */}
-        <div>레시피 등록</div>
+      <div>
         <div>
-          <div>
-            <div>
-              <h2>레시피 제목</h2>
-              <input type={"text"} placeholder={"예) 단짠단짠 감자전"}></input>
-            </div>
-            <div>
-              <h2>요리소개</h2>
-              <input
-                type={"text"}
-                placeholder={
-                  "예) 비도 오고 감자전이 먹고싶어서 저번주에 구매한 못난이 감자로 전을 부쳐봤어요 ^^"
-                }
-              ></input>
-            </div>
-          </div>
-          <a href="#">
-            <img></img>
-            {/* 카메라 로고 */}
-            <div>대표 요리 사진을 등록해주세요.</div>
-          </a>
+          <h2>근수의 달콤한 딸기 케이크</h2>
+          <p>
+            저번에 딸기케이크 먹어보고 케이크는 무조건
+            <br /> 여기서 먹어야겠다 라고 생각했는데 역시나...
+          </p>
         </div>
-        <div>
-          {/* 재료 */}
-          <h2>재료</h2>
-          <input
-            type={"text"}
-            placeholder={"예) #감자 #소금 #식용유 #부침가루 #맛간장"}
-          ></input>
-        </div>
-        <div>
-          <h2>요리팁</h2>
-          <input
-            type={"text"}
-            placeholder={
-              "예) 감자를 으깨는 것 보단 썰어서 부침가루에 섞는게 더 맛있어요."
-            }
-          ></input>
-        </div>
-        <div>
-          {/* 요리 완성 사진 */}
-          <h2>요리 완성사진</h2>
-          <div>
-            {/* 파일 업로드 */}
-            <div>
-              {/* 업로드 박스 */}
-              <label for="fileUp">+</label>
-              <input type={"file"} id="fileUp"></input>
-            </div>
-            <div>
-              <label for="fileUp">+</label>
-              <input type={"file"} id="fileUp"></input>
-            </div>
-            <div>
-              <label for="fileUp">+</label>
-              <input type={"file"} id="fileUp"></input>
-            </div>
-            <div>
-              <label for="fileUp">+</label>
-              <input type={"file"} id="fileUp"></input>
-            </div>
-            <div>
-              {/* 한번에 넣기 */}
-              <label for="allFileUp">+ 사진 한번에 넣기</label>
-              <input type={"file"} id="allFileUp"></input>
-            </div>
-          </div>
-        </div>
-        <div>
-          <button>저장</button>
-          <button>취소</button>
-        </div>
-      </form>
+        <img src="./img/감자전.jpg" alt="감자전"></img>
+      </div>
+      <div>
+        <a href="#">#딸기</a>
+        &nbsp;
+        <a href="#">#케이크</a>
+        &nbsp;
+        <a href="#">#근수</a>
+      </div>
+      <div>근수를 으깨는 것보단 썰어서 부침가루에 섞는게 더 맛있어요.</div>
+      <div>
+        <img src="./img/감자전.jpg" alt="감자전"></img>
+        <img src="./img/감자전.jpg" alt="감자전"></img>
+        <img src="./img/감자전.jpg" alt="감자전"></img>
+        <img src="./img/감자전.jpg" alt="감자전"></img>
+      </div>
     </ReviewParent>
   );
 };

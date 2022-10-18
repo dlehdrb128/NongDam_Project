@@ -1,14 +1,12 @@
 const express = require('express');
 const app = express();
-const Main = require('./Server/Router/Main/index');
-const path = require('path');
-const cors = require('cors');
-const fs = require('fs');
-const multer = require('multer');
-
-const Product = require('./Server/Router/Product/index');
-const uploadTest = require('./Server/Router/uploadTest');
-const admin = require('./Server/Router/Admin/index');
+const Main = require("./Server/Router/Main/index");
+const path = require("path");
+const cors = require("cors");
+const fs = require("fs");
+const multer = require("multer");
+const Product = require("./Server/Router/Product/index");
+const uploadTest = require("./Server/Router/uploadTest");
 
 const PORT = process.env.PORT || 8080;
 
@@ -44,23 +42,19 @@ const upload = multer({
 });
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'uploads')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-0;
-app.use('/', Main);
-app.use('/product', Product);
-app.use('/upload', uploadTest);
-app.use('/admin', admin);
-app.use('/admin', admin);
+app.use(express.static(path.join(__dirname, "uploads")));
 
-app.post('/upload', upload.single('img'), (req, res) => {
+app.use("/", Main);
+app.use("/product", Product);
+app.use("/upload", uploadTest);
+
+app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);
   console.log(req.body);
   console.dir(req.header('Content-Type'));
   // console.log(req.files);
 
-  res.send('하이');
+  res.send("ok");
 });
 
 app.listen(PORT, () => {
