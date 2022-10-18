@@ -408,7 +408,6 @@ const StoreOpenForm = () => {
 
   const [img, setImg] = useState('');
   console.log(img);
-
   const onChangeFile = (e) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
@@ -471,7 +470,7 @@ const StoreOpenForm = () => {
     faxTel1: '02',
     faxTel2: '',
     faxTel3: '',
-    csHours: 'd',
+    csHours: '',
   });
 
   const {
@@ -508,36 +507,29 @@ const StoreOpenForm = () => {
     });
   };
 
-  const data1 = {
+  const data = {
     storeName: storeName,
     storeCeophone: mobilePhone,
     storeCeoEmail: email,
     storeCeoName: name,
     storeAddress: `${address1} ${address2} ${address3}`,
-    StoreCall: `${huntingLine1} - ${huntingLine2} - ${huntingLine3}`,
-    storePhone: `${mobile1} - ${mobile2} - ${mobile3}`,
+    storeCall: `${huntingLine1}-${huntingLine2}-${huntingLine3}`,
+    storePhone: `${mobile1}-${mobile2}-${mobile3}`,
     storeReceiveEmail: receiveEmail,
     storeOutgoingEmail: outgoingEmail,
-    storecsCall: `${csTel1} - ${csTel2} - ${csTel3}`,
+    storecsCall: `${csTel1}-${csTel2}-${csTel3}`,
     storeCsEmail: csEmail,
-    storeFax: `${faxTel1} - ${faxTel2} - ${faxTel3}`,
+    storeFax: `${faxTel1}-${faxTel2}-${faxTel3}`,
     storeCsTime: csHours,
+    storeBusiness: topping === 'true' ? 1 : 0,
   };
 
   const onclick = () => {
-    const response = axios.post('http://localhost:8080/storeOpen', data1);
+    axios.post('http://localhost:8080/admin/storeOpen/', data);
   };
-  console.log(data1);
 
   return (
     <MainBox>
-      <button
-        onClick={() => {
-          console.log(data1);
-        }}
-      >
-        데이터 확인
-      </button>
       <form>
         <h1>스토어 정보</h1>
         <div>
