@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const connection = require("../../../db/db");
 
-router.get("/", (req, res) => {
-  res.send("하이");
+router.get('/', (req, res) => {
+  res.send('하이');
 });
 
 // 최근 상품 4개만 가져오는 쿼리문
