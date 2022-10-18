@@ -5,7 +5,6 @@ const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 const multer = require('multer');
-const yjdb = require('./Server/Router/Admin/index');
 
 const Product = require('./Server/Router/Product/index');
 const uploadTest = require('./Server/Router/uploadTest');
@@ -62,52 +61,6 @@ app.post('/upload', upload.single('img'), (req, res) => {
   res.send('하이');
 });
 
-app.get('/storOpen', (req, res) => {
-  res.send('storeOpen 페이지 연결');
-});
-
-app.post('/storeOpen', (req, res) => {
-  console.log('storeopen 성공');
-  const {
-    storeName,
-    mobilePhone,
-    email,
-    name,
-    address,
-    huntingLine,
-    mobile,
-    receiveEmail,
-    outgoingEmail,
-    csTel,
-    csEmail,
-    faxTel,
-    csHours,
-    business,
-  } = req.body;
-
-  /**
-   * storeName 스토어명
-   * mobilePhone 대표 휴대전화
-   * email 대표 이메일
-   * name 이름
-   * address 사업장주소
-   * huntingLine 대표전화
-   * mobile 휴대전화
-   * receiveEmail 수신전용 이메일
-   * outgoingEmail 발신전용 이메일
-   * csTel 상담전화
-   * csEmail 상담이메일
-   * faxTel 팩스전화
-   * csHours cs운영시간
-   * business 통신판매업 신고
-   */
-  const SQL = `INSERT INTO admin VALUES(null,9,'사업자','${storeName}','${mobilePhone}','${email}','${name}','${address}','${huntingLine}','${mobile}','${receiveEmail}','${outgoingEmail}','${business}','${csTel}','${csEmail}','${faxTel}','${csHours}')`;
-
-  yjdb.query(SQL, (err, row, fild) => {
-    if (err) throw err;
-    console.log(row);
-  });
-});
 
 app.listen(PORT, () => {
   console.log(`EXPRESS SERVER START ${PORT} `);
