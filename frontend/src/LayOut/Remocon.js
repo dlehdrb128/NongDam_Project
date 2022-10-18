@@ -115,12 +115,18 @@ const Remocon = () => {
     <Remote id="Remote">
       <div>
         <Link to="/cart">
-          <img src="/img/marketbasket.svg" alt="Marketbasket"></img>
+          <img
+            src="http://localhost:8080/svg/marketbasket.svg"
+            alt="Marketbasket"
+          ></img>
           <p>장바구니</p>
           <span>0</span>
         </Link>
         <Link to="/admin/myPage">
-          <img src="/img/mypage_gray.svg" alt="Mypage"></img>
+          <img
+            src="http://localhost:8080/svg/mypage_gray.svg"
+            alt="Mypage"
+          ></img>
           <p>마이페이지</p>
         </Link>
       </div>

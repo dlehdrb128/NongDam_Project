@@ -13,13 +13,17 @@ const ProductDetailBox = styled.div`
 `;
 
 const ProductDetail = forwardRef(({ data }, ref) => {
+  data = data[0];
   return (
     // 이미지가 없으면 h1태그를 반환한다
     <ProductDetailBox ref={ref}>
-      {data.detailImage === undefined ? (
+      {data.product_detail === undefined ? (
         <h1>상품 상세이미지가 없습니다</h1>
       ) : (
-        <img src={data.detailImage} alt="이미지 없음"></img>
+        <img
+          src={`http://localhost:8080/productDetail/${data.product_detail}`}
+          alt="이미지 없음"
+        ></img>
       )}
     </ProductDetailBox>
   );

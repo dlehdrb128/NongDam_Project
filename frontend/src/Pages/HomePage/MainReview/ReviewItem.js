@@ -93,8 +93,11 @@ const ReviewItemBox = styled.div`
 const ReviewItem = ({ data }) => {
   return (
     <ReviewItemBox>
-      <Link to={`/product/detail/${data.product_id}`}>
-        <img src={data.review_image} alt="이미지 없음"></img>
+      <Link to={`/product/detail/${data.product_key}`}>
+        <img
+          src={`http://localhost:8080/review/${data.review_image}`}
+          alt="이미지 없음"
+        ></img>
         <div>
           <div>{data.review_user}</div>
           <div>{data.review_text}</div>
