@@ -1,6 +1,7 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // 상품 검색 페이지의 상품을 담은 박스
 const ProductItemBox = styled.div`
@@ -92,6 +93,26 @@ const ProductItemBox = styled.div`
 `;
 
 const ProductItem = ({ data }) => {
+  const [datas, setDatas] = useState();
+
+  useEffect(() => {
+    const getData = async (id) => {
+      try {
+        let response = await axios.get(
+          `http://localhost:8080/product/value/${id}`
+        );
+        setDatas(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData(data.product_key);
+  }, []);
+
+  if (datas === undefined) {
+    return null;
+  }
+
   return (
     <ProductItemBox>
       <Link to={`/product/detail/${data.product_key}`}>
@@ -105,9 +126,10 @@ const ProductItem = ({ data }) => {
           <div>{data.product_price.toLocaleString()}원</div>
           <div>
             <div>
-              <span>★</span> {data.product_value} / 5
+              <span>★</span>{" "}
+              {datas[0].reviewValue === null ? 0 : datas[0].reviewValue} / 5
             </div>
-            <div>리뷰 {data.product_reviewCount}</div>
+            <div>리뷰 {datas[0].reviewCount}</div>
           </div>
         </div>
       </Link>

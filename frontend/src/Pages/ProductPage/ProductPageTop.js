@@ -179,7 +179,7 @@ const ProductPageTop = ({ ProductData }) => {
     <ProductPageTopBox>
       <ProductPageTopLeft>
         <img
-          src={"/" + ProductData.product_image}
+          src={`http://localhost:8080/product/${ProductData.product_image}`}
           alt="데이터를 찾을 수 없습니다"
         ></img>
       </ProductPageTopLeft>

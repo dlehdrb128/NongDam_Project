@@ -67,8 +67,11 @@ const LatestProductItemBox = styled.div`
 const LatestProductItem = ({ data }) => {
   return (
     <LatestProductItemBox>
-      <Link to={`/product/detail/${data.product_id}`}>
-        <img src={data.product_image} alt="이미지 없음"></img>
+      <Link to={`/product/detail/${data.product_key}`}>
+        <img
+          src={`http://localhost:8080/product/${data.product_image}`}
+          alt="이미지 없음"
+        ></img>
         <div>
           <div>[{data.product_local}]</div>
           <div>{data.product_name}</div>

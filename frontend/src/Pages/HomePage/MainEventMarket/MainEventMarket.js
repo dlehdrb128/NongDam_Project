@@ -7,7 +7,7 @@ const MainEventMarketBox = styled.div`
   margin-top: 180px;
   width: 1920px;
   height: 948px;
-  background: url("/img/mainEventMarketBg.png");
+  background: url("http://localhost:8080/main/mainEventMarketBg.png");
   background-repeat: no-repeat;
   background-position: bottom;
   display: flex;
@@ -67,7 +67,10 @@ const MainEventMarket = () => {
     <MainEventMarketBox>
       <EventTextBox>
         {/* 양손이 편한 시장 구경해볼텨? */}
-        <img src="/img/mainEventTitle.png" alt="이미지 없음"></img>
+        <img
+          src="http://localhost:8080/main/mainEventTitle.png"
+          alt="이미지 없음"
+        ></img>
         <div>
           기존의 못난이 상품보다 더 저렴한 먹거리!
           <br></br>

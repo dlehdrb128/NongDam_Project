@@ -71,7 +71,6 @@ const ProductItemRight = styled.img`
   width: 650px;
   height: 200px;
   margin-right: 100px;
-  margin-bottom: 50px;
 `;
 
 // 상품 검색페이지의 상품들을 담는 컨테이너
@@ -102,6 +101,7 @@ const ProductSortBox = styled.div`
   height: 40px;
   display: flex;
   justify-content: space-between;
+  padding-top: 50px;
 
   & > div:nth-child(1) {
     font-family: "SCD-6";
@@ -270,10 +270,12 @@ const AllProduct = () => {
             </select> */}
           </div>
         </ProductItemLeft>
-        <ProductItemRight
-          src={`http://localhost:8080/local/${params}.png`}
-          alt="이미지 없음"
-        ></ProductItemRight>
+        {params === "all" ? null : (
+          <ProductItemRight
+            src={`http://localhost:8080/local/${params}.png`}
+            alt="이미지 없음"
+          ></ProductItemRight>
+        )}
       </ProductTop>
 
       <ProductSortBox>
