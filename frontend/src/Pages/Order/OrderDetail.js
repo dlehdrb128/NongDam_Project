@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OrderInfo from '../Order/OrderInfo';
 import OrderTitle from './OrderTitle';
 import OrderPayment from './OrderPaymentInfo';
 import OrderPerson from './OrderPerson';
 import Mypagesec1 from '../MyPage/section/Mypagesec1';
+import axios from 'axios';
 
 import { RsWrapper, Wrapper } from '../../Theme/common';
 
 const OrderDetail = () => {
+  useEffect(() => {
+    const getUser = async () => {
+      const save = await axios.get('http://localhost:8080/login', {
+        withCredentials: true,
+      });
+      console.log(save);
+    };
+    getUser();
+  }, []);
+
   return (
     <Wrapper>
       <RsWrapper>
