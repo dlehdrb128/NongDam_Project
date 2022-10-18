@@ -64,6 +64,23 @@ const LatestProductItemBox = styled.div`
   }
 `;
 
+const SaleBox = styled.div`
+  display: flex;
+  gap: 20px;
+  & > div:nth-child(1) {
+    font-family: "SCD-7";
+    font-size: 1.9rem;
+    color: ${({ theme }) => theme.lightblack};
+  }
+  & > div:nth-child(2) {
+    font-family: "SCD-7";
+    font-size: 1.7rem;
+    color: ${({ theme }) => theme.gray};
+    text-decoration: line-through;
+    align-self: flex-end;
+  }
+`;
+
 const LatestProductItem = ({ data }) => {
   return (
     <LatestProductItemBox>
@@ -76,7 +93,20 @@ const LatestProductItem = ({ data }) => {
           <div>[{data.product_local}]</div>
           <div>{data.product_name}</div>
         </div>
-        <div>{data.product_price.toLocaleString()}원</div>
+        {data.product_discount_percent === 0 ? (
+          <div>{data.product_price.toLocaleString()}원</div>
+        ) : (
+          <SaleBox>
+            <div>
+              {(
+                data.product_price -
+                (data.product_price * data.product_discount_percent) / 100
+              ).toLocaleString()}
+              원
+            </div>
+            <div>{data.product_price.toLocaleString()}</div>
+          </SaleBox>
+        )}
       </Link>
     </LatestProductItemBox>
   );
