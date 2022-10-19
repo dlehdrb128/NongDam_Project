@@ -5,17 +5,42 @@ const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const multer = require("multer");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 const Product = require("./Server/Router/Product/index");
 const uploadTest = require("./Server/Router/uploadTest");
+const login = require("./Server/Router/Login/index");
 const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser("keyboard cat"));
 app.use("/", Main);
 app.use("/product", Product);
+app.use("/login", login);
 app.use("/upload", uploadTest);
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // 출처 허용 옵션
+    credentials: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+  })
+);
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: false, // 자바스크립트를 통해 세션 쿠키를 사용할 수있는 지여부
+      Secure: true,
+    },
+  })
+);
+
 
 try {
   fs.readdirSync("uploads");

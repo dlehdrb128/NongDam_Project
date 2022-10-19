@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../../../db/db");
+const userCheck = require("../../../util/usercheck");
 
 // router.post("/attempt", (req, res) => {
 //   console.log(req.body);
@@ -18,19 +19,40 @@ const connection = require("../../../db/db");
 //   );
 // });
 
-router.post("/attempt", (req, res) => {
+router.post("/", async (req, res, next) => {
   const { id, password } = req.body;
 
-  connection.query(
-    `select * from user where user_id = '${id}' AND user_password = '${password}'`,
-    (err, row, field) => {
-      if (row[0] === undefined) {
-        console.log("데이터가 없습니다");
-      } else {
-        res.json({ login: "성공", statusMessage: 201 });
-      }
+  const SQL = `SELECT *
+  FROM user
+  WHERE user_id LIKE '${id}' AND user_password LIKE '${password}'
+`;
+  connection.query(SQL, (err, row, filed) => {
+    if (err || row.length === 0) {
+      console.error(err);
+      return res
+        .status(401)
+        .json({ status: 401, statusMessage: "로그인 실패" });
     }
-  );
+
+    if (row[0].user_id === id && row[0].user_password === password) {
+      // 데이터 베이스에 있는 user_id 컬럼과 웹 브라우저에 있는 id 같고
+      // user_password 웹 브라우저에 있는 password가 같을 경우에
+
+      //  req.session에 userId를 추가한다, 그러면 세션이 생기고 이에 따라서 쿠키를 자동으로 프론트에 추가
+
+      req.session.userId = row[0].user_id;
+
+      return res
+        .status(201)
+        .json({ status: 201, statusMessage: "로그인 성공" });
+    }
+  });
+});
+
+router.get("/", userCheck, (req, res, next) => {
+  if (req.session.userId) {
+    res.status(201).json({ userInfo: req.userInfo });
+  }
 });
 
 module.exports = router;

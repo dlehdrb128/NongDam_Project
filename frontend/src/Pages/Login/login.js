@@ -231,10 +231,10 @@ const Login = () => {
       id: e.target[0].value,
       password: e.target[1].value,
     };
-    let tryLogin = await axios.post(
-      "http://localhost:8080/login/attempt",
-      loginData
-    );
+    let tryLogin = await axios.post("http://localhost:8080/login", loginData, {
+      withCredentials: true,
+    });
+
     if (tryLogin.data.login === "성공") {
       navigate("/");
     }
