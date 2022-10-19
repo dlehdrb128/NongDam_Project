@@ -2,12 +2,13 @@ const connection = require("../db/db");
 
 // 로그인 체크 함수
 const userCheck = (req, res, next) => {
+  console.log("체크");
   if (!req.session.userId) {
     req.session.destroy();
     return res
       .clearCookie("connect.sid")
-      .status(401)
-      .json({ status: 401, statusMessage: "로그인 실패입니다" });
+      .status(301)
+      .json({ status: 301, statusMessage: "로그인 실패입니다" });
   }
 
   const SQL = `SELECT user_key, user_name, user_email, user_point 

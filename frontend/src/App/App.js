@@ -45,7 +45,7 @@ function App() {
             element={<RecipeCreateReview />}
           ></Route>
           <Route path="/recipeReview" element={<RecipeReview />}></Route>
-          <Route path="/orderDetail" element={<OrderDetail />}></Route>
+          <Route path="/orderDetail/:id" element={<OrderDetail />}></Route>
           <Route path="/cart" element={<CartMain />}></Route>
           <Route path="/FivedaysMakret" element={<FivedaysMakret />}></Route>
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>

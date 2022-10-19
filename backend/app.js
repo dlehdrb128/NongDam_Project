@@ -10,17 +10,12 @@ const session = require("express-session");
 const Product = require("./Server/Router/Product/index");
 const uploadTest = require("./Server/Router/uploadTest");
 const login = require("./Server/Router/Login/index");
+const admin = require("./Server/Router/Admin/index");
 const PORT = process.env.PORT || 8080;
 
-app.use(cors());
 app.use(express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser("keyboard cat"));
-app.use("/", Main);
-app.use("/product", Product);
-app.use("/login", login);
-app.use("/upload", uploadTest);
 
 app.use(
   cors({
@@ -41,6 +36,13 @@ app.use(
   })
 );
 
+app.use("/", Main);
+app.use("/product", Product);
+app.use("/login", login);
+app.use("/upload", uploadTest);
+app.use("/admin", admin);
+
+app.use(cookieParser("keyboard cat"));
 
 try {
   fs.readdirSync("uploads");

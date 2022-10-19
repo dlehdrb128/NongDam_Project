@@ -22,6 +22,8 @@ const userCheck = require("../../../util/usercheck");
 router.post("/", async (req, res, next) => {
   const { id, password } = req.body;
 
+  console.log(req.session);
+
   const SQL = `SELECT *
   FROM user
   WHERE user_id LIKE '${id}' AND user_password LIKE '${password}'

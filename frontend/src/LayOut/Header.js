@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -116,6 +118,18 @@ const HeaderBoxRight = styled.div`
 `;
 
 const Header = () => {
+  useEffect(() => {
+    const getdata = async () => {
+      const save = await axios.get("http://localhost:8080/login", {
+        withCredentials: true,
+      });
+
+      console.log(save, "시작");
+    };
+
+    getdata();
+  }, []);
+
   return (
     <>
       <HeaderBox>
