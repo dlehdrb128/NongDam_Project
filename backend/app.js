@@ -1,10 +1,12 @@
 const express = require("express");
-const app = express();
-const Main = require("./Server/Router/Main/index");
 const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const multer = require("multer");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
+const Main = require("./Server/Router/Main/index");
 const Product = require("./Server/Router/Product/index");
 const uploadTest = require("./Server/Router/uploadTest");
 const recipe = require("./Server/Router/Recipe/index");
@@ -12,25 +14,42 @@ const login = require("./Server/Router/Login/index");
 const signUp = require("./Server/Router/SignUp/index");
 const PORT = process.env.PORT || 8080;
 
+const app = express();
+
+app.use(express.static(path.join(__dirname, "uploads")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser("keyboard cat"));
+app.use(
+  cors({
+    origin: "http://localhost:3000", // 출처 허용 옵션
+    credentials: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+  })
+);
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: false, // 자바스크립트를 통해 세션 쿠키를 사용할 수있는 지여부
+      Secure: true,
+    },
+  })
+);
+
+app.use("/", Main);
+app.use("/product", Product);
+app.use("/login", login);
+app.use("/upload", uploadTest);
+
 try {
   fs.readdirSync("uploads");
 } catch (error) {
   fs.mkdirSync("uploads");
   console.log("uploads 파일이 없어서 생성합니다!");
 }
-
-// Request full drive access.
-
-// const upload = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads/");
-//   },
-//   filename: (req, file, cb) => {
-//     const ext = path.extname(file.originalname);
-//     cb(null, file.fieldname + "-" + Date.now() + ext);
-//   },
-//   limits: { fileSize: 5 * 1024 * 1024 },
-// });
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -42,11 +61,6 @@ const upload = multer({
     },
   }),
 });
-
-app.use(cors());
-app.use(express.static(path.join(__dirname, "uploads")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 app.use("/", Main);
 app.use("/product", Product);
@@ -70,4 +84,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`EXPRESS SERVER START ${PORT} `);
 });
-// ㅁㅁㅁ

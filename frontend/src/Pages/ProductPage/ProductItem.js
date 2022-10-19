@@ -144,15 +144,21 @@ const ProductItem = ({ data }) => {
         <div>{data.product_name}</div>
         <div>
           {data.product_discount_percent === 0 ? (
-            <div>{data.product_price.toLocaleString()}원</div>
+            <div>
+              {Math.round((data.product_price / 10) * 10).toLocaleString()}원
+            </div>
           ) : (
             <SaleBox>
-              <div>{data.product_price.toLocaleString()}</div>
               <div>
-                {(
-                  data.product_price -
-                  (data.product_price * data.product_discount_percent) / 100
-                ).toLocaleString()}
+                {Math.round((data.product_price / 10) * 10).toLocaleString()}
+              </div>
+              <div>
+                {Math.round(
+                  (data.product_price -
+                    (data.product_price * data.product_discount_percent) /
+                      100) /
+                    10
+                ) * (10).toLocaleString()}
                 원
               </div>
             </SaleBox>

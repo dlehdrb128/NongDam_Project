@@ -233,7 +233,17 @@ const Login = () => {
       id: e.target[0].value,
       password: e.target[1].value,
     };
+<<<<<<< HEAD
 
+=======
+    let tryLogin = await axios.post("http://localhost:8080/login", loginData, {
+      withCredentials: true,
+    });
+
+    if (tryLogin.data.login === "성공") {
+      navigate("/");
+    }
+>>>>>>> a40de3f4fb00534afb7eaef07634148456291733
     try {
       let tryLogin = await axios.post(
         "http://localhost:8080/login/attempt",
