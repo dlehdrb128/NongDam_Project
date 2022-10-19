@@ -207,7 +207,6 @@ const ImgBox = styled.div`
         width: 155px;
         height: 155px;
         border-radius: 3px;
-        // border: 1px solid ${({ theme }) => theme.liglightgray};
         display: flex;
         flex-direction: column;
 
@@ -215,7 +214,6 @@ const ImgBox = styled.div`
           width: 100%;
           height: 100%;
           margin: 'auto';
-          background-color: ${({ theme }) => theme.liglightgray};
         }
       }
 
@@ -414,7 +412,20 @@ const StoreOpenForm = () => {
       reader.readAsDataURL(e.target.files[0]);
       setImg(e.target.files[0]);
 
-      reader.onload = (e) => {
+      reader.onload = async (e) => {
+        console.log(e);
+        console.log(img, '안녕');
+
+        const formData = new FormData();
+        formData.append('img', img);
+
+        let URL = `http://localhost:8080/admin/upload`;
+        const request = await axios.post(URL, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
         imgSrc.current.src = reader.result;
       };
     }
@@ -523,20 +534,7 @@ const StoreOpenForm = () => {
     storeBusiness: topping === 'true' ? 1 : 0,
   };
 
-  const onclick = () => {
-    const formData = new FormData();
-    formData.append('img', img);
-
-    data.storeimg = formData;
-
-    axios.post('http://localhost:8080/admin/storeOpen', data);
-
-    // const request = await axios.post(URL, formData, {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // });
-  };
+  const onclick = () => {};
 
   return (
     <MainBox>
@@ -613,13 +611,19 @@ const StoreOpenForm = () => {
               <div>
                 <div>
                   {img ? (
-                    <img src='' alt='' ref={imgSrc} />
+                    <img
+                      src=''
+                      alt=''
+                      ref={imgSrc}
+                      style={{ borderRadius: '3px' }}
+                    />
                   ) : (
                     <div
                       style={{
                         width: '155px',
                         height: '155px',
                         backgroundColor: 'gray',
+                        borderRadius: '3px',
                       }}
                     ></div>
                   )}
