@@ -45,7 +45,7 @@ const ReviewBox = styled.div`
   }
 `;
 
-const ProductReviewForm = forwardRef(({ data }, ref) => {
+const ProductReviewForm = forwardRef(({ data, productKey }, ref) => {
   const getAverage = () => {
     if (data !== undefined) {
       let totalValue = 0;
@@ -79,7 +79,7 @@ const ProductReviewForm = forwardRef(({ data }, ref) => {
       <ReviewBox>
         {reviewItem.length >= 1 ? reviewItem : <h1>리뷰가 없습니다</h1>}
       </ReviewBox>
-      <ReviewWrite></ReviewWrite>
+      <ReviewWrite data={data} productKey={productKey}></ReviewWrite>
     </ProductReviewBox>
   );
 });

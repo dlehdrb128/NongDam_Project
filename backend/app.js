@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("keyboard cat"));
+
 app.use(
   cors({
     origin: "http://localhost:3000", // 출처 허용 옵션
@@ -41,8 +42,10 @@ app.use(
 
 app.use("/", Main);
 app.use("/product", Product);
-app.use("/login", login);
 app.use("/upload", uploadTest);
+app.use("/recipe", recipe);
+app.use("/login", login);
+app.use("/signUp", signUp);
 
 try {
   fs.readdirSync("uploads");
@@ -61,13 +64,6 @@ const upload = multer({
     },
   }),
 });
-
-app.use("/", Main);
-app.use("/product", Product);
-app.use("/upload", uploadTest);
-app.use("/recipe", recipe);
-app.use("/login", login);
-app.use("/signUp", signUp);
 
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);

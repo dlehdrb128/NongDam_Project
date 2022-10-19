@@ -233,9 +233,7 @@ const Login = () => {
       id: e.target[0].value,
       password: e.target[1].value,
     };
-<<<<<<< HEAD
 
-=======
     let tryLogin = await axios.post("http://localhost:8080/login", loginData, {
       withCredentials: true,
     });
@@ -243,17 +241,21 @@ const Login = () => {
     if (tryLogin.data.login === "성공") {
       navigate("/");
     }
->>>>>>> a40de3f4fb00534afb7eaef07634148456291733
+
     try {
       let tryLogin = await axios.post(
-        "http://localhost:8080/login/attempt",
-        loginData
+        "http://localhost:8080/login",
+        loginData,
+        {
+          withCredentials: true,
+        }
       );
-      if (tryLogin.data.login === "성공") {
+
+      if (tryLogin.data.status === 201) {
+        alert("로그인 성공!");
         navigate("/");
-        alert("로그인 되었습니다.");
-      } else {
-        alert("누구세요...?");
+      } else if (tryLogin.data.status === 401) {
+        alert("로그인 실패했습니다");
       }
     } catch (error) {
       console.log(error);
@@ -341,10 +343,7 @@ const Login = () => {
               {/* sns 아이콘 전채 부모 설정값 */}
               <SNSIcon href="http://naver.com">
                 {/* sns아이콘 원형모양 링크버튼 */}
-                <NaverLogo
-                  src=""
-                  alt="네이버"
-                />
+                <NaverLogo src="" alt="네이버" />
               </SNSIcon>
               <SNSIcon href="http://naver.com">
                 <KakaotalkLogo src="./img/kakaoTalk.png" alt="카카오톡" />
