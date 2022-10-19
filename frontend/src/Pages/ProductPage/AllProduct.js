@@ -232,7 +232,7 @@ const AllProduct = () => {
             </select>
           </div>
         </ProductItemLeft>
-        {params === "all" ? null : (
+        {params.params === "all" ? null : (
           <ProductItemRight
             src={`http://localhost:8080/local/${params.params}.png`}
             alt="이미지 없음"

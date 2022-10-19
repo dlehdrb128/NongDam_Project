@@ -167,7 +167,10 @@ const ProductItem = ({ data }) => {
           <div>
             <div>
               <span>★</span>{" "}
-              {datas[0].reviewValue === null ? 0 : datas[0].reviewValue} / 5
+              {datas[0].reviewValue === null
+                ? 0
+                : datas[0].reviewValue.toFixed(1)}{" "}
+              / 5
             </div>
             <div>리뷰 {datas[0].reviewCount}</div>
           </div>

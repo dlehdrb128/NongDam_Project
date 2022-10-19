@@ -30,7 +30,7 @@ router.post("/", async (req, res, next) => {
     if (err || row.length === 0) {
       console.error(err);
       return res
-        .status(401)
+        .clearCookie("connect.sid")
         .json({ status: 401, statusMessage: "로그인 실패" });
     }
 
@@ -42,17 +42,20 @@ router.post("/", async (req, res, next) => {
 
       req.session.userId = row[0].user_id;
 
-      return res
-        .status(201)
-        .json({ status: 201, statusMessage: "로그인 성공" });
+      res.json({ status: 201, statusMessage: "로그인 성공" });
     }
   });
 });
 
-router.get("/", userCheck, (req, res, next) => {
+router.get("/check", userCheck, (req, res, next) => {
   if (req.session.userId) {
-    res.status(201).json({ userInfo: req.userInfo });
+    res.json({ status: 201, userInfo: req.userInfo });
   }
 });
+
+// router.get("/check", (req, res) => {
+//   console.log(req.cookies);
+//   res.json(req.cookies);
+// });
 
 module.exports = router;

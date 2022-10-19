@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -116,6 +117,19 @@ const HeaderBoxRight = styled.div`
 `;
 
 const Header = () => {
+  const getLoginData = async () => {
+    try {
+      let response = await axios.get("http:///localhost:8080/login/check", {
+        withCredentials: true,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getLoginData();
+
   return (
     <>
       <HeaderBox>

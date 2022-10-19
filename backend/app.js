@@ -12,16 +12,6 @@ const uploadTest = require("./Server/Router/uploadTest");
 const login = require("./Server/Router/Login/index");
 const PORT = process.env.PORT || 8080;
 
-app.use(cors());
-app.use(express.static(path.join(__dirname, "uploads")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser("keyboard cat"));
-app.use("/", Main);
-app.use("/product", Product);
-app.use("/login", login);
-app.use("/upload", uploadTest);
-
 app.use(
   cors({
     origin: "http://localhost:3000", // 출처 허용 옵션
@@ -41,6 +31,14 @@ app.use(
   })
 );
 
+app.use(express.static(path.join(__dirname, "uploads")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser("keyboard cat"));
+app.use("/", Main);
+app.use("/product", Product);
+app.use("/login", login);
+app.use("/upload", uploadTest);
 
 try {
   fs.readdirSync("uploads");
