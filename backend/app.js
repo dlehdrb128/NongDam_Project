@@ -7,43 +7,20 @@ const fs = require("fs");
 const multer = require("multer");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-
 const Product = require("./Server/Router/Product/index");
 const uploadTest = require("./Server/Router/uploadTest");
 const login = require("./Server/Router/Login/index");
-
 const PORT = process.env.PORT || 8080;
 
-try {
-  fs.readdirSync("uploads");
-} catch (error) {
-  fs.mkdirSync("uploads");
-  console.log("uploads 파일이 없어서 생성합니다!");
-}
-
-// Request full drive access.
-
-// const upload = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads/");
-//   },
-//   filename: (req, file, cb) => {
-//     const ext = path.extname(file.originalname);
-//     cb(null, file.fieldname + "-" + Date.now() + ext);
-//   },
-//   limits: { fileSize: 5 * 1024 * 1024 },
-// });
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "uploads");
-    },
-    filename: function (req, file, cb) {
-      cb(null, new Date().valueOf() + path.extname(file.originalname));
-    },
-  }),
-});
+app.use(cors());
+app.use(express.static(path.join(__dirname, "uploads")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser("keyboard cat"));
+app.use("/", Main);
+app.use("/product", Product);
+app.use("/login", login);
+app.use("/upload", uploadTest);
 
 app.use(
   cors({
@@ -51,11 +28,7 @@ app.use(
     credentials: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
   })
 );
-app.use(express.static(path.join(__dirname, "uploads")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-app.use(cookieParser("keyboard cat"));
 app.use(
   session({
     secret: "keyboard cat",
@@ -68,10 +41,24 @@ app.use(
   })
 );
 
-app.use("/", Main);
-app.use("/product", Product);
-app.use("/login", login);
-app.use("/upload", uploadTest);
+
+try {
+  fs.readdirSync("uploads");
+} catch (error) {
+  fs.mkdirSync("uploads");
+  console.log("uploads 파일이 없어서 생성합니다!");
+}
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "uploads");
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().valueOf() + path.extname(file.originalname));
+    },
+  }),
+});
 
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);
@@ -89,3 +76,16 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`EXPRESS SERVER START ${PORT} `);
 });
+
+// Request full drive access.
+
+// const upload = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads/");
+//   },
+//   filename: (req, file, cb) => {
+//     const ext = path.extname(file.originalname);
+//     cb(null, file.fieldname + "-" + Date.now() + ext);
+//   },
+//   limits: { fileSize: 5 * 1024 * 1024 },
+// });
