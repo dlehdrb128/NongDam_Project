@@ -231,14 +231,22 @@ const Login = () => {
       id: e.target[0].value,
       password: e.target[1].value,
     };
-    let tryLogin = await axios.post("http://localhost:8080/login", loginData, {
-      withCredentials: true,
-    });
 
-    if (tryLogin.data.login === "성공") {
-      navigate("/");
-    }
     try {
+      let tryLogin = await axios.post(
+        "http://localhost:8080/login",
+        loginData,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (tryLogin.data.status === 201) {
+        alert("로그인 성공!");
+        navigate("/");
+      } else if (tryLogin.data.status === 401) {
+        alert("로그인 실패했습니다");
+      }
     } catch (error) {
       console.log(error);
     }
