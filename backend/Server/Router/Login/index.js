@@ -25,7 +25,7 @@ router.post("/attempt", (req, res) => {
     `select * from user where user_id = '${id}' AND user_password = '${password}'`,
     (err, row, field) => {
       if (row[0] === undefined) {
-        console.log("데이터가 없습니다");
+        res.json({ login: "실패", statusMessage: 500 });
       } else {
         res.json({ login: "성공", statusMessage: 201 });
       }
