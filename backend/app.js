@@ -7,8 +7,15 @@ const fs = require("fs");
 const multer = require("multer");
 const Product = require("./Server/Router/Product/index");
 const uploadTest = require("./Server/Router/uploadTest");
-
 const PORT = process.env.PORT || 8080;
+
+app.use(cors());
+app.use(express.static(path.join(__dirname, "uploads")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/", Main);
+app.use("/product", Product);
+app.use("/upload", uploadTest);
 
 try {
   fs.readdirSync("uploads");
@@ -16,19 +23,6 @@ try {
   fs.mkdirSync("uploads");
   console.log("uploads 파일이 없어서 생성합니다!");
 }
-
-// Request full drive access.
-
-// const upload = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads/");
-//   },
-//   filename: (req, file, cb) => {
-//     const ext = path.extname(file.originalname);
-//     cb(null, file.fieldname + "-" + Date.now() + ext);
-//   },
-//   limits: { fileSize: 5 * 1024 * 1024 },
-// });
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -40,16 +34,6 @@ const upload = multer({
     },
   }),
 });
-
-app.use(cors());
-app.use(express.static(path.join(__dirname, "uploads")));
-
-
-
-
-app.use("/", Main);
-app.use("/product", Product);
-app.use("/upload", uploadTest);
 
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);
@@ -67,3 +51,16 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`EXPRESS SERVER START ${PORT} `);
 });
+
+// Request full drive access.
+
+// const upload = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads/");
+//   },
+//   filename: (req, file, cb) => {
+//     const ext = path.extname(file.originalname);
+//     cb(null, file.fieldname + "-" + Date.now() + ext);
+//   },
+//   limits: { fileSize: 5 * 1024 * 1024 },
+// });

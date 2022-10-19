@@ -88,7 +88,7 @@ const ProductReview = ({ data }) => {
   let reviewImage;
 
   for (let key in data) {
-    if (data[key] !== null && key[7] === "i") {
+    if (data[key] !== null && key[8] === "m" && typeof data[key] !== "number") {
       imageArray.push(data[key]);
     }
   }
