@@ -96,10 +96,13 @@ const MainLatestProduct = () => {
       <LatestProductBox>
         <div>
           <div></div>
-          <img src="./img/latest.png" alt="이미지 없음" />
+          <img src="http://localhost:8080/main/latest.png" alt="이미지 없음" />
         </div>
         <div>
-          <img src="./img/latest-title.png" alt="이미지 없음"></img>
+          <img
+            src="http://localhost:8080/main/latest-title.png"
+            alt="이미지 없음"
+          ></img>
           <LatestProductItemBox>
             {data.map((value, index) => {
               return (

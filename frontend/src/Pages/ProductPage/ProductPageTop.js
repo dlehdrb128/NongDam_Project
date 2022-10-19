@@ -161,7 +161,25 @@ const ProductPageButtonBox = styled.div`
   gap: 30px;
 `;
 
+const SaleBox = styled.div`
+  display: flex;
+  gap: 10px;
+  & > div:nth-child(1) {
+    font-family: "SCD-7";
+    font-size: 3rem;
+    color: ${({ theme }) => theme.lightblack};
+  }
+  & > div:nth-child(2) {
+    font-family: "SCD-7";
+    font-size: 2rem;
+    color: ${({ theme }) => theme.gray};
+    text-decoration: line-through;
+    align-self: flex-end;
+  }
+`;
+
 const ProductPageTop = ({ ProductData }) => {
+  let salePrice = null;
   const [count, setCount] = useState(0);
   const up = () => {
     if (count > 0) {
@@ -175,11 +193,18 @@ const ProductPageTop = ({ ProductData }) => {
 
   ProductData = ProductData[0];
 
+  if (ProductData.product_discount_set === 1) {
+    salePrice =
+      ProductData.product_price -
+      (ProductData.product_price * ProductData.product_discount_percent) /
+        (100).toLocaleString();
+  }
+
   return (
     <ProductPageTopBox>
       <ProductPageTopLeft>
         <img
-          src={"/" + ProductData.product_image}
+          src={`http://localhost:8080/product/${ProductData.product_image}`}
           alt="데이터를 찾을 수 없습니다"
         ></img>
       </ProductPageTopLeft>
@@ -188,7 +213,14 @@ const ProductPageTop = ({ ProductData }) => {
         <div>[{ProductData.product_local}]</div>
         <div>{ProductData.product_name}</div>
         <hr></hr>
-        <div>{ProductData.product_price.toLocaleString()}원</div>
+        {salePrice === null ? (
+          <div>{ProductData.product_price.toLocaleString()}원</div>
+        ) : (
+          <SaleBox>
+            <div>{salePrice}원</div>
+            <div>{ProductData.product_price.toLocaleString()}원</div>
+          </SaleBox>
+        )}
         <ProductPageCountBox>
           <div>수량</div>
           <div>
@@ -199,8 +231,9 @@ const ProductPageTop = ({ ProductData }) => {
         </ProductPageCountBox>
         <ProductPageTotalPrice>
           <div>총 합계금액 (수량) :</div>
+
           <div>
-            <div>{(ProductData.product_price * count).toLocaleString()}원</div>
+            <div>{(salePrice * count).toLocaleString()}원</div>
             <div>({count}개)</div>
           </div>
         </ProductPageTotalPrice>

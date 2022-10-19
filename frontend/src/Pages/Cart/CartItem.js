@@ -1,6 +1,6 @@
-import { useState } from "react";
-import styled from "styled-components";
-import CartPrice from "./CartPrice";
+import { useState } from 'react';
+import styled from 'styled-components';
+import CartPrice from './CartPrice';
 
 // 상품 목록 전체 박스
 const ItemBox = styled.div`
@@ -36,27 +36,27 @@ const ItemBox = styled.div`
     width: 357px;
     padding-right: 3px;
     font-size: 1.5rem;
-    font-family: "SCD-3";
+    font-family: 'SCD-3';
   }
   // 판매가
   & > div:nth-child(4) {
     width: 79px;
     font-size: 1.5rem;
-    font-family: "SCD-3";
+    font-family: 'SCD-3';
     text-align: center;
   }
   // 할인금액
   & > div:nth-child(6) {
     width: 80px;
     font-size: 1.5rem;
-    font-family: "SCD-3";
+    font-family: 'SCD-3';
     text-align: center;
   }
   // 합계
   & > div:nth-child(7) {
     width: 139px;
     font-size: 1.5rem;
-    font-family: "SCD-3";
+    font-family: 'SCD-3';
     text-align: center;
   }
   // 선택
@@ -71,7 +71,7 @@ const ItemBox = styled.div`
       width: 117px;
       height: 40px;
       font-size: 1.5rem;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
       background-color: ${({ theme }) => theme.green};
       color: ${({ theme }) => theme.realWhite};
       border: none;
@@ -112,13 +112,13 @@ const CountBox = styled.div`
   & > button {
     width: 26px;
     height: 26px;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     font-size: 1.5rem;
   }
   & > input {
     width: 26px;
     height: 26px;
-    font-family: "SCD-3";
+    font-family: 'SCD-3';
     font-size: 1.5rem;
     text-align: center;
   }
@@ -152,10 +152,10 @@ const CartItem = ({ product }) => {
     <>
       <ItemBox>
         <div>
-          <input type="checkbox" name="product"></input>
+          <input type='checkbox' name='product'></input>
         </div>
         <div>
-          <img src={product.img} alt="productimage"></img>
+          <img src={product.img} alt='productimage'></img>
         </div>
         <div>{product.name}</div>
         <div>{(product.price * number).toLocaleString()}원</div>
@@ -178,10 +178,16 @@ const CartItem = ({ product }) => {
           <button>바로구매</button>
           <div>
             <div>
-              <img src="/img/cart_heart.png" alt="icon"></img>
+              <img
+                src='http://localhost:8080/icon/cart_heart.png'
+                alt='icon'
+              ></img>
             </div>
             <div>
-              <img src={"img/cart_trash.png"} alt="icon"></img>
+              <img
+                src={'http://localhost:8080/icon/cart_trash.png'}
+                alt='icon'
+              ></img>
             </div>
           </div>
         </div>

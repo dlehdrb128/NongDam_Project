@@ -50,8 +50,8 @@ const ReviewWrite = () => {
       <img
         src={
           hovered >= el || clicked >= el
-            ? "/img/ProductDetail/star-fill.png"
-            : "/img/ProductDetail/star-outline.png"
+            ? "http://localhost:8080/productDetail/star-fill.png"
+            : "http://localhost:8080/productDetail/star-outline.png"
         }
         key={el}
         onMouseEnter={() => setHovered(el)}

@@ -93,7 +93,7 @@ const MainArticle = () => {
           </Link>
         </MainArticleTitle>
         <MainArticleImg
-          src="/img/MainArticle.png"
+          src="http://localhost:8080/main/MainArticle.png"
           alt="이미지 없음"
         ></MainArticleImg>
       </MainArticleItemBox>
