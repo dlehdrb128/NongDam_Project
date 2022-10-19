@@ -24,7 +24,6 @@ router.get("/review", (req, res) => {
 
     (err, row, field) => {
       res.json(row);
-      console.log(row);
     }
   );
 });

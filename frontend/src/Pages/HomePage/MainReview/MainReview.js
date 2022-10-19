@@ -65,6 +65,8 @@ const MainReview = () => {
     return null;
   }
 
+  console.log(data);
+
   return (
     <MainReviewBox>
       <MainReviewTextBox>

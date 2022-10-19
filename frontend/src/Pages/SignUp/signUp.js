@@ -129,6 +129,9 @@ const BasicInfo = styled.div`
       font-size: 1.5rem;
     }
   }
+  & > div:nth-child(8) {
+    border-bottom: 1px solid ${({ theme }) => theme.lightblack};
+  }
   & > div:nth-child(9) {
     /* 평생회원 */
     width: inherit;
@@ -350,18 +353,6 @@ const SignUp = () => {
           </MiddleBox>
           <InputText></InputText>
         </div>
-        <div>
-          <MiddleBox>평생회원</MiddleBox>
-          <InputClick type={"radio"} name="agree"></InputClick>
-          &nbsp;동의함&nbsp;&nbsp;
-          <InputClick type={"radio"} name="agree"></InputClick>
-          &nbsp;동의안함
-          <br />
-          <p>
-            -평생회원으로 가입하시면 농담 회원 탈퇴시까지는 휴면회원으로
-            전환되지 않으며, 고객님의 개인정보가 탈퇴시까지 안전하게 보관됩니다.
-          </p>
-        </div>
       </BasicInfo>
       <br />
       <h2>추가정보</h2>
@@ -379,7 +370,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>추천인 아이디</MiddleBox>
-          <InputText></InputText>
+          <InputText type={"search"}></InputText>
         </div>
       </MoreInfo>
       <br />
@@ -417,7 +408,13 @@ const SignUp = () => {
       </Terms>
       <br />
       <br />
-      <button>회원가입</button>
+      <button
+        type="submit"
+        formMethod="get"
+        formAction="http://localhost:3000/signUpEnd"
+      >
+        회원가입
+      </button>
     </SignUpParent>
   );
 };

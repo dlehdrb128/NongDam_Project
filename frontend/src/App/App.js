@@ -20,6 +20,7 @@ import Mypage from "../Pages/MyPage/MyPage";
 import RecipeCreateReview from "../Pages/Recipe/recipeCreateReview";
 import RecipeReview from "../Pages/Recipe/recipeReview";
 import UploadTest from "../Pages/uploadTest/index";
+import NewLogin from "../Pages/Login/newLogin";
 import "./App.css";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route element={<Header />} />
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/newLogin" element={<NewLogin />}></Route>
           <Route path="/intro" element={<Intro />}></Route>
           <Route path="/product/:category" element={<AllProduct />}></Route>
           <Route path="/product/detail/:id" element={<ProductPage />}></Route>
