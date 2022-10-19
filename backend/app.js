@@ -10,6 +10,10 @@ const uploadTest = require("./Server/Router/uploadTest");
 const orders = require("./Server/Router/Orders/index");
 const cart = require("./Server/Router/Cart/index");
 const multer = require("multer");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const login = require("./Server/Router/Login/index");
+
 const PORT = process.env.PORT || 8080;
 
 try {
@@ -29,7 +33,7 @@ try {
 //     const ext = path.extname(file.originalname);
 //     cb(null, file.fieldname + "-" + Date.now() + ext);
 //   },
-//   limits: { fileSize: 5 * 1024 * 1024 },
+//   limits: { fileSize: 5 * 1024 * 1024 },s
 // });
 
 const upload = multer({
@@ -43,13 +47,35 @@ const upload = multer({
   }),
 });
 
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // 출처 허용 옵션
+    credentials: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+  })
+);
 app.use('/', Main);
 app.use('/market', Market);
 app.use(express.static(path.join(__dirname, "uploads")));
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(cookieParser("keyboard cat"));
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: false, // 자바스크립트를 통해 세션 쿠키를 사용할 수있는 지여부
+      Secure: true,
+    },
+  })
+);
+
+app.use("/", Main);
 app.use("/product", Product);
+app.use("/login", login);
 app.use("/upload", uploadTest);
 app.use("/orders", orders);
 app.use("/cart", cart);

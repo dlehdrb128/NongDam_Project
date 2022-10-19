@@ -47,13 +47,15 @@ const OrderItem = styled.a`
   }
 `;
 
+
 const Mypagesec2OrderItem = ({ data }) => {
   const datas = data.data[0];
   const products = data.data[2];
   console.log(data);
   const img = `http://localhost:8080/product/${products[0].product_image}`
+  const href = `http://localhost:8080/orderDetail/${datas[0].product_key}`
   return (
-    <OrderItem href="/orderDetail">
+    <OrderItem href={href}>
       {/* 날짜,주문번호 */}
       <div>
         <p>{datas[0].covert_date}</p>

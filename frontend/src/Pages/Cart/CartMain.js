@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import CartTitle from "./CartTitle";
 import CartItem from "./CartItem";
-import CartPrice from "./CartPrice";
+import CartPrice from "./CartPrice"
 import Remocon from "../../LayOut/Remocon";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, forwardRef } from "react";
 import axios from 'axios'
 
 // 장바구니 메인 큰 박스
@@ -13,7 +13,7 @@ const MainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   color: ${(theme) => theme.lightblack};
 `;
 
@@ -24,7 +24,7 @@ const CartMainBox = styled.div`
 
   // 메인 이름 - 장바구니
   & > h1 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     font-size: 4rem;
     text-align: center;
     padding-bottom: 80px;
@@ -46,7 +46,7 @@ const AllOrderButton = styled.button`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -59,19 +59,22 @@ const AllOrderButton = styled.button`
 const SelectOrderButton = styled(AllOrderButton)`
   border: 1px solid ${(theme) => theme.lightblack};
 `;
+
+// 상품 목록 전체 박스
+
 // 전체적인 구성
 //  h1 장바구니 + 상품 정보 이름 담을 (CartTitle.js)  + + 상품금액 담길 목록(CartPrice.js) + 상품 가격(CartPrice.js)
 const CartMain = () => {
   const [Loading, SetLoading] = useState(false);
   const [data, SetData] = useState();
-  const [getData, setGetdata] = useState();
+  const [priceData, setData] = useState(0)
   useEffect(() => {
     SetLoading(true);
     const getData = async () => {
       try {
         const response = await axios('http://localhost:8080/cart');
         // console.log(response);
-        SetData(response.data);
+        SetData(response.data)
       } catch (e) {
         console.log(e);
       }
@@ -79,6 +82,20 @@ const CartMain = () => {
     getData();
     SetLoading(false);
   }, []);
+
+  const calc = (price) => {
+    
+    
+    setData(priceData + price)
+console.log(priceData)
+
+
+
+
+
+
+
+  }
 
 
   if (Loading) {
@@ -88,8 +105,6 @@ const CartMain = () => {
     return <h1>데이터를 읽을 수 없습니다.</h1>
   }
 
-  console.log(getData);
-
   return (
     <MainBox>
       <CartMainBox>
@@ -97,7 +112,7 @@ const CartMain = () => {
         <CartTitle></CartTitle>
         {data.map((product, index) => {
           if (product.user_key === 2) {
-            return <CartItem product={product} getData={setGetdata} key={index}></CartItem>;
+            return <CartItem product={product} key={index} calc={calc}></CartItem>;
           }
         })}
         <CartPrice product={data.filter((product) => {
@@ -105,17 +120,11 @@ const CartMain = () => {
             return product
           }
         })}></CartPrice>
-        <div className="buttonBox">
-          <SelectOrderButton
-            col={(theme) => theme.green}
-            bgcol={(theme) => theme.realWhite}
-          >
+        <div className='buttonBox'>
+          <SelectOrderButton col={({ theme }) => theme.green} bgcol={({ theme }) => theme.realWhite}>
             선택주문
           </SelectOrderButton>
-          <AllOrderButton
-            col={(theme) => theme.realWhite}
-            bgcol={(theme) => theme.green}
-          >
+          <AllOrderButton col={({ theme }) => theme.realWhite} bgcol={({ theme }) => theme.green}>
             전체주문
           </AllOrderButton>
         </div>

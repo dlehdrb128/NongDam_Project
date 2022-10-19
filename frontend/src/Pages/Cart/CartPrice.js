@@ -45,20 +45,19 @@ const OperatorBox = styled.div`
 `;
 
 const CartPrice = ({ product, number }) => {
+  
   let shipping = 2500;
-  if (product.product_price * number < 50000) {
+  if (product.price * number < 50000) {
     shipping = 2500;
   } else {
     shipping = 0;
   }
 
-  // console.log(product);
-  const discount = product.product_price - (product.product_price * (product.product_discount_percent / 100));
   return (
     <MainBox>
       <Pricebox>
         <p>상품금액</p>
-        <p>{(product.product_price * number).toLocaleString()}원</p>
+        <p>{(product.price * number).toLocaleString()}원</p>
       </Pricebox>
       <OperatorBox>
         <p>-</p>
@@ -67,7 +66,7 @@ const CartPrice = ({ product, number }) => {
         <p>할인금액</p>
         <p>
           {" "}
-          {((product.product_price - discount) * number).toLocaleString()}원
+          {((product.price / product.discount) * number).toLocaleString()}원
         </p>
       </Pricebox>
       <OperatorBox>
@@ -82,13 +81,13 @@ const CartPrice = ({ product, number }) => {
       </OperatorBox>
       <Pricebox>
         <p>결제금액</p>
-        {/* <p>
+        <p>
           {(
             (product.price - product.price / product.discount) * number +
             shipping
           ).toLocaleString()}
           원
-        </p> */}
+        </p>
       </Pricebox>
     </MainBox>
   );

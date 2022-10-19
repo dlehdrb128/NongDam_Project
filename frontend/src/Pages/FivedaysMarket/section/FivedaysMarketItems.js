@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-const Section2conItem = styled.div`
+const Section2conItem = styled.a`
   //상품 컨테이너(사이즈 조정)
+  text-decoration: none;
   & > div {
     width: 210px;
     cursor: pointer;
@@ -51,8 +52,9 @@ const Section2conItem = styled.div`
 const FivedaysMarketitems = ({ data }) => {
   console.log(data);
   const img = `http://localhost:8080/product/product-${data.product_key}.png`
+  const link = `http://localhost:3000/product/detail/${data.product_key}`
   return (
-    <Section2conItem>
+    <Section2conItem href={link}>
       <div>
         <img src={img} alt='Product'></img>
         <p>
