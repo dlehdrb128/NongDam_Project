@@ -44,9 +44,6 @@ const upload = multer({
 app.use(cors());
 app.use(express.static(path.join(__dirname, "uploads")));
 
-
-
-
 app.use("/", Main);
 app.use("/product", Product);
 app.use("/upload", uploadTest);
@@ -67,3 +64,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`EXPRESS SERVER START ${PORT} `);
 });
+// ㅁㅁㅁ
