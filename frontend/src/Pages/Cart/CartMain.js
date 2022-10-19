@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import CartTitle from "./CartTitle";
 import CartItem from "./CartItem";
+import CartPrice from "./CartPrice";
 import Remocon from "../../LayOut/Remocon";
+import { useState, useEffect } from "react";
+import axios from 'axios'
 
 // 장바구니 메인 큰 박스
 const MainBox = styled.div`
@@ -59,24 +62,49 @@ const SelectOrderButton = styled(AllOrderButton)`
 // 전체적인 구성
 //  h1 장바구니 + 상품 정보 이름 담을 (CartTitle.js)  + + 상품금액 담길 목록(CartPrice.js) + 상품 가격(CartPrice.js)
 const CartMain = () => {
-  const productList = [
-    {
-      name: "[전북] 서영암농협 학이 머문 유기농 쌀(일 미) 4kg, 2021년산...",
-      price: 9500,
-      discount: 10,
-      img: "/img/cart1.png",
-    },
-  ];
+  const [Loading, SetLoading] = useState(false);
+  const [data, SetData] = useState();
+  const [getData, setGetdata] = useState();
+  useEffect(() => {
+    SetLoading(true);
+    const getData = async () => {
+      try {
+        const response = await axios('http://localhost:8080/cart');
+        // console.log(response);
+        SetData(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getData();
+    SetLoading(false);
+  }, []);
+
+
+  if (Loading) {
+    return <h1>준비중입니다.</h1>
+  }
+  if (data === undefined) {
+    return <h1>데이터를 읽을 수 없습니다.</h1>
+  }
+
+  console.log(getData);
 
   return (
     <MainBox>
       <CartMainBox>
         <h1>장바구니</h1>
         <CartTitle></CartTitle>
-        {productList.map((product, index) => {
-          return <CartItem product={product} key={index}></CartItem>;
+        {data.map((product, index) => {
+          if (product.user_key === 2) {
+            return <CartItem product={product} getData={setGetdata} key={index}></CartItem>;
+          }
         })}
-
+        <CartPrice product={data.filter((product) => {
+          if (product.user_key === 2) {
+            return product
+          }
+        })}></CartPrice>
         <div className="buttonBox">
           <SelectOrderButton
             col={(theme) => theme.green}

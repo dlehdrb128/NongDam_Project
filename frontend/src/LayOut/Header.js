@@ -121,7 +121,10 @@ const Header = () => {
       <HeaderBox>
         <div>
           <Link to="/">
-            <img src="/img/logo-3.svg" alt="이미지 없음"></img>
+            <img
+              src="http://localhost:8080/svg/logo-3.svg"
+              alt="이미지 없음"
+            ></img>
           </Link>
           <HeaderBoxMid>
             <Link to="/intro">함께 둘러보는 농담</Link>

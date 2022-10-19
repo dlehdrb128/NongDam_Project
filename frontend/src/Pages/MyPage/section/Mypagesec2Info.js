@@ -84,7 +84,7 @@ const Info = styled.div`
     & > div:nth-child(1) {
       &::before {
         content: "";
-        background: url("/img/Coupon.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/coupon.svg") no-repeat center;
         width: 48px;
         height: 47px;
         position: absolute;
@@ -93,7 +93,7 @@ const Info = styled.div`
     & > div:nth-child(2) {
       &::before {
         content: "";
-        background: url("/img/StackMoney.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/StackMoney.svg") no-repeat center;
         background-size: cover;
         width: 43px;
         height: 47px;
@@ -103,7 +103,7 @@ const Info = styled.div`
     & > div:nth-child(3) {
       &::before {
         content: "";
-        background: url("/img/Favorite.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/Favorite.svg") no-repeat center;
         width: 41px;
         height: 47px;
         position: absolute;
@@ -157,7 +157,6 @@ const Mypagesec2Info = ({ data }) => {
       <div>
         <div>
           <p>쿠폰</p>
-          <p>준비중 입니다.</p>
         </div>
         <div>
           <p>적립금</p>

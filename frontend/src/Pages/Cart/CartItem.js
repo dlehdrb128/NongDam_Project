@@ -125,7 +125,7 @@ const CountBox = styled.div`
 `;
 
 //
-const CartItem = ({ product }) => {
+const CartItem = ({ product, getData }) => {
   //수량
   const [number, setNumber] = useState(1);
 
@@ -148,6 +148,18 @@ const CartItem = ({ product }) => {
     }
   };
 
+  const discount = product.product_price - (product.product_price * (product.product_discount_percent / 100));
+
+  console.log(product.product_price * number);
+
+  getData = {
+    SumPrice: (product.product_price * number),
+    OnlySalePrice: ((product.product_price - discount) * number),
+    saleSumPrice: (discount * number)
+  }
+
+  console.log(getData.SumPrice);
+  const img = `http://localhost:8080/product/product-${product.product_key}.png`
   return (
     <>
       <ItemBox>
@@ -155,38 +167,38 @@ const CartItem = ({ product }) => {
           <input type="checkbox" name="product"></input>
         </div>
         <div>
-          <img src={product.img} alt="productimage"></img>
+          <img src={img} alt="productimage"></img>
         </div>
-        <div>{product.name}</div>
-        <div>{(product.price * number).toLocaleString()}원</div>
+        <div>{product.product_name}</div>
+        <div>{(product.product_price * number).toLocaleString()}원</div>
         <CountBox>
           <button onClick={clickMinus}>-</button>
           <input value={number} onChange={onChange}></input>
           <button onClick={clickPlus}>+</button>
         </CountBox>
         <div>
-          {((product.price / product.discount) * number).toLocaleString()}원
+          {((product.product_price - discount) * number).toLocaleString()}원
         </div>
         <div>
-          {(
-            (product.price - product.price / product.discount) *
-            number
-          ).toLocaleString()}
+          {
+            (discount *
+              number
+            ).toLocaleString()}
           원
         </div>
         <div>
           <button>바로구매</button>
           <div>
             <div>
-              <img src="/img/cart_heart.png" alt="icon"></img>
+              <img src="http://localhost:8080/icon/cart_heart.png" alt="icon"></img>
             </div>
             <div>
-              <img src={"img/cart_trash.png"} alt="icon"></img>
+              <img src={"http://localhost:8080/icon/cart_heart.png"} alt="icon"></img>
             </div>
           </div>
         </div>
       </ItemBox>
-      <CartPrice product={product} number={number}></CartPrice>
+      {/* <CartPrice product={product} number={number}></CartPrice> */}
     </>
   );
 };

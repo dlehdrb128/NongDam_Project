@@ -84,19 +84,39 @@ const InforMation = styled.div`
 `;
 
 const ProductReview = ({ data }) => {
-  const reviewImage = (
-    <img src={"/" + data.review_image} alt="이미지 없음"></img>
-  );
+  let imageArray = [];
+  let reviewImage;
 
-  const newDate = data.review_date.split("T");
+  for (let key in data) {
+    if (data[key] !== null && key[7] === "i") {
+      imageArray.push(data[key]);
+    }
+  }
+
+  if (data.review_image !== null) {
+    reviewImage = imageArray.map((value, index) => {
+      return (
+        <img
+          key={index}
+          src={`http://localhost:8080/review/${value}`}
+          alt="이미지 없음"
+        ></img>
+      );
+    });
+  }
+
+  const newDate = data.review_post_date.split("T");
 
   return (
     <ReviewItemBox>
       <InforMation>
-        <div>{data.review_user}</div>
+        <div>{data.review_user_id}</div>
         <div>
           <div>
-            <img src="/img/ProductDetail/star-fill.png" alt="이미지 없음"></img>
+            <img
+              src="http://localhost:8080/productDetail/star-fill.png"
+              alt="이미지 없음"
+            ></img>
             {data.review_value} / 5
           </div>
           <div>{newDate[0]}</div>
