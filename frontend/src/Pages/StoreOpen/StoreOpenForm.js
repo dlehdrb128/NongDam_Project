@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
-import styled from 'styled-components';
-import Theme from '../../Theme/theme';
-import axios from 'axios';
+import { useRef, useState } from "react";
+import styled from "styled-components";
+import Theme from "../../Theme/theme";
+import axios from "axios";
 
 // 메인박스로 묶음
 const MainBox = styled.div`
@@ -14,7 +14,7 @@ const MainBox = styled.div`
   & > form {
     // 스토어정보, 고객센터 정보안내 h1 스타일링
     & > h1 {
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       color: ${({ theme }) => theme.lightblack};
       font-size: 2.5rem;
       padding-bottom: 15px;
@@ -50,7 +50,7 @@ const ContentBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -59,7 +59,7 @@ const ContentBox = styled.div`
     // span있는거만 적용됨
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -73,7 +73,7 @@ const ContentBox = styled.div`
     border-left: 1px solid ${({ theme }) => theme.liglightgray};
     // 기입내용 input 박스 설정
     & > input {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -84,7 +84,7 @@ const ContentBox = styled.div`
     //  input박스 뒤에 따로 특이사항 붙는 부분
     // span 추가해서 설정하면되고, 없어도 상관없음
     & > span {
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
       font-size: 1.3rem;
       padding-left: 5px;
     }
@@ -104,7 +104,7 @@ const BusinessAdd = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -112,7 +112,7 @@ const BusinessAdd = styled.div`
     // 이거 역시 필수기입내용 * 표시
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -127,7 +127,7 @@ const BusinessAdd = styled.div`
 
     // 우편번호 창
     & > div > input {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -140,7 +140,7 @@ const BusinessAdd = styled.div`
       width: 120px;
       height: 40px;
       font-size: 1.5rem;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       color: ${({ theme }) => theme.realWhite};
       background-color: ${({ theme }) => theme.green};
       border: none;
@@ -151,7 +151,7 @@ const BusinessAdd = styled.div`
     }
     // 전체주와 나머지 주소 받을 input
     & > input {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -173,7 +173,7 @@ const ImgBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     display: flex;
     align-items: center;
     text-align: left;
@@ -183,7 +183,7 @@ const ImgBox = styled.div`
     // 필수기입사항
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -214,14 +214,14 @@ const ImgBox = styled.div`
         & > img {
           width: 100%;
           height: 100%;
-          margin: 'auto';
+          margin: "auto";
           background-color: ${({ theme }) => theme.liglightgray};
         }
       }
 
       // 이미지 권장 사이즈 안내
       & > p {
-        font-family: 'SCD-4';
+        font-family: "SCD-4";
         text-align: center;
         font-size: 1.5rem;
       }
@@ -244,7 +244,7 @@ const ImgBox = styled.div`
         color: ${({ theme }) => theme.realWhite};
         text-align: center;
         border-radius: 3px;
-        font-family: 'SCD-6';
+        font-family: "SCD-6";
         font-size: 1.5rem;
         display: flex;
         justify-content: center;
@@ -253,7 +253,7 @@ const ImgBox = styled.div`
       }
       // 등록이미지 안내
       & > p {
-        font-family: 'SCD-5';
+        font-family: "SCD-5";
         font-size: 1.3rem;
         padding-top: 5px;
       }
@@ -273,7 +273,7 @@ const TelBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -281,7 +281,7 @@ const TelBox = styled.div`
     // *로 된 필수입력사항
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -294,7 +294,7 @@ const TelBox = styled.div`
     border-left: 1px solid ${({ theme }) => theme.lightblack};
     // 번호의 맨 앞자리 선택박스
     & > select {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       width: 100px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -304,7 +304,7 @@ const TelBox = styled.div`
     }
     // 전화번호 개인 입력창
     & > input {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       width: 100px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -314,7 +314,7 @@ const TelBox = styled.div`
     }
     // 전화번호 사이사이 - 표시
     & > span {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       padding: 0 10px 0 10px;
       font-size: 1.5rem;
     }
@@ -322,7 +322,7 @@ const TelBox = styled.div`
     & > button {
       width: 120px;
       height: 40px;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
       color: ${({ theme }) => theme.realWhite};
       background-color: ${({ theme }) => theme.green};
@@ -347,7 +347,7 @@ const RadioBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -355,7 +355,7 @@ const RadioBox = styled.div`
     // * 표시 필수입력사항
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -377,7 +377,7 @@ const RadioBox = styled.div`
 
     // 라디오 버튼의 내용
     & > label {
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
       font-size: 1.3rem;
       padding: 0 20px 0 5px;
     }
@@ -389,7 +389,7 @@ const RegButton = styled.button`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: 'SCD-6';
+  font-family: "SCD-6";
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -406,7 +406,7 @@ const EditButton = styled(RegButton)`
 const StoreOpenForm = () => {
   const imgSrc = useRef();
 
-  const [img, setImg] = useState('');
+  const [img, setImg] = useState("");
   console.log(img);
   const onChangeFile = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -426,51 +426,51 @@ const StoreOpenForm = () => {
     setTopping(e.target.value);
   };
   const firstTelList = [
-    '02',
-    '031',
-    '032',
-    '033',
-    '041',
-    '042',
-    '043',
-    '044',
-    '051',
-    '052',
-    '054',
-    '055',
-    '061',
-    '062',
-    '063',
-    '064',
-    '070',
-    '010',
+    "02",
+    "031",
+    "032",
+    "033",
+    "041",
+    "042",
+    "043",
+    "044",
+    "051",
+    "052",
+    "054",
+    "055",
+    "061",
+    "062",
+    "063",
+    "064",
+    "070",
+    "010",
   ];
 
-  const firstMobileList = ['010', '011', '016', '017', '018', '019', '070'];
+  const firstMobileList = ["010", "011", "016", "017", "018", "019", "070"];
   const [inputData, setInputData] = useState({
-    storeName: '',
-    mobilePhone: '',
-    email: '',
-    name: '',
-    address1: '',
-    address2: '',
-    address3: '',
-    huntingLine1: '02',
-    huntingLine2: '',
-    huntingLine3: '',
-    mobile1: '010',
-    mobile2: '',
-    mobile3: '',
-    receiveEmail: '',
-    outgoingEmail: '',
-    csTel1: '02',
-    csTel2: '',
-    csTel3: '',
-    csEmail: '',
-    faxTel1: '02',
-    faxTel2: '',
-    faxTel3: '',
-    csHours: '',
+    storeName: "",
+    mobilePhone: "",
+    email: "",
+    name: "",
+    address1: "",
+    address2: "",
+    address3: "",
+    huntingLine1: "02",
+    huntingLine2: "",
+    huntingLine3: "",
+    mobile1: "010",
+    mobile2: "",
+    mobile3: "",
+    receiveEmail: "",
+    outgoingEmail: "",
+    csTel1: "02",
+    csTel2: "",
+    csTel3: "",
+    csEmail: "",
+    faxTel1: "02",
+    faxTel2: "",
+    faxTel3: "",
+    csHours: "",
   });
 
   const {
@@ -521,11 +521,11 @@ const StoreOpenForm = () => {
     storeCsEmail: csEmail,
     storeFax: `${faxTel1}-${faxTel2}-${faxTel3}`,
     storeCsTime: csHours,
-    storeBusiness: topping === 'true' ? 1 : 0,
+    storeBusiness: topping === "true" ? 1 : 0,
   };
 
   const onclick = () => {
-    axios.post('http://localhost:8080/admin/storeOpen/', data);
+    axios.post("http://localhost:8080/admin/storeOpen/", data);
   };
 
   return (
@@ -539,7 +539,7 @@ const StoreOpenForm = () => {
               <span> *</span>
             </h2>
             <div>
-              <input type='text' onChange={onchange} name='storeName'></input>
+              <input type="text" onChange={onchange} name="storeName"></input>
 
               <span>
                 (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
@@ -551,7 +551,7 @@ const StoreOpenForm = () => {
               대표 휴대전화<span> *</span>
             </h2>
             <div>
-              <input type='tel' onChange={onchange} name='mobilePhone'></input>
+              <input type="tel" onChange={onchange} name="mobilePhone"></input>
             </div>
           </ContentBox>
           <ContentBox>
@@ -559,7 +559,7 @@ const StoreOpenForm = () => {
               대표 이메일<span> *</span>
             </h2>
             <div>
-              <input type='email' onChange={onchange} name='email'></input>
+              <input type="email" onChange={onchange} name="email"></input>
             </div>
           </ContentBox>
           <ContentBox>
@@ -567,7 +567,7 @@ const StoreOpenForm = () => {
               이름<span> *</span>
             </h2>
             <div>
-              <input type='text' onChange={onchange} name='name'></input>
+              <input type="text" onChange={onchange} name="name"></input>
             </div>
           </ContentBox>
           <BusinessAdd>
@@ -578,20 +578,20 @@ const StoreOpenForm = () => {
               <div>
                 <input
                   onChange={onchange}
-                  name='address1'
-                  placeholder='우편번호'
+                  name="address1"
+                  placeholder="우편번호"
                 ></input>
                 <button>주소검색</button>
               </div>
               <input
                 onChange={onchange}
-                name='address2'
-                placeholder='기본주소'
+                name="address2"
+                placeholder="기본주소"
               ></input>
               <input
                 onChange={onchange}
-                name='address3'
-                placeholder='나머지 주소(선택 입력 가능)'
+                name="address3"
+                placeholder="나머지 주소(선택 입력 가능)"
               ></input>
             </div>
           </BusinessAdd>
@@ -602,19 +602,19 @@ const StoreOpenForm = () => {
             <div>
               <div>
                 <div>
-                  <img src='' alt='' ref={imgSrc} />
+                  <img src="" alt="" ref={imgSrc} />
                 </div>
                 <p>권장 500px * 500px</p>
               </div>
               <div>
                 <input
-                  type='file'
-                  id='input-file'
-                  accept='image/jpeg,gif,png,jpg'
-                  style={{ display: 'none' }}
+                  type="file"
+                  id="input-file"
+                  accept="image/jpeg,gif,png,jpg"
+                  style={{ display: "none" }}
                   onChange={onChangeFile}
                 ></input>
-                <label for='input-file'>등록</label>
+                <label for="input-file">등록</label>
                 <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
               </div>
             </div>
@@ -625,7 +625,7 @@ const StoreOpenForm = () => {
               <select
                 onChange={onchange}
                 value={huntingLine1}
-                name='huntingLine1'
+                name="huntingLine1"
               >
                 {firstTelList.map((item) => (
                   <option value={item} key={item}>
@@ -634,9 +634,9 @@ const StoreOpenForm = () => {
                 ))}
               </select>
               <span>-</span>
-              <input onChange={onchange} name='huntingLine2'></input>
+              <input onChange={onchange} name="huntingLine2"></input>
               <span>-</span>
-              <input onChange={onchange} name='huntingLine3'></input>
+              <input onChange={onchange} name="huntingLine3"></input>
             </div>
           </TelBox>
           <TelBox>
@@ -645,7 +645,7 @@ const StoreOpenForm = () => {
               <span> *</span>
             </h2>
             <div>
-              <select onChange={onchange} value={mobile1} name='mobile1'>
+              <select onChange={onchange} value={mobile1} name="mobile1">
                 {firstMobileList.map((item) => (
                   <option value={item} key={item}>
                     {item}
@@ -653,9 +653,9 @@ const StoreOpenForm = () => {
                 ))}
               </select>
               <span>-</span>
-              <input onChange={onchange} name='mobile2'></input>
+              <input onChange={onchange} name="mobile2"></input>
               <span>-</span>
-              <input onChange={onchange} name='mobile3'></input>
+              <input onChange={onchange} name="mobile3"></input>
             </div>
           </TelBox>
           <ContentBox>
@@ -664,9 +664,9 @@ const StoreOpenForm = () => {
             </h2>
             <div>
               <input
-                type='email'
+                type="email"
                 onChange={onchange}
-                name='receiveEmail'
+                name="receiveEmail"
               ></input>
             </div>
           </ContentBox>
@@ -676,9 +676,9 @@ const StoreOpenForm = () => {
             </h2>
             <div>
               <input
-                type='email'
+                type="email"
                 onChange={onchange}
-                name='outgoingEmail'
+                name="outgoingEmail"
               ></input>
             </div>
           </ContentBox>
@@ -689,18 +689,18 @@ const StoreOpenForm = () => {
             </h2>
             <div>
               <input
-                type='radio'
-                name='topping'
-                value='true'
-                checked={topping === 'true'}
+                type="radio"
+                name="topping"
+                value="true"
+                checked={topping === "true"}
                 onChange={onChangeRadio}
               ></input>
               <label>신고함</label>
               <input
-                type='radio'
-                name='topping'
-                value='false'
-                checked={topping === 'false'}
+                type="radio"
+                name="topping"
+                value="false"
+                checked={topping === "false"}
                 onChange={onChangeRadio}
               ></input>
               <label>신고안함</label>
@@ -715,7 +715,7 @@ const StoreOpenForm = () => {
               <span> *</span>
             </h2>
             <div>
-              <select onChange={onchange} value={csTel1} name='csTel1'>
+              <select onChange={onchange} value={csTel1} name="csTel1">
                 {firstTelList.map((item) => (
                   <option value={item} key={item}>
                     {item}
@@ -723,9 +723,9 @@ const StoreOpenForm = () => {
                 ))}
               </select>
               <span>-</span>
-              <input onChange={onchange} name='csTel2'></input>
+              <input onChange={onchange} name="csTel2"></input>
               <span>-</span>
-              <input onChange={onchange} name='csTel3'></input>
+              <input onChange={onchange} name="csTel3"></input>
             </div>
           </TelBox>
           <ContentBox>
@@ -733,13 +733,13 @@ const StoreOpenForm = () => {
               상담 이메일<span> *</span>
             </h2>
             <div>
-              <input type='email' onChange={onchange} name='csEmail'></input>
+              <input type="email" onChange={onchange} name="csEmail"></input>
             </div>
           </ContentBox>
           <TelBox>
             <h2>팩스 전화</h2>
             <div>
-              <select onChange={onchange} value={faxTel1} name='faxTel1'>
+              <select onChange={onchange} value={faxTel1} name="faxTel1">
                 {firstTelList.map((item) => (
                   <option value={item} key={item}>
                     {item}
@@ -747,9 +747,9 @@ const StoreOpenForm = () => {
                 ))}
               </select>
               <span>-</span>
-              <input onChange={onchange} name='faxTel2'></input>
+              <input onChange={onchange} name="faxTel2"></input>
               <span>-</span>
-              <input onChange={onchange} name='faxTel3'></input>
+              <input onChange={onchange} name="faxTel3"></input>
             </div>
           </TelBox>
           <ContentBox>
@@ -757,7 +757,7 @@ const StoreOpenForm = () => {
               CS 운영시간<span> *</span>
             </h2>
             <div>
-              <input type='text' onChange={onchange} name='csHours'></input>
+              <input type="text" onChange={onchange} name="csHours"></input>
             </div>
           </ContentBox>
         </div>
