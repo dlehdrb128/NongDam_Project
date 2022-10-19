@@ -46,6 +46,7 @@ const OptionMenu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-left: 10px;
 `;
 const IdOption = styled.div`
   /* 아이디 저장,checkbox 부모 설정값 */
@@ -85,13 +86,14 @@ const LoginButton = styled.button`
   align-items: center;
   width: 600px;
   height: 60px;
+  margin-left: 10px;
   border: 1px solid ${({ theme }) => theme.green};
   border-radius: 10px;
   font-size: 2.5rem;
   font-family: SCD-5;
   text-decoration: none;
   background-color: ${({ theme }) => theme.green};
-  color: white;
+  color: ${({ theme }) => theme.realWhite};
 `;
 const Security = styled.div`
   /* 보안접속 링크 전체 설정값 */
@@ -231,14 +233,18 @@ const Login = () => {
       id: e.target[0].value,
       password: e.target[1].value,
     };
-    let tryLogin = await axios.post(
-      "http://localhost:8080/login/attempt",
-      loginData
-    );
-    if (tryLogin.data.login === "성공") {
-      navigate("/");
-    }
+
     try {
+      let tryLogin = await axios.post(
+        "http://localhost:8080/login/attempt",
+        loginData
+      );
+      if (tryLogin.data.login === "성공") {
+        navigate("/");
+        alert("로그인 되었습니다.");
+      } else {
+        alert("누구세요...?");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -325,13 +331,16 @@ const Login = () => {
               {/* sns 아이콘 전채 부모 설정값 */}
               <SNSIcon href="http://naver.com">
                 {/* sns아이콘 원형모양 링크버튼 */}
-                <NaverLogo src="/img/naverLogo.png" alt="네이버" />
+                <NaverLogo
+                  src=""
+                  alt="네이버"
+                />
               </SNSIcon>
               <SNSIcon href="http://naver.com">
-                <KakaotalkLogo src="/img/kakaoTalk.png" alt="카카오톡" />
+                <KakaotalkLogo src="./img/kakaoTalk.png" alt="카카오톡" />
               </SNSIcon>
               <SNSIcon href="http://naver.com">
-                <AppleLogo src="/img/apple.png" alt="애플" />
+                <AppleLogo src="./img/apple.png" alt="애플" />
               </SNSIcon>
             </IconBox>
           </SNSBox>
