@@ -1,7 +1,8 @@
-import styled from "styled-components";
-import CartTitle from "./CartTitle";
-import CartItem from "./CartItem";
-import Remocon from "../../LayOut/Remocon";
+import styled from 'styled-components';
+import CartTitle from './CartTitle';
+import CartItem from './CartItem';
+import Remocon from '../../LayOut/Remocon';
+import Theme from '../../Theme/theme';
 
 // 장바구니 메인 큰 박스
 const MainBox = styled.div`
@@ -10,7 +11,7 @@ const MainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   color: ${(theme) => theme.lightblack};
 `;
 
@@ -21,7 +22,7 @@ const CartMainBox = styled.div`
 
   // 메인 이름 - 장바구니
   & > h1 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     font-size: 4rem;
     text-align: center;
     padding-bottom: 80px;
@@ -43,7 +44,7 @@ const AllOrderButton = styled.button`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -61,10 +62,10 @@ const SelectOrderButton = styled(AllOrderButton)`
 const CartMain = () => {
   const productList = [
     {
-      name: "[전북] 서영암농협 학이 머문 유기농 쌀(일 미) 4kg, 2021년산...",
+      name: '[전북] 서영암농협 학이 머문 유기농 쌀(일 미) 4kg, 2021년산...',
       price: 9500,
       discount: 10,
-      img: "/img/cart1.png",
+      img: 'http://localhost:8080/icon/cart1.png',
     },
   ];
 
@@ -77,17 +78,11 @@ const CartMain = () => {
           return <CartItem product={product} key={index}></CartItem>;
         })}
 
-        <div className="buttonBox">
-          <SelectOrderButton
-            col={(theme) => theme.green}
-            bgcol={(theme) => theme.realWhite}
-          >
+        <div className='buttonBox'>
+          <SelectOrderButton col={Theme.green} bgcol={Theme.realWhite}>
             선택주문
           </SelectOrderButton>
-          <AllOrderButton
-            col={(theme) => theme.realWhite}
-            bgcol={(theme) => theme.green}
-          >
+          <AllOrderButton col={Theme.realWhite} bgcol={Theme.green}>
             전체주문
           </AllOrderButton>
         </div>

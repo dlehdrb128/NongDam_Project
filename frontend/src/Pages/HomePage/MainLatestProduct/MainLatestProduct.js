@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import LatestProductItem from "./LatestProductItem";
+import axios from "axios";
 
 // 방금 들어온 못난이들의 최상위 부모 컨테이너
 const MainLatestProductBox = styled.div`
@@ -71,48 +73,38 @@ const LatestProductItemBox = styled.div`
 `;
 
 const MainLatestProduct = () => {
-  let dummyData = [
-    {
-      product_id: "1",
-      image: "/img/exam-1.png",
-      local: "경남",
-      name: "22년 수확 햇 사과 3kg...",
-      price: 10400,
-    },
-    {
-      product_id: "2",
-      image: "/img/exam-2.png",
-      local: "전북",
-      name: "국내산 깐마늘 2kg...",
-      price: 4500,
-    },
-    {
-      product_id: "3",
-      image: "/img/exam-3.png",
-      local: "전남",
-      name: "마늘팟 양파  3kg...",
-      price: 6600,
-    },
-    {
-      product_id: "4",
-      image: "/img/exam-4.png",
-      local: "충북",
-      name: "청결 22년 햇 건고추 6kg",
-      price: 80000,
-    },
-  ];
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        let response = await axios.get(`http://localhost:8080/latest`);
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
+
+  if (data === undefined) {
+    return null;
+  }
 
   return (
     <MainLatestProductBox>
       <LatestProductBox>
         <div>
           <div></div>
-          <img src="./img/latest.png" alt="이미지 없음" />
+          <img src="http://localhost:8080/main/latest.png" alt="이미지 없음" />
         </div>
         <div>
-          <img src="./img/latest-title.png" alt="이미지 없음"></img>
+          <img
+            src="http://localhost:8080/main/latest-title.png"
+            alt="이미지 없음"
+          ></img>
           <LatestProductItemBox>
-            {dummyData.map((value, index) => {
+            {data.map((value, index) => {
               return (
                 <LatestProductItem key={index} data={value}></LatestProductItem>
               );

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { StyledButton } from "../../../Theme/theme";
+import { Link } from "react-router-dom";
 
 // 요소 전체를 담은 박스
 const MainEventMarketBox = styled.div`
   margin-top: 180px;
   width: 1920px;
   height: 948px;
-  background: url("/img/mainEventMarketBg.png");
+  background: url("http://localhost:8080/main/mainEventMarketBg.png");
   background-repeat: no-repeat;
   background-position: bottom;
   display: flex;
@@ -66,7 +67,10 @@ const MainEventMarket = () => {
     <MainEventMarketBox>
       <EventTextBox>
         {/* 양손이 편한 시장 구경해볼텨? */}
-        <img src="/img/mainEventTitle.png" alt="이미지 없음"></img>
+        <img
+          src="http://localhost:8080/main/mainEventTitle.png"
+          alt="이미지 없음"
+        ></img>
         <div>
           기존의 못난이 상품보다 더 저렴한 먹거리!
           <br></br>
@@ -74,10 +78,11 @@ const MainEventMarket = () => {
           <br></br>
           5일장으로 재래시장의 따뜻한 인심과 신선한 상품을 만나보세요!
         </div>
-
-        <StyledButton fs={"2rem"} wd={"248px"} ht={"50px"}>
-          장보러 가기
-        </StyledButton>
+        <Link to="/FivedaysMakret">
+          <StyledButton fs={"2rem"} wd={"248px"} ht={"50px"}>
+            장보러 가기
+          </StyledButton>
+        </Link>
         <div>
           오늘은 <span>{localData[0]}, </span>
           <span>{localData[1]}</span>장날이유 ~

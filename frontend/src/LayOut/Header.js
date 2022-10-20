@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -116,17 +117,32 @@ const HeaderBoxRight = styled.div`
 `;
 
 const Header = () => {
+  const getLoginData = async () => {
+    try {
+      let response = await axios.get("http:///localhost:8080/login/check", {
+        withCredentials: true,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getLoginData();
+
   return (
     <>
       <HeaderBox>
         <div>
           <Link to="/">
-            <img src="/img/logo-3.svg" alt="이미지 없음"></img>
+            <img
+              src="http://localhost:8080/svg/logo-3.svg"
+              alt="이미지 없음"
+            ></img>
           </Link>
           <HeaderBoxMid>
             <Link to="/intro">함께 둘러보는 농담</Link>
-
-            <Link to="/product">못난이 장터</Link>
+            <Link to="/product/all">못난이 장터</Link>
             <Link to="/recipe">못난이 활용법</Link>
             <Link to="/FivedaysMakret">온라인 5일장</Link>
             <Link to="/admin">스토어 관리</Link>

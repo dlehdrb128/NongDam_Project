@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
+=======
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+>>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
 const LoginHeader = styled.div`
   /* 최상단 "로그인" 제목 값 */
   width: 1230px;
@@ -48,6 +54,7 @@ const OptionMenu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-left: 10px;
 `;
 const IdOption = styled.div`
   /* 아이디 저장,checkbox 부모 설정값 */
@@ -80,21 +87,26 @@ const P = styled.p`
   position: relative;
   bottom: 1px;
 `;
-const LoginButton = styled.a`
+const LoginButton = styled.button`
   /* 로그인 버튼 */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 600px;
   height: 60px;
+  margin-left: 10px;
   border: 1px solid ${({ theme }) => theme.green};
   border-radius: 10px;
   font-size: 2.5rem;
   font-family: SCD-5;
   text-decoration: none;
   background-color: ${({ theme }) => theme.green};
+<<<<<<< HEAD
   color: white;
   cursor: pointer;
+=======
+  color: ${({ theme }) => theme.realWhite};
+>>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
 `;
 const Security = styled.div`
   /* 보안접속 링크 전체 설정값 */
@@ -207,6 +219,7 @@ const AppleLogo = styled.img`
 `;
 
 const Login = () => {
+<<<<<<< HEAD
   const [user_id, setUser_id] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -247,6 +260,62 @@ const Login = () => {
     //   const LoginData = await getData();
     //   console.log(LoginData);
     // }
+=======
+  const navigate = useNavigate();
+  // const [inputId, setInputId] = useState("");
+  // const [inputPW, setInputPw] = useState("");
+
+  // const handleInputId = (e) => {
+  //   setInputId(e.target.value);
+  // };
+  // const handleInputPw = (e) => {
+  //   setInputPw(e.target.value);
+  // };
+
+  // const onClickLogin = () => {
+  //   console.log("click login");
+  // };
+  // if (data.id === inputId) {
+  //   console.log("ㅇㅇ");
+  // }
+  // if (data.password === inputPW) {
+  //   console.log("yes");
+  // }
+
+  const login = async (e) => {
+    e.preventDefault();
+    let loginData = {
+      id: e.target[0].value,
+      password: e.target[1].value,
+    };
+
+    let tryLogin = await axios.post("http://localhost:8080/login", loginData, {
+      withCredentials: true,
+    });
+
+    if (tryLogin.data.login === "성공") {
+      navigate("/");
+    }
+
+    try {
+      let tryLogin = await axios.post(
+        "http://localhost:8080/login",
+        loginData,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (tryLogin.data.status === 201) {
+        alert("로그인 성공!");
+        navigate("/");
+      } else if (tryLogin.data.status === 401) {
+        alert("로그인 실패했습니다");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+>>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
   };
 
   return (
@@ -257,6 +326,7 @@ const Login = () => {
         {/* Header를 제외한 전체 설정값(감싸는 용도) */}
         <LoginResponse>
           {/* 로그인창 전체 부모 설정값 */}
+<<<<<<< HEAD
           <LoginBox
             type='text'
             placeholder='아이디'
@@ -296,6 +366,45 @@ const Login = () => {
             {/* 로그인 버튼 */}
             로그인
           </LoginButton>
+=======
+          <form onSubmit={login}>
+            <LoginBox type="text" placeholder="아이디" name="id"></LoginBox>
+            {/* 아이디 입력창 */}
+            <LoginBox
+              type="password"
+              placeholder="비밀번호"
+              name="password"
+            ></LoginBox>
+            {/* 비밀번호 입력창 */}
+            <OptionMenu>
+              {/* 아이디 저장, checkbox, 아이디/비밀번호찾기 전체 설정값 */}
+              <IdOption>
+                {/* 아이디 저장,checkbox 부모 설정값 */}
+                <input type="checkbox"></input>
+                <P>&nbsp;아이디 저장</P>
+              </IdOption>
+              <LoginFind>
+                {/* 아이디/비밀번호찾기 링크 부모 설정값 */}
+                <A href="http://naver.com">
+                  {/* 아이디찾기 링크 설정값 */}
+                  아이디 찾기
+                </A>
+                <P>
+                  {/* "아이디 저장", "|" 문자 설정값 */}
+                  &nbsp;|&nbsp;
+                </P>
+                <A href="http://naver.com">
+                  {/* 비밀번호 찾기 링크 설정값 */}
+                  비밀번호 찾기
+                </A>
+              </LoginFind>
+            </OptionMenu>
+            <LoginButton>
+              {/* 로그인 버튼 */}
+              로그인
+            </LoginButton>
+          </form>
+>>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
           <Security>
             {/* 보안접속 링크 전체 설정값 */}
             <P>&nbsp;🔒&nbsp;</P>
@@ -332,6 +441,7 @@ const Login = () => {
               {/* sns 아이콘 전채 부모 설정값 */}
               <SNSIcon href='http://naver.com'>
                 {/* sns아이콘 원형모양 링크버튼 */}
+<<<<<<< HEAD
                 <NaverLogo src='/img/naverLogo.png' alt='네이버' />
               </SNSIcon>
               <SNSIcon href='http://naver.com'>
@@ -339,6 +449,15 @@ const Login = () => {
               </SNSIcon>
               <SNSIcon href='http://naver.com'>
                 <AppleLogo src='/img/apple.png' alt='애플' />
+=======
+                <NaverLogo src="" alt="네이버" />
+              </SNSIcon>
+              <SNSIcon href="http://naver.com">
+                <KakaotalkLogo src="./img/kakaoTalk.png" alt="카카오톡" />
+              </SNSIcon>
+              <SNSIcon href="http://naver.com">
+                <AppleLogo src="./img/apple.png" alt="애플" />
+>>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
               </SNSIcon>
             </IconBox>
           </SNSBox>

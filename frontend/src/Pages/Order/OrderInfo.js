@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const OrderInfo = () => {
+<<<<<<< HEAD
   const [orderData, setOrderData] = useState([]);
 
   useEffect(() => {
@@ -17,6 +18,43 @@ const OrderInfo = () => {
     }, 2000);
   }, []);
 
+=======
+  let Data = [
+    {
+      id: 1,
+      order_id: "1000151095787",
+      image: "http://localhost:8080/product_order_1.png",
+      productName: "일동후디스 그릭 요거트 플레인 2개입",
+      productNum: 1,
+      productPrice: 10600,
+      delivery: "배송 완료",
+      status: null,
+      created_at: "2022.9.11",
+    },
+    {
+      id: 2,
+      order_id: "1000151095787",
+      image: "/img/product_order_1.png",
+      productName: "일동후디스 그릭 요거트 플레인 2개입",
+      productNum: 1,
+      productPrice: 10600,
+      delivery: "배송 완료",
+      status: null,
+      created_at: "2022.9.11",
+    },
+    {
+      id: 3,
+      order_id: "1000151095787",
+      image: "/img/product_order_1.png",
+      productName: "일동후디스 그릭 요거트 플레인 2개입",
+      productNum: 1,
+      productPrice: 10600,
+      delivery: "배송 완료",
+      status: null,
+      created_at: "2022.9.11",
+    },
+  ];
+>>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
   return (
     <>
       {orderData && orderData.length === 0 ? (
