@@ -13,7 +13,8 @@ const Section1 = styled.section`
     & > div:nth-child(1) {
       width: 603px;
       height: 311px;
-      background: url("http://localhost:8080/market/Fdays_sec1_titlebillboard.png") no-repeat center;
+      background: url("http://localhost:8080/market/Fdays_sec1_titlebillboard.png")
+        no-repeat center;
       background-size: cover;
       display: flex;
       flex-direction: column;
@@ -41,7 +42,8 @@ const Section1 = styled.section`
       & > div:nth-child(1) {
         width: 1920px;
         height: 229px;
-        background: url("http://localhost:8080/market/Fdays_sec1_roof.png") no-repeat center;
+        background: url("http://localhost:8080/market/Fdays_sec1_roof.png")
+          no-repeat center;
         background-size: cover;
         position: relative;
         z-index: 1;
