@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import OrderInfo from "../Order/OrderInfo";
 import OrderTitle from "./OrderTitle";
 import OrderPayment from "./OrderPaymentInfo";
@@ -13,23 +13,23 @@ const OrderDetail = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
 
+  const [orderDetail, setOrderDetail] = useState();
+
   useEffect(() => {
     const request = async () => {
-      try {
-        const orderDetail = await axios.get(
-          `http://localhost:8080/orders/${productId}`,
-          {
-            withCredentials: true,
-          }
-        );
-      } catch (error) {
-        console.log(error);
-        if (error.response.status === 401) {
-          console.log("실행!");
-          alert(error.response.data.statusMessage);
-          navigate("/login");
-          return false;
+      const orderDetail = await axios.get(
+        `http://localhost:8080/orders/${productId}`,
+        {
+          withCredentials: true,
         }
+      );
+
+      if (orderDetail.data.status === 401) {
+        alert(orderDetail.data.statusMessage);
+        navigate("/login");
+      } else {
+        console.log(orderDetail.data);
+        setOrderDetail(orderDetail.data.orderDetail);
       }
     };
 
@@ -46,7 +46,7 @@ const OrderDetail = () => {
           <Wrapper dir={`column`} ju={`flex-start`}>
             <Wrapper dir={`column`}>
               {/* 나의 주문 정보 */}
-              <OrderTitle />
+              <OrderTitle orderDetail={orderDetail} />
 
               <Wrapper
                 ju={`flex-start`}
@@ -59,9 +59,9 @@ const OrderDetail = () => {
             </Wrapper>
 
             {/* 주문 상품 정보 */}
-            <OrderInfo />
+            <OrderInfo orderDetail={orderDetail} />
             {/* 받는 사람 정보 */}
-            <OrderPerson />
+            <OrderPerson orderDetail={orderDetail} />
             {/*  결제정보 */}
             <OrderPayment />
           </Wrapper>

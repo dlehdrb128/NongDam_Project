@@ -26,7 +26,7 @@ router.get("/:productId", userCheck, (req, res) => {
   SELECT
      P.product_key, P.product_name, P.product_price, P.product_image,
      P.product_detail, P.product_discount_set, P.product_discount_percent,
-     O.orders_date, O.Orders_date, O.orders_number, O.orders_status, O.orders_point
+     date_format(O.orders_date,'%Y.%m.%d %h:%i') As orders_date, O.orders_number, O.orders_status, O.orders_point
   FROM orders O
     JOIN product P
     ON P.product_key = ${productId}
@@ -34,22 +34,32 @@ router.get("/:productId", userCheck, (req, res) => {
   `;
 
   const SQL2 = `
-  SELECT 
-  COUNT(user_key) as orderTotal 
-  FROM orders WHERE user_key = ${user_key};
+  SELECT round(SUM(P.product_price - (P.product_price * P.product_discount_percent / 100)))  AS totalPrice, 
+		     COUNT(O.user_key) AS totalOrder 
+  FROM orders O
+    JOIN product P
+    ON P.product_key = O.product_key
+  WHERE O.user_key = ${user_key};
   `;
 
   connection.query(`${SQL1} ${SQL2}`, (error, row, field) => {
     if (error) throw error;
 
-    console.log(req.session.userInfo);
+    let [[orderDetail], [userInfo]] = row;
 
-    console.log(row[1].orderTotal);
-    const userInfo = row[1];
+    // userInfo = {
+    //   ...req.session.userInfo,
+    // };
+
+    orderDetail = {
+      ...orderDetail,
+      ...req.session.userInfo,
+      ...userInfo,
+    };
 
     res.json({
       status: 201,
-      orderDetail: row[0],
+      orderDetail,
     });
   });
 });
