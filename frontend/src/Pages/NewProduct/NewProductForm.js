@@ -403,9 +403,7 @@ const EditButton = styled(RegButton)`
   border: 1px solid ${({ theme }) => theme.lightblack};
 `;
 const NewProductForm = () => {
-  const [value, setValue] = useState('');
-  const [value2, setValue2] = useState('');
-
+  const [sale, setSale] = useState(false);
   const [region, setRegion] = useState('경기도');
   const [regionEng, setRegionEng] = useState('gyeongi');
 
@@ -417,7 +415,29 @@ const NewProductForm = () => {
 
   const imgSrc = useRef();
   const [img, setImg] = useState('');
-  console.log(img);
+  const [inputData, setInputData] = useState({
+    productName: '',
+    productPrice: '',
+    startHour: '00',
+    startMinute: '00',
+    endHour: '23',
+    endMinute: '55',
+    ProductDiscountPercent: '',
+    discount: '',
+    startDate: '',
+    endDate: '',
+    productLocal: '경기도',
+  });
+
+  console.log(inputData);
+
+  const onchange = (e) => {
+    const { value, name } = e.target;
+    setInputData({
+      ...inputData,
+      [name]: value,
+    });
+  };
 
   const onChangeFile = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -474,20 +494,6 @@ const NewProductForm = () => {
     '55',
   ];
 
-  const [inputData, setInputData] = useState({
-    productName: '',
-    productPrice: '',
-    startHour: '00',
-    startMinute: '00',
-    endHour: '23',
-    endMinute: '55',
-    ProductDiscountPercent: '',
-    discount: '',
-    startDate: '',
-    endDate: '',
-    productLocal: '경기도',
-  });
-
   const {
     productName,
     startHour,
@@ -495,38 +501,27 @@ const NewProductForm = () => {
     endHour,
     endMinute,
     ProductDiscountPercent,
-    discount,
     startDate,
     endDate,
     productPrice,
   } = inputData;
-
-  const onchange = (e) => {
-    const { value, name } = e.target;
-    console.log(name);
-    setInputData({
-      ...inputData,
-      [name]: value,
-    });
-  };
-
-  console.log(value, 'aaa');
 
   const data = {
     productName: productName,
     productLocal: region,
     productLocalEng: regionEng,
     productPrice: productPrice,
-    productDiscountSet: discount === 'true' ? 1 : 0,
+    productDiscountSet: sale === true ? 1 : 0,
     ProductDiscountPercent: ProductDiscountPercent,
     productDiscountStart: `${startDate} ${startHour}:${startMinute}:00`,
     productDiscountEnd: `${endDate} ${endHour}:${endMinute}:00`,
   };
 
-  console.log(data);
   const onclick = () => {
     axios.post('http://localhost:8080/admin/newProduct', data);
   };
+
+  console.log(data);
 
   return (
     <MainBox>
@@ -548,7 +543,7 @@ const NewProductForm = () => {
             <div>
               <input
                 onChange={onchange}
-                value={productPrice}
+                // value={productPrice}
                 name='productPrice'
               ></input>
               <span>원</span>
@@ -562,12 +557,12 @@ const NewProductForm = () => {
               <select onChange={onchangeRegion}>
                 <option value='gyoenggi'>경기도</option>
                 <option value='gangwon'>강원도</option>
-                <option value='chungcheongbuckdo'>충청북도</option>
-                <option value='chungcheongnamdo'>충청남도</option>
-                <option value='jeonrabuckdo'>전라북도</option>
-                <option value='jeonranamdo'>전라남도</option>
-                <option value='gyeongsangbuckdo'>경상북도</option>
-                <option value='gyeongsangnamdo'>경상남도</option>
+                <option value='chungbuk'>충청북도</option>
+                <option value='chungnam'>충청남도</option>
+                <option value='jeonbuk'>전라북도</option>
+                <option value='jeonnam'>전라남도</option>
+                <option value='gyeongbuk'>경상북도</option>
+                <option value='gyeongnam'>경상남도</option>
               </select>
             </div>
           </SelectBox>
@@ -606,7 +601,7 @@ const NewProductForm = () => {
                   style={{ display: 'none' }}
                   onChange={onChangeFile}
                 ></input>
-                <label for='input-file'>등록</label>
+                <label htmlFor='input-file'>등록</label>
                 <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
               </div>
             </div>
@@ -629,122 +624,92 @@ const NewProductForm = () => {
             <div>
               <input
                 type='radio'
-                name='discount'
-                value='할인적용'
-                checked={value2 === '할인적용' ? true : false}
-                onChange={() => {
-                  setValue2('할인적용');
-                  setValue(
-                    <div>
-                      <ContentBox>
-                        <h2>
-                          할인율 <span> *</span>
-                        </h2>
-                        <div>
-                          <input
-                            type=''
-                            onChange={onchange}
-                            name='ProductDiscountPercent'
-                          ></input>
-                          <span>%</span>
-                        </div>
-                      </ContentBox>
-                      <PeriodSet>
-                        <h2>
-                          기간설정 <span> *</span>
-                        </h2>
-                        <div>
-                          <div>
-                            <div>
-                              <input
-                                type='date'
-                                onChange={onchange}
-                                name='startDate'
-                              ></input>
-                            </div>
-                            <select
-                              value={startHour}
-                              onChange={onchange}
-                              name='startHour'
-                            >
-                              {hourList.map((item) => (
-                                <option value={item} key={item}>
-                                  {item}
-                                </option>
-                              ))}
-                            </select>
-                            <span>시</span>
-                            <select
-                              value={startMinute}
-                              onChange={onchange}
-                              name='startMinute'
-                            >
-                              {minuteList.map((item) => (
-                                <option
-                                  value={item}
-                                  key={item}
-                                  name='startMinute'
-                                >
-                                  {item}
-                                </option>
-                              ))}
-                            </select>
-                            <span>분 ~</span>
-                          </div>
-                          <div>
-                            <div>
-                              <input
-                                type='date'
-                                onChange={onchange}
-                                name='endDate'
-                              ></input>
-                            </div>
-                            <select
-                              value={endHour}
-                              onChange={onchange}
-                              name='endHour'
-                            >
-                              {hourList.map((item) => (
-                                <option value={item} key={item}>
-                                  {item}
-                                </option>
-                              ))}
-                            </select>
-                            <span>시</span>
-                            <select
-                              value={endMinute}
-                              onChange={onchange}
-                              name='endMinute'
-                            >
-                              {minuteList.map((item) => (
-                                <option value={item} key={item}>
-                                  {item}
-                                </option>
-                              ))}
-                            </select>
-                            <span>분</span>
-                          </div>
-                        </div>
-                      </PeriodSet>
-                    </div>
-                  );
+                name='sale'
+                onClick={() => {
+                  setSale(true);
                 }}
               />
               <label>할인적용</label>
               <input
                 type='radio'
-                name='discount'
-                value='적용안함'
-                checked={value === '적용안함' ? true : false}
-                onChange={() => {
-                  setValue2('적용안함');
-                  setValue('');
+                name='sale'
+                onClick={() => {
+                  setSale(false);
                 }}
               />
               <label>적용안함</label>
             </div>
           </RadioBox>
-          <div>{value}</div>
+          {sale === true ? (
+            <div>
+              <ContentBox>
+                <h2>
+                  할인율 <span> *</span>
+                </h2>
+                <div>
+                  <input
+                    type=''
+                    onChange={onchange}
+                    name='ProductDiscountPercent'
+                  ></input>
+                  <span>%</span>
+                </div>
+              </ContentBox>
+              <PeriodSet>
+                <h2>
+                  기간설정 <span> *</span>
+                </h2>
+                <div>
+                  <div>
+                    <div>
+                      <input
+                        type='date'
+                        onChange={onchange}
+                        name='startDate'
+                      ></input>
+                    </div>
+                    <select onChange={onchange} name='startHour'>
+                      {hourList.map((item) => (
+                        <option key={item}>{item}</option>
+                      ))}
+                    </select>
+                    <span>시</span>
+                    <select onChange={onchange} name='startMinute'>
+                      {minuteList.map((item) => {
+                        return (
+                          <option key={item} name='startMinute'>
+                            {item}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <span>분 ~</span>
+                  </div>
+                  <div>
+                    <div>
+                      <input
+                        type='date'
+                        onChange={onchange}
+                        name='endDate'
+                      ></input>
+                    </div>
+                    <select onChange={onchange} name='endHour'>
+                      {hourList.map((item) => (
+                        <option key={item}>{item}</option>
+                      ))}
+                    </select>
+                    <span>시</span>
+                    <select onChange={onchange} name='endMinute'>
+                      {minuteList.map((item) => (
+                        <option key={item}>{item}</option>
+                      ))}
+                    </select>
+                    <span>분</span>
+                  </div>
+                </div>
+              </PeriodSet>
+            </div>
+          ) : null}
         </div>
         <div>
           <EditButton col={Theme.lightblack} bgcol={Theme.realWhite}>
