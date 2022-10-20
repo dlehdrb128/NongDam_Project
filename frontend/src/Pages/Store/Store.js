@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useEffect, useRef, forwardRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Storesec1 from "./section/Storesec1";
@@ -18,15 +18,25 @@ const StoreMain = styled.main`
 const Store = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
-  const { id } = useParams();
-  const storeproduct = useRef(null);
-  const storeinfo = useRef(null);
+  const [params, setParams] = useState({
+    id: useParams().id,
+    sort: 'normal',
+  });
+
+  const categoryChange = (request) => {
+
+    setParams({ ...params, sort: request })
+
+
+  }
+
+
 
   useEffect(() => {
     setLoading(true);
     const storeData = async () => {
       try {
-        let response = await axios.get(`http://localhost:8080/store/${id}`);
+        let response = await axios.get(`http://localhost:8080/store/detail/${params.id}/${params.sort}/`);
         setData(response.data);
       }
       catch (e) {
@@ -35,12 +45,8 @@ const Store = () => {
     }
     storeData()
     setLoading(false);
-  }, []);
+  }, [params]);
   // console.log(data);
-
-  const categoryMove = (ref) => {
-    ref.current.scrollIntoView({ behavior: "smooth" });
-  };
 
   if (loading) {
     return <h1>준비중입니다.</h1>
@@ -52,10 +58,10 @@ const Store = () => {
   return (
     <StoreMain>
       <Storesec1 data={data}></Storesec1>
-      <StoreCategory></StoreCategory>
-      <Storeproduct data={data}></Storeproduct>
+      <StoreCategory ></StoreCategory>
+      <Storeproduct data={data} change={categoryChange}></Storeproduct>
       <Storeinfo data={data}></Storeinfo>
-    </StoreMain>
+    </StoreMain >
   )
 }
 
