@@ -71,7 +71,7 @@ const Introsec1 = () => {
       <div>
         {/* 섹션1 콘텐츠 왼쪽 이미지 */}
         <img
-          src="https://lh3.googleusercontent.com/drive-viewer/AJc5JmT3pV0ORYOOLX4j1iEqb1exodDLsoe_8JNfG90iAQhgeMmp56Di2T01LXMsqKDQ8zpb3UAgabI=w1920-h966"
+          src="http://localhost:8080/intro/Intro_sec1_img.png"
           alt="sec1_img"
         ></img>
         {/* 섹션1 텍스트 콘텐츠 컨테이너*/}
