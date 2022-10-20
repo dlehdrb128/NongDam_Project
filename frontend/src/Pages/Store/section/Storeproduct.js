@@ -19,6 +19,7 @@ const Storeprocuts = styled.section`
         color: ${({ theme }) => theme.realWhite};
         font-weight: bold;
         border: none;
+        cursor: pointer;
       }
     }
   }
@@ -39,13 +40,19 @@ const Storeprocuts = styled.section`
   }
 `
 
-const Storeproduct = ({ data }) => {
+const Storeproduct = ({ data, change }) => {
   return (
-    <Storeprocuts>
+    <Storeprocuts id='product'>
       <div>
-        <button>최신순</button>
-        <button>높은 가격</button>
-        <button>낮은 가격</button>
+        <button onClick={() => {
+          change('new')
+        }}>최신순</button>
+        <button onClick={() => {
+          change('highPrice')
+        }}>높은 가격</button>
+        <button onClick={() => {
+          change('lowPrice')
+        }}>낮은 가격</button>
       </div>
       <h1>{data.length}개의 판매상품이 있어요.</h1>
       {/* <Storeitem></Storeitem> */}

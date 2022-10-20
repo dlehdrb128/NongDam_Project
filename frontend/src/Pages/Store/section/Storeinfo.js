@@ -43,7 +43,7 @@ const Info = styled.div`
 const Storeinfo = ({ data }) => {
   // console.log(data);
   return (
-    <Info>
+    <Info id='info'>
       <h1>판매자정보</h1>
       <div>
         <div>
