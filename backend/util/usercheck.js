@@ -15,7 +15,7 @@ const userCheck = (req, res, next) => {
   connection.query(SQL, (err, row, filed) => {
     if (err) console.error(err);
 
-    req.userInfo = row[0];
+    req.session.userInfo = row[0];
     next();
   });
 };
