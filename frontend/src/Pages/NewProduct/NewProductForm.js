@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import Theme from '../../Theme/theme';
+import axios from "axios";
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
+import Theme from "../../Theme/theme";
 
 // 폼제목과 폼을 메인박스로 묶었다
 const MainBox = styled.div`
@@ -13,7 +13,7 @@ const MainBox = styled.div`
   // form 제목
   & > form {
     & > h1 {
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       color: ${({ theme }) => theme.lightblack};
       font-size: 2.5rem;
       padding-bottom: 15px;
@@ -48,7 +48,7 @@ const ContentBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -56,7 +56,7 @@ const ContentBox = styled.div`
     // 필수입력사항 *로 표시
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -69,7 +69,7 @@ const ContentBox = styled.div`
     border-left: 1px solid ${({ theme }) => theme.liglightgray};
     // 내용 담기는 input
     & > input {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       width: 300px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -78,7 +78,7 @@ const ContentBox = styled.div`
       font-size: 1.5rem;
     }
     & > span {
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
       font-size: 1.5rem;
       padding-left: 5px;
     }
@@ -98,7 +98,7 @@ const ImgBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     display: flex;
     align-items: center;
     text-align: left;
@@ -108,7 +108,7 @@ const ImgBox = styled.div`
     // 필수기입사항
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -139,13 +139,13 @@ const ImgBox = styled.div`
         & > img {
           width: 100%;
           height: 100%;
-          margin: 'auto';
+          margin: "auto";
         }
       }
 
       // 이미지 권장 사이즈 안내
       & > p {
-        font-family: 'SCD-4';
+        font-family: "SCD-4";
         text-align: center;
         font-size: 1.5rem;
       }
@@ -168,7 +168,7 @@ const ImgBox = styled.div`
         color: ${({ theme }) => theme.realWhite};
         text-align: center;
         border-radius: 3px;
-        font-family: 'SCD-6';
+        font-family: "SCD-6";
         font-size: 1.5rem;
         display: flex;
         justify-content: center;
@@ -177,7 +177,7 @@ const ImgBox = styled.div`
       }
       // 등록이미지 안내
       & > p {
-        font-family: 'SCD-5';
+        font-family: "SCD-5";
         font-size: 1.3rem;
         padding-top: 5px;
       }
@@ -196,7 +196,7 @@ const DetailBox = styled.div`
     width: inherit;
     height: 85px;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -204,7 +204,7 @@ const DetailBox = styled.div`
     // 필수입력사항
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -227,7 +227,7 @@ const RadioBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
@@ -235,7 +235,7 @@ const RadioBox = styled.div`
     // 필수입력사항
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -254,7 +254,7 @@ const RadioBox = styled.div`
     }
     //
     & > label {
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
       font-size: 1.3rem;
       padding: 0 20px 0 5px;
     }
@@ -275,14 +275,14 @@ const SelectBox = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
     border-bottom: 1px solid ${({ theme }) => theme.lightgray};
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -297,7 +297,7 @@ const SelectBox = styled.div`
 
     // select박스 부분
     & > select {
-      font-family: 'SCD-4';
+      font-family: "SCD-4";
       width: 100px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.gray};
@@ -320,14 +320,14 @@ const PeriodSet = styled.div`
     width: 141px;
     height: inherit;
     font-size: 1.5rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     text-align: left;
     padding: 30px 0 30px 18px;
     background-color: ${({ theme }) => theme.white};
     border-bottom: 0.1rem solid ${({ theme }) => theme.lightgray};
     & > span {
       color: red;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       font-size: 1.5rem;
     }
   }
@@ -356,7 +356,7 @@ const PeriodSet = styled.div`
           width: 187px;
           height: 40px;
           border-radius: 3px;
-          font-family: 'SCD-3';
+          font-family: "SCD-3";
           font-size: 1.3rem;
           padding: 5px;
           margin-right: 10px;
@@ -364,7 +364,7 @@ const PeriodSet = styled.div`
       }
       // select 스타일링
       & > select {
-        font-family: 'SCD-3';
+        font-family: "SCD-3";
         width: 68px;
         height: 40px;
         border: 1px solid ${({ theme }) => theme.gray};
@@ -375,7 +375,7 @@ const PeriodSet = styled.div`
       }
       // select 박스 뒤에 글자들 ex)시, 분
       & > span {
-        font-family: 'SCD-3';
+        font-family: "SCD-3";
         font-size: 1.5rem;
         margin-right: 10px;
       }
@@ -389,7 +389,7 @@ const RegButton = styled.button`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: 'SCD-6';
+  font-family: "SCD-6";
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -405,103 +405,116 @@ const EditButton = styled(RegButton)`
 `;
 const NewProductForm = () => {
   const imgSrc = useRef();
-  const [img, setImg] = useState('');
-  console.log(img);
+  const [img, setImg] = useState("");
+  const [imagePath, setImagePath] = useState("");
 
   const onChangeFile = (e) => {
     if (e.target.files && e.target.files[0]) {
+      let save = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       setImg(e.target.files[0]);
 
-      reader.onload = (e) => {
-        console.log(e);
-        console.log(reader);
+      console.log(e.target.files[0]);
+
+      reader.onload = async (e) => {
+        const formData = new FormData();
+
+        formData.append("img", save);
+        formData.append("key", 15);
+
+        const URL = "http://localhost:8080/admin/ProductImage";
+        const request = await axios.post(URL, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        console.log(request);
+
+        setImagePath(request.data.imagePath);
+
         imgSrc.current.src = reader.result;
       };
     }
   };
-  const [display, setDisplay] = useState('none');
-  const [ischeked, setChecked] = useState('');
+
+  console.log(imagePath);
+  const [display, setDisplay] = useState("none");
+  const [ischeked, setChecked] = useState("");
 
   const discountRadio = (e) => {
-    if (e.target.checked === !ischeked) {
-      setChecked(ischeked);
-      setDisplay('block');
-      // console.log('할인적용');
-    }
-  };
-
-  const discountRadio2 = (e) => {
-    if (e.target.checked === !ischeked) {
-      setDisplay('none');
-      setChecked(ischeked);
+    console.log(e.target.value);
+    setChecked(e.target.value);
+    if (e.target.value === "적용 안함") {
+      setDisplay("none");
+    } else {
+      setDisplay("block");
     }
   };
 
   const hourList = [
-    '00',
-    '01',
-    '02',
-    '03',
-    '04',
-    '05',
-    '06',
-    '07',
-    '08',
-    '09',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
-    '15',
-    '16',
-    '17',
-    '18',
-    '19',
-    '20',
-    '21',
-    '22',
-    '23',
+    "00",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
   ];
   const minuteList = [
-    '00',
-    '05',
-    '10',
-    '15',
-    '20',
-    '25',
-    '30',
-    '35',
-    '40',
-    '45',
-    '50',
-    '55',
+    "00",
+    "05",
+    "10",
+    "15",
+    "20",
+    "25",
+    "30",
+    "35",
+    "40",
+    "45",
+    "50",
+    "55",
   ];
   const regionList = [
-    '경기도',
-    '강원도',
-    '충청북도',
-    '충청남도',
-    '전라북도',
-    '전라남도',
-    '경상북도',
-    '경상남도',
+    "경기도",
+    "강원도",
+    "충청북도",
+    "충청남도",
+    "전라북도",
+    "전라남도",
+    "경상북도",
+    "경상남도",
   ];
 
   const [inputData, setInputData] = useState({
-    productName: '',
-    productPrice: '',
-    startHour: '00',
-    startMinute: '00',
-    endHour: '23',
-    endMinute: '55',
-    ProductDiscountPercent: '',
-    discount: '',
-    startDate: '',
-    endDate: '',
-    productLocal: '경기도',
+    productName: "",
+    productPrice: "",
+    startHour: "00",
+    startMinute: "00",
+    endHour: "23",
+    endMinute: "55",
+    ProductDiscountPercent: "",
+    discount: "",
+    startDate: "",
+    endDate: "",
+    productLocal: "경기도",
   });
 
   const {
@@ -530,14 +543,15 @@ const NewProductForm = () => {
     productName: productName,
     productLocal: productLocal,
     productPrice: productPrice,
+    productImagePath: imagePath,
     //startDate: `${startDate} ${startHour}:${startMinute}:00`,
     // endDate: `${endDate} ${endHour}:${endMinute}:00`,
-    productDiscountSet: discount === 'true' ? 1 : 0,
+    productDiscountSet: discount === "true" ? 1 : 0,
     ProductDiscountPercent: ProductDiscountPercent,
   };
 
   const onclick = () => {
-    axios.post('http://localhost:8080/admin/newproduct', data);
+    axios.post("http://localhost:8080/admin/newproduct", data);
   };
 
   return (
@@ -550,7 +564,7 @@ const NewProductForm = () => {
               상품명<span> *</span>
             </h2>
             <div>
-              <input type='text' onChange={onchange} name='productName'></input>
+              <input type="text" onChange={onchange} name="productName"></input>
             </div>
           </ContentBox>
           <ContentBox>
@@ -561,7 +575,7 @@ const NewProductForm = () => {
               <input
                 onChange={onchange}
                 value={productPrice}
-                name='productPrice'
+                name="productPrice"
               ></input>
               <span>원</span>
             </div>
@@ -574,7 +588,7 @@ const NewProductForm = () => {
               <select
                 onChange={onchange}
                 value={productLocal}
-                name='productLocal'
+                name="productLocal"
               >
                 {regionList.map((item) => (
                   <option value={item} key={item}>
@@ -591,19 +605,19 @@ const NewProductForm = () => {
             <div>
               <div>
                 <div>
-                  <img src='' alt='' ref={imgSrc} />
+                  <img src="" alt="" ref={imgSrc} />
                 </div>
                 <p>권장 500px * 500px</p>
               </div>
               <div>
                 <input
-                  type='file'
-                  id='input-file'
-                  accept='image/jpeg,gif,png,jpg'
-                  style={{ display: 'none' }}
+                  type="file"
+                  id="input-file"
+                  accept="image/jpeg,gif,png,jpg"
+                  style={{ display: "none" }}
                   onChange={onChangeFile}
                 ></input>
-                <label for='input-file'>등록</label>
+                <label for="input-file">등록</label>
                 <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
               </div>
             </div>
@@ -625,18 +639,19 @@ const NewProductForm = () => {
             </h2>
             <div>
               <input
-                type='radio'
-                name='discount'
-                onChange={onchange}
+                type="radio"
+                name="discount"
                 onClick={discountRadio}
+                value={"할인 적용"}
+                checked={ischeked === "할인 적용" ? true : false}
               ></input>
               <label>할인 적용</label>
               <input
-                type='radio'
-                name='discount'
-                onChange={onchange}
-                onClick={discountRadio2}
-                checked='cheked'
+                type="radio"
+                name="discount"
+                onClick={discountRadio}
+                value={"적용 안함"}
+                checked={ischeked === "적용 안함" ? true : false}
               ></input>
               <label>적용 안함</label>
             </div>
@@ -648,9 +663,9 @@ const NewProductForm = () => {
               </h2>
               <div>
                 <input
-                  type='text'
+                  type="text"
                   onChange={onchange}
-                  name='ProductDiscountPercent'
+                  name="ProductDiscountPercent"
                 ></input>
                 <span>%</span>
               </div>
@@ -663,15 +678,15 @@ const NewProductForm = () => {
                 <div>
                   <div>
                     <input
-                      type='date'
+                      type="date"
                       onChange={onchange}
-                      name='startDate'
+                      name="startDate"
                     ></input>
                   </div>
                   <select
                     value={startHour}
                     onChange={onchange}
-                    name='startHour'
+                    name="startHour"
                   >
                     {hourList.map((item) => (
                       <option value={item} key={item}>
@@ -683,10 +698,10 @@ const NewProductForm = () => {
                   <select
                     value={startMinute}
                     onChange={onchange}
-                    name='startminute'
+                    name="startminute"
                   >
                     {minuteList.map((item) => (
-                      <option value={item} key={item} name='startMinute'>
+                      <option value={item} key={item} name="startMinute">
                         {item}
                       </option>
                     ))}
@@ -696,12 +711,12 @@ const NewProductForm = () => {
                 <div>
                   <div>
                     <input
-                      type='date'
+                      type="date"
                       onChange={onchange}
-                      name='endDate'
+                      name="endDate"
                     ></input>
                   </div>
-                  <select value={endHour} onChange={onchange} name='endHour'>
+                  <select value={endHour} onChange={onchange} name="endHour">
                     {hourList.map((item) => (
                       <option value={item} key={item}>
                         {item}
@@ -712,7 +727,7 @@ const NewProductForm = () => {
                   <select
                     value={endMinute}
                     onChange={onchange}
-                    name='endMinute'
+                    name="endMinute"
                   >
                     {minuteList.map((item) => (
                       <option value={item} key={item}>
