@@ -3,7 +3,6 @@ const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const multer = require("multer");
-const db = require("./db/index");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
@@ -13,8 +12,8 @@ const uploadTest = require("./Server/Router/uploadTest");
 const recipe = require("./Server/Router/Recipe/index");
 const login = require("./Server/Router/Login/index");
 const signUp = require("./Server/Router/SignUp/index");
+const order = require("./Server/Router/SangHo/order");
 const PORT = process.env.PORT || 8080;
-const Order = require("./Server/Router/SangHo/order");
 
 const app = express();
 
@@ -48,6 +47,8 @@ app.use("/upload", uploadTest);
 app.use("/recipe", recipe);
 app.use("/login", login);
 app.use("/signUp", signUp);
+app.use("/order", order);
+app.use("/login", login);
 
 try {
   fs.readdirSync("uploads");
@@ -97,8 +98,6 @@ app.use(
 // });
 
 // app.use("/", Main);
-app.use("/order", Order);
-app.use("/login", login);
 
 app.get("/out", (req, res) => {
   req.session.destroy();
