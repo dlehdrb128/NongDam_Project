@@ -45,6 +45,7 @@ const OperatorBox = styled.div`
 `;
 
 const CartPrice = ({ product, number }) => {
+  
   let shipping = 2500;
   if (product.price * number < 50000) {
     shipping = 2500;

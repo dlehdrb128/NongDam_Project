@@ -88,13 +88,20 @@ const ProductReview = ({ data }) => {
   let reviewImage;
 
   for (let key in data) {
-    if (data[key] !== null && key[8] === "m" && typeof data[key] !== "number") {
+    if (
+      data[key] !== "null" &&
+      key[8] === "m" &&
+      typeof data[key] !== "number"
+    ) {
       imageArray.push(data[key]);
     }
   }
 
   if (data.review_image !== null) {
     reviewImage = imageArray.map((value, index) => {
+      if (value === null) {
+        return;
+      }
       return (
         <img
           key={index}
