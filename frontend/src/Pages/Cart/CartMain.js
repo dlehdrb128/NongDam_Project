@@ -3,7 +3,7 @@ import CartTitle from "./CartTitle";
 import CartItem from "./CartItem";
 import CartPrice from "./CartPrice"
 import Remocon from "../../LayOut/Remocon";
-import { useState, useEffect, useRef, forwardRef } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios'
 
 // 장바구니 메인 큰 박스

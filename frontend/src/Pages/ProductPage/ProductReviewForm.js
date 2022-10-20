@@ -8,7 +8,7 @@ const ProductReviewBox = styled.div`
   width: 1280px;
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
+  padding-top: 200px;
 
   /* 상품 후기 */
   & > div:nth-child(1) {
@@ -45,7 +45,7 @@ const ReviewBox = styled.div`
   }
 `;
 
-const ProductReviewForm = forwardRef(({ data, productKey }, ref) => {
+const ProductReviewForm = forwardRef(({ data, productKey, user }, ref) => {
   const getAverage = () => {
     if (data !== undefined) {
       let totalValue = 0;
@@ -65,7 +65,9 @@ const ProductReviewForm = forwardRef(({ data, productKey }, ref) => {
 
   if (data !== undefined) {
     reviewItem = data.map((value, index) => {
-      return <ProductReview data={value} key={index}></ProductReview>;
+      return (
+        <ProductReview data={value} key={index} user={user}></ProductReview>
+      );
     });
   }
 

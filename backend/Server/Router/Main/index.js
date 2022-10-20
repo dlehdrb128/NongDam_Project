@@ -28,4 +28,8 @@ router.get("/review", (req, res) => {
   );
 });
 
+router.get("/logout", (req, res) => {
+  res.clearCookie("connect.sid").json({ status: 201 });
+});
+
 module.exports = router;
