@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-const Section2conItem = styled.div`
+const Section2conItem = styled.a`
   //상품 컨테이너(사이즈 조정)
+  text-decoration: none;
   & > div {
     width: 210px;
     cursor: pointer;
@@ -49,17 +50,20 @@ const Section2conItem = styled.div`
 `;
 
 const FivedaysMarketitems = ({ data }) => {
+  console.log(data);
+  const img = `http://localhost:8080/product/product-${data.product_key}.png`
+  const link = `http://localhost:3000/product/detail/${data.product_key}`
   return (
-    <Section2conItem>
+    <Section2conItem href={link}>
       <div>
-        <img src={data.PRODUCT_IMG} alt='Product'></img>
+        <img src={img} alt='Product'></img>
         <p>
-          <span>[{data.PRODUCT_LOCAL}]</span>
-          {data.PRODUCT_NAME}
+          <span>[{data.product_local}]</span>
+          {data.product_name}
         </p>
         <h2>
-          {data.SALE !== null ? <span>{data.SALE}%</span> : ''}
-          {data.PRODUCT_PRICE.toLocaleString()}원
+          {data.product_discount_percent !== 0 ? <span>{data.product_discount_percent}%</span> : ''}
+          {data.product_price.toLocaleString()}원
         </h2>
       </div>
     </Section2conItem>

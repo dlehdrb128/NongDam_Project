@@ -8,7 +8,7 @@ const FivedaysmakretTopvisual = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url("/img/FivedaysMarketTopvisual.png") no-repeat center;
+  background: url("http://localhost:8080/market/FivedaysMarketTopvisual.png") no-repeat center;
   background-size: cover;
   position: relative;
   z-index: 3;

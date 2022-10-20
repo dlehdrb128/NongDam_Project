@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import FivedaysMarketsec2con from "./FivedaysMarketsec2con";
 import FivedaysMarketsec2con2 from "./FivedaysMarketsec2con2";
@@ -23,7 +25,7 @@ const Section2 = styled.section`
     & > div:nth-child(1) {
       width: 186px;
       height: 123px;
-      background: url("/img/Fday_sec2_decotitle.png") no-repeat center;
+      background: url("http://localhost:8080/market/Fday_sec2_decotitle.png") no-repeat center;
       background-size: cover;
       position: absolute;
       left: -37px;
@@ -56,7 +58,9 @@ const Section2 = styled.section`
   }
 `;
 
-const FivedaysMarketsec2 = () => {
+const FivedaysMarketsec2 = ({ data }) => {
+  const Productdata = data
+  console.log(Productdata);
   return (
     <Section2>
       <div>
@@ -65,7 +69,7 @@ const FivedaysMarketsec2 = () => {
         <div>충청</div>
         <h2>반가워요 충청도에유!</h2>
         {/* 충청도상품 컴포넌트 import */}
-        <FivedaysMarketsec2con />
+        <FivedaysMarketsec2con data={Productdata} />
       </div>
       <div>
         {/* 상품(전라) */}
@@ -73,7 +77,7 @@ const FivedaysMarketsec2 = () => {
         <div>전라</div>
         <h2>아따 전라도 특산물 구경해 보랑께~</h2>
         {/* 전라도상품 컴포넌트 import */}
-        <FivedaysMarketsec2con2 />
+        <FivedaysMarketsec2con2 data={Productdata} />
       </div>
     </Section2>
   );

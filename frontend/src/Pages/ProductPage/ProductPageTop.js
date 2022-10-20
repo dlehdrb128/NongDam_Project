@@ -197,7 +197,6 @@ const ProductPageTop = ({ ProductData }) => {
   const data = [ProductData[0], count];
   let salePrice = null;
 
-  console.log(ProductData);
   const up = () => {
     if (count > 0) {
       setCount((count) => count - 1);
@@ -214,7 +213,7 @@ const ProductPageTop = ({ ProductData }) => {
     salePrice =
       ProductData.product_price -
       (ProductData.product_price * ProductData.product_discount_percent) /
-        (100).toLocaleString();
+      (100).toLocaleString();
   }
 
   const sendCart = () => {

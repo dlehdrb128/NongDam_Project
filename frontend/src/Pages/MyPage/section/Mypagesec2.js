@@ -8,14 +8,14 @@ const Section2 = styled.section`
   padding-top: 125px;
   width: 867px;
 `;
-const Mypagesec2 = () => {
+const Mypagesec2 = ({ data }) => {
   return (
     <Section2>
-      <Mypagesec2Info />
+      <Mypagesec2Info data={data} />
       {/* 회원정보 */}
-      <Mypagese2OrderState />
+      <Mypagese2OrderState data={data} />
       {/* 주문처리현황 */}
-      <Mypage2OrderInfo />
+      <Mypage2OrderInfo data={data} />
       {/* 최근주문정보 */}
     </Section2>
   );
