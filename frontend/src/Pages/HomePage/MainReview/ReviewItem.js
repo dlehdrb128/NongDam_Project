@@ -113,7 +113,7 @@ const ReviewItem = ({ data }) => {
           )}
         </div>
         <div>
-          <div>{data.review_user}</div>
+          <div>{data.review_user_id}</div>
           <div>{data.review_text}</div>
           <div>{data.product_name}</div>
         </div>

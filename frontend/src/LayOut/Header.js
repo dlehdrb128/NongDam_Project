@@ -151,15 +151,18 @@ const Header = () => {
   }
 
   const logOut = async () => {
-    try {
-      let response = await axios.get("http://localhost:8080/logOut", {
-        withCredentials: true,
-      });
-      if (response.data.status === 201) {
-        alert("농담을 이용해주셔서 감사합니다");
-        navigate("/");
-      }
-    } catch (error) {}
+    let choice = window.confirm("로그아웃 하시겠습니까?");
+    if (choice === true) {
+      try {
+        let response = await axios.get("http://localhost:8080/logOut", {
+          withCredentials: true,
+        });
+        if (response.data.status === 201) {
+          alert("농담을 이용해주셔서 감사합니다");
+          navigate("/");
+        }
+      } catch (error) {}
+    }
   };
 
   return (
