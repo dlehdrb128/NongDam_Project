@@ -84,7 +84,7 @@ const Info = styled.div`
     & > div:nth-child(1) {
       &::before {
         content: "";
-        background: url("/img/Coupon.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/coupon.svg") no-repeat center;
         width: 48px;
         height: 47px;
         position: absolute;
@@ -93,7 +93,7 @@ const Info = styled.div`
     & > div:nth-child(2) {
       &::before {
         content: "";
-        background: url("/img/StackMoney.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/StackMoney.svg") no-repeat center;
         background-size: cover;
         width: 43px;
         height: 47px;
@@ -103,7 +103,7 @@ const Info = styled.div`
     & > div:nth-child(3) {
       &::before {
         content: "";
-        background: url("/img/Favorite.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/Favorite.svg") no-repeat center;
         width: 41px;
         height: 47px;
         position: absolute;
@@ -125,32 +125,32 @@ const Info = styled.div`
 `;
 
 //dummy object
+
 const member = {
   PersonalMember: [
     {
-      name: "이상호",
-      membership: "개인회원",
-      TotoalCount: 14,
-      Totoalpay: 152300,
-      Stackpay: 1523,
+      TotoalCount: '준비 중 입니다.',
+      Totoalpay: '',
       Favorite: 2,
     },
   ],
 };
 
-const Mypagesec2Info = () => {
+const Mypagesec2Info = ({ data }) => {
   //구조분해할당
   const { PersonalMember } = member;
+  const namedata = data.data[1];
+  const orders = data.data[0];
   return (
     <Info>
       {/* 회원정보 */}
       <div>
         <h1>
-          {PersonalMember[0].name}님은[{PersonalMember[0].membership}]입니다.
+          {namedata[1].user_name}님
         </h1>
         <span>
           총주문 {PersonalMember[0].Totoalpay.toLocaleString()}원(
-          {PersonalMember[0].TotoalCount}회)
+          {PersonalMember[0].TotoalCount})
         </span>
       </div>
       {/* 쿠폰,적립금,관심상품 */}
@@ -160,7 +160,7 @@ const Mypagesec2Info = () => {
         </div>
         <div>
           <p>적립금</p>
-          <p>{PersonalMember[0].Stackpay.toLocaleString()}원</p>
+          <p>{orders[0].orders_point}원</p>
         </div>
         <div>
           <p>관심상품</p>

@@ -13,7 +13,7 @@ const Section1 = styled.section`
     & > div:nth-child(1) {
       width: 603px;
       height: 311px;
-      background: url("/img/Fdays_sec1_titlebillboard.png") no-repeat center;
+      background: url("http://localhost:8080/market/Fdays_sec1_titlebillboard.png") no-repeat center;
       background-size: cover;
       display: flex;
       flex-direction: column;
@@ -41,7 +41,7 @@ const Section1 = styled.section`
       & > div:nth-child(1) {
         width: 1920px;
         height: 229px;
-        background: url("/img/Fdays_sec1_roof.png") no-repeat center;
+        background: url("http://localhost:8080/market/Fdays_sec1_roof.png") no-repeat center;
         background-size: cover;
         position: relative;
         z-index: 1;
@@ -50,7 +50,7 @@ const Section1 = styled.section`
   }
 `;
 
-const FivedaysMakretsec1 = () => {
+const FivedaysMakretsec1 = ({ data }) => {
   return (
     <Section1>
       {/* 섹션1 콘텐츠 컨테이너 */}
@@ -66,7 +66,7 @@ const FivedaysMakretsec1 = () => {
         <div>
           <div></div>
           {/* 섹션1 콘텐츠 컴포넌트 Import */}
-          <FivedaysMarektsec1con />
+          <FivedaysMarektsec1con data={data} />
         </div>
       </div>
     </Section1>

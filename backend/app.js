@@ -1,17 +1,20 @@
 const express = require("express");
-const path = require("path");
-const cors = require("cors");
-const fs = require("fs");
+const path = require('path');
+const cors = require('cors');
+const fs = require('fs');
 const multer = require("multer");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
-const Main = require("./Server/Router/Main/index");
+const Main = require('./Server/Router/Main/index');
 const Product = require("./Server/Router/Product/index");
 const uploadTest = require("./Server/Router/uploadTest");
 const recipe = require("./Server/Router/Recipe/index");
 const login = require("./Server/Router/Login/index");
 const signUp = require("./Server/Router/SignUp/index");
+const Market = require('./Server/Router/Market/index');
+const orders = require("./Server/Router/Orders/index");
+const cart = require("./Server/Router/Cart/index");
 const PORT = process.env.PORT || 8080;
 
 const app = express();
@@ -46,6 +49,9 @@ app.use("/upload", uploadTest);
 app.use("/recipe", recipe);
 app.use("/login", login);
 app.use("/signUp", signUp);
+app.use("/orders", orders);
+app.use("/cart", cart);
+app.use('/market', Market);
 
 try {
   fs.readdirSync("uploads");

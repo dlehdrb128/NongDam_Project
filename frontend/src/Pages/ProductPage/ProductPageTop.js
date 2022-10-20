@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { StyledButton, Theme } from "../../Theme/theme";
 import axios from "axios";
@@ -31,10 +32,22 @@ const ProductPageTopRight = styled.div`
   height: 100%;
 
   /* 스토어 이름 */
-  & > div:nth-child(1) {
-    font-family: "SCD-3";
-    font-size: 2rem;
-    color: ${({ theme }) => theme.lightblack};
+  & > a {
+    & > div:nth-child(1) {
+      width: 200px;
+      font-family: "SCD-3";
+      font-size: 2rem;
+      color: ${({ theme }) => theme.lightblack};
+
+      &:hover {
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      cursor: unset;
+    }
   }
 
   /* 지역 */
@@ -200,7 +213,7 @@ const ProductPageTop = ({ ProductData }) => {
     salePrice =
       ProductData.product_price -
       (ProductData.product_price * ProductData.product_discount_percent) /
-        (100).toLocaleString();
+      (100).toLocaleString();
   }
 
   const sendCart = () => {
@@ -216,7 +229,9 @@ const ProductPageTop = ({ ProductData }) => {
         ></img>
       </ProductPageTopLeft>
       <ProductPageTopRight>
-        <div>{ProductData.store_name}</div>
+        <Link to={`/store/${ProductData.store_key}`}>
+          <div>{ProductData.store_name}</div>
+        </Link>
         <div>[{ProductData.product_local}]</div>
         <div>{ProductData.product_name}</div>
         <hr></hr>
