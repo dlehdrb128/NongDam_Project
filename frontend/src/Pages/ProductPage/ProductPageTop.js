@@ -197,7 +197,6 @@ const ProductPageTop = ({ ProductData }) => {
   const data = [ProductData[0], count];
   let salePrice = null;
 
-  console.log(ProductData);
   const up = () => {
     if (count > 0) {
       setCount((count) => count - 1);
