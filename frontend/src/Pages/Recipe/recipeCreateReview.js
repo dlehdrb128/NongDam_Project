@@ -222,7 +222,9 @@ const RecipeCreateReview = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        let response = await axios.get("http://localhost:8080/recipe");
+        let response = await axios.get("http://localhost:8080/recipe/", {
+          withCredentials: true,
+        });
         setData(response.data);
       } catch (error) {
         console.log(error);
