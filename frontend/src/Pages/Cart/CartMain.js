@@ -84,19 +84,9 @@ const CartMain = () => {
   }, []);
 
   const calc = (price) => {
-    
-    
     setData(priceData + price)
-console.log(priceData)
-
-
-
-
-
-
-
+    console.log(priceData)
   }
-
 
   if (Loading) {
     return <h1>준비중입니다.</h1>

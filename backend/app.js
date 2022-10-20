@@ -79,6 +79,7 @@ app.use("/login", login);
 app.use("/upload", uploadTest);
 app.use("/orders", orders);
 app.use("/cart", cart);
+app.use("/store")
 
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);

@@ -134,6 +134,13 @@ const CartItem = ({ product, pricedata, calc }) => {
 
   });
 
+  let test;
+
+  product.product_discount_percent === 0 ? test = product.product_price : test = product.product_price - product.product_price * (product.product_discount_percent / 100)
+
+
+
+
   // console.log(product);
   // let Pricedata = {
   //   sumData: product.product_price * number,
@@ -145,7 +152,6 @@ const CartItem = ({ product, pricedata, calc }) => {
   const onChange = (e) => {
     if (e.target.value > 0) {
       setNumber(e.target.value);
-
     }
   };
 
@@ -167,13 +173,16 @@ const CartItem = ({ product, pricedata, calc }) => {
 
     if (totalPrice.type === 'up') {
 
-      calc(product.product_price - discount)
+      calc(test)
     }
     else {
-      calc(-product.product_price - discount)
+      calc(-test)
     }
   }
     , [totalPrice])
+
+
+
 
   const img = `http://localhost:8080/product/product-${product.product_key}.png`
   return (
