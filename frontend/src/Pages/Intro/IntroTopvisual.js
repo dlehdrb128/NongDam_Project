@@ -8,7 +8,7 @@ const Introvisual = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url("/img/Intro_visualTop.png") no-repeat center;
+  background: url("http://localhost:8080/intro/Intro_visualTop.png") no-repeat center;
   background-size: cover;
   //탑 비주얼 타이틀(컬러/폰트/위치조정)
   & > h1 {

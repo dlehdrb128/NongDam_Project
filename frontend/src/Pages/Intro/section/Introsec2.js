@@ -92,7 +92,7 @@ const Introsec2 = () => {
           </h1>
         </div>
         {/* 섹션2 콘텐츠 왼쪽 이미지 */}
-        <img src="/img/Intro_sec2_img.png" alt="sec2_img"></img>
+        <img src="http://localhost:8080/intro/Intro_sec2_img.png" alt="sec2_img"></img>
       </div>
     </Section2>
   );

@@ -342,7 +342,7 @@ const SignUp = () => {
         <div>
           <MiddleBox>일반전화</MiddleBox>
           <Phone
-            type={"number"}
+            type={"text"}
             placeholder="전화번호 입력('-'제외)"
             maxLength={11}
           />

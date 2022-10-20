@@ -28,6 +28,7 @@ a:link,
 a:active,
 a:visited {
   text-decoration: none;
+  color: #525252;
 }
 ol,
 ul {

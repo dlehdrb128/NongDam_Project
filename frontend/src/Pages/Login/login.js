@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const LoginHeader = styled.div`
   /* 최상단 "로그인" 제목 값 */
-  width: 1230px;
+  width: 1265px;
   height: 80px;
   text-align: center;
   font-size: 3rem;
@@ -343,13 +343,22 @@ const Login = () => {
               {/* sns 아이콘 전채 부모 설정값 */}
               <SNSIcon href="http://naver.com">
                 {/* sns아이콘 원형모양 링크버튼 */}
-                <NaverLogo src="" alt="네이버" />
+                <NaverLogo
+                  src="http://localhost:8080/icon/naverLogo.png"
+                  alt="네이버"
+                />
               </SNSIcon>
-              <SNSIcon href="http://naver.com">
-                <KakaotalkLogo src="./img/kakaoTalk.png" alt="카카오톡" />
+              <SNSIcon href="http://kakaocorp.com">
+                <KakaotalkLogo
+                  src="http://localhost:8080/icon/kakaoTalk.png"
+                  alt="카카오톡"
+                />
               </SNSIcon>
-              <SNSIcon href="http://naver.com">
-                <AppleLogo src="./img/apple.png" alt="애플" />
+              <SNSIcon href="http://apple.com">
+                <AppleLogo
+                  src="http://localhost:8080/icon/apple.png"
+                  alt="애플"
+                />
               </SNSIcon>
             </IconBox>
           </SNSBox>

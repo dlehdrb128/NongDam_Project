@@ -79,7 +79,7 @@ const Introsec4 = () => {
       {/* 섹션4 콘텐츠컨테이너 */}
       <div>
         {/* 섹션4 콘텐츠 왼쪽 이미지 */}
-        <img src="/img/Intro_sec4_img.png" alt="sec4_img"></img>
+        <img src="http://localhost:8080/intro/Intro_sec4_img.png" alt="sec4_img"></img>
         {/* 섹션4 텍스트 콘텐츠 컨테이너*/}
         <div>
           {/* 섹션4 텍스트 컨테이너 */}
