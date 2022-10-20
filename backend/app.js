@@ -53,7 +53,6 @@ app.use("/orders", orders);
 app.use("/cart", cart);
 app.use('/market', Market);
 
-
 try {
   fs.readdirSync("uploads");
 } catch (error) {
@@ -72,13 +71,11 @@ const upload = multer({
   }),
 });
 
-
 app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);
   console.log(req.body);
   console.dir(req.header("Content-Type"));
   // console.log(req.files);
-
   res.send("ok");
 });
 

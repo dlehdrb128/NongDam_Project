@@ -18,6 +18,7 @@ const ProductPage = () => {
   const [data, setData] = useState();
   const productDetail = useRef(null);
   const productReview = useRef(null);
+  let productKey;
 
   useEffect(() => {
     const getData = async () => {
@@ -36,6 +37,8 @@ const ProductPage = () => {
   if (data === undefined) {
     return null;
   }
+
+  console.log(data);
 
   // 카테고리의 버튼을 누르면 인자에 따라 스크롤을 이동시킨다
   const categoryMove = (ref) => {
@@ -67,6 +70,10 @@ const ProductPage = () => {
   //   //   return null;
   //   // }
 
+  if (data[1].length === 0) {
+    productKey = data[0][0].product_key;
+  }
+
   return (
     <ProductPageBox>
       <ProductPageTop ProductData={data[0]}></ProductPageTop>
@@ -76,7 +83,11 @@ const ProductPage = () => {
         productReview={productReview}
       ></ProductCategory>
       <ProductDetail data={data[0]} ref={productDetail}></ProductDetail>
-      <ProductReviewForm data={data[1]} ref={productReview}></ProductReviewForm>
+      <ProductReviewForm
+        data={data[1]}
+        ref={productReview}
+        productKey={productKey}
+      ></ProductReviewForm>
       <Remocon></Remocon>
     </ProductPageBox>
   );

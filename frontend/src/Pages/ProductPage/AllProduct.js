@@ -6,7 +6,7 @@ import { useEffect } from "react";
 // import { productAll } from "../Slice/getData";
 // import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // 상품 검색페이지의 상단
 const ProductTop = styled.div`
@@ -128,20 +128,24 @@ const ProductSortBox = styled.div`
 `;
 
 const AllProduct = () => {
-  const [params, setParams] = useState(useParams().category);
+  const [params, setParams] = useState({
+    params: useParams().category,
+    sort: "normal",
+  });
   const [localSelected, setLocalSelected] = useState("local");
   const [loading, setLoading] = useState(false);
-  // const [typeSelected, setTypeSelected] = useState("type");
   const [data, setData] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       try {
         let response = await axios.get(
-          `http://localhost:8080/product/${params}`
+          `http://localhost:8080/product/search/${params.params}/${params.sort}`
         );
         setData(response.data);
+        navigate(`/product/${params.params}`);
       } catch (error) {
         console.log(error);
       }
@@ -156,36 +160,10 @@ const AllProduct = () => {
     for (let key of event.target) {
       if (key.value === event.target.value) {
         setLocalSelected(key.textContent);
-        setParams(key.value);
+        setParams({ ...params, params: key.value });
       }
     }
-    // setLocalSelected(event.target.value);
   };
-
-  // const typeSelectChange = (event) => {
-  //   setTypeSelected(event.target.value);
-  // };
-
-  //   const disPatch = useDispatch();
-
-  //   useEffect(() => {
-  //     const getData = () => {
-  //       disPatch(productAll());
-  //     };
-  //     getData();
-  //   }, [disPatch]);
-
-  //   const { value, status } = useSelector((store) => store.data);
-
-  //   const realValue = value[0];
-
-  //   if (!realValue) {
-  //     return null;
-  //   }
-
-  //   if (status === "loading") {
-  //     return null;
-  //   }
 
   let localData = [
     { category: "all", name: "전체" },
@@ -223,8 +201,6 @@ const AllProduct = () => {
     },
   ];
 
-  // let typeData = ["전체 상품", "지역 특산품", "과일", "채소"];
-
   let localOption = localData.map((value, index) => {
     return (
       <option value={value.category} key={index}>
@@ -232,14 +208,6 @@ const AllProduct = () => {
       </option>
     );
   });
-
-  // let typeOption = typeData.map((value, index) => {
-  //   return (
-  //     <option value={value} key={index}>
-  //       {value}
-  //     </option>
-  //   );
-  // });
 
   if (data === undefined) {
     return <h1>로딩중입니다</h1>;
@@ -256,23 +224,17 @@ const AllProduct = () => {
               : `생명과 태양의 땅! ${localSelected} 입니다`}
           </div>
           <div>
-            <select value={params} onChange={localSelectChange}>
+            <select value={params.params} onChange={localSelectChange}>
               <option value="local" disabled={true}>
                 지역
               </option>
               {localOption}
             </select>
-            {/* <select value={typeSelected} onChange={typeSelectChange}>
-              <option value="type" disabled={true}>
-                종류
-              </option>
-              {typeOption}
-            </select> */}
           </div>
         </ProductItemLeft>
-        {params === "all" ? null : (
+        {params.params === "all" ? null : (
           <ProductItemRight
-            src={`http://localhost:8080/local/${params}.png`}
+            src={`http://localhost:8080/local/${params.params}.png`}
             alt="이미지 없음"
           ></ProductItemRight>
         )}
@@ -285,17 +247,30 @@ const AllProduct = () => {
           <div>{data.length}개의 상품이 있습니다</div>
         )}
         <div>
-          <div>인기순</div>
-          <div>최신순</div>
-          <div>가격높은순</div>
-          <div>가격낮은순</div>
+          <div
+            onClick={() => {
+              setParams({ ...params, sort: "new" });
+            }}
+          >
+            최신순
+          </div>
+          <div
+            onClick={() => {
+              setParams({ ...params, sort: "highPrice" });
+            }}
+          >
+            가격높은순
+          </div>
+          <div
+            onClick={() => {
+              setParams({ ...params, sort: "lowPrice" });
+            }}
+          >
+            가격낮은순
+          </div>
         </div>
       </ProductSortBox>
       <ProductBox>
-        {/* {realValue.map((value, index) => {
-          return <ProductItem key={index} data={value}></ProductItem>;
-        })} */}
-
         {loading === true ? (
           <UndefinedBox>
             <h1>로딩중입니다</h1>
