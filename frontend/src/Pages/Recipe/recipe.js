@@ -2,6 +2,7 @@ import styled from "styled-components";
 import RecipeItem from "./recipeItem";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 const RecipeParent = styled.div`
   /* 레시피 페이지 전체 부모 설정값 */
   width: 1230px;
@@ -261,23 +262,25 @@ const Recipe = () => {
         <div>
           <h1>이번주 추천 레시피</h1>
           <br />
-          <ImgWrapper
-            style={{
-              backgroundImage: `url(
+          <Link to={`/recipe/post/${topRecipe.recipe_key}`}>
+            <ImgWrapper
+              style={{
+                backgroundImage: `url(
                 http://localhost:8080/recipe/${topRecipe.recipe_image_path}
               )`,
-            }}
-          >
-            {/* 이번주 추천 레시피 배경이미지, 추천레시피 당첨 게시글 폰트 */}
-            <div>
-              <h2>{topRecipe.recipe_title}</h2>
-              <h3>
-                &nbsp;{topRecipe.user_id}
-                {/* 게시글 작성자 프로필 */}
-              </h3>
-              <p>⭐({topRecipe.recipe_value})/5</p>
-            </div>
-          </ImgWrapper>
+              }}
+            >
+              {/* 이번주 추천 레시피 배경이미지, 추천레시피 당첨 게시글 폰트 */}
+              <div>
+                <h2>{topRecipe.recipe_title}</h2>
+                <h3>
+                  &nbsp;{topRecipe.user_id}
+                  {/* 게시글 작성자 프로필 */}
+                </h3>
+                <p>⭐({topRecipe.recipe_value})/5</p>
+              </div>
+            </ImgWrapper>
+          </Link>
         </div>
         <div>
           <WantSearch>

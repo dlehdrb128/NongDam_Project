@@ -17,6 +17,9 @@ const PostList = styled.div`
     width: 200px;
     font-size: 1.5rem;
     font-family: SCD-3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   & > div:nth-child(3) {
     width: 200px;
