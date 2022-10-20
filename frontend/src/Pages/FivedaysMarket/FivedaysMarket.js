@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import FivedaysMakretTopvisual from './FiveDaysMarketTopvisual';
-import FivedaysMakretsec1 from './section/FivedaysMarketsec1';
-import FivedaysMarketsec2 from './section/FivedaysMarketsec2';
-import Remocon from '../../LayOut/Remocon';
-import { useState, useEffect } from 'react'
-import axios from 'axios';
+import styled from "styled-components";
+import FivedaysMakretTopvisual from "./FiveDaysMarketTopvisual";
+import FivedaysMakretsec1 from "./section/FivedaysMarketsec1";
+import FivedaysMarketsec2 from "./section/FivedaysMarketsec2";
+import Remocon from "../../LayOut/Remocon";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 // 메인 컨테이너
 const Main = styled.main`
@@ -28,10 +28,17 @@ const FivedaysMakret = () => {
     setLoading(true);
     const Product = async () => {
       try {
+<<<<<<< HEAD
         let response = await axios.get('http://localhost:8080/market/', { withCredentials: true });
 
         console.log(response.data);
         setData(response.data)
+=======
+        let response = await axios.get("http://localhost:8080/market/", {
+          withCredentials: true,
+        });
+        setData(response.data);
+>>>>>>> ca1b00ccf8fc0895026c272edbdcf979a60ae988
       } catch (e) {
         console.log(e);
       }
@@ -55,7 +62,7 @@ const FivedaysMakret = () => {
       <Main>
         <FivedaysMakretsec1 data={data} />
         {/* section1 */}
-        <div className='sec_wrap'>
+        <div className="sec_wrap">
           <FivedaysMarketsec2 data={data} />
           {/*section2 */}
         </div>

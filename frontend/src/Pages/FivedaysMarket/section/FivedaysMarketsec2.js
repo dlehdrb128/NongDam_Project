@@ -25,7 +25,8 @@ const Section2 = styled.section`
     & > div:nth-child(1) {
       width: 186px;
       height: 123px;
-      background: url("http://localhost:8080/market/Fday_sec2_decotitle.png") no-repeat center;
+      background: url("http://localhost:8080/market/Fday_sec2_decotitle.png")
+        no-repeat center;
       background-size: cover;
       position: absolute;
       left: -37px;
@@ -59,8 +60,7 @@ const Section2 = styled.section`
 `;
 
 const FivedaysMarketsec2 = ({ data }) => {
-  const Productdata = data
-  console.log(Productdata);
+  const Productdata = data;
   return (
     <Section2>
       <div>

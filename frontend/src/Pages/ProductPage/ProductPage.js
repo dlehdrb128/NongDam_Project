@@ -9,6 +9,7 @@ import ProductDetail from "./ProductDetail";
 import ProductReviewForm from "./ProductReviewForm";
 import Remocon from "../../LayOut/Remocon";
 import axios from "axios";
+import SellerInformation from "./SellerInfomation";
 const ProductPageBox = styled.div``;
 
 // 상품 상세페이지 컴포넌트
@@ -16,8 +17,10 @@ const ProductPageBox = styled.div``;
 const ProductPage = () => {
   const { id } = useParams();
   const [data, setData] = useState();
+  const [user, setUser] = useState();
   const productDetail = useRef(null);
   const productReview = useRef(null);
+  const sellerInformation = useRef(null);
   let productKey;
 
   useEffect(() => {
@@ -34,11 +37,26 @@ const ProductPage = () => {
     getData();
   }, [id]);
 
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        let response = await axios.get("http://localhost:8080/login/check", {
+          withCredentials: true,
+        });
+
+        if (response.data.status === 201) {
+          setUser(response.data.userInfo);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUserData();
+  }, []);
+
   if (data === undefined) {
     return null;
   }
-
-  console.log(data);
 
   // 카테고리의 버튼을 누르면 인자에 따라 스크롤을 이동시킨다
   const categoryMove = (ref) => {
@@ -81,12 +99,18 @@ const ProductPage = () => {
         categoryMove={categoryMove}
         productDetail={productDetail}
         productReview={productReview}
+        sellerInformation={sellerInformation}
       ></ProductCategory>
       <ProductDetail data={data[0]} ref={productDetail}></ProductDetail>
+      <SellerInformation
+        data={data[0]}
+        ref={sellerInformation}
+      ></SellerInformation>
       <ProductReviewForm
         data={data[1]}
         ref={productReview}
         productKey={productKey}
+        user={user}
       ></ProductReviewForm>
       <Remocon></Remocon>
     </ProductPageBox>

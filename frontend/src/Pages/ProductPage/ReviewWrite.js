@@ -79,58 +79,71 @@ const ReviewWrite = ({ productKey, data }) => {
   });
 
   const postReview = async (type) => {
-    if (clicked === 0 || input === undefined) {
+    if (clicked === null || input === undefined) {
       alert("리뷰를 입력하시거나 평점을 설정해주세요");
       return;
     }
 
-    try {
-      let response = await axios.get("http://localhost:8080/login/check", {
-        withCredentials: true,
-      });
+    if (clicked > 0 || input !== undefined) {
+      try {
+        let response = await axios.get("http://localhost:8080/login/check", {
+          withCredentials: true,
+        });
 
-      if (response.data.status === 201) {
-        let userData = response.data.userInfo;
-
-        let reviewinfo = {
-          product_key: Number(product_Key),
-          user_key: Number(userData.user_key),
-          user_auth: userData.user_auth,
-          user_id: userData.user_id,
-          review_value: Number(clicked),
-          review_text: input,
-          review_post_date: timestamp(),
-          review_image: image[0],
-          review_image_2: image[1],
-          review_image_3: image[2],
-        };
-
-        switch (type) {
-          case "get":
-            break;
-
-          case "post":
-            let send = await axios.post(
-              "http://localhost:8080/product/review/write",
-              reviewinfo,
-              { withCredentials: true }
-            );
-
-            if (send.data.status === 201) {
-              alert("리뷰 작성 완료");
-              navigate(`/product/detail/${product_Key}`);
-            }
-
-            break;
-
-          default:
-            break;
+        if (response.data.userInfo.user_auth === "사업자") {
+          alert("사업자 회원은 리뷰를 작성할 수 없습니다");
+          return;
         }
-      } else if (response.data.status === 401) {
-        alert("리뷰는 일반회원만 작성하실 수 있습니다");
-        navigate("/login");
-      }
-    } catch (error) {}
+
+        if (response.data.status === 201) {
+          let userData = response.data.userInfo;
+
+          let reviewinfo = {
+            product_key: Number(product_Key),
+            user_key: Number(userData.user_key),
+            user_auth: userData.user_auth,
+            user_id: userData.user_id,
+            review_value: Number(clicked),
+            review_text: input,
+            review_post_date: timestamp(),
+            review_image: image[0],
+            review_image_2: image[1],
+            review_image_3: image[2],
+          };
+
+          switch (type) {
+            case "get":
+              break;
+
+            case "post":
+              let send = await axios.post(
+                "http://localhost:8080/product/review/write",
+                reviewinfo,
+                { withCredentials: true }
+              );
+
+              if (send.data.status === 201) {
+                alert("리뷰 작성 완료");
+                window.location.reload();
+                return;
+                // navigate(`/product/detail/${product_Key}`);
+              }
+
+              break;
+
+            default:
+              break;
+          }
+        } else if (response.data.status === 401) {
+          alert("리뷰는 일반회원만 작성하실 수 있습니다");
+          navigate("/login");
+          return;
+        }
+      } catch (error) {}
+    }
+
+    alert("리뷰는 일반 회원만 작성하실 수 있습니다");
+    window.location.reload();
   };
 
   return (

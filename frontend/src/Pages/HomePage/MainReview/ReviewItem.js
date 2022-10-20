@@ -96,7 +96,6 @@ const ReviewItemBox = styled.div`
 `;
 
 const ReviewItem = ({ data }) => {
-  console.log(data.review_image);
   return (
     <ReviewItemBox>
       <Link to={`/product/detail/${data.product_key}`}>
@@ -114,7 +113,7 @@ const ReviewItem = ({ data }) => {
           )}
         </div>
         <div>
-          <div>{data.review_user}</div>
+          <div>{data.review_user_id}</div>
           <div>{data.review_text}</div>
           <div>{data.product_name}</div>
         </div>

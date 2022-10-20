@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import FivedaysMarketitems from './FivedaysMarketItems';
-import styled from 'styled-components';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import FivedaysMarketitems from "./FivedaysMarketItems";
+import styled from "styled-components";
 //섹션2 상품 콘텐츠(충청) 컨테이너(사이즈,위치조정)
 const Section2con = styled.div`
   width: 934px;
@@ -14,7 +14,6 @@ const Section2con = styled.div`
 `;
 
 const FivedaysMarketsec2con = ({ data }) => {
-  console.log(data[0]);
   return (
     <Section2con>
       {data[0].map((value, index) => {
