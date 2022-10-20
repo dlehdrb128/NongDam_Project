@@ -62,9 +62,7 @@ const Section1con = styled.div`
 //dummy Text
 
 const FivedaysMarektsec1con = ({ data }) => {
-  const marketdata = data[1]
-  console.log(marketdata);
-  const img = `http://localhost:8080/market/market_${data[1][0].market_key}.png`
+  const img = `http://localhost:8080/market/market_${data[1][0].market_key}.png`;
   return (
     <Section1con>
       {/* 시장이미지 */}
