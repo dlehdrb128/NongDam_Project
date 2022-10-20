@@ -6,7 +6,6 @@ const multer = require("multer");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const Market = require("./Server/Router/Market/index");
-
 const Main = require("./Server/Router/Main/index");
 const Product = require("./Server/Router/Product/index");
 const uploadTest = require("./Server/Router/uploadTest");
@@ -15,6 +14,7 @@ const login = require("./Server/Router/Login/index");
 const signUp = require("./Server/Router/SignUp/index");
 const orders = require("./Server/Router/Orders/index");
 const cart = require("./Server/Router/Cart/index");
+const admin = require("./Server/Router/Admin/index");
 
 const PORT = process.env.PORT || 8080;
 
@@ -53,6 +53,7 @@ app.use("/signUp", signUp);
 app.use("/orders", orders);
 app.use("/cart", cart);
 app.use("/market", Market);
+app.use("/admin", admin);
 
 try {
   fs.readdirSync("uploads");

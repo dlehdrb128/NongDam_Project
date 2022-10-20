@@ -9,7 +9,6 @@ const MainBox = styled.div`
   padding: 180px 0 70px 0;
   display: flex;
   flex-direction: column;
-
   // 각 form의 제목을 h1으로 스타일링 해주었다
   & > form {
     // 스토어정보, 고객센터 정보안내 h1 스타일링
@@ -44,7 +43,6 @@ const ContentBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 기입내용의 제목을 h2
   & > h2 {
     width: 141px;
@@ -63,7 +61,6 @@ const ContentBox = styled.div`
       font-size: 1.5rem;
     }
   }
-
   // 기입내용 input을 div로 묶음
   & > div {
     width: 702px;
@@ -91,6 +88,58 @@ const ContentBox = styled.div`
   }
 `;
 
+// 스토어 설명 박스
+const StoreDescBox = styled.div`
+  width: inherit;
+  height: 200px;
+  display: flex;
+  border-bottom: 1px solid ${({ theme }) => theme.lightgray};
+  color: ${({ theme }) => theme.lightblack};
+  // 기입내용의 제목을 h2
+  & > h2 {
+    width: 141px;
+    height: inherit;
+    font-size: 1.5rem;
+    font-family: "SCD-6";
+    text-align: left;
+    padding: 30px 0 30px 18px;
+    background-color: ${({ theme }) => theme.white};
+    border-bottom: 1px solid ${({ theme }) => theme.lightgray};
+    // 필수 기입내용 *로 표현한 부분을 span으로 감싸줌
+    // span있는거만 적용됨
+    & > span {
+      color: red;
+      font-family: "SCD-6";
+      font-size: 1.5rem;
+    }
+  }
+  // 기입내용 input을 div로 묶음
+  & > div {
+    width: 702px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    border-left: 1px solid ${({ theme }) => theme.liglightgray};
+    // 기입내용 input 박스 설정
+    & > input {
+      font-family: "SCD-4";
+      width: 300px;
+      height: 150px;
+      border: 1px solid ${({ theme }) => theme.gray};
+      border-radius: 3px;
+      padding: 5px;
+      font-size: 1.5rem;
+    }
+    //  input박스 뒤에 따로 특이사항 붙는 부분
+    // span 추가해서 설정하면되고, 없어도 상관없음
+    & > span {
+      font-family: "SCD-3";
+      font-size: 1.3rem;
+      padding-left: 5px;
+    }
+  }
+`;
+
 // 사업장 주소 input부분은 형식이 달라서 따로 지정
 const BusinessAdd = styled.div`
   width: inherit;
@@ -98,7 +147,6 @@ const BusinessAdd = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 큰 틀을 비슷
   & > h2 {
     width: 141px;
@@ -124,7 +172,6 @@ const BusinessAdd = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     // 우편번호 창
     & > div > input {
       font-family: "SCD-4";
@@ -167,7 +214,6 @@ const ImgBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 제목 - 대표이미지 등록
   & > h2 {
     width: 141px;
@@ -201,7 +247,6 @@ const ImgBox = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
       //사진미리보기 부분/ 지금은 회색 박스
       & > div {
         width: 155px;
@@ -209,15 +254,12 @@ const ImgBox = styled.div`
         border-radius: 3px;
         display: flex;
         flex-direction: column;
-
         & > img {
           width: 100%;
           height: 100%;
           margin: "auto";
-          background-color: ${({ theme }) => theme.liglightgray};
         }
       }
-
       // 이미지 권장 사이즈 안내
       & > p {
         font-family: "SCD-4";
@@ -234,7 +276,6 @@ const ImgBox = styled.div`
       padding-left: 20px;
       padding-bottom: 40px;
       justify-content: flex-end;
-
       // 파일불러오는 input 버튼
       & > label {
         width: 73px;
@@ -266,7 +307,6 @@ const TelBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 전화번호 타이틀
   & > h2 {
     width: 141px;
@@ -365,7 +405,6 @@ const RadioBox = styled.div`
     padding: 20px;
     align-items: center;
     border-left: 1px solid ${({ theme }) => theme.lightblack};
-
     // 라디오 버튼 스타일링
     & > input {
       width: 18px;
@@ -373,7 +412,6 @@ const RadioBox = styled.div`
       accent-color: green;
     }
     // 체크되면 달라지는 스타일링
-
     // 라디오 버튼의 내용
     & > label {
       font-family: "SCD-3";
@@ -435,6 +473,7 @@ const StoreOpenForm = () => {
   const onChangeRadio = (e) => {
     setTopping(e.target.value);
   };
+
   const firstTelList = [
     "02",
     "031",
@@ -481,6 +520,7 @@ const StoreOpenForm = () => {
     faxTel2: "",
     faxTel3: "",
     csHours: "",
+    storeDesc: "",
   });
 
   const {
@@ -507,6 +547,7 @@ const StoreOpenForm = () => {
     faxTel2,
     faxTel3,
     csHours,
+    storeDesc,
   } = inputData;
 
   const onchange = (e) => {
@@ -533,10 +574,12 @@ const StoreOpenForm = () => {
     storeFax: `${faxTel1}-${faxTel2}-${faxTel3}`,
     storeCsTime: csHours,
     storeBusiness: topping === "true" ? 1 : 0,
+    storeDesc: storeDesc,
   };
 
+  console.log(data);
   const onclick = () => {
-    axios.post("http://localhost:8080/admin/storeOpen/", data);
+    axios.post("http://localhost:8080/admin/storeOpen", data);
   };
 
   return (
@@ -550,6 +593,7 @@ const StoreOpenForm = () => {
               <span> *</span>
             </h2>
             <div>
+              <input hidden="hidden" />
               <input type="text" onChange={onchange} name="storeName"></input>
 
               <span>
@@ -647,6 +691,17 @@ const StoreOpenForm = () => {
               </div>
             </div>
           </ImgBox>
+          <StoreDescBox>
+            <h2>스토어 설명</h2>
+            <div>
+              <input
+                type="text"
+                onChange={onchange}
+                name="storeDesc"
+                placeholder="200자 이내로 작성해주세요"
+              ></input>
+            </div>
+          </StoreDescBox>
           <TelBox>
             <h2>대표전화</h2>
             <div>
