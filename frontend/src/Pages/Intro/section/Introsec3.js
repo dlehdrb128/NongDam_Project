@@ -63,7 +63,7 @@ const Introsec3 = () => {
         <br />그 심각성이 짐작이 가나요?
       </p>
       {/* 이미지 */}
-      <img src="/img/Intro_sec3_img.png" alt="sec3_img"></img>
+      <img src="http://localhost:8080/intro/Intro_sec3_img.png" alt="sec3_img"></img>
       {/*하단 텍스트*/}
       <p>
         {/* 하단 포인트 텍스트 */}

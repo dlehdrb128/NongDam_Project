@@ -22,7 +22,7 @@ const Section5 = styled.section`
   & > div:nth-child(2) {
     width: 100%;
     height: 584px;
-    background: url("/img/Intro_sec5_img.png") no-repeat center;
+    background: url("http://localhost:8080/intro/Intro_sec5_img.png") no-repeat center;
     background-size: cover;
     display: flex;
     align-items: center;

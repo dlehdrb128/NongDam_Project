@@ -96,7 +96,6 @@ const ReviewItemBox = styled.div`
 `;
 
 const ReviewItem = ({ data }) => {
-  console.log(data.review_image);
   return (
     <ReviewItemBox>
       <Link to={`/product/detail/${data.product_key}`}>
