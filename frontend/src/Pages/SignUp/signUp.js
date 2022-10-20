@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const SignUpParent = styled.form`
   /* 회원가입창 부모 설정 */
@@ -263,6 +263,14 @@ const SignUp = () => {
   const [value, setValue] = useState(true);
   const [display, setDisplay] = useState('none');
   const [display2, setDisplay2] = useState('flex');
+  const [check, setCheck] = useState({
+    allCheck: false,
+    check1: false,
+    check2: false,
+    check3: false,
+    check4: false,
+  });
+
   const checkSMS = (e) => {
     if (e.target.checked === 1) {
       setUserSMS(1);
@@ -343,7 +351,39 @@ const SignUp = () => {
     } else axios.post('http://localhost:8080/signUp', dbData);
   };
 
-  console.log(dbData);
+  const checkChange = (e) => {
+    let name = e.target.name;
+
+    if (name === 'allCheck' && e.target.checked === true) {
+      setCheck({
+        allCheck: true,
+        check1: true,
+        check2: true,
+        check3: true,
+        check4: true,
+      });
+    } else if (name === 'allCheck' && e.target.checked === false) {
+      setCheck({
+        allCheck: false,
+        check1: false,
+        check2: false,
+        check3: false,
+        check4: false,
+      });
+    } else {
+      setCheck({ ...check, [name]: e.target.checked });
+    }
+  };
+
+  // console.log(dbData);
+
+  let test =
+    check.check1 === false ||
+    check.check2 === false ||
+    check.check3 === false ||
+    check.check4 === false
+      ? false
+      : true;
 
   return (
     <SignUpParent>
@@ -528,7 +568,12 @@ const SignUp = () => {
       <Terms>
         {/* 약관동의 */}
         <div>
-          <InputClick type='checkbox'></InputClick>
+          <InputClick
+            type='checkbox'
+            onChange={checkChange}
+            checked={test}
+            name='allCheck'
+          ></InputClick>
           &nbsp;&nbsp;
           <p>
             이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두
@@ -536,21 +581,49 @@ const SignUp = () => {
           </p>
         </div>
         <div>
-          <InputClick type='checkbox' required></InputClick>
+          <InputClick
+            type='checkbox'
+            required
+            onChange={checkChange}
+            checked={check.check1}
+            readOnly
+            name='check1'
+          ></InputClick>
           &nbsp;&nbsp;
           <p>[필수] 이용약관 동의</p>
         </div>
         <div>
-          <InputClick type='checkbox' required></InputClick>
+          <InputClick
+            type='checkbox'
+            required
+            onChange={checkChange}
+            checked={check.check2}
+            readOnly
+            name='check2'
+          ></InputClick>
           &nbsp;&nbsp;
           <p>[필수] 개인정보 수집 및 이용 동의</p>
         </div>
         <div>
-          <InputClick type='checkbox' onChange={checkSMS}></InputClick>
+          <InputClick
+            type='checkbox'
+            // onChange={checkSMS}
+            onChange={checkChange}
+            checked={check.check3}
+            readOnly
+            name='check3'
+          ></InputClick>
           &nbsp;&nbsp;
           <p>[선택] SMS 수신을 동의하십니까?</p>
           &nbsp;&nbsp;&nbsp;
-          <InputClick type='checkbox' onChange={checkEmail}></InputClick>
+          <InputClick
+            type='checkbox'
+            // onChange={checkEmail}
+            onChange={checkChange}
+            checked={check.check4}
+            readOnly
+            name='check4'
+          ></InputClick>
           &nbsp;&nbsp;
           <p>[선택] 이메일 수신을 동의하십니까?</p>
         </div>
