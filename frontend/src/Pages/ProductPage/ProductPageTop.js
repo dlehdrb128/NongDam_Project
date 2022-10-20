@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { StyledButton, Theme } from "../../Theme/theme";
-import axios from 'axios'
+import axios from "axios";
 
 // 상품 상세 페이지 상단 요소 박스
 const ProductPageTopBox = styled.div`
@@ -184,7 +184,6 @@ const ProductPageTop = ({ ProductData }) => {
   const data = [ProductData[0], count];
   let salePrice = null;
 
-  console.log(data);
   const up = () => {
     if (count > 0) {
       setCount((count) => count - 1);
@@ -205,8 +204,9 @@ const ProductPageTop = ({ ProductData }) => {
   }
 
   const sendCart = () => {
-    axios.post('http://localhost:8080/product/productdetail/insert', data)
-  }
+    axios.post("http://localhost:8080/product/cart/insert", data);
+  };
+
   return (
     <ProductPageTopBox>
       <ProductPageTopLeft>
@@ -216,16 +216,24 @@ const ProductPageTop = ({ ProductData }) => {
         ></img>
       </ProductPageTopLeft>
       <ProductPageTopRight>
-        <div>상호네 농장</div>
+        <div>{ProductData.store_name}</div>
         <div>[{ProductData.product_local}]</div>
         <div>{ProductData.product_name}</div>
         <hr></hr>
         {salePrice === null ? (
-          <div>{ProductData.product_price.toLocaleString()}원</div>
+          <div>
+            {(Math.round(ProductData.product_price / 10) * 10).toLocaleString()}
+            원
+          </div>
         ) : (
           <SaleBox>
-            <div>{salePrice}원</div>
-            <div>{ProductData.product_price.toLocaleString()}원</div>
+            <div>{Math.round(salePrice / 10) * 10}원</div>
+            <div>
+              {(
+                Math.round(ProductData.product_price / 10) * 10
+              ).toLocaleString()}
+              원
+            </div>
           </SaleBox>
         )}
         <ProductPageCountBox>
@@ -238,8 +246,22 @@ const ProductPageTop = ({ ProductData }) => {
         </ProductPageCountBox>
         <ProductPageTotalPrice>
           <div>총 합계금액 (수량) :</div>
+
           <div>
-            {salePrice === null ? <div>{(ProductData.product_price * count).toLocaleString()}원</div> : <div>{(salePrice * count).toLocaleString()}원</div>}
+            {salePrice === null ? (
+              <div>
+                {(
+                  Math.round(ProductData.product_price / 10) *
+                  10 *
+                  count
+                ).toLocaleString()}
+                원
+              </div>
+            ) : (
+              <div>
+                {(Math.round(salePrice / 10) * 10 * count).toLocaleString()}원
+              </div>
+            )}
             <div>({count}개)</div>
           </div>
         </ProductPageTotalPrice>
