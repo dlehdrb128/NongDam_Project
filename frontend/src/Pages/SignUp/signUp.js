@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import axios from "axios";
+import { useEffect, useState } from "react";
 const SignUpParent = styled.form`
   /* 회원가입창 부모 설정 */
   width: 1230px;
@@ -129,6 +131,9 @@ const BasicInfo = styled.div`
       font-size: 1.5rem;
     }
   }
+  & > div:nth-child(8) {
+    border-bottom: 1px solid ${({ theme }) => theme.lightblack};
+  }
   & > div:nth-child(9) {
     /* 평생회원 */
     width: inherit;
@@ -248,14 +253,25 @@ const InputClick = styled.input`
   /* 선택 버튼 */
   accent-color: green;
 `;
+
 const SignUp = () => {
+  const [data, setData] = useState();
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        let response = await axios.get("http://localhost:8080/signUp");
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
+  if (data === undefined) {
+    return null;
+  }
   return (
-    <SignUpParent
-      action="http://localhost:3000/signUpEnd"
-      acceptCharset="utf-8"
-      name="sign-up"
-      method="get"
-    >
+    <SignUpParent action="http://localhost:8080/signUp" method="post">
       {/* 회원가입창 부모 설정 */}
       <h1>회원가입</h1>
       <br />
@@ -283,7 +299,7 @@ const SignUp = () => {
             {/* 왼쪽 목록 작은 사이즈 */}
             아이디<span>*</span>
           </MiddleBox>
-          <InputText></InputText>
+          <InputText type="text" name="id"></InputText>
           {/* 작성란 */}
           <p>(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</p>
         </div>
@@ -291,7 +307,7 @@ const SignUp = () => {
           <MiddleBox>
             비밀번호<span>*</span>
           </MiddleBox>
-          <InputText></InputText>
+          <InputText type="text" name="password"></InputText>
         </div>
         <div>
           <MiddleBox>
@@ -303,7 +319,7 @@ const SignUp = () => {
           <MiddleBox>
             이름<span>*</span>
           </MiddleBox>
-          <InputText></InputText>
+          <InputText type={"text"} name="name"></InputText>
         </div>
         <div>
           <LongBox>주소</LongBox>
@@ -326,7 +342,7 @@ const SignUp = () => {
         <div>
           <MiddleBox>일반전화</MiddleBox>
           <Phone
-            type={"text"}
+            type={"number"}
             placeholder="전화번호 입력('-'제외)"
             maxLength={11}
           />
@@ -339,6 +355,7 @@ const SignUp = () => {
             type={"text"}
             placeholder="핸드폰번호 입력('-'제외)"
             maxLength={11}
+            name="phone"
           />
           {/* 폰번호 작성란 */}
           &nbsp;&nbsp;&nbsp;
@@ -348,19 +365,7 @@ const SignUp = () => {
           <MiddleBox>
             이메일<span>*</span>
           </MiddleBox>
-          <InputText></InputText>
-        </div>
-        <div>
-          <MiddleBox>평생회원</MiddleBox>
-          <InputClick type={"radio"} name="agree"></InputClick>
-          &nbsp;동의함&nbsp;&nbsp;
-          <InputClick type={"radio"} name="agree"></InputClick>
-          &nbsp;동의안함
-          <br />
-          <p>
-            -평생회원으로 가입하시면 농담 회원 탈퇴시까지는 휴면회원으로
-            전환되지 않으며, 고객님의 개인정보가 탈퇴시까지 안전하게 보관됩니다.
-          </p>
+          <InputText name="email"></InputText>
         </div>
       </BasicInfo>
       <br />
@@ -379,7 +384,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>추천인 아이디</MiddleBox>
-          <InputText></InputText>
+          <InputText type={"search"}></InputText>
         </div>
       </MoreInfo>
       <br />
@@ -417,7 +422,7 @@ const SignUp = () => {
       </Terms>
       <br />
       <br />
-      <button>회원가입</button>
+      <button type="submit">회원가입</button>
     </SignUpParent>
   );
 };
