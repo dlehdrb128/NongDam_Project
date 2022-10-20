@@ -52,7 +52,7 @@ function App() {
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
           <Route path="/upload" element={<UploadTest />}></Route>
-          <Route path="/Store" element={<Store />}></Route>
+          <Route path="/admin/Store/:id" element={<Store />}></Route>
           <Route element={<Footer />} />
         </Route>
       </Routes>

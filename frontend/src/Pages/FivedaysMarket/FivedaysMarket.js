@@ -28,10 +28,17 @@ const FivedaysMakret = () => {
     setLoading(true);
     const Product = async () => {
       try {
+<<<<<<< HEAD
+        let response = await axios.get('http://localhost:8080/market/', { withCredentials: true });
+
+        console.log(response.data);
+        setData(response.data)
+=======
         let response = await axios.get("http://localhost:8080/market/", {
           withCredentials: true,
         });
         setData(response.data);
+>>>>>>> ca1b00ccf8fc0895026c272edbdcf979a60ae988
       } catch (e) {
         console.log(e);
       }

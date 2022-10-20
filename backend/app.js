@@ -15,7 +15,7 @@ const signUp = require('./Server/Router/SignUp/index');
 const orders = require('./Server/Router/Orders/index');
 const cart = require('./Server/Router/Cart/index');
 const admin = require('./Server/Router/Admin/index');
-
+const store = require("./Server/Router/Store/index");
 const PORT = process.env.PORT || 8080;
 
 const app = express();
@@ -53,6 +53,7 @@ app.use('/signUp', signUp);
 app.use('/orders', orders);
 app.use('/cart', cart);
 app.use('/market', Market);
+app.use('/store', store);
 app.use('/admin', admin);
 
 try {

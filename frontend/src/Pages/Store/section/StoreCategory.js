@@ -1,12 +1,12 @@
 import styled from "styled-components";
-
 // 상품 상세, 상품 후기, 상품 문의를 담은 전체 박스
 const CategoryBox = styled.div`
-  width: 1280px;
+  width: inherit;
   height: 28px;
-  padding-top: 150px;
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 80px;
   /* 텍스트 하나하나를 담은 박스 */
   & > div {
     display: flex;
@@ -46,25 +46,24 @@ const CategoryBox = styled.div`
   }
 `;
 
-const StoreCategory = ({ categoryMove, productDetail, productReview }) => {
+const StoreCategory = ({ categoryMove, storeproduct, storeinfo }) => {
   // fowardRef를 사용하여 클릭시 해당하는 컨테이너에 scroll이 이동하도록 설정했다 (상품 상세, 상품 후기)
   const clickEvents = (target) => {
     categoryMove(target);
   };
-
   return (
     <CategoryBox>
       <div>
         <div
           onClick={() => {
-            clickEvents(productDetail);
+            clickEvents(storeproduct);
           }}
         >
           상품
         </div>
         <div
           onClick={() => {
-            clickEvents(productReview);
+            clickEvents(storeinfo);
           }}
         >
           스토어정보
