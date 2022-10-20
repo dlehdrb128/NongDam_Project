@@ -213,7 +213,7 @@ const ProductPageTop = ({ ProductData }) => {
     salePrice =
       ProductData.product_price -
       (ProductData.product_price * ProductData.product_discount_percent) /
-        (100).toLocaleString();
+      (100).toLocaleString();
   }
 
   const sendCart = () => {

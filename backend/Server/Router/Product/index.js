@@ -159,4 +159,12 @@ router.get("/value/:id", (req, res) => {
   );
 });
 
+router.post("/productdetail/insert", (req, res) => {
+  let key = req.body[0].product_key
+  let count = req.body[1];
+  connection.query(`insert into cart value (null,2,${key},'일반',${count})`, (err, row, field) => {
+    if (err) throw err;
+  })
+})
+
 module.exports = router;

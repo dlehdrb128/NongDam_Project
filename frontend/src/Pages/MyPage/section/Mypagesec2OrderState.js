@@ -102,7 +102,9 @@ const OrderState = styled.div`
   }
 `;
 
-const Mypagese2OrderState = () => {
+const Mypagese2OrderState = ({ data }) => {
+  const orders = data.data[0];
+  // console.log(orders);
   return (
     <OrderState>
       {/* 주문 처리현황 타이틀  */}
@@ -130,7 +132,7 @@ const Mypagese2OrderState = () => {
           </div>
           <div>
             <p>배송완료</p>
-            <div>0</div>
+            <div>{orders[0].orders_status === '배송 완료' ? '1' : '0'}</div>
           </div>
         </div>
         <div>

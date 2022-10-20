@@ -1,8 +1,10 @@
-import styled from 'styled-components';
-import CartTitle from './CartTitle';
-import CartItem from './CartItem';
-import Remocon from '../../LayOut/Remocon';
-import Theme from '../../Theme/theme';
+import styled from "styled-components";
+import CartTitle from "./CartTitle";
+import CartItem from "./CartItem";
+import CartPrice from "./CartPrice"
+import Remocon from "../../LayOut/Remocon";
+import { useState, useEffect, useRef, forwardRef } from "react";
+import axios from 'axios'
 
 // 장바구니 메인 큰 박스
 const MainBox = styled.div`
@@ -57,32 +59,62 @@ const AllOrderButton = styled.button`
 const SelectOrderButton = styled(AllOrderButton)`
   border: 1px solid ${(theme) => theme.lightblack};
 `;
+
+// 상품 목록 전체 박스
+
 // 전체적인 구성
 //  h1 장바구니 + 상품 정보 이름 담을 (CartTitle.js)  + + 상품금액 담길 목록(CartPrice.js) + 상품 가격(CartPrice.js)
 const CartMain = () => {
-  const productList = [
-    {
-      name: '[전북] 서영암농협 학이 머문 유기농 쌀(일 미) 4kg, 2021년산...',
-      price: 9500,
-      discount: 10,
-      img: 'http://localhost:8080/icon/cart1.png',
-    },
-  ];
+  const [Loading, SetLoading] = useState(false);
+  const [data, SetData] = useState();
+  const [priceData, setData] = useState(0)
+  useEffect(() => {
+    SetLoading(true);
+    const getData = async () => {
+      try {
+        const response = await axios('http://localhost:8080/cart');
+        // console.log(response);
+        SetData(response.data)
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getData();
+    SetLoading(false);
+  }, []);
+
+  const calc = (price) => {
+    setData(priceData + price)
+    console.log(priceData)
+  }
+
+  if (Loading) {
+    return <h1>준비중입니다.</h1>
+  }
+  if (data === undefined) {
+    return <h1>데이터를 읽을 수 없습니다.</h1>
+  }
 
   return (
     <MainBox>
       <CartMainBox>
         <h1>장바구니</h1>
         <CartTitle></CartTitle>
-        {productList.map((product, index) => {
-          return <CartItem product={product} key={index}></CartItem>;
+        {data.map((product, index) => {
+          if (product.user_key === 2) {
+            return <CartItem product={product} key={index} calc={calc}></CartItem>;
+          }
         })}
-
+        <CartPrice product={data.filter((product) => {
+          if (product.user_key === 2) {
+            return product
+          }
+        })}></CartPrice>
         <div className='buttonBox'>
-          <SelectOrderButton col={Theme.green} bgcol={Theme.realWhite}>
+          <SelectOrderButton col={({ theme }) => theme.green} bgcol={({ theme }) => theme.realWhite}>
             선택주문
           </SelectOrderButton>
-          <AllOrderButton col={Theme.realWhite} bgcol={Theme.green}>
+          <AllOrderButton col={({ theme }) => theme.realWhite} bgcol={({ theme }) => theme.green}>
             전체주문
           </AllOrderButton>
         </div>

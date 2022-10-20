@@ -61,41 +61,21 @@ const Section1con = styled.div`
 
 //dummy Text
 
-const FivedaysMarektsec1con = () => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState();
-  useEffect(() => {
-    setLoading(true);
-    const Product = async () => {
-      try {
-        let response = await axios.get('http://localhost:8080/FIvedaysMarket');
-        setData(response.data[1])
-      } catch (e) {
-        console.log(e);
-      }
-      setLoading(false);
-    };
-    Product();
-  }, []);
-
-  if (loading) {
-    return <h1>준비중입니다.</h1>;
-  }
-  if (data === undefined) {
-    return <h1>상품이 존재하지 않습니다.</h1>;
-  }
-
+const FivedaysMarektsec1con = ({ data }) => {
+  const marketdata = data[1]
+  console.log(marketdata);
+  const img = `http://localhost:8080/market/market_${data[1][0].market_key}.png`
   return (
     <Section1con>
       {/* 시장이미지 */}
-      <img src={data[0].marketimg} alt="sec1_img" />
+      <img src={img} alt="sec1_img" />
       {/* 텍스트 콘테이너 */}
       <div>
         <div>
           {/* 타이틀 */}
-          <h1>{data[0].marketname}</h1>
+          <h1>{data[1][0].market_name}</h1>
           {/* 내용 */}
-          <p>{data[0].marketdesc}</p>
+          <p>{data[1][0].market_desc}</p>
         </div>
         {/* <div></div> MAP API용 div*/}
         {/* 지도이미지 */}

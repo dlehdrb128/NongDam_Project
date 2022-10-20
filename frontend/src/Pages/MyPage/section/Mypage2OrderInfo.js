@@ -63,55 +63,55 @@ const OrderInfo = styled.div`
 `;
 
 //dummy object
-const dummyData = [
-  {
-    date: '2022.9.11',
-    number: 1000151095787,
-    img: '/img/ProductExample.png',
-    name: '일동후디스 그릭 요거트 플레인 2개입',
-    count: 2,
-    price: 10600,
-    delivery: '배송 완료',
-  },
-  {
-    date: '2022.9.11',
-    number: 1000151095787,
-    img: '/img/ProductExample.png',
-    name: '일동후디스 그릭 요거트 플레인 2개입',
-    count: 2,
-    price: 10600,
-    delivery: '배송 완료',
-  },
-  {
-    date: '2022.9.11',
-    number: 1000151095787,
-    img: '/img/ProductExample.png',
-    name: '일동후디스 그릭 요거트 플레인 2개입',
-    count: 2,
-    price: 10600,
-    delivery: '배송 완료',
-  },
-  {
-    date: '2022.9.11',
-    number: 1000151095787,
-    img: '/img/ProductExample.png',
-    name: '일동후디스 그릭 요거트 플레인 2개입',
-    count: 2,
-    price: 10600,
-    delivery: '배송 완료',
-  },
-  {
-    date: '2022.9.11',
-    number: 1000151095787,
-    img: '/img/ProductExample.png',
-    name: '일동후디스 그릭 요거트 플레인 2개입',
-    count: 2,
-    price: 10600,
-    delivery: '배송 완료',
-  },
-];
+// const dummyData = [
+//   {
+//     date: '2022.9.11',
+//     number: 1000151095787,
+//     img: '/img/ProductExample.png',
+//     name: '일동후디스 그릭 요거트 플레인 2개입',
+//     count: 2,
+//     price: 10600,
+//     delivery: '배송 완료',
+//   },
+//   {
+//     date: '2022.9.11',
+//     number: 1000151095787,
+//     img: '/img/ProductExample.png',
+//     name: '일동후디스 그릭 요거트 플레인 2개입',
+//     count: 2,
+//     price: 10600,
+//     delivery: '배송 완료',
+//   },
+//   {
+//     date: '2022.9.11',
+//     number: 1000151095787,
+//     img: '/img/ProductExample.png',
+//     name: '일동후디스 그릭 요거트 플레인 2개입',
+//     count: 2,
+//     price: 10600,
+//     delivery: '배송 완료',
+//   },
+//   {
+//     date: '2022.9.11',
+//     number: 1000151095787,
+//     img: '/img/ProductExample.png',
+//     name: '일동후디스 그릭 요거트 플레인 2개입',
+//     count: 2,
+//     price: 10600,
+//     delivery: '배송 완료',
+//   },
+//   {
+//     date: '2022.9.11',
+//     number: 1000151095787,
+//     img: '/img/ProductExample.png',
+//     name: '일동후디스 그릭 요거트 플레인 2개입',
+//     count: 2,
+//     price: 10600,
+//     delivery: '배송 완료',
+//   },
+// ];
 
-const Mypage2OrderInfo = () => {
+const Mypage2OrderInfo = ({ data }) => {
   return (
     <OrderInfo>
       {/* 최근 주문정보 타이틀 */}
@@ -139,14 +139,16 @@ const Mypage2OrderInfo = () => {
         {/* 최근 주문정보 리스트 콘테이너 */}
         <div>
           {/* 더미 오브젝트 props로 Mypagese2OrderItem 컴포넌트로 보냄,맵 사용해서 태그 생성 */}
-          {dummyData.map((value, index) => {
+          {/* {buyproduct.map((value, index) => {
             return (
               <Mypagesec2OrderItem
                 key={index}
                 data={value}
+                totaldata={data}
               ></Mypagesec2OrderItem>
             );
-          })}
+          })} */}
+          <Mypagesec2OrderItem data={data}></Mypagesec2OrderItem>
         </div>
       </div>
     </OrderInfo>
