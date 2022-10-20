@@ -99,7 +99,7 @@ router.get("/detail/:id", (req, res) => {
 
   connection.query(
     // `SELECT * FROM product INNER JOIN review on product.product_id = review.product_id WHERE product.product_id = ${id}`,
-    `SELECT product.*,admin_store.store_name, admin_store.store_key FROM product inner join admin_store on product.user_key = admin_store.user_key where product_key = ${id}; SELECT DISTINCT review.review_post_date,review.*, review_image.review_image,review_image.review_image_2,review_image.review_image_3 from review inner join review_image on review.user_key = review_image.user_key where review.product_key = ${id} AND review_image.product_key = ${id};`,
+    `SELECT product.*,admin_store.* FROM product inner join admin_store on product.user_key = admin_store.user_key where product_key = ${id}; SELECT DISTINCT review.review_post_date,review.*, review_image.review_image,review_image.review_image_2,review_image.review_image_3 from review inner join review_image on review.user_key = review_image.user_key where review.product_key = ${id} AND review_image.product_key = ${id};`,
     (err, row, field) => {
       if (err) {
         throw err;

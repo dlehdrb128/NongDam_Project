@@ -9,6 +9,7 @@ import ProductDetail from "./ProductDetail";
 import ProductReviewForm from "./ProductReviewForm";
 import Remocon from "../../LayOut/Remocon";
 import axios from "axios";
+import SellerInformation from "./SellerInfomation";
 const ProductPageBox = styled.div``;
 
 // 상품 상세페이지 컴포넌트
@@ -19,6 +20,7 @@ const ProductPage = () => {
   const [user, setUser] = useState();
   const productDetail = useRef(null);
   const productReview = useRef(null);
+  const sellerInformation = useRef(null);
   let productKey;
 
   useEffect(() => {
@@ -97,8 +99,13 @@ const ProductPage = () => {
         categoryMove={categoryMove}
         productDetail={productDetail}
         productReview={productReview}
+        sellerInformation={sellerInformation}
       ></ProductCategory>
       <ProductDetail data={data[0]} ref={productDetail}></ProductDetail>
+      <SellerInformation
+        data={data[0]}
+        ref={sellerInformation}
+      ></SellerInformation>
       <ProductReviewForm
         data={data[1]}
         ref={productReview}
