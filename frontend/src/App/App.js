@@ -21,6 +21,7 @@ import RecipeCreateReview from "../Pages/Recipe/recipeCreateReview";
 import RecipeReview from "../Pages/Recipe/recipeReview";
 import UploadTest from "../Pages/uploadTest/index";
 import NewLogin from "../Pages/Login/newLogin";
+import Store from "../Pages/Store/Store";
 import "./App.css";
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
           <Route path="/upload" element={<UploadTest />}></Route>
-
+          <Route path="/Store" element={<Store />}></Route>
           <Route element={<Footer />} />
         </Route>
       </Routes>
