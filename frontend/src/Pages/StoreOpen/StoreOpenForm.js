@@ -91,6 +91,60 @@ const ContentBox = styled.div`
   }
 `;
 
+// 스토어 설명 박스
+const StoreDescBox = styled.div`
+  width: inherit;
+  height: 200px;
+  display: flex;
+  border-bottom: 1px solid ${({ theme }) => theme.lightgray};
+  color: ${({ theme }) => theme.lightblack};
+
+  // 기입내용의 제목을 h2
+  & > h2 {
+    width: 141px;
+    height: inherit;
+    font-size: 1.5rem;
+    font-family: 'SCD-6';
+    text-align: left;
+    padding: 30px 0 30px 18px;
+    background-color: ${({ theme }) => theme.white};
+    border-bottom: 1px solid ${({ theme }) => theme.lightgray};
+    // 필수 기입내용 *로 표현한 부분을 span으로 감싸줌
+    // span있는거만 적용됨
+    & > span {
+      color: red;
+      font-family: 'SCD-6';
+      font-size: 1.5rem;
+    }
+  }
+
+  // 기입내용 input을 div로 묶음
+  & > div {
+    width: 702px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    border-left: 1px solid ${({ theme }) => theme.liglightgray};
+    // 기입내용 input 박스 설정
+    & > input {
+      font-family: 'SCD-4';
+      width: 300px;
+      height: 150px;
+      border: 1px solid ${({ theme }) => theme.gray};
+      border-radius: 3px;
+      padding: 5px;
+      font-size: 1.5rem;
+    }
+    //  input박스 뒤에 따로 특이사항 붙는 부분
+    // span 추가해서 설정하면되고, 없어도 상관없음
+    & > span {
+      font-family: 'SCD-3';
+      font-size: 1.3rem;
+      padding-left: 5px;
+    }
+  }
+`;
+
 // 사업장 주소 input부분은 형식이 달라서 따로 지정
 const BusinessAdd = styled.div`
   width: inherit;
@@ -434,6 +488,7 @@ const StoreOpenForm = () => {
   const onChangeRadio = (e) => {
     setTopping(e.target.value);
   };
+
   const firstTelList = [
     '02',
     '031',
@@ -480,6 +535,7 @@ const StoreOpenForm = () => {
     faxTel2: '',
     faxTel3: '',
     csHours: '',
+    storeDesc: '',
   });
 
   const {
@@ -506,6 +562,7 @@ const StoreOpenForm = () => {
     faxTel2,
     faxTel3,
     csHours,
+    storeDesc,
   } = inputData;
 
   const onchange = (e) => {
@@ -532,9 +589,13 @@ const StoreOpenForm = () => {
     storeFax: `${faxTel1}-${faxTel2}-${faxTel3}`,
     storeCsTime: csHours,
     storeBusiness: topping === 'true' ? 1 : 0,
+    storeDesc: storeDesc,
   };
 
-  const onclick = () => {};
+  console.log(data);
+  const onclick = () => {
+    axios.post('http://localhost:8080/admin/storeOpen', data);
+  };
 
   return (
     <MainBox>
@@ -547,6 +608,7 @@ const StoreOpenForm = () => {
               <span> *</span>
             </h2>
             <div>
+              <input hidden='hidden' />
               <input type='text' onChange={onchange} name='storeName'></input>
 
               <span>
@@ -644,6 +706,17 @@ const StoreOpenForm = () => {
               </div>
             </div>
           </ImgBox>
+          <StoreDescBox>
+            <h2>스토어 설명</h2>
+            <div>
+              <input
+                type='text'
+                onChange={onchange}
+                name='storeDesc'
+                placeholder='200자 이내로 작성해주세요'
+              ></input>
+            </div>
+          </StoreDescBox>
           <TelBox>
             <h2>대표전화</h2>
             <div>
