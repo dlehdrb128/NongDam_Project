@@ -18,16 +18,40 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:productId", userCheck, (req, res) => {
-  console.log(req.params);
-  console.log(req.session.userInfo);
+  const { productId } = req.params;
+  const { user_key } = req.session.userInfo;
+  // console.log(req.session.userInfo);
 
-  const SQL = ``;
+  const SQL1 = `
+  SELECT
+     P.product_key, P.product_name, P.product_price, P.product_image,
+     P.product_detail, P.product_discount_set, P.product_discount_percent,
+     O.orders_date, O.Orders_date, O.orders_number, O.orders_status, O.orders_point
+  FROM orders O
+    JOIN product P
+    ON P.product_key = ${productId}
+  WHERE O.user_key = ${user_key} AND O.product_key = ${productId};
+  `;
 
-  // connection.query(SQL, (error, row, field) => {
-  //   if (error) throw error;
-  //   res.json(row);
-  // });
-  res.send("test");
+  const SQL2 = `
+  SELECT 
+  COUNT(user_key) as orderTotal 
+  FROM orders WHERE user_key = ${user_key};
+  `;
+
+  connection.query(`${SQL1} ${SQL2}`, (error, row, field) => {
+    if (error) throw error;
+
+    console.log(req.session.userInfo);
+
+    console.log(row[1].orderTotal);
+    const userInfo = row[1];
+
+    res.json({
+      status: 201,
+      orderDetail: row[0],
+    });
+  });
 });
 
 module.exports = router;
