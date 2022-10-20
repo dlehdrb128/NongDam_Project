@@ -52,9 +52,9 @@ const Store = () => {
   return (
     <StoreMain>
       <Storesec1 data={data}></Storesec1>
-      <StoreCategory categoryMove={categoryMove} storeproduct={storeproduct} storeinfo={storeinfo}></StoreCategory>
-      <Storeproduct data={data} ref={storeproduct}></Storeproduct>
-      <Storeinfo data={data} ref={storeinfo}></Storeinfo>
+      <StoreCategory></StoreCategory>
+      <Storeproduct data={data}></Storeproduct>
+      <Storeinfo data={data}></Storeinfo>
     </StoreMain>
   )
 }
