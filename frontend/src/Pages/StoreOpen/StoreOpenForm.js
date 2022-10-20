@@ -213,12 +213,8 @@ const ImgBox = styled.div`
         & > img {
           width: 100%;
           height: 100%;
-<<<<<<< HEAD
           margin: "auto";
           background-color: ${({ theme }) => theme.liglightgray};
-=======
-          margin: 'auto';
->>>>>>> 22a109bcbfe4c1414cbfa6c69de40d6588357417
         }
       }
 
