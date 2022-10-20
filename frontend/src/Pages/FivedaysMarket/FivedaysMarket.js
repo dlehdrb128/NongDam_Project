@@ -28,7 +28,8 @@ const FivedaysMakret = () => {
     setLoading(true);
     const Product = async () => {
       try {
-        let response = await axios.get('http://localhost:8080/market');
+        let response = await axios.get('http://localhost:8080/market/', { withCredentials: true });
+
         console.log(response.data);
         setData(response.data)
       } catch (e) {
