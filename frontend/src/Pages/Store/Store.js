@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Store = () => {
-  return (
-    <></>
-  )
-}
+  return <></>;
+};
+
+export default Store;
