@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyledButton } from "../../Theme/theme";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 const ReviewParent = styled.div`
   display: flex;
   flex-direction: column;
@@ -102,9 +104,49 @@ let TextInput = styled.input`
   padding-left: 10px;
 `;
 
-const RecipeReview = () => {
+const RecipeReview = ({ recipe }) => {
+  const { id } = useParams();
   const [hovered, setHovered] = useState(null);
   const [clicked, setClicked] = useState(null);
+  const [data, setData] = useState();
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        let response = await axios.get(
+          `http://localhost:8080/recipe/post/${id}`
+        );
+        setData(response.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
+  if (data === undefined) {
+    return null;
+  }
+
+  let imageArray = [
+    data.recipe_image_path,
+    data.recipe_image_path_2,
+    data.recipe_image_path_3,
+    data.recipe_image_path_4,
+    data.recipe_image_path_5,
+  ];
+
+  let imageComponent = imageArray.map((value, index) => {
+    if (value === null || undefined) {
+      return;
+    } else {
+      return (
+        <img
+          src={`http://localhost:8080/recipe/${value}`}
+          alt="이미지 없음"
+          key={index}
+        ></img>
+      );
+    }
+  });
 
   let value = [1, 2, 3, 4, 5];
 
@@ -124,51 +166,28 @@ const RecipeReview = () => {
       />
     );
   });
+
   return (
     <ReviewParent>
       <div>
         <div>
-          <h2>근수의 달콤한 딸기 케이크</h2>
-          <p>
-            저번에 딸기케이크 먹어보고 케이크는 무조건
-            <br /> 여기서 먹어야겠다 라고 생각했는데 역시나...
-          </p>
+          <h2>{data.recipe_title}</h2>
+          <p>{data.recipe_guide}</p>
         </div>
         <img
-          src="http://localhost:8080/recipe/%ED%8F%AC%EB%A9%94%EB%9D%BC%EB%8B%88%EC%95%88.jpg"
-          alt="감자전"
+          src={`http://localhost:8080/recipe/${data.recipe_image_path}`}
+          alt="이미지 없음"
         ></img>
       </div>
       <div>
-        <a href="#">#딸기</a>
-        &nbsp;
-        <a href="#">#케이크</a>
-        &nbsp;
-        <a href="#">#근수</a>
+        <a href="#">{data.recipe_ingredient}</a>
       </div>
-      <div>근수를 으깨는 것보단 썰어서 부침가루에 섞는게 더 맛있어요.</div>
-      <div>
-        <img
-          src="http://localhost:8080/recipe/%ED%8F%AC%EB%A9%94%EB%9D%BC%EB%8B%88%EC%95%88.jpg"
-          alt="감자전"
-        ></img>
-        <img
-          src="http://localhost:8080/recipe/%ED%8F%AC%EB%A9%94%EB%9D%BC%EB%8B%88%EC%95%88.jpg"
-          alt="감자전"
-        ></img>
-        <img
-          src="http://localhost:8080/recipe/%ED%8F%AC%EB%A9%94%EB%9D%BC%EB%8B%88%EC%95%88.jpg"
-          alt="감자전"
-        ></img>
-        <img
-          src="http://localhost:8080/recipe/%ED%8F%AC%EB%A9%94%EB%9D%BC%EB%8B%88%EC%95%88.jpg"
-          alt="감자전"
-        ></img>
-      </div>
+      <div>{data.recipe_tip}</div>
+      <div>{imageComponent}</div>
       <ReviewWriteBox>
         <ValueBox>{starRating}</ValueBox>
         <div>
-          <TextInput placeholder="리뷰를 입력해주세요"></TextInput>
+          <TextInput placeholder="댓글을 입력해주세요"></TextInput>
           <StyledButton wd="125px" ht="40px" fs="2rem" fontFamily="SCD-6">
             작성
           </StyledButton>

@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import RecipeItem from "./recipeItem";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const RecipeParent = styled.div`
   /* 레시피 페이지 전체 부모 설정값 */
   width: 1230px;
-  height: 1800px;
   margin-top: 150px;
   display: flex;
   flex-direction: column;
@@ -47,7 +46,6 @@ const RecipeParent = styled.div`
   & > div:nth-child(2) {
     /* 밑에 게시글 */
     width: 1030px;
-    height: 1000px;
     margin-top: 50px;
   }
   & > div:nth-child(4) {
@@ -60,15 +58,16 @@ const RecipeParent = styled.div`
 const PostPage = styled.div`
   /* 게시글 전체 설정 */
   width: 1030px;
-  height: inherit;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
+  padding-top: 50px;
+  gap: 30px;
 `;
 const ImgWrapper = styled.div`
   /* 이번주 추천 레시피 배경이미지, 추천레시피 당첨 게시글 폰트 */
-  background-image: url(http://localhost:8080/recipe/감자전.jpg);
+
   background-size: cover;
   width: 600px;
   height: 500px;
@@ -81,6 +80,8 @@ const ImgWrapper = styled.div`
     justify-content: end;
     align-items: flex-start;
     color: ${({ theme }) => theme.realWhite};
+    text-shadow: -0.5px 0 #000, 0 1px #000, 1px 0 #000, 0 -2px #000;
+
     & > h2 {
       font-size: 3rem;
       font-family: SCD-5;
@@ -211,8 +212,9 @@ const FooterButton = styled.div`
 const CreateLink = styled.a`
   width: 200px;
   height: 50px;
+  text-decoration: none;
   background-color: ${({ theme }) => theme.green};
-  color: ${({ theme }) => theme.realWhite};
+  color: white !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,14 +222,20 @@ const CreateLink = styled.a`
   font-family: SCD-5;
   &:hover {
     background-color: ${({ theme }) => theme.orange};
+    color: white;
   }
 `;
 const Recipe = () => {
   const [data, setData] = useState();
+  const img = useRef();
+
   useEffect(() => {
     const getData = async () => {
       try {
-        let response = await axios.get("http://localhost:8080/recipe");
+        let response = await axios.get(`http://localhost:8080/recipe/`, {
+          withCredentials: true,
+        });
+
         setData(response.data);
       } catch (error) {
         console.log(error);
@@ -235,9 +243,15 @@ const Recipe = () => {
     };
     getData();
   }, []);
+  console.log(data);
   if (data === undefined) {
     return null;
   }
+
+  let topRecipe = data[1][0];
+
+  // img.current.style.backgroundImage =
+  //   "url(http://localhost:8080/recipe/포메라니안.jpg)";
 
   return (
     <RecipeParent>
@@ -247,15 +261,21 @@ const Recipe = () => {
         <div>
           <h1>이번주 추천 레시피</h1>
           <br />
-          <ImgWrapper>
+          <ImgWrapper
+            style={{
+              backgroundImage: `url(
+                http://localhost:8080/recipe/${topRecipe.recipe_image_path}
+              )`,
+            }}
+          >
             {/* 이번주 추천 레시피 배경이미지, 추천레시피 당첨 게시글 폰트 */}
             <div>
-              <h2>상희누나의 단짠단짠 감자전</h2>
+              <h2>{topRecipe.recipe_title}</h2>
               <h3>
-                &nbsp;둔산동 고든램지
+                &nbsp;{topRecipe.user_id}
                 {/* 게시글 작성자 프로필 */}
               </h3>
-              <p>⭐(5.0)/5</p>
+              <p>⭐({topRecipe.recipe_value})/5</p>
             </div>
           </ImgWrapper>
         </div>
@@ -292,17 +312,17 @@ const Recipe = () => {
         <TitleButton>
           {/* 총 000개의 맛있는 레시피가 있습니다, 최신순/추천순 버튼 */}
           <h2>
-            총 <span>OOO</span>개의 맛있는 레시피가 있읍니다.
+            총 <span>{data[0].length}</span>개의 맛있는 레시피가 있읍니다.
           </h2>
           <div>
             <button>최신순</button>
             &nbsp;
-            <button>추천순</button>
+            <button>인기순</button>
           </div>
         </TitleButton>
         <PostPage>
           {/* 게시글 전체 설정 */}
-          {data.map((value, index) => {
+          {data[0].map((value, index) => {
             return <RecipeItem recipe={value} key={index}></RecipeItem>;
           })}
         </PostPage>
