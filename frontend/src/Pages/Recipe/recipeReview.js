@@ -25,9 +25,11 @@ const ReviewParent = styled.div`
         margin-bottom: 50px;
       }
       & > p {
+        width: 700px;
         font-size: 2rem;
         font-family: SCD-5;
         color: ${({ theme }) => theme.lightblack};
+        word-break: keep-all;
       }
     }
     & > img:nth-child(2) {
