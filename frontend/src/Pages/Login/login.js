@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-import { useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import HomePage from '../HomePage/HomePage';
-=======
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
->>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
 const LoginHeader = styled.div`
   /* 최상단 "로그인" 제목 값 */
   width: 1230px;
@@ -101,12 +93,7 @@ const LoginButton = styled.button`
   font-family: SCD-5;
   text-decoration: none;
   background-color: ${({ theme }) => theme.green};
-<<<<<<< HEAD
-  color: white;
-  cursor: pointer;
-=======
   color: ${({ theme }) => theme.realWhite};
->>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
 `;
 const Security = styled.div`
   /* 보안접속 링크 전체 설정값 */
@@ -219,48 +206,6 @@ const AppleLogo = styled.img`
 `;
 
 const Login = () => {
-<<<<<<< HEAD
-  const [user_id, setUser_id] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-
-  // var config = {
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Credentials': 'true',
-  //     withCredentials: 'true',
-  //   },
-  // };
-
-  const getData = async () => {
-    const data = await axios.get('http://localhost:8080/login', {
-      withCredentials: 'true',
-    });
-    return data;
-  };
-
-  const onChangeEmail = (e) => {
-    setUser_id(e.target.value);
-  };
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onSubmitLogin = async () => {
-    const data = await axios.post(
-      'http://localhost:8080/login',
-      {
-        user_id,
-        password,
-      },
-      { withCredentials: true }
-    );
-
-    // if (data.status) {
-    //   const LoginData = await getData();
-    //   console.log(LoginData);
-    // }
-=======
   const navigate = useNavigate();
   // const [inputId, setInputId] = useState("");
   // const [inputPW, setInputPw] = useState("");
@@ -315,7 +260,6 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
->>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
   };
 
   return (
@@ -326,47 +270,6 @@ const Login = () => {
         {/* Header를 제외한 전체 설정값(감싸는 용도) */}
         <LoginResponse>
           {/* 로그인창 전체 부모 설정값 */}
-<<<<<<< HEAD
-          <LoginBox
-            type='text'
-            placeholder='아이디'
-            onChange={onChangeEmail}
-          ></LoginBox>
-          {/* 아이디 입력창 */}
-          <LoginBox
-            type='password'
-            placeholder='비밀번호'
-            onChange={onChangePassword}
-          ></LoginBox>
-          {/* 비밀번호 입력창 */}
-          <OptionMenu>
-            {/* 아이디 저장, checkbox, 아이디/비밀번호찾기 전체 설정값 */}
-            <IdOption>
-              {/* 아이디 저장,checkbox 부모 설정값 */}
-              <input type='checkbox'></input>
-              <P>&nbsp;아이디 저장</P>
-            </IdOption>
-            <LoginFind>
-              {/* 아이디/비밀번호찾기 링크 부모 설정값 */}
-              <A href='http://naver.com'>
-                {/* 아이디찾기 링크 설정값 */}
-                아이디 찾기
-              </A>
-              <P>
-                {/* "아이디 저장", "|" 문자 설정값 */}
-                &nbsp;|&nbsp;
-              </P>
-              <A href='http://naver.com'>
-                {/* 비밀번호 찾기 링크 설정값 */}
-                비밀번호 찾기
-              </A>
-            </LoginFind>
-          </OptionMenu>
-          <LoginButton as={'button'} onClick={onSubmitLogin}>
-            {/* 로그인 버튼 */}
-            로그인
-          </LoginButton>
-=======
           <form onSubmit={login}>
             <LoginBox type="text" placeholder="아이디" name="id"></LoginBox>
             {/* 아이디 입력창 */}
@@ -404,11 +307,10 @@ const Login = () => {
               로그인
             </LoginButton>
           </form>
->>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
           <Security>
             {/* 보안접속 링크 전체 설정값 */}
             <P>&nbsp;🔒&nbsp;</P>
-            <A href='http://naver.com'>
+            <A href="http://naver.com">
               {/* 아이디찾기, 비밀번호 찾기, 보안접속 링크 설정값 */}
               보안접속
             </A>
@@ -419,7 +321,7 @@ const Login = () => {
             <MemberBenefits>
               회원이 되시면 다양한 혜택을 누리실 수 있습니다.
             </MemberBenefits>
-            <SignupButton href='/signUp'>
+            <SignupButton href="/signUp">
               {/* 회원가입 링크 버튼 */}
               회원가입
             </SignupButton>
@@ -439,17 +341,8 @@ const Login = () => {
             </SignupPlease>
             <IconBox>
               {/* sns 아이콘 전채 부모 설정값 */}
-              <SNSIcon href='http://naver.com'>
+              <SNSIcon href="http://naver.com">
                 {/* sns아이콘 원형모양 링크버튼 */}
-<<<<<<< HEAD
-                <NaverLogo src='/img/naverLogo.png' alt='네이버' />
-              </SNSIcon>
-              <SNSIcon href='http://naver.com'>
-                <KakaotalkLogo src='/img/kakaoTalk.png' alt='카카오톡' />
-              </SNSIcon>
-              <SNSIcon href='http://naver.com'>
-                <AppleLogo src='/img/apple.png' alt='애플' />
-=======
                 <NaverLogo src="" alt="네이버" />
               </SNSIcon>
               <SNSIcon href="http://naver.com">
@@ -457,7 +350,6 @@ const Login = () => {
               </SNSIcon>
               <SNSIcon href="http://naver.com">
                 <AppleLogo src="./img/apple.png" alt="애플" />
->>>>>>> 070f7188f626f0b440389181473300cd7d9de7e6
               </SNSIcon>
             </IconBox>
           </SNSBox>

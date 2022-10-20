@@ -1,7 +1,6 @@
 import { OrderContent, Wrapper, Text, Imge } from "../../Theme/common";
 
 const OrderItem = ({ data }) => {
-  console.log(data, "데이터 무엇");
   return (
     <>
       {false ? (
