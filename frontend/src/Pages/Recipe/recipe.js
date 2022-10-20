@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import RecipeItem from "./recipeItem";
+import axios from "axios";
+import { useEffect, useState } from "react";
 const RecipeParent = styled.div`
   /* 레시피 페이지 전체 부모 설정값 */
   width: 1230px;
@@ -48,6 +50,12 @@ const RecipeParent = styled.div`
     height: 1000px;
     margin-top: 50px;
   }
+  & > div:nth-child(4) {
+    width: 1230px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+  }
 `;
 const PostPage = styled.div`
   /* 게시글 전체 설정 */
@@ -55,12 +63,12 @@ const PostPage = styled.div`
   height: inherit;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `;
 const ImgWrapper = styled.div`
   /* 이번주 추천 레시피 배경이미지, 추천레시피 당첨 게시글 폰트 */
-  background-image: url(/img/감자전.jpg);
+  background-image: url(http://localhost:8080/recipe/감자전.jpg);
   background-size: cover;
   width: 600px;
   height: 500px;
@@ -182,36 +190,7 @@ const TitleButton = styled.div`
     }
   }
 `;
-const Profile = styled.div`
-  /* 게시글 작성자 프로필 */
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  background-image: url(/img/포메라니안.jpg);
-  background-size: cover;
-`;
-const PostList = styled.div`
-  /* 낱개 게시글 설정 */
-  color: ${({ theme }) => theme.lightblack};
-  & > img {
-    width: 200px;
-    height: 200px;
-  }
-  & > h3 {
-    font-size: 1.5rem;
-    font-family: SCD-3;
-  }
-  & > div:nth-child(3) {
-    font-size: 1.5rem;
-    font-family: SCD-4;
-    display: flex;
-    align-items: center;
-  }
-  & > p {
-    font-size: 1.5rem;
-    font-family: SCD-3;
-  }
-`;
+
 const FooterButton = styled.div`
   /* 게시글 다음/이전 페이지 이동 버튼 */
   display: flex;
@@ -229,7 +208,37 @@ const FooterButton = styled.div`
     font-family: SCD-3;
   }
 `;
+const CreateLink = styled.a`
+  width: 200px;
+  height: 50px;
+  background-color: ${({ theme }) => theme.green};
+  color: ${({ theme }) => theme.realWhite};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: SCD-5;
+  &:hover {
+    background-color: ${({ theme }) => theme.orange};
+  }
+`;
 const Recipe = () => {
+  const [data, setData] = useState();
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        let response = await axios.get("http://localhost:8080/recipe");
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
+  if (data === undefined) {
+    return null;
+  }
+
   return (
     <RecipeParent>
       {/* 레시피 페이지 전체 부모 설정값 */}
@@ -243,7 +252,7 @@ const Recipe = () => {
             <div>
               <h2>상희누나의 단짠단짠 감자전</h2>
               <h3>
-                <Profile></Profile>&nbsp;둔산동 고든램지
+                &nbsp;둔산동 고든램지
                 {/* 게시글 작성자 프로필 */}
               </h3>
               <p>⭐(5.0)/5</p>
@@ -258,7 +267,10 @@ const Recipe = () => {
             <div>
               <input type={"text"} placeholder="검색어 입력"></input>
               <button>
-                <img src="/img/검색아이콘.png" alt="검색"></img>
+                <img
+                  src="http://localhost:8080/icon/검색아이콘.png"
+                  alt="검색"
+                ></img>
               </button>
             </div>
           </WantSearch>
@@ -290,143 +302,9 @@ const Recipe = () => {
         </TitleButton>
         <PostPage>
           {/* 게시글 전체 설정 */}
-          <PostList>
-            {/* 낱개 게시글 설정 */}
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              {/* 게시글 작성자 프로필 */}
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
-          <PostList>
-            <img src="/img/감자전.jpg" alt="감자전"></img>
-            <h3>상희누나의 단짠단짠 감자전</h3>
-            <div>
-              <Profile></Profile>
-              &nbsp; 둔산동 고든램지
-            </div>
-            <p>⭐(4.5)/5</p>
-          </PostList>
+          {data.map((value, index) => {
+            return <RecipeItem recipe={value} key={index}></RecipeItem>;
+          })}
         </PostPage>
       </div>
       <div>
@@ -438,6 +316,9 @@ const Recipe = () => {
           <button>4</button>
           <button>5</button>
         </FooterButton>
+      </div>
+      <div>
+        <CreateLink href="/recipeCreateReview">게시글 작성하기</CreateLink>
       </div>
     </RecipeParent>
   );
