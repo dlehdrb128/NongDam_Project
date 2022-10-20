@@ -207,15 +207,18 @@ const ImgBox = styled.div`
         width: 155px;
         height: 155px;
         border-radius: 3px;
-        // border: 1px solid ${({ theme }) => theme.liglightgray};
         display: flex;
         flex-direction: column;
 
         & > img {
           width: 100%;
           height: 100%;
+<<<<<<< HEAD
           margin: "auto";
           background-color: ${({ theme }) => theme.liglightgray};
+=======
+          margin: 'auto';
+>>>>>>> 22a109bcbfe4c1414cbfa6c69de40d6588357417
         }
       }
 
@@ -414,9 +417,20 @@ const StoreOpenForm = () => {
       reader.readAsDataURL(e.target.files[0]);
       setImg(e.target.files[0]);
 
-      reader.onload = (e) => {
+      reader.onload = async (e) => {
         console.log(e);
-        console.log(reader);
+        console.log(img, '안녕');
+
+        const formData = new FormData();
+        formData.append('img', img);
+
+        let URL = `http://localhost:8080/admin/upload`;
+        const request = await axios.post(URL, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
         imgSrc.current.src = reader.result;
       };
     }
@@ -513,6 +527,7 @@ const StoreOpenForm = () => {
     storeCeoEmail: email,
     storeCeoName: name,
     storeAddress: `${address1} ${address2} ${address3}`,
+    storeimg: ``,
     storeCall: `${huntingLine1}-${huntingLine2}-${huntingLine3}`,
     storePhone: `${mobile1}-${mobile2}-${mobile3}`,
     storeReceiveEmail: receiveEmail,
@@ -524,9 +539,13 @@ const StoreOpenForm = () => {
     storeBusiness: topping === "true" ? 1 : 0,
   };
 
+<<<<<<< HEAD
   const onclick = () => {
     axios.post("http://localhost:8080/admin/storeOpen/", data);
   };
+=======
+  const onclick = () => {};
+>>>>>>> 22a109bcbfe4c1414cbfa6c69de40d6588357417
 
   return (
     <MainBox>
@@ -602,7 +621,27 @@ const StoreOpenForm = () => {
             <div>
               <div>
                 <div>
+<<<<<<< HEAD
                   <img src="" alt="" ref={imgSrc} />
+=======
+                  {img ? (
+                    <img
+                      src=''
+                      alt=''
+                      ref={imgSrc}
+                      style={{ borderRadius: '3px' }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: '155px',
+                        height: '155px',
+                        backgroundColor: 'gray',
+                        borderRadius: '3px',
+                      }}
+                    ></div>
+                  )}
+>>>>>>> 22a109bcbfe4c1414cbfa6c69de40d6588357417
                 </div>
                 <p>권장 500px * 500px</p>
               </div>
@@ -613,6 +652,7 @@ const StoreOpenForm = () => {
                   accept="image/jpeg,gif,png,jpg"
                   style={{ display: "none" }}
                   onChange={onChangeFile}
+                  name={'img'}
                 ></input>
                 <label for="input-file">등록</label>
                 <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
