@@ -1,4 +1,8 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { StyledButton } from "../../Theme/theme";
 
 // 제품 후기 아이템을 담은 박스
 const ReviewItemBox = styled.div`
@@ -20,9 +24,30 @@ const ReviewItemBox = styled.div`
 
     /* 후기 텍스트 설정 */
     & > div:nth-child(1) {
-      font-family: "SCD-3";
-      font-size: 1.8rem;
-      color: ${({ theme }) => theme.lightblack};
+      display: flex;
+      justify-content: space-between;
+
+      & > textarea {
+        width: 1000px;
+        height: 150px;
+        border-radius: 10px;
+        overflow: auto;
+        font-family: "SCD-3";
+        font-size: 1.8rem;
+        padding-left: 10px;
+        padding-top: 10px;
+      }
+
+      & > div {
+        font-family: "SCD-3";
+        font-size: 1.8rem;
+        color: ${({ theme }) => theme.lightblack};
+      }
+
+      & > div:nth-child(2) {
+        display: flex;
+        gap: 10px;
+      }
     }
 
     /* 후기 이미지 들을 담은 박스 */
@@ -83,10 +108,32 @@ const InforMation = styled.div`
   }
 `;
 
-const ProductReview = ({ data }) => {
+const ProductReview = ({ data, user }) => {
+  const [edit, setEdit] = useState();
+  const [input, setInput] = useState(null);
+  const [hovered, setHovered] = useState(null);
+  const [clicked, setClicked] = useState(null);
+  let value = [1, 2, 3, 4, 5];
+
+  let starRating = value.map((el) => {
+    return (
+      <img
+        src={
+          hovered >= el || clicked >= el
+            ? "http://localhost:8080/productDetail/star-fill.png"
+            : "http://localhost:8080/productDetail/star-outline.png"
+        }
+        key={el}
+        onMouseEnter={() => setHovered(el)}
+        onMouseLeave={() => setHovered(null)}
+        onClick={() => setClicked(el)}
+        alt="이미지 없음"
+      />
+    );
+  });
+
   let imageArray = [];
   let reviewImage;
-
   for (let key in data) {
     if (
       data[key] !== "null" &&
@@ -112,6 +159,53 @@ const ProductReview = ({ data }) => {
     });
   }
 
+  const reviewDelete = async () => {
+    let choice = window.confirm("리뷰를 삭제하시겠습니까?");
+    if (choice === true) {
+      try {
+        let response = await axios.post(
+          "http://localhost:8080/product/review/delete",
+          { review_key: data.review_key },
+          { withCredentials: true }
+        );
+        if (response.data.status === 201) {
+          alert("리뷰 삭제 완료");
+          window.location.reload();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const reviewEdit = async () => {
+    let choice = window.confirm("리뷰를 수정하시겠습니까?");
+    if (choice === true) {
+      if (input === null || clicked === null) {
+        alert("리뷰를 입력하시거나 평점을 설정해주세요");
+        return;
+      }
+      try {
+        let response = await axios.post(
+          "http://localhost:8080/product/review/edit",
+          {
+            review_key: data.review_key,
+            review_text: input,
+            review_value: clicked === null ? data.review_value : clicked,
+          },
+          { withCredentials: true }
+        );
+        if (response.data.status === 201) {
+          alert("리뷰 수정 완료");
+          setEdit(false);
+          window.location.reload();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   const newDate = data.review_post_date.split("T");
 
   return (
@@ -120,17 +214,81 @@ const ProductReview = ({ data }) => {
         <div>{data.review_user_id}</div>
         <div>
           <div>
-            <img
-              src="http://localhost:8080/productDetail/star-fill.png"
-              alt="이미지 없음"
-            ></img>
-            {data.review_value} / 5
+            {edit === true ? null : (
+              <img
+                src="http://localhost:8080/productDetail/star-fill.png"
+                alt="이미지 없음"
+              ></img>
+            )}
+            {edit === true ? starRating : `${data.review_value} / 5 `}
           </div>
           <div>{newDate[0]}</div>
         </div>
       </InforMation>
       <div>
-        <div>{data.review_text}</div>
+        <div>
+          {edit === true ? (
+            <textarea
+              type={"text"}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            ></textarea>
+          ) : (
+            <div>{data.review_text}</div>
+          )}
+          {user === undefined ? null : user.user_key === data.user_key ? (
+            <div>
+              {edit === true ? (
+                <StyledButton
+                  wd="40px"
+                  ht="30px"
+                  fs="1.6rem"
+                  fontFamily="SCD-4"
+                  onClick={reviewEdit}
+                >
+                  완료
+                </StyledButton>
+              ) : (
+                <StyledButton
+                  wd="40px"
+                  ht="30px"
+                  fs="1.6rem"
+                  fontFamily="SCD-4"
+                  onClick={() => {
+                    setEdit(true);
+                    setClicked(data.review_value);
+                  }}
+                >
+                  수정
+                </StyledButton>
+              )}
+              {edit === true ? (
+                <StyledButton
+                  wd="40px"
+                  ht="30px"
+                  fs="1.6rem"
+                  fontFamily="SCD-4"
+                  onClick={() => {
+                    setEdit(false);
+                  }}
+                >
+                  취소
+                </StyledButton>
+              ) : (
+                <StyledButton
+                  wd="40px"
+                  ht="30px"
+                  fs="1.6rem"
+                  fontFamily="SCD-4"
+                  onClick={reviewDelete}
+                >
+                  삭제
+                </StyledButton>
+              )}
+            </div>
+          ) : null}
+        </div>
         <div>{reviewImage}</div>
       </div>
     </ReviewItemBox>

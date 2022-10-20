@@ -121,7 +121,6 @@ router.post("/cart/insert", (req, res) => {
 
 router.post(`/review/write`, (req, res) => {
   let data = req.body;
-  console.log(data.product_key);
   connection.query(
     "select review_key from review order by review_key desc limit 1",
     (err, rows, fields) => {
@@ -145,9 +144,34 @@ router.post(`/review/write`, (req, res) => {
   );
 });
 
+router.post("/review/delete", (req, res) => {
+  let review_key = req.body.review_key;
+  connection.query(
+    `delete from review where review_key = ${review_key};`,
+    (err, row, field) => {
+      if (err) throw err;
+
+      res.json({ status: 201 });
+    }
+  );
+});
+
+router.post("/review/edit", (req, res) => {
+  let review_key = req.body.review_key;
+  let review_text = req.body.review_text;
+  let review_value = req.body.review_value;
+  connection.query(
+    `update review set review_text = '${review_text}', review_value = ${review_value} where review_key = ${review_key}`,
+    (err, row, field) => {
+      if (err) throw err;
+
+      res.json({ status: 201 });
+    }
+  );
+});
+
 router.get("/value/:id", (req, res) => {
   let id = req.params.id;
-
   connection.query(
     `select count(review_key) as reviewCount,avg(review_value) as reviewValue from review where product_key = ${id};`,
     (err, row, field) => {
@@ -160,11 +184,14 @@ router.get("/value/:id", (req, res) => {
 });
 
 router.post("/productdetail/insert", (req, res) => {
-  let key = req.body[0].product_key
+  let key = req.body[0].product_key;
   let count = req.body[1];
-  connection.query(`insert into cart value (null,2,${key},'일반',${count})`, (err, row, field) => {
-    if (err) throw err;
-  })
-})
+  connection.query(
+    `insert into cart value (null,2,${key},'일반',${count})`,
+    (err, row, field) => {
+      if (err) throw err;
+    }
+  );
+});
 
 module.exports = router;
