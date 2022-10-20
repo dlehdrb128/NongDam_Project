@@ -8,7 +8,7 @@ const ProductReviewBox = styled.div`
   width: 1280px;
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
+  padding-top: 200px;
 
   /* 상품 후기 */
   & > div:nth-child(1) {
