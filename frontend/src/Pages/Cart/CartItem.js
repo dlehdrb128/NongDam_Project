@@ -135,8 +135,7 @@ const CartItem = ({ product, pricedata, calc }) => {
 
   let test;
 
-  product.product_discount_percent === 0 ? test = product.product_price : test = product.product_price - product.product_price * (product.product_discount_percent / 100)
-
+  // product.product_discount_percent === 0 ? test = product.product_price : test = product.product_price - product.product_price * (product.product_discount_percent / 100)
 
 
   // 값 바뀔때마다 number로 받고 있는 input창 변화
