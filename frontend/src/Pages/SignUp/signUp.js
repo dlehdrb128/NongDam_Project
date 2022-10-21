@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 const SignUpParent = styled.form`
   /* 회원가입창 부모 설정 */
@@ -11,15 +11,15 @@ const SignUpParent = styled.form`
   align-items: center;
   margin-top: 150px;
   & > h1 {
-    font-size: 3rem;
-    font-family: YANGJIN;
+    font-size: 4rem;
+    font-family: 'SCD-6';
     color: ${({ theme }) => theme.lightblack};
   }
   & > h2 {
     width: inherit;
     text-align: left;
-    font-size: 2rem;
-    font-family: YANGJIN;
+    font-size: 2.5rem;
+    font-family: 'SCD-6';
     color: ${({ theme }) => theme.lightblack};
   }
   & > button {
@@ -40,6 +40,8 @@ const MemberType = styled.div`
   height: 50px;
   display: flex;
   justify-content: space-around;
+  font-family: SCD-5;
+  font-size: 1.5rem;
   align-items: center;
   border-top: 2px solid ${({ theme }) => theme.lightblack};
   border-bottom: 2px solid ${({ theme }) => theme.lightblack};
@@ -59,7 +61,8 @@ const SideBar = styled.div`
   width: 200px;
   height: inherit;
   color: ${({ theme }) => theme.lightblack};
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: SCD-5;
   background-color: #ddd;
   border-top: 2px solid ${({ theme }) => theme.lightblack};
   border-bottom: 2px solid ${({ theme }) => theme.lightblack};
@@ -69,7 +72,7 @@ const SideBar = styled.div`
   padding-left: 10px;
   & > span {
     color: red;
-    font-size: inherit;
+    font-size: 1.5rem;
   }
 `;
 const BasicInfo = styled.div`
@@ -78,6 +81,9 @@ const BasicInfo = styled.div`
   height: inherit;
   display: flex;
   flex-direction: column;
+  font-family: SCD-5;
+  font-size: 1.5rem;
+
   & > div {
     width: inherit;
     height: inherit;
@@ -106,6 +112,7 @@ const BasicInfo = styled.div`
           padding-left: 10px;
           font-size: 1.5rem;
           font-family: SCD-3;
+          border-radius: 3px;
         }
         & > button {
           width: 120px;
@@ -136,31 +143,21 @@ const BasicInfo = styled.div`
   & > div:nth-child(8) {
     border-bottom: 1px solid ${({ theme }) => theme.lightblack};
   }
-  & > div:nth-child(9) {
-    /* 평생회원 */
-    width: inherit;
-    height: inherit;
-    border-bottom: 2px solid ${({ theme }) => theme.lightblack};
-    font-family: SCD-3;
-    font-size: 1.5rem;
-    & > input {
-      margin-left: 11px;
-    }
-  }
 `;
 const MiddleBox = styled.div`
   /* 왼쪽 목록 작은 사이즈 */
   width: 200px;
-  height: 50px;
+  height: 80px;
   color: ${({ theme }) => theme.lightblack};
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: SCD-5;
   background-color: #ddd;
   border-right: 2px solid ${({ theme }) => theme.lightblack};
   padding-left: 10px;
   display: flex;
   align-items: center;
   & > span {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: red;
   }
 `;
@@ -169,32 +166,38 @@ const LongBox = styled.div`
   width: 200px;
   height: 150px;
   color: ${({ theme }) => theme.lightblack};
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: #ddd;
   border-right: 2px solid ${({ theme }) => theme.lightblack};
   padding-top: 10px;
   padding-left: 10px;
   display: flex;
+  & > span {
+    font-size: 1.5rem;
+    color: red;
+  }
 `;
 const InputText = styled.input`
   /* 작성란 */
-  width: 300px;
-  height: 30px;
+  width: 360px;
+  height: 40px;
   position: relative;
   left: 10px;
   padding-left: 10px;
   font-size: 1.5rem;
   font-family: SCD-3;
+  border-radius: 3px;
 `;
 const Phone = styled.input`
   /* 폰번호 작성란 */
-  width: 300px;
-  height: 30px;
+  width: 360px;
+  height: 40px;
   color: ${({ theme }) => theme.lightblack};
   font-size: 1.5rem;
   font-family: SCD-3;
   padding-left: 10px;
   margin-left: 10px;
+  border-radius: 3px;
 `;
 const MoreInfo = styled.div`
   /* 추가정보 */
@@ -211,11 +214,12 @@ const MoreInfo = styled.div`
     font-family: SCD-3;
     & > input:nth-child(2) {
       width: 300px;
-      height: 30px;
+      height: 40px;
       padding-left: 10px;
       color: ${({ theme }) => theme.lightblack};
       font-size: 1.5rem;
       font-family: SCD-3;
+      border-radius: 3px;
     }
   }
   & > div:nth-child(2) {
@@ -256,11 +260,7 @@ const InputClick = styled.input`
 `;
 
 const SignUp = () => {
-  const [data, setData] = useState('');
   const [userAuth, setUserAuth] = useState('');
-  const [userSMS, setUserSMS] = useState('');
-  const [userEmailReceive, setUserEmailReceive] = useState('');
-  const [value, setValue] = useState(true);
   const [display, setDisplay] = useState('none');
   const [display2, setDisplay2] = useState('flex');
   const [check, setCheck] = useState({
@@ -270,21 +270,6 @@ const SignUp = () => {
     check3: false,
     check4: false,
   });
-
-  const checkSMS = (e) => {
-    if (e.target.checked === 1) {
-      setUserSMS(1);
-    } else {
-      setUserSMS(0);
-    }
-  };
-  const checkEmail = (e) => {
-    if (e.target.checked === 1) {
-      setUserEmailReceive(1);
-    } else {
-      setUserEmailReceive(0);
-    }
-  };
 
   const [inputData, setInputData] = useState({
     userId: '',
@@ -335,8 +320,8 @@ const SignUp = () => {
     userAddressDetail: userAddressDetail,
     userCall: userCall,
     userPhone: userPhone,
-    userSMS: userSMS,
-    userEmailReceive: userEmailReceive,
+    userSMS: check.check3 === true ? 1 : 0,
+    userEmailReceive: check.check4 === true ? 1 : 0,
     userReferralId: userReferralId,
     userAdminCompanyNum: userAdminCompanyNum,
   };
@@ -346,9 +331,22 @@ const SignUp = () => {
 
     console.log(userPassword);
     console.log(userPasswordcheck);
+    const idcheck = /^([a-z0-9_]){6,50}$/;
+    if (!idcheck.test(userId)) {
+      alert('아이디는 영소문자, 숫자, 언더바 조합 6~50자리를 사용해야 합니다.');
+      return false;
+    }
+
+    const passwordcheck = /^[a-zA-z0-9]{4,12}$/;
+    if (!passwordcheck.test(userPassword)) {
+      alert('비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다');
+      return false;
+    }
     if (userPassword !== userPasswordcheck) {
       alert('비밀번호와 비밀번호 확인 값이 같지 않습니다!');
-    } else axios.post('http://localhost:8080/signUp', dbData);
+      return false;
+    }
+    axios.post('http://localhost:8080/signUp', dbData);
   };
 
   const checkChange = (e) => {
@@ -375,8 +373,6 @@ const SignUp = () => {
     }
   };
 
-  // console.log(dbData);
-
   let test =
     check.check1 === false ||
     check.check2 === false ||
@@ -384,6 +380,8 @@ const SignUp = () => {
     check.check4 === false
       ? false
       : true;
+
+  console.log(dbData);
 
   return (
     <SignUpParent>
@@ -394,7 +392,7 @@ const SignUp = () => {
         {/* 회원구분  */}
         <SideBar>
           {/* 왼쪽 회원구분 */}
-          회원구분<span>*</span>
+          회원구분<span> *</span>
         </SideBar>
         <div>
           <InputClick
@@ -430,7 +428,7 @@ const SignUp = () => {
         <div>
           <MiddleBox>
             {/* 왼쪽 목록 작은 사이즈 */}
-            아이디<span>*</span>
+            아이디<span> *</span>
           </MiddleBox>
           <InputText
             type='text'
@@ -444,32 +442,30 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            비밀번호<span>*</span>
+            비밀번호<span> *</span>
           </MiddleBox>
           <InputText
             type='password'
             name='userPassword'
             onChange={onchange}
-            pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$'
             required
           ></InputText>
-          <p>(영문 대소문자, 숫자, 특수문자를 꼭 포함하여 6~50자)</p>
+          <p>( 비밀번호는 영문 대소문자와 숫자 4~12자 )</p>
         </div>
         <div>
           <MiddleBox>
-            비밀번호 확인<span>*</span>
+            비밀번호 확인<span> *</span>
           </MiddleBox>
           <InputText
             type='password'
             name='userPasswordcheck'
             onChange={onchange}
-            pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$'
             required
           ></InputText>
         </div>
         <div>
           <MiddleBox>
-            이름<span>*</span>
+            이름<span> *</span>
           </MiddleBox>
           <InputText
             type='text'
@@ -479,7 +475,9 @@ const SignUp = () => {
           ></InputText>
         </div>
         <div>
-          <LongBox>주소</LongBox>
+          <LongBox>
+            주소<span> *</span>
+          </LongBox>
           {/* 왼쪽 목록 큰 사이즈 */}
           <div>
             <div>
@@ -524,7 +522,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            휴대전화<span>*</span>
+            휴대전화<span> *</span>
           </MiddleBox>
           <Phone
             placeholder="핸드폰번호 입력('-'제외)"
@@ -539,7 +537,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            이메일<span>*</span>
+            이메일<span> *</span>
           </MiddleBox>
           <InputText
             type='email'
@@ -608,7 +606,6 @@ const SignUp = () => {
         <div>
           <InputClick
             type='checkbox'
-            // onChange={checkSMS}
             onChange={checkChange}
             checked={check.check3}
             readOnly
@@ -619,7 +616,6 @@ const SignUp = () => {
           &nbsp;&nbsp;&nbsp;
           <InputClick
             type='checkbox'
-            // onChange={checkEmail}
             onChange={checkChange}
             checked={check.check4}
             readOnly

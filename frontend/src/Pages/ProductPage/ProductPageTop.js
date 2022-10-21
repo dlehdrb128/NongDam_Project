@@ -213,7 +213,7 @@ const ProductPageTop = ({ ProductData }) => {
     salePrice =
       ProductData.product_price -
       (ProductData.product_price * ProductData.product_discount_percent) /
-        (100).toLocaleString();
+      (100).toLocaleString();
   }
 
   const sendCart = () => {
@@ -229,7 +229,7 @@ const ProductPageTop = ({ ProductData }) => {
         ></img>
       </ProductPageTopLeft>
       <ProductPageTopRight>
-        <Link to={`/admin/store/${ProductData.store_key}`}>
+        <Link to={`/store/detail/${ProductData.store_key}`}>
           <div>{ProductData.store_name}</div>
         </Link>
         <div>[{ProductData.product_local}]</div>
