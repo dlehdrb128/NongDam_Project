@@ -2,7 +2,7 @@ import styled from "styled-components";
 import RecipeItem from "./recipeItem";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const RecipeParent = styled.div`
   /* 레시피 페이지 전체 부모 설정값 */
   width: 1230px;
@@ -228,15 +228,16 @@ const CreateLink = styled.a`
 `;
 const Recipe = () => {
   const [data, setData] = useState();
+  const [login, setLogin] = useState();
   const img = useRef();
 
+  const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
       try {
         let response = await axios.get(`http://localhost:8080/recipe/`, {
           withCredentials: true,
         });
-
         setData(response.data);
       } catch (error) {
         console.log(error);
@@ -244,16 +245,28 @@ const Recipe = () => {
     };
     getData();
   }, []);
-  console.log(data);
+  useEffect(() => {
+    const getLogin = async () => {
+      try {
+        let loginCheck = await axios.get(`http://localhost:8080/login/check`, {
+          withCredentials: true,
+        });
+        setLogin(loginCheck.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getLogin();
+  }, []);
+  if (login === undefined) {
+    return null;
+  }
   if (data === undefined) {
     return null;
   }
 
   let topRecipe = data[1][0];
-
-  // img.current.style.backgroundImage =
-  //   "url(http://localhost:8080/recipe/포메라니안.jpg)";
-
+  console.log(login.status);
   return (
     <RecipeParent>
       {/* 레시피 페이지 전체 부모 설정값 */}
@@ -341,7 +354,18 @@ const Recipe = () => {
         </FooterButton>
       </div>
       <div>
-        <CreateLink href="/recipeCreateReview">게시글 작성하기</CreateLink>
+        <CreateLink
+          onClick={() => {
+            if (login.status !== 201) {
+              alert("로그인이 필요합니다.");
+              navigate("/login");
+            } else {
+              navigate("/recipeCreateReview");
+            }
+          }}
+        >
+          게시글 작성하기
+        </CreateLink>
       </div>
     </RecipeParent>
   );
