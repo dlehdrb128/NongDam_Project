@@ -41,6 +41,7 @@ router.post("/", async (req, res, next) => {
       //  req.session에 userId를 추가한다, 그러면 세션이 생기고 이에 따라서 쿠키를 자동으로 프론트에 추가
 
       req.session.userId = row[0].user_id;
+      // req.session.userInfo = row[0];
 
       res.json({ status: 201, statusMessage: "로그인 성공" });
     }
