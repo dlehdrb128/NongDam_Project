@@ -1,6 +1,8 @@
 import { Wrapper, Text } from "../../Theme/common";
-
+import { useNavigate } from "react-router-dom";
 const Title = ({ orderDetail }) => {
+  const navigate = useNavigate();
+
   console.log(orderDetail);
   return (
     <>
@@ -60,8 +62,18 @@ const Title = ({ orderDetail }) => {
               al={`center`}
               ju={`space-between`}
             >
-              <Wrapper cursor={"pointer"}>
-                <img src="http://localhost:8080/icon/heart.png" alt="heart" />
+              <Wrapper
+                cursor={"pointer"}
+                onClick={(e) => {
+                  console.log("aa");
+
+                  navigate(`/cart/user/${orderDetail.user_key}`);
+                }}
+              >
+                <img
+                  src="http://localhost:8080/icon/heart.png"
+                  alt="heart 사진"
+                />
               </Wrapper>
 
               <Wrapper dir={`column`} ju={`flex-end`}>

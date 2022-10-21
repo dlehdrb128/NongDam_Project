@@ -13,6 +13,8 @@ const OrderDetail = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
 
+  console.log(productId, "aaa");
+
   const [orderDetail, setOrderDetail] = useState();
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const OrderDetail = () => {
             {/* 받는 사람 정보 */}
             <OrderPerson orderDetail={orderDetail} />
             {/*  결제정보 */}
-            <OrderPayment />
+            <OrderPayment orderDetail={orderDetail} />
           </Wrapper>
         </Wrapper>
       </RsWrapper>
