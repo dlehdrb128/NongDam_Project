@@ -155,6 +155,7 @@ const Remocon = () => {
     return 0;
   }
 
+
   return (
     <Remote id="Remote">
       {data === null || data.user_auth === '일반' ?
@@ -166,7 +167,7 @@ const Remocon = () => {
                 alt="Marketbasket"
               ></img>
               <p>장바구니</p>
-              <span></span>
+              <span>{cartData && cartData.length}</span>
             </Link>
             <Link to="/admin/myPage">
               <img

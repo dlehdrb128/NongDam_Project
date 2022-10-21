@@ -71,9 +71,9 @@ const FivedaysMarektsec1con = ({ data }) => {
       <div>
         <div>
           {/* 타이틀 */}
-          <h1>{data[1][0].market_name}</h1>
+          <h1>{data && data[1][0].market_name}</h1>
           {/* 내용 */}
-          <p>{data[1][0].market_desc}</p>
+          <p>{data && data[1][0].market_desc}</p>
         </div>
         {/* <div></div> MAP API용 div*/}
         {/* 지도이미지 */}
