@@ -335,7 +335,7 @@ const SignUp = () => {
     console.log(userPasswordcheck);
     const idcheck = /^([a-z0-9_]){6,50}$/;
     if (!idcheck.test(userId)) {
-      alert('아이디는 영소문자, 숫자, 언더바 조합 6~50자리를 사용해야 합니다.');
+      alert('아이디는 영소문자, 숫자, 언더바 6~50자리를 사용해야 합니다.');
       return false;
     }
 
