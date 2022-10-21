@@ -108,12 +108,14 @@ router.post('/newProduct', (req, res) => {
 
   const newproductSQL = `INSERT INTO product (product_key,user_key,user_auth, product_name, product_local,product_local_eng,product_price,
     product_image,
-    product_discount_set,product_discount_percent,product_discount_start,product_discount_end) VALUES (null,12,'사업자','${productName}','${productLocal}','${productLocalEng}','${productPrice}','${productImage}','${productDiscountSet}','${ProductDiscountPercent}','${productDiscountStart}','${productDiscountEnd}' );`;
+    product_discount_set,product_discount_percent,product_discount_start,product_discount_end) VALUES (null,12,'사업자','${productName}','${productLocal}','${productLocalEng}',${productPrice},'${productImage}',${productDiscountSet},${ProductDiscountPercent},${productDiscountStart},${productDiscountEnd});`;
 
   connection.query(newproductSQL, (err, row, fild) => {
     if (err) throw err;
     console.log(row);
   });
+
+  // res.json({ status: '상품 등록 완료' });
 });
 
 // 상품등록 이미지 업로드

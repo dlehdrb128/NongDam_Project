@@ -522,21 +522,31 @@ const NewProductForm = () => {
     productLocalEng: regionEng,
     productPrice: productPrice,
     productDiscountSet: sale === true ? 1 : 0,
-    ProductDiscountPercent: sale === true ? ProductDiscountPercent : 0,
-    productDiscountStart: `${startDate} ${startHour}:${startMinute}:00`,
-    productDiscountEnd: `${endDate} ${endHour}:${endMinute}:00`,
+    ProductDiscountPercent: sale === true ? ProductDiscountPercent : null,
+    productDiscountStart:
+      sale === true ? `'${startDate} ${startHour}:${startMinute}:00'` : null,
+    productDiscountEnd:
+      sale === true ? `'${endDate} ${endHour}:${endMinute}:00'` : null,
     productImage: imgPath,
   };
 
   const onclick = () => {
     axios.post('http://localhost:8080/admin/newProduct', data);
+    alert('상품이 등록되었습니다!');
+    // alert(CreateProduct.data.status);
+    // console.log(CreateProduct.data);
+    window.location.reload();
   };
 
   console.log(data);
 
   return (
     <MainBox>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <h1>상품 등록</h1>
         <div>
           <ContentBox>
