@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpParent = styled.form`
   /* 회원가입창 부모 설정 */
@@ -263,6 +264,7 @@ const SignUp = () => {
   const [userAuth, setUserAuth] = useState('');
   const [display, setDisplay] = useState('none');
   const [display2, setDisplay2] = useState('flex');
+  const navigate = useNavigate();
   const [check, setCheck] = useState({
     allCheck: false,
     check1: false,
@@ -347,6 +349,8 @@ const SignUp = () => {
       return false;
     }
     axios.post('http://localhost:8080/signUp', dbData);
+    alert('회원가입에 성공하였습니다!');
+    navigate('/login');
   };
 
   const checkChange = (e) => {
