@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react"
+import axios from 'axios'
 
 const Storeitmes = styled.a`
   width: 254px;
@@ -60,6 +61,29 @@ const Storeitmes = styled.a`
 const Storeitem = ({ data }) => {
   const img = `http://localhost:8080/product/${data.product_image}`
   const href = `http://localhost:3000/product/detail/${data.product_key}`
+
+  const [reviewData, setReviewData] = useState()
+
+
+
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        let response = await axios.get(`http://localhost:8080/store/review/${data.product_key}`)
+        setReviewData(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
+  if (reviewData === undefined) {
+    return null
+  }
+
+
   return (
     <Storeitmes href={href}>
       <div>
@@ -68,13 +92,14 @@ const Storeitem = ({ data }) => {
         <p>{data.product_name}</p>
         <span>{data.product_discount_percent > 0 ? ((Math.round(data.product_price)).toLocaleString()) + '원' : null}</span>
         <div>
-          <h1>{(Math.round(data.product_price - (data.product_price * (data.product_discount_percent / 100))) / 10 * (10)).toLocaleString()}원</h1>
+          <h1>{(Math.round((data.product_price - (data.product_price * data.product_discount_percent) / 100) / 10) * (10)).toLocaleString()}원</h1>
+
           <div>
             <div>
               <span>★</span>{" "}
-              <span>{data.review_value === null ? 0 : data.review_value}/5</span>
+              <span>{reviewData[0].avg === null || reviewData[0].avg === 0 ? 0 : reviewData[0].avg}/5</span>
             </div>
-            <div>리뷰{ } </div>
+            <div>리뷰 {reviewData[0].count === 0 || reviewData[0].count === null ? 0 : reviewData[0].count} </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ const MainBox = styled.div`
   padding: 180px 0 70px 0;
   display: flex;
   flex-direction: column;
-
   // 각 form의 제목을 h1으로 스타일링 해주었다
   & > form {
     // 스토어정보, 고객센터 정보안내 h1 스타일링
@@ -44,7 +43,6 @@ const ContentBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 기입내용의 제목을 h2
   & > h2 {
     width: 141px;
@@ -63,7 +61,6 @@ const ContentBox = styled.div`
       font-size: 1.5rem;
     }
   }
-
   // 기입내용 input을 div로 묶음
   & > div {
     width: 702px;
@@ -98,7 +95,6 @@ const StoreDescBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 기입내용의 제목을 h2
   & > h2 {
     width: 141px;
@@ -117,7 +113,6 @@ const StoreDescBox = styled.div`
       font-size: 1.5rem;
     }
   }
-
   // 기입내용 input을 div로 묶음
   & > div {
     width: 702px;
@@ -152,7 +147,6 @@ const BusinessAdd = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 큰 틀을 비슷
   & > h2 {
     width: 141px;
@@ -178,7 +172,6 @@ const BusinessAdd = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     // 우편번호 창
     & > div > input {
       font-family: 'SCD-4';
@@ -221,7 +214,6 @@ const ImgBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 제목 - 대표이미지 등록
   & > h2 {
     width: 141px;
@@ -255,7 +247,6 @@ const ImgBox = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
       //사진미리보기 부분/ 지금은 회색 박스
       & > div {
         width: 155px;
@@ -263,14 +254,12 @@ const ImgBox = styled.div`
         border-radius: 3px;
         display: flex;
         flex-direction: column;
-
         & > img {
           width: 100%;
           height: 100%;
           margin: 'auto';
         }
       }
-
       // 이미지 권장 사이즈 안내
       & > p {
         font-family: 'SCD-4';
@@ -287,7 +276,6 @@ const ImgBox = styled.div`
       padding-left: 20px;
       padding-bottom: 40px;
       justify-content: flex-end;
-
       // 파일불러오는 input 버튼
       & > label {
         width: 73px;
@@ -319,7 +307,6 @@ const TelBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 전화번호 타이틀
   & > h2 {
     width: 141px;
@@ -418,7 +405,6 @@ const RadioBox = styled.div`
     padding: 20px;
     align-items: center;
     border-left: 1px solid ${({ theme }) => theme.lightblack};
-
     // 라디오 버튼 스타일링
     & > input {
       width: 18px;
@@ -426,7 +412,6 @@ const RadioBox = styled.div`
       accent-color: green;
     }
     // 체크되면 달라지는 스타일링
-
     // 라디오 버튼의 내용
     & > label {
       font-family: 'SCD-3';
@@ -460,6 +445,7 @@ const StoreOpenForm = () => {
 
   const [img, setImg] = useState('');
   const [imagePath, setImagePath] = useState('');
+
   console.log(img);
 
   const onChangeFile = (e) => {

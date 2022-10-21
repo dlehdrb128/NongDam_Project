@@ -160,8 +160,9 @@ const Header = () => {
         if (response.data.status === 201) {
           alert("농담을 이용해주셔서 감사합니다");
           navigate("/");
+          window.location.reload()
         }
-      } catch (error) {}
+      } catch (error) { }
     }
   };
 
