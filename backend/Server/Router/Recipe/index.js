@@ -41,4 +41,6 @@ router.post("/", (req, res) => {
     }
   );
 });
+
+router.post("/recipeCreateReview/upload", (req, res) => {});
 module.exports = router;
