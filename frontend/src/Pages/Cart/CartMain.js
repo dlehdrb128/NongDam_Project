@@ -3,8 +3,9 @@ import CartTitle from "./CartTitle";
 import CartItem from "./CartItem";
 import CartPrice from "./CartPrice"
 import Remocon from "../../LayOut/Remocon";
-import { useState, useEffect, useRef, forwardRef } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 // 장바구니 메인 큰 박스
 const MainBox = styled.div`
@@ -65,23 +66,71 @@ const SelectOrderButton = styled(AllOrderButton)`
 // 전체적인 구성
 //  h1 장바구니 + 상품 정보 이름 담을 (CartTitle.js)  + + 상품금액 담길 목록(CartPrice.js) + 상품 가격(CartPrice.js)
 const CartMain = () => {
+
+
+
   const [Loading, SetLoading] = useState(false);
   const [data, SetData] = useState();
-  const [priceData, setData] = useState(0)
+  const [priceData, setData] = useState(0);
+  const [userData, setUserData] = useState();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    SetLoading(true);
-    const getData = async () => {
+    const getLogin = async () => {
       try {
-        const response = await axios('http://localhost:8080/cart');
-        // console.log(response);
-        SetData(response.data)
-      } catch (e) {
-        console.log(e);
+        let response = await axios.get("http://localhost:8080/login/check", {
+          withCredentials: true,
+        });
+
+        if (response.data.status === 201) {
+          setUserData(response.data.userInfo)
+          try {
+            const response2 = await axios(`http://localhost:8080/cart/user/${response.data.userInfo.user_key}`);
+            SetData(response2.data)
+          } catch (error) {
+
+            console.log(error)
+
+          }
+
+        } else {
+          alert('로그인 하셔야 합니다')
+          navigate('/')
+        }
+
+
+      } catch (error) {
+        console.log(error)
       }
     }
-    getData();
-    SetLoading(false);
-  }, []);
+    getLogin()
+  }, [])
+
+  if (userData === undefined) {
+    return null;
+  }
+
+  // useEffect(() => {
+  //   SetLoading(true);
+  //   const getData = async () => {
+  //     try {
+  //       const response = await axios(`http://localhost:8080/cart/${userData.user_key}`);
+  //       // console.log(response);
+  //       SetData(response.data)
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   }
+  //   getData();
+  //   SetLoading(false);
+  // }, []);
+
+
+
+
+
+
+
 
   const calc = (price) => {
     setData(priceData + price)
@@ -101,15 +150,9 @@ const CartMain = () => {
         <h1>장바구니</h1>
         <CartTitle></CartTitle>
         {data.map((product, index) => {
-          if (product.user_key === 2) {
-            return <CartItem product={product} key={index} calc={calc}></CartItem>;
-          }
+          return <CartItem product={product} key={index} calc={calc}></CartItem>;
         })}
-        <CartPrice product={data.filter((product) => {
-          if (product.user_key === 2) {
-            return product
-          }
-        })}></CartPrice>
+        {/* <CartPrice></CartPrice> */}
         <div className='buttonBox'>
           <SelectOrderButton col={({ theme }) => theme.green} bgcol={({ theme }) => theme.realWhite}>
             선택주문

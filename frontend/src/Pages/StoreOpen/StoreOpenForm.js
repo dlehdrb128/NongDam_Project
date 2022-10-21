@@ -686,7 +686,7 @@ const StoreOpenForm = () => {
                   onChange={onChangeFile}
                   name={"img"}
                 ></input>
-                <label for="input-file">등록</label>
+                <label htmlFor="input-file">등록</label>
                 <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
               </div>
             </div>

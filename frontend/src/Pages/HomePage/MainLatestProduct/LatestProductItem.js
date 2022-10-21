@@ -95,16 +95,16 @@ const LatestProductItem = ({ data }) => {
         </div>
         {data.product_discount_percent === 0 ? (
           <div>
-            {Math.round(data.product_price / 10) * (10).toLocaleString()}원
+            {(Math.round(data.product_price / 10) * (10)).toLocaleString()}원
           </div>
         ) : (
           <SaleBox>
             <div>
-              {Math.round(
+              {(Math.round(
                 (data.product_price -
                   (data.product_price * data.product_discount_percent) / 100) /
-                  10
-              ) * (10).toLocaleString()}
+                10
+              ) * (10)).toLocaleString()}
               원
             </div>
             <div>{data.product_price.toLocaleString()}</div>

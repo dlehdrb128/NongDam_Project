@@ -45,17 +45,14 @@ function App() {
             path="/recipeCreateReview"
             element={<RecipeCreateReview />}
           ></Route>
-          <Route path="/recipeReview" element={<RecipeReview />}></Route>
-          <Route
-            path="/orderDetail/:productId"
-            element={<OrderDetail />}
-          ></Route>
-          <Route path="/cart" element={<CartMain />}></Route>
+          <Route path="/recipe/post/:id" element={<RecipeReview />}></Route>
+          <Route path="/orderDetail/:id" element={<OrderDetail />}></Route>
+          <Route path="/cart/user/:id" element={<CartMain />}></Route>
           <Route path="/FivedaysMakret" element={<FivedaysMakret />}></Route>
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
           <Route path="/upload" element={<UploadTest />}></Route>
-          <Route path="/Store" element={<Store />}></Route>
+          <Route path="/store/detail/:id" element={<Store />}></Route>
           <Route element={<Footer />} />
         </Route>
       </Routes>

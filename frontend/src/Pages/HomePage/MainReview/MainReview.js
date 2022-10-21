@@ -52,7 +52,7 @@ const MainReview = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        let response = await axios.get(`http://localhost:8080/review`);
+        let response = await axios.get(`http://localhost:8080/review/`);
         setData(response.data);
       } catch (error) {
         console.log(error);
