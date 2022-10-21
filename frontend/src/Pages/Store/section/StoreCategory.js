@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-scroll";
-
+import { Link } from "react-router-dom";
 
 // 상품 상세, 상품 후기, 상품 문의를 담은 전체 박스
 const CategoryBox = styled.div`
@@ -14,7 +13,7 @@ const CategoryBox = styled.div`
     display: flex;
     justify-content: center;
     gap: 50px;
-    &>a{
+    & > a {
       & > div {
         width: 218px;
         height: 28px;
@@ -37,7 +36,6 @@ const CategoryBox = styled.div`
           border: 3px solid ${({ theme }) => theme.green};
         }
       }
-      
     }
   }
 
@@ -48,19 +46,14 @@ const CategoryBox = styled.div`
 `;
 
 const StoreCategory = () => {
-
   return (
     <CategoryBox>
       <div>
         <Link to="product" spy={true} smooth={true}>
-          <div>
-            상품
-          </div>
+          <div>상품</div>
         </Link>
         <Link to="info" spy={true} smooth={true}>
-          <div>
-            스토어정보
-          </div>
+          <div>스토어정보</div>
         </Link>
       </div>
       <hr></hr>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const ReviewParent = styled.div`
   display: flex;
@@ -219,6 +219,8 @@ const FinishButton = styled.div`
 `;
 const RecipeCreateReview = () => {
   const [data, setData] = useState();
+  const [img, setImg] = useState("");
+  const imgSrc = useRef();
   useEffect(() => {
     const getData = async () => {
       try {
@@ -232,9 +234,31 @@ const RecipeCreateReview = () => {
     };
     getData();
   }, []);
+
   if (data === undefined) {
     return null;
   }
+
+  const onChangeFile = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      setImg(e.target.files[0]);
+
+      reader.onload = async (e) => {
+        const formData = new FormData();
+        formData.append("img", img);
+        let URL = `http://localhost:8080/recipe/upload`;
+        const request = await axios.post(URL, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        imgSrc.current.src = reader.result;
+      };
+    }
+  };
+
   return (
     <ReviewParent>
       {/* 전체 부모 */}
@@ -267,7 +291,7 @@ const RecipeCreateReview = () => {
             </div>
           </TitleGuide>
           <div>
-            <ImgFile for="main-img">
+            <ImgFile htmlFor="main-img">
               {/* 대표 요리 사진 */}
               <img src="./img/camera.svg" alt="이미지"></img>
 
@@ -279,6 +303,8 @@ const RecipeCreateReview = () => {
               id="main-img"
               style={{ display: "none" }}
               accept="image/jpeg,gif,png,jpg"
+              // onChange={onChangeFile}
+              name={"img"}
             ></input>
           </div>
         </div>
@@ -308,9 +334,9 @@ const RecipeCreateReview = () => {
             {/* 파일 업로드 */}
             <UploadImg>
               {/* 업로드 박스 */}
-              <label for="fileUp">+</label>
+              <label htmlFor="fileUp">+</label>
               <input
-                type={"file"}
+                type="file"
                 id="fileUp"
                 accept="image/jpeg,gif,png,jpg"
                 style={{ display: "none" }}
@@ -318,9 +344,9 @@ const RecipeCreateReview = () => {
             </UploadImg>
             <UploadImg>
               {/* 업로드 박스 */}
-              <label for="fileUp">+</label>
+              <label htmlFor="fileUp">+</label>
               <input
-                type={"file"}
+                type="file"
                 id="fileUp"
                 accept="image/jpeg,gif,png,jpg"
                 style={{ display: "none" }}
@@ -328,9 +354,9 @@ const RecipeCreateReview = () => {
             </UploadImg>{" "}
             <UploadImg>
               {/* 업로드 박스 */}
-              <label for="fileUp">+</label>
+              <label htmlFor="fileUp">+</label>
               <input
-                type={"file"}
+                type="file"
                 id="fileUp"
                 accept="image/jpeg,gif,png,jpg"
                 style={{ display: "none" }}
@@ -338,24 +364,14 @@ const RecipeCreateReview = () => {
             </UploadImg>{" "}
             <UploadImg>
               {/* 업로드 박스 */}
-              <label for="fileUp">+</label>
+              <label htmlFor="fileUp">+</label>
               <input
-                type={"file"}
+                type="file"
                 id="fileUp"
                 accept="image/jpeg,gif,png,jpg"
                 style={{ display: "none" }}
               ></input>
             </UploadImg>
-            <AllUploadImg>
-              {/* 한번에 넣기 */}
-              <label for="allFileUp">+ 사진 한번에 넣기</label>
-              <input
-                type={"file"}
-                id="allFileUp"
-                accept="image/jpeg,gif,png,jpg"
-                style={{ display: "none" }}
-              ></input>
-            </AllUploadImg>
           </div>
         </CookImg>
         <FinishButton>
