@@ -583,13 +583,18 @@ const StoreOpenForm = () => {
   };
 
   console.log(data);
-  const onclick = () => {
+  const onclick = (e) => {
     axios.post('http://localhost:8080/admin/storeOpen', data);
+    window.location.reload();
   };
 
   return (
     <MainBox>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <h1>스토어 정보</h1>
         <div>
           <ContentBox>

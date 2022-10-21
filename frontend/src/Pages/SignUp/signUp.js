@@ -11,15 +11,15 @@ const SignUpParent = styled.form`
   align-items: center;
   margin-top: 150px;
   & > h1 {
-    font-size: 3rem;
-    font-family: YANGJIN;
+    font-size: 4rem;
+    font-family: 'SCD-6';
     color: ${({ theme }) => theme.lightblack};
   }
   & > h2 {
     width: inherit;
     text-align: left;
-    font-size: 2rem;
-    font-family: YANGJIN;
+    font-size: 2.5rem;
+    font-family: 'SCD-6';
     color: ${({ theme }) => theme.lightblack};
   }
   & > button {
@@ -40,6 +40,8 @@ const MemberType = styled.div`
   height: 50px;
   display: flex;
   justify-content: space-around;
+  font-family: SCD-5;
+  font-size: 1.5rem;
   align-items: center;
   border-top: 2px solid ${({ theme }) => theme.lightblack};
   border-bottom: 2px solid ${({ theme }) => theme.lightblack};
@@ -59,7 +61,8 @@ const SideBar = styled.div`
   width: 200px;
   height: inherit;
   color: ${({ theme }) => theme.lightblack};
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: SCD-5;
   background-color: #ddd;
   border-top: 2px solid ${({ theme }) => theme.lightblack};
   border-bottom: 2px solid ${({ theme }) => theme.lightblack};
@@ -69,7 +72,7 @@ const SideBar = styled.div`
   padding-left: 10px;
   & > span {
     color: red;
-    font-size: inherit;
+    font-size: 1.5rem;
   }
 `;
 const BasicInfo = styled.div`
@@ -78,6 +81,9 @@ const BasicInfo = styled.div`
   height: inherit;
   display: flex;
   flex-direction: column;
+  font-family: SCD-5;
+  font-size: 1.5rem;
+
   & > div {
     width: inherit;
     height: inherit;
@@ -106,6 +112,7 @@ const BasicInfo = styled.div`
           padding-left: 10px;
           font-size: 1.5rem;
           font-family: SCD-3;
+          border-radius: 3px;
         }
         & > button {
           width: 120px;
@@ -136,31 +143,21 @@ const BasicInfo = styled.div`
   & > div:nth-child(8) {
     border-bottom: 1px solid ${({ theme }) => theme.lightblack};
   }
-  & > div:nth-child(9) {
-    /* 평생회원 */
-    width: inherit;
-    height: inherit;
-    border-bottom: 2px solid ${({ theme }) => theme.lightblack};
-    font-family: SCD-3;
-    font-size: 1.5rem;
-    & > input {
-      margin-left: 11px;
-    }
-  }
 `;
 const MiddleBox = styled.div`
   /* 왼쪽 목록 작은 사이즈 */
   width: 200px;
-  height: 50px;
+  height: 80px;
   color: ${({ theme }) => theme.lightblack};
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: SCD-5;
   background-color: #ddd;
   border-right: 2px solid ${({ theme }) => theme.lightblack};
   padding-left: 10px;
   display: flex;
   align-items: center;
   & > span {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: red;
   }
 `;
@@ -169,32 +166,38 @@ const LongBox = styled.div`
   width: 200px;
   height: 150px;
   color: ${({ theme }) => theme.lightblack};
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: #ddd;
   border-right: 2px solid ${({ theme }) => theme.lightblack};
   padding-top: 10px;
   padding-left: 10px;
   display: flex;
+  & > span {
+    font-size: 1.5rem;
+    color: red;
+  }
 `;
 const InputText = styled.input`
   /* 작성란 */
-  width: 300px;
-  height: 30px;
+  width: 360px;
+  height: 40px;
   position: relative;
   left: 10px;
   padding-left: 10px;
   font-size: 1.5rem;
   font-family: SCD-3;
+  border-radius: 3px;
 `;
 const Phone = styled.input`
   /* 폰번호 작성란 */
-  width: 300px;
-  height: 30px;
+  width: 360px;
+  height: 40px;
   color: ${({ theme }) => theme.lightblack};
   font-size: 1.5rem;
   font-family: SCD-3;
   padding-left: 10px;
   margin-left: 10px;
+  border-radius: 3px;
 `;
 const MoreInfo = styled.div`
   /* 추가정보 */
@@ -211,11 +214,12 @@ const MoreInfo = styled.div`
     font-family: SCD-3;
     & > input:nth-child(2) {
       width: 300px;
-      height: 30px;
+      height: 40px;
       padding-left: 10px;
       color: ${({ theme }) => theme.lightblack};
       font-size: 1.5rem;
       font-family: SCD-3;
+      border-radius: 3px;
     }
   }
   & > div:nth-child(2) {
@@ -388,7 +392,7 @@ const SignUp = () => {
         {/* 회원구분  */}
         <SideBar>
           {/* 왼쪽 회원구분 */}
-          회원구분<span>*</span>
+          회원구분<span> *</span>
         </SideBar>
         <div>
           <InputClick
@@ -424,7 +428,7 @@ const SignUp = () => {
         <div>
           <MiddleBox>
             {/* 왼쪽 목록 작은 사이즈 */}
-            아이디<span>*</span>
+            아이디<span> *</span>
           </MiddleBox>
           <InputText
             type='text'
@@ -438,7 +442,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            비밀번호<span>*</span>
+            비밀번호<span> *</span>
           </MiddleBox>
           <InputText
             type='password'
@@ -450,7 +454,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            비밀번호 확인<span>*</span>
+            비밀번호 확인<span> *</span>
           </MiddleBox>
           <InputText
             type='password'
@@ -461,7 +465,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            이름<span>*</span>
+            이름<span> *</span>
           </MiddleBox>
           <InputText
             type='text'
@@ -471,7 +475,9 @@ const SignUp = () => {
           ></InputText>
         </div>
         <div>
-          <LongBox>주소</LongBox>
+          <LongBox>
+            주소<span> *</span>
+          </LongBox>
           {/* 왼쪽 목록 큰 사이즈 */}
           <div>
             <div>
@@ -516,7 +522,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            휴대전화<span>*</span>
+            휴대전화<span> *</span>
           </MiddleBox>
           <Phone
             placeholder="핸드폰번호 입력('-'제외)"
@@ -531,7 +537,7 @@ const SignUp = () => {
         </div>
         <div>
           <MiddleBox>
-            이메일<span>*</span>
+            이메일<span> *</span>
           </MiddleBox>
           <InputText
             type='email'
