@@ -459,31 +459,35 @@ const StoreOpenForm = () => {
   const imgSrc = useRef();
 
   const [img, setImg] = useState('');
+  const [imagePath, setImagePath] = useState('');
   console.log(img);
+
   const onChangeFile = (e) => {
     if (e.target.files && e.target.files[0]) {
+      let save = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       setImg(e.target.files[0]);
 
       reader.onload = async (e) => {
-        console.log(e);
-        console.log(img, '안녕');
-
         const formData = new FormData();
-        formData.append('img', img);
+        formData.append('img', save);
 
-        let URL = `http://localhost:8080/admin/upload`;
+        let URL = `http://localhost:8080/admin/storeImage`;
         const request = await axios.post(URL, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
 
+        setImagePath(request.data.imagePath);
         imgSrc.current.src = reader.result;
       };
     }
   };
+
+  console.log(imagePath);
+
   const [topping, setTopping] = useState();
   const onChangeRadio = (e) => {
     setTopping(e.target.value);
@@ -579,7 +583,7 @@ const StoreOpenForm = () => {
     storeCeoEmail: email,
     storeCeoName: name,
     storeAddress: `${address1} ${address2} ${address3}`,
-    storeimg: ``,
+    storeimg: imagePath,
     storeCall: `${huntingLine1}-${huntingLine2}-${huntingLine3}`,
     storePhone: `${mobile1}-${mobile2}-${mobile3}`,
     storeReceiveEmail: receiveEmail,

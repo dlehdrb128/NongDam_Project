@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 const SignUpParent = styled.form`
   /* 회원가입창 부모 설정 */
@@ -256,11 +256,7 @@ const InputClick = styled.input`
 `;
 
 const SignUp = () => {
-  const [data, setData] = useState('');
   const [userAuth, setUserAuth] = useState('');
-  const [userSMS, setUserSMS] = useState('');
-  const [userEmailReceive, setUserEmailReceive] = useState('');
-  const [value, setValue] = useState(true);
   const [display, setDisplay] = useState('none');
   const [display2, setDisplay2] = useState('flex');
   const [check, setCheck] = useState({
@@ -270,21 +266,6 @@ const SignUp = () => {
     check3: false,
     check4: false,
   });
-
-  const checkSMS = (e) => {
-    if (e.target.checked === 1) {
-      setUserSMS(1);
-    } else {
-      setUserSMS(0);
-    }
-  };
-  const checkEmail = (e) => {
-    if (e.target.checked === 1) {
-      setUserEmailReceive(1);
-    } else {
-      setUserEmailReceive(0);
-    }
-  };
 
   const [inputData, setInputData] = useState({
     userId: '',
@@ -335,8 +316,8 @@ const SignUp = () => {
     userAddressDetail: userAddressDetail,
     userCall: userCall,
     userPhone: userPhone,
-    userSMS: userSMS,
-    userEmailReceive: userEmailReceive,
+    userSMS: check.check3 === true ? 1 : 0,
+    userEmailReceive: check.check4 === true ? 1 : 0,
     userReferralId: userReferralId,
     userAdminCompanyNum: userAdminCompanyNum,
   };
@@ -346,9 +327,22 @@ const SignUp = () => {
 
     console.log(userPassword);
     console.log(userPasswordcheck);
+    const idcheck = /^([a-z0-9_]){6,50}$/;
+    if (!idcheck.test(userId)) {
+      alert('아이디는 영소문자, 숫자, 언더바 조합 6~50자리를 사용해야 합니다.');
+      return false;
+    }
+
+    const passwordcheck = /^[a-zA-z0-9]{4,12}$/;
+    if (!passwordcheck.test(userPassword)) {
+      alert('비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다');
+      return false;
+    }
     if (userPassword !== userPasswordcheck) {
       alert('비밀번호와 비밀번호 확인 값이 같지 않습니다!');
-    } else axios.post('http://localhost:8080/signUp', dbData);
+      return false;
+    }
+    axios.post('http://localhost:8080/signUp', dbData);
   };
 
   const checkChange = (e) => {
@@ -375,8 +369,6 @@ const SignUp = () => {
     }
   };
 
-  // console.log(dbData);
-
   let test =
     check.check1 === false ||
     check.check2 === false ||
@@ -384,6 +376,8 @@ const SignUp = () => {
     check.check4 === false
       ? false
       : true;
+
+  console.log(dbData);
 
   return (
     <SignUpParent>
@@ -450,10 +444,9 @@ const SignUp = () => {
             type='password'
             name='userPassword'
             onChange={onchange}
-            pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$'
             required
           ></InputText>
-          <p>(영문 대소문자, 숫자, 특수문자를 꼭 포함하여 6~50자)</p>
+          <p>( 비밀번호는 영문 대소문자와 숫자 4~12자 )</p>
         </div>
         <div>
           <MiddleBox>
@@ -463,7 +456,6 @@ const SignUp = () => {
             type='password'
             name='userPasswordcheck'
             onChange={onchange}
-            pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$'
             required
           ></InputText>
         </div>
@@ -608,7 +600,6 @@ const SignUp = () => {
         <div>
           <InputClick
             type='checkbox'
-            // onChange={checkSMS}
             onChange={checkChange}
             checked={check.check3}
             readOnly
@@ -619,7 +610,6 @@ const SignUp = () => {
           &nbsp;&nbsp;&nbsp;
           <InputClick
             type='checkbox'
-            // onChange={checkEmail}
             onChange={checkChange}
             checked={check.check4}
             readOnly

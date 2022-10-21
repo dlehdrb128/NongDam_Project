@@ -415,6 +415,40 @@ const NewProductForm = () => {
 
   const imgSrc = useRef();
   const [img, setImg] = useState('');
+  const [imgPath, setImgPath] = useState('');
+
+  const onChangeFile = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let save = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      setImg(e.target.files[0]);
+
+      reader.onload = async (e) => {
+        const formData = new FormData();
+        formData.append('img', save);
+
+        let URL = `http://localhost:8080/admin/newProductImage`;
+        const request = await axios.post(URL, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        setImgPath(request.data.imgPath);
+        imgSrc.current.src = reader.result;
+      };
+    }
+  };
+  console.log(imgPath);
+
+  const onchange = (e) => {
+    const { value, name } = e.target;
+    setInputData({
+      ...inputData,
+      [name]: value,
+    });
+  };
+
   const [inputData, setInputData] = useState({
     productName: '',
     productPrice: '',
@@ -428,30 +462,6 @@ const NewProductForm = () => {
     endDate: '',
     productLocal: '경기도',
   });
-
-  console.log(inputData);
-
-  const onchange = (e) => {
-    const { value, name } = e.target;
-    setInputData({
-      ...inputData,
-      [name]: value,
-    });
-  };
-
-  const onChangeFile = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      setImg(e.target.files[0]);
-
-      reader.onload = (e) => {
-        console.log(e);
-        console.log(reader);
-        imgSrc.current.src = reader.result;
-      };
-    }
-  };
 
   const hourList = [
     '00',
@@ -512,9 +522,10 @@ const NewProductForm = () => {
     productLocalEng: regionEng,
     productPrice: productPrice,
     productDiscountSet: sale === true ? 1 : 0,
-    ProductDiscountPercent: ProductDiscountPercent,
+    ProductDiscountPercent: sale === true ? ProductDiscountPercent : 0,
     productDiscountStart: `${startDate} ${startHour}:${startMinute}:00`,
     productDiscountEnd: `${endDate} ${endHour}:${endMinute}:00`,
+    productImage: imgPath,
   };
 
   const onclick = () => {
