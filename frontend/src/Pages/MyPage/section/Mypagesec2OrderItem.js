@@ -50,7 +50,7 @@ const OrderItem = styled.a`
 
 const Mypagesec2OrderItem = ({ data }) => {
   console.log(data)
-  let product = `/product/detail/${data.product_key}`
+  let product = `/orderDetail/${data.product_key}`
   let img = `http://localhost:8080/product/${data.product_image}`
   return (
     <OrderItem href={product}>
