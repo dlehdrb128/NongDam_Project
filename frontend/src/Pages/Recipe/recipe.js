@@ -229,6 +229,23 @@ const CreateLink = styled.a`
 const Recipe = () => {
   const [data, setData] = useState();
   const img = useRef();
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const loginCheck = async () => {
+      try {
+        let response = await axios.get("http://localhost:8080/login/check", {
+          withCredentials: true,
+        });
+        if (response.data.status === 201) {
+          setUserData(response.data.userInfo);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    loginCheck();
+  }, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -236,7 +253,6 @@ const Recipe = () => {
         let response = await axios.get(`http://localhost:8080/recipe/`, {
           withCredentials: true,
         });
-
         setData(response.data);
       } catch (error) {
         console.log(error);
@@ -341,7 +357,9 @@ const Recipe = () => {
         </FooterButton>
       </div>
       <div>
-        <CreateLink href="/recipeCreateReview">게시글 작성하기</CreateLink>
+        {userData === null ? null : userData.user_auth === "사업자" ? null : (
+          <CreateLink href="/recipeCreateReview">게시글 작성하기</CreateLink>
+        )}
       </div>
     </RecipeParent>
   );

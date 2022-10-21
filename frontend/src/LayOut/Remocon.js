@@ -111,6 +111,8 @@ const Container = styled.div`
 
 const Remocon = () => {
   const [data, setData] = useState(null);
+  const [cartData, setCartData] = useState();
+
   //Top btn func
   const MoveTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -122,9 +124,17 @@ const Remocon = () => {
         let response = await axios.get("http://localhost:8080/login/check", {
           withCredentials: true,
         });
-
         if (response.data.status === 201) {
           setData(response.data.userInfo);
+          try {
+            const response2 = await axios(
+              `http://localhost:8080/cart/user/${response.data.userInfo.user_key}`
+            );
+            setCartData(response2.data);
+            console.log(cartData.length);
+          } catch (error) {
+            console.log(error);
+          }
         } else {
           setData({ user_auth: "비회원" });
         }
@@ -134,9 +144,11 @@ const Remocon = () => {
     };
     getLogin();
   }, []);
-
   if (data === null) {
     return null;
+  }
+  if (cartData === null) {
+    return 0;
   }
 
   return (
@@ -150,7 +162,7 @@ const Remocon = () => {
                 alt="Marketbasket"
               ></img>
               <p>장바구니</p>
-              <span>0</span>
+              <span>{cartData && cartData.length}</span>
             </Link>
             <Link to="/admin/myPage">
               <img

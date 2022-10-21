@@ -11,7 +11,7 @@ const userCheck = (req, res, next) => {
 
   const SQL = `SELECT user_key, user_name, user_email, user_point, user_auth,user_id,
                       user_address, user_address_detail, user_phone
-               FROM  user WHERE user_id = '${req.session.userId}'`;
+              FROM  user WHERE user_id = '${req.session.userId}'`;
 
   connection.query(SQL, (err, row, filed) => {
     if (err) console.error(err);

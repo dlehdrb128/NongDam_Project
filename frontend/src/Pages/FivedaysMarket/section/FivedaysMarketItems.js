@@ -57,8 +57,8 @@ const FivedaysMarketitems = ({ data }) => {
       <div>
         <img src={img} alt="Product"></img>
         <p>
-          <span>[{data.product_local}]</span>
-          {data.product_name}
+          <span>[{data && data.product_local}]</span>
+          {data && data.product_name}
         </p>
         <h2>
           {data.product_discount_percent !== 0 ? (
