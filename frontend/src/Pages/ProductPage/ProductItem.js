@@ -156,8 +156,8 @@ const ProductItem = ({ data }) => {
                 {Math.round(
                   (data.product_price -
                     (data.product_price * data.product_discount_percent) /
-                      100) /
-                    10
+                    100) /
+                  10
                 ) * (10).toLocaleString()}
                 원
               </div>

@@ -103,7 +103,9 @@ const OrderState = styled.div`
 `;
 
 const Mypagese2OrderState = ({ data }) => {
-  const orders = data.data[0];
+  console.log(data);
+  console.log(data[2][0].count);
+  const delivery = data[2][0].count;
   // console.log(orders);
   return (
     <OrderState>
@@ -132,7 +134,7 @@ const Mypagese2OrderState = ({ data }) => {
           </div>
           <div>
             <p>배송완료</p>
-            <div>{orders[0].orders_status === '배송 완료' ? '1' : '0'}</div>
+            <div>{data && delivery}</div>
           </div>
         </div>
         <div>
