@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme/theme';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // 메인박스로 묶음
 const MainBox = styled.div`
@@ -442,6 +443,7 @@ const EditButton = styled(RegButton)`
 
 const StoreOpenForm = () => {
   const imgSrc = useRef();
+  const navigate = useNavigate();
 
   const [img, setImg] = useState('');
   const [imagePath, setImagePath] = useState('');
@@ -585,7 +587,8 @@ const StoreOpenForm = () => {
   console.log(data);
   const onclick = (e) => {
     axios.post('http://localhost:8080/admin/storeOpen', data);
-    window.location.reload();
+    alert('스토어 개설을 하였습니다!');
+    navigate('/admin');
   };
 
   return (
@@ -709,6 +712,7 @@ const StoreOpenForm = () => {
                 onChange={onchange}
                 name='storeDesc'
                 placeholder='200자 이내로 작성해주세요'
+                maxlength='200'
               ></input>
             </div>
           </StoreDescBox>
