@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../../../db/db");
+const userCheck = require("../../../util/usercheck");
 
 router.get("/", (req, res) => {
   connection.query(
@@ -12,7 +13,6 @@ router.get("/", (req, res) => {
       console.log(row);
     }
   );
-
 });
 
 router.get('/user/:user_key', (req, res) => {
@@ -24,7 +24,6 @@ router.get('/user/:user_key', (req, res) => {
       res.send(row);
     }
   );
-
-})
+});
 
 module.exports = router;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Countdown from "./Countdown";
 
 //탑 비주얼 컨테이너(이미지/사이즈/위치(센터링),백그라운드,z-index조정)
 const FivedaysmakretTopvisual = styled.div`
@@ -40,7 +41,7 @@ const FivedaysMakretTopvisual = () => {
         오늘은 <span>충청,전라</span> 에서 왓슈~
       </h1>
       {/* 카운트다운 */}
-      <p>다음 지역까지 00 : 00</p>
+      <Countdown></Countdown>
     </FivedaysmakretTopvisual>
   );
 };

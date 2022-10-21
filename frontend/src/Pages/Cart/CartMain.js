@@ -66,10 +66,6 @@ const SelectOrderButton = styled(AllOrderButton)`
 // 전체적인 구성
 //  h1 장바구니 + 상품 정보 이름 담을 (CartTitle.js)  + + 상품금액 담길 목록(CartPrice.js) + 상품 가격(CartPrice.js)
 const CartMain = () => {
-
-
-
-  const [Loading, SetLoading] = useState(false);
   const [data, SetData] = useState();
   const [priceData, setData] = useState(0);
   const [userData, setUserData] = useState();
@@ -88,17 +84,12 @@ const CartMain = () => {
             const response2 = await axios(`http://localhost:8080/cart/user/${response.data.userInfo.user_key}`);
             SetData(response2.data)
           } catch (error) {
-
             console.log(error)
-
           }
-
         } else {
           alert('로그인 하셔야 합니다')
           navigate('/')
         }
-
-
       } catch (error) {
         console.log(error)
       }
@@ -110,36 +101,11 @@ const CartMain = () => {
     return null;
   }
 
-  // useEffect(() => {
-  //   SetLoading(true);
-  //   const getData = async () => {
-  //     try {
-  //       const response = await axios(`http://localhost:8080/cart/${userData.user_key}`);
-  //       // console.log(response);
-  //       SetData(response.data)
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   }
-  //   getData();
-  //   SetLoading(false);
-  // }, []);
-
-
-
-
-
-
-
-
   const calc = (price) => {
     setData(priceData + price)
     console.log(priceData)
   }
 
-  if (Loading) {
-    return <h1>준비중입니다.</h1>
-  }
   if (data === undefined) {
     return <h1>데이터를 읽을 수 없습니다.</h1>
   }
