@@ -1,4 +1,4 @@
-import { useState, forwardRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 // 상품 목록 전체 박스
@@ -124,15 +124,17 @@ const CountBox = styled.div`
 `;
 
 //
-const CartItem = ({ product, pricedata, calc }) => {
+const CartItem = ({ product, calc }) => {
   //수량
   const [number, setNumber] = useState(0);
-  const discount = product.product_price - (product.product_price * (product.product_discount_percent / 100));
+  const discount =
+    product.product_price -
+    product.product_price * (product.product_discount_percent / 100);
   const [totalPrice, setTotalPrice] = useState({
     type: '',
-    price: 0
+    price: 0,
+    saleprice: 0,
   });
-  let test;
   // product.product_discount_percent === 0 ? test = product.product_price : test = product.product_price - product.product_price * (product.product_discount_percent / 100)
   // 값 바뀔때마다 number로 받고 있는 input창 변화
   const onChange = (e) => {
@@ -144,27 +146,34 @@ const CartItem = ({ product, pricedata, calc }) => {
   // 플러스버튼 누르면 1씩 증가
   const clickPlus = () => {
     setNumber(number + 1);
-    setTotalPrice({ type: 'up', price: product.product_price * (number + 1) })
+    setTotalPrice({
+      type: 'up',
+      price: product.product_price * (number + 1),
+      saleprice: (product.product_price - discount) * (number + 1),
+    });
   };
 
   // 마이너스버튼 누르면 1씩 감소
   const clickMinus = () => {
-    if (number >= 1) {
+    if (number > 0) {
       setNumber(number - 1);
-      setTotalPrice({ type: 'down', price: product.product_price * (number + 1) })
+      setTotalPrice({
+        type: 'down',
+        price: product.product_price * number,
+        saleprice: (product.product_price - discount) * number,
+      });
     }
   };
 
   useEffect(() => {
     if (totalPrice.type === 'up') {
-      calc(test)
+      calc(totalPrice.price, totalPrice.saleprice);
+    } else {
+      calc(-totalPrice.price, -totalPrice.saleprice);
     }
-    else {
-      calc(-test)
-    }
-  }, [totalPrice])
+  }, [totalPrice]);
 
-  const img = `http://localhost:8080/product/product-${product.product_key}.png`
+  const img = `http://localhost:8080/product/product-${product.product_key}.png`;
   return (
     <>
       <ItemBox>
@@ -184,16 +193,15 @@ const CartItem = ({ product, pricedata, calc }) => {
         <div>
           {((product.product_price - discount) * number).toLocaleString()}원
         </div>
-        <div>
-          {
-            totalPrice.price.toLocaleString()}
-          원
-        </div>
+        <div>{(discount * number).toLocaleString()}원</div>
         <div>
           <button>바로구매</button>
           <div>
             <div>
-              <img src={"http://localhost:8080/icon/cart_heart.png"} alt="icon"></img>
+              <img
+                src={'http://localhost:8080/icon/cart_heart.png'}
+                alt='icon'
+              ></img>
             </div>
             <div>
               <img

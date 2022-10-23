@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import CartTitle from "./CartTitle";
-import CartItem from "./CartItem";
-import CartPrice from "./CartPrice"
-import Remocon from "../../LayOut/Remocon";
-import { useState, useEffect } from "react";
-import axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
+import CartTitle from './CartTitle';
+import CartItem from './CartItem';
+import CartPrice from './CartPrice';
+import Remocon from '../../LayOut/Remocon';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // 장바구니 메인 큰 박스
 const MainBox = styled.div`
@@ -67,47 +67,55 @@ const SelectOrderButton = styled(AllOrderButton)`
 //  h1 장바구니 + 상품 정보 이름 담을 (CartTitle.js)  + + 상품금액 담길 목록(CartPrice.js) + 상품 가격(CartPrice.js)
 const CartMain = () => {
   const [data, SetData] = useState();
-  const [priceData, setData] = useState(0);
+  const [priceData, setData] = useState({
+    price: 0,
+    saleprice: 0,
+    totalprice: 0,
+  });
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     const getLogin = async () => {
       try {
-        let response = await axios.get("http://localhost:8080/login/check", {
+        let response = await axios.get('http://localhost:8080/login/check', {
           withCredentials: true,
         });
-
         if (response.data.status === 201) {
-          setUserData(response.data.userInfo)
+          setUserData(response.data.userInfo);
           try {
-            const response2 = await axios(`http://localhost:8080/cart/user/${response.data.userInfo.user_key}`);
-            SetData(response2.data)
+            const response2 = await axios(
+              `http://localhost:8080/cart/user/${response.data.userInfo.user_key}`
+            );
+            SetData(response2.data);
           } catch (error) {
-            console.log(error)
+            console.log(error);
           }
         } else {
-          alert('로그인 하셔야 합니다')
-          navigate('/')
+          alert('로그인 하셔야 합니다');
+          navigate('/');
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    getLogin()
-  }, [])
+    };
+    getLogin();
+  }, []);
 
   if (userData === undefined) {
     return null;
   }
 
-  const calc = (price) => {
-    setData(priceData + price)
-    console.log(priceData)
-  }
+  const calc = (price, saleprice) => {
+    setData({
+      price: priceData.price + price,
+      saleprice: priceData.saleprice + saleprice,
+    });
+  };
+  console.log(priceData);
 
   if (data === undefined) {
-    return <h1>데이터를 읽을 수 없습니다.</h1>
+    return <h1>데이터를 읽을 수 없습니다.</h1>;
   }
 
   return (
@@ -116,14 +124,22 @@ const CartMain = () => {
         <h1>장바구니</h1>
         <CartTitle></CartTitle>
         {data.map((product, index) => {
-          return <CartItem product={product} key={index} calc={calc}></CartItem>;
+          return (
+            <CartItem product={product} key={index} calc={calc}></CartItem>
+          );
         })}
-        {/* <CartPrice></CartPrice> */}
+        <CartPrice data={priceData} />
         <div className='buttonBox'>
-          <SelectOrderButton col={({ theme }) => theme.green} bgcol={({ theme }) => theme.realWhite}>
+          <SelectOrderButton
+            col={({ theme }) => theme.green}
+            bgcol={({ theme }) => theme.realWhite}
+          >
             선택주문
           </SelectOrderButton>
-          <AllOrderButton col={({ theme }) => theme.realWhite} bgcol={({ theme }) => theme.green}>
+          <AllOrderButton
+            col={({ theme }) => theme.realWhite}
+            bgcol={({ theme }) => theme.green}
+          >
             전체주문
           </AllOrderButton>
         </div>
