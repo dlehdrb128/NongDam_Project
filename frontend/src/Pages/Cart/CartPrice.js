@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // 금액 나타나는 제일 큰 박스
 const MainBox = styled.div`
@@ -22,12 +22,12 @@ const Pricebox = styled.div`
   // 해당가격 이름
   & > p:nth-child(1) {
     font-size: 2rem;
-    font-family: "SCD-3";
+    font-family: 'SCD-3';
   }
   // 해당 가격
   & > p:nth-child(2) {
     font-size: 3rem;
-    font-family: "SCD-5";
+    font-family: 'SCD-5';
   }
 `;
 
@@ -40,14 +40,14 @@ const OperatorBox = styled.div`
   align-items: center;
   & > p {
     font-size: 3rem;
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
   }
 `;
 
-const CartPrice = ({ product, number }) => {
-  
+const CartPrice = ({ data }) => {
+  console.log(data);
   let shipping = 2500;
-  if (product.price * number < 50000) {
+  if (data.price < 50000) {
     shipping = 2500;
   } else {
     shipping = 0;
@@ -57,17 +57,14 @@ const CartPrice = ({ product, number }) => {
     <MainBox>
       <Pricebox>
         <p>상품금액</p>
-        <p>{(product.price * number).toLocaleString()}원</p>
+        <p>{data.price.toLocaleString()}원</p>
       </Pricebox>
       <OperatorBox>
         <p>-</p>
       </OperatorBox>
       <Pricebox>
         <p>할인금액</p>
-        <p>
-          {" "}
-          {((product.price / product.discount) * number).toLocaleString()}원
-        </p>
+        <p>{data.saleprice.toLocaleString()}원</p>
       </Pricebox>
       <OperatorBox>
         <p>+</p>
@@ -83,8 +80,7 @@ const CartPrice = ({ product, number }) => {
         <p>결제금액</p>
         <p>
           {(
-            (product.price - product.price / product.discount) * number +
-            shipping
+            Math.round((data.price - data.saleprice + shipping) / 10) * 10
           ).toLocaleString()}
           원
         </p>
