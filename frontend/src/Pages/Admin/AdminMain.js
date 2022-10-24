@@ -1,5 +1,8 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // 메인박스 / 화면 전체 박스
 const MainBox = styled.div`
@@ -8,7 +11,7 @@ const MainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'SCD-6';
+  font-family: "SCD-6";
   color: ${({ theme }) => theme.lightblack};
 
   & a {
@@ -101,18 +104,34 @@ const StoreIconMainBox = styled.div`
     // h1 ->  각 스토어관리 카테고리 타이틀
     & > h1 {
       font-size: 1.8rem;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       color: ${({ theme }) => theme.green};
     }
     // span -> 각 스토어관리 설명
     & > span {
       font-size: 1.8rem;
-      font-family: 'SCD-3';
+      font-family: "SCD-3";
     }
   }
 `;
 
 const AdminMain = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const request = async () => {
+      try {
+        await axios.get("http://localhost:8080/login/admincheck", {
+          withCredentials: true,
+        });
+      } catch (error) {
+        alert(error.response.data.statusMessage);
+        navigate("/");
+      }
+    };
+    request();
+  }, []);
+
   return (
     <MainBox>
       <div>
@@ -121,11 +140,11 @@ const AdminMain = () => {
           <div></div>
         </div>
         <StoreIconMainBox>
-          <Link to='create'>
-            <div className='box'>
+          <Link to="create">
+            <div className="box">
               <img
-                src='http://localhost:8080/icon/Admin_icon1.png'
-                alt='icon'
+                src="http://localhost:8080/icon/Admin_icon1.png"
+                alt="icon"
               ></img>
               <h1>스토어개설</h1>
               <span>기본 스토어 개설</span>
@@ -133,17 +152,17 @@ const AdminMain = () => {
           </Link>
           <div>
             <img
-              src='http://localhost:8080/icon/Admin_icon2.png'
-              alt='icon'
+              src="http://localhost:8080/icon/Admin_icon2.png"
+              alt="icon"
             ></img>
             <h1>스토어관리</h1>
             <span>기존 스토어 관리</span>
           </div>
-          <Link to='newproduct'>
+          <Link to="newproduct">
             <div>
               <img
-                src='http://localhost:8080/icon/Admin_icon3.png'
-                alt='icon'
+                src="http://localhost:8080/icon/Admin_icon3.png"
+                alt="icon"
               ></img>
               <h1>상품관리</h1>
               <span>상품등록, 수정</span>
@@ -151,25 +170,25 @@ const AdminMain = () => {
           </Link>
           <div>
             <img
-              src='http://localhost:8080/icon/Admin_icon4.png'
-              alt='icon'
+              src="http://localhost:8080/icon/Admin_icon4.png"
+              alt="icon"
             ></img>
             <h1>게시판관리</h1>
             <span>공지사항, 후기 관련</span>
           </div>
           <div>
             <img
-              src='http://localhost:8080/icon/Admin_icon5.png'
-              alt='icon'
+              src="http://localhost:8080/icon/Admin_icon5.png"
+              alt="icon"
             ></img>
             <h1>정산</h1>
             <span>판매현황, 금액 관리</span>
           </div>
-          <Link to='/'>
+          <Link to="/">
             <div>
               <img
-                src='http://localhost:8080/icon/Admin_icon6.png'
-                alt='icon'
+                src="http://localhost:8080/icon/Admin_icon6.png"
+                alt="icon"
               ></img>
               <h1>마이페이지</h1>
               <span>나의 회원정보 수정</span>
