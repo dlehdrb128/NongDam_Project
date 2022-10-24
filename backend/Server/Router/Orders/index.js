@@ -3,12 +3,13 @@ const router = express.Router();
 const connection = require("../../../db/db");
 const userCheck = require("../../../util/usercheck");
 
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
+  let id = req.params.id
   connection.query(
-    `select * ,date_format(orders_date,'%Y.%m.%d %h:%i')as covert_date from orders;
-  select user_name from user inner join orders on user.user_key = orders.user_key;
-  select product_name,product_price,product_image from product inner join orders on product.product_key = orders.product_key;
-  `,
+    `select user_name from user where user_key =${id};
+    select * from orders left outer join product on product.product_key = orders.product_key where orders.user_key = ${id};
+    select count(orders.orders_status)as count from orders where orders.user_key = ${id};
+    `,
     (error, row, field) => {
       if (error) throw error;
       res.send(row);
