@@ -319,6 +319,7 @@ const Recipe = () => {
               <button>불로초</button>
               <button>산삼</button>
               <button>코코넛</button>
+              {/* 코코넛 */}
             </FruitVegetable>
           </div>
         </div>
