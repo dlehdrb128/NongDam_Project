@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme/theme';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // 메인박스로 묶음
 const MainBox = styled.div`
@@ -9,7 +10,6 @@ const MainBox = styled.div`
   padding: 180px 0 70px 0;
   display: flex;
   flex-direction: column;
-
   // 각 form의 제목을 h1으로 스타일링 해주었다
   & > form {
     // 스토어정보, 고객센터 정보안내 h1 스타일링
@@ -44,7 +44,6 @@ const ContentBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 기입내용의 제목을 h2
   & > h2 {
     width: 141px;
@@ -63,7 +62,6 @@ const ContentBox = styled.div`
       font-size: 1.5rem;
     }
   }
-
   // 기입내용 input을 div로 묶음
   & > div {
     width: 702px;
@@ -98,7 +96,6 @@ const StoreDescBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 기입내용의 제목을 h2
   & > h2 {
     width: 141px;
@@ -117,7 +114,6 @@ const StoreDescBox = styled.div`
       font-size: 1.5rem;
     }
   }
-
   // 기입내용 input을 div로 묶음
   & > div {
     width: 702px;
@@ -152,7 +148,6 @@ const BusinessAdd = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 큰 틀을 비슷
   & > h2 {
     width: 141px;
@@ -178,7 +173,6 @@ const BusinessAdd = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     // 우편번호 창
     & > div > input {
       font-family: 'SCD-4';
@@ -221,7 +215,6 @@ const ImgBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 제목 - 대표이미지 등록
   & > h2 {
     width: 141px;
@@ -255,7 +248,6 @@ const ImgBox = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
       //사진미리보기 부분/ 지금은 회색 박스
       & > div {
         width: 155px;
@@ -263,14 +255,12 @@ const ImgBox = styled.div`
         border-radius: 3px;
         display: flex;
         flex-direction: column;
-
         & > img {
           width: 100%;
           height: 100%;
           margin: 'auto';
         }
       }
-
       // 이미지 권장 사이즈 안내
       & > p {
         font-family: 'SCD-4';
@@ -287,7 +277,6 @@ const ImgBox = styled.div`
       padding-left: 20px;
       padding-bottom: 40px;
       justify-content: flex-end;
-
       // 파일불러오는 input 버튼
       & > label {
         width: 73px;
@@ -319,7 +308,6 @@ const TelBox = styled.div`
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
-
   // 전화번호 타이틀
   & > h2 {
     width: 141px;
@@ -418,7 +406,6 @@ const RadioBox = styled.div`
     padding: 20px;
     align-items: center;
     border-left: 1px solid ${({ theme }) => theme.lightblack};
-
     // 라디오 버튼 스타일링
     & > input {
       width: 18px;
@@ -426,7 +413,6 @@ const RadioBox = styled.div`
       accent-color: green;
     }
     // 체크되면 달라지는 스타일링
-
     // 라디오 버튼의 내용
     & > label {
       font-family: 'SCD-3';
@@ -457,33 +443,39 @@ const EditButton = styled(RegButton)`
 
 const StoreOpenForm = () => {
   const imgSrc = useRef();
+  const navigate = useNavigate();
 
   const [img, setImg] = useState('');
+  const [imagePath, setImagePath] = useState('');
+
   console.log(img);
+
   const onChangeFile = (e) => {
     if (e.target.files && e.target.files[0]) {
+      let save = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       setImg(e.target.files[0]);
 
       reader.onload = async (e) => {
-        console.log(e);
-        console.log(img, '안녕');
-
         const formData = new FormData();
-        formData.append('img', img);
+        formData.append('img', save);
 
-        let URL = `http://localhost:8080/admin/upload`;
+        let URL = `http://localhost:8080/admin/storeImage`;
         const request = await axios.post(URL, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
 
+        setImagePath(request.data.imagePath);
         imgSrc.current.src = reader.result;
       };
     }
   };
+
+  console.log(imagePath);
+
   const [topping, setTopping] = useState();
   const onChangeRadio = (e) => {
     setTopping(e.target.value);
@@ -579,7 +571,7 @@ const StoreOpenForm = () => {
     storeCeoEmail: email,
     storeCeoName: name,
     storeAddress: `${address1} ${address2} ${address3}`,
-    storeimg: ``,
+    storeimg: imagePath,
     storeCall: `${huntingLine1}-${huntingLine2}-${huntingLine3}`,
     storePhone: `${mobile1}-${mobile2}-${mobile3}`,
     storeReceiveEmail: receiveEmail,
@@ -593,13 +585,19 @@ const StoreOpenForm = () => {
   };
 
   console.log(data);
-  const onclick = () => {
+  const onclick = (e) => {
     axios.post('http://localhost:8080/admin/storeOpen', data);
+    alert('스토어 개설을 하였습니다!');
+    navigate('/admin');
   };
 
   return (
     <MainBox>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <h1>스토어 정보</h1>
         <div>
           <ContentBox>
@@ -701,7 +699,7 @@ const StoreOpenForm = () => {
                   onChange={onChangeFile}
                   name={'img'}
                 ></input>
-                <label for='input-file'>등록</label>
+                <label htmlFor='input-file'>등록</label>
                 <p>등록이미지 : 5M 이하 / gif, png, jpg(jpeg)</p>
               </div>
             </div>
@@ -714,6 +712,7 @@ const StoreOpenForm = () => {
                 onChange={onchange}
                 name='storeDesc'
                 placeholder='200자 이내로 작성해주세요'
+                maxlength='200'
               ></input>
             </div>
           </StoreDescBox>

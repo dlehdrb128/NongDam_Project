@@ -9,13 +9,15 @@ const userCheck = (req, res, next) => {
       .json({ status: 401, statusMessage: "로그인 실패입니다" });
   }
 
-  const SQL = `SELECT user_key, user_name, user_email, user_point, user_auth,user_id 
-               FROM  user WHERE user_id = '${req.session.userId}'`;
+  const SQL = `SELECT user_key, user_name, user_email, user_point, user_auth,user_id,
+                      user_address, user_address_detail, user_phone
+              FROM  user WHERE user_id = '${req.session.userId}'`;
 
   connection.query(SQL, (err, row, filed) => {
     if (err) console.error(err);
 
     req.userInfo = row[0];
+    req.session.userInfo = row[0];
     next();
   });
 };

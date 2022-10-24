@@ -1,40 +1,41 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const fs = require('fs');
-const multer = require('multer');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const Market = require('./Server/Router/Market/index');
-const Main = require('./Server/Router/Main/index');
-const Product = require('./Server/Router/Product/index');
-const uploadTest = require('./Server/Router/uploadTest');
-const recipe = require('./Server/Router/Recipe/index');
-const login = require('./Server/Router/Login/index');
-const signUp = require('./Server/Router/SignUp/index');
-const orders = require('./Server/Router/Orders/index');
-const cart = require('./Server/Router/Cart/index');
-const admin = require('./Server/Router/Admin/index');
+const express = require("express");
+const path = require("path");
+const cors = require("cors");
+const fs = require("fs");
+const multer = require("multer");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const Market = require("./Server/Router/Market/index");
+const Main = require("./Server/Router/Main/index");
+const Product = require("./Server/Router/Product/index");
+const uploadTest = require("./Server/Router/uploadTest");
+const recipe = require("./Server/Router/Recipe/index");
+const login = require("./Server/Router/Login/index");
+const signUp = require("./Server/Router/SignUp/index");
+const orders = require("./Server/Router/Orders/index");
+const cart = require("./Server/Router/Cart/index");
+const admin = require("./Server/Router/Admin/index");
 const store = require("./Server/Router/Store/index");
+
 const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser('keyboard cat'));
+app.use(cookieParser("keyboard cat"));
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // 출처 허용 옵션
+    origin: "http://localhost:3000", // 출처 허용 옵션
     credentials: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
   })
 );
 
 app.use(
   session({
-    secret: 'keyboard cat',
+    secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -44,29 +45,29 @@ app.use(
   })
 );
 
-app.use('/', Main);
-app.use('/product', Product);
-app.use('/upload', uploadTest);
-app.use('/recipe', recipe);
-app.use('/login', login);
-app.use('/signUp', signUp);
-app.use('/orders', orders);
-app.use('/cart', cart);
-app.use('/market', Market);
-app.use('/store', store);
-app.use('/admin', admin);
+app.use("/", Main);
+app.use("/product", Product);
+app.use("/upload", uploadTest);
+app.use("/recipe", recipe);
+app.use("/login", login);
+app.use("/signUp", signUp);
+app.use("/orders", orders);
+app.use("/cart", cart);
+app.use("/market", Market);
+app.use("/store", store);
+app.use("/admin", admin);
 
 try {
-  fs.readdirSync('uploads');
+  fs.readdirSync("uploads");
 } catch (error) {
-  fs.mkdirSync('uploads');
-  console.log('uploads 파일이 없어서 생성합니다!');
+  fs.mkdirSync("uploads");
+  console.log("uploads 파일이 없어서 생성합니다!");
 }
 
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'uploads');
+      cb(null, "uploads");
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + path.extname(file.originalname));
@@ -74,15 +75,15 @@ const upload = multer({
   }),
 });
 
-app.post('/upload', upload.single('img'), (req, res) => {
+app.post("/upload", upload.single("img"), (req, res) => {
   console.log(req.file);
   console.log(req.body);
-  console.dir(req.header('Content-Type'));
+  console.dir(req.header("Content-Type"));
   // console.log(req.files);
-  res.send('ok');
+  res.send("ok");
 });
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send(decode);
 });
 
