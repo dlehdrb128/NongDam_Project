@@ -49,29 +49,28 @@ const OrderItem = styled.a`
 
 
 const Mypagesec2OrderItem = ({ data }) => {
-  const datas = data.data[0];
-  const products = data.data[2];
-  console.log(data);
-  const img = `http://localhost:8080/product/${products[0].product_image}`
-  const href = `http://localhost:8080/orderDetail/${datas[0].product_key}`
+  console.log(data)
+  let product = `/orderDetail/${data.product_key}`
+  let img = `http://localhost:8080/product/${data.product_image}`
   return (
-    <OrderItem href={href}>
+    <OrderItem href={product}>
       {/* 날짜,주문번호 */}
       <div>
-        <p>{datas[0].covert_date}</p>
-        <p>{datas[0].orders_number}</p>
+        <p>{data.orders_date}</p>
+        <br />
+        <p>{data.orders_number}</p>
       </div>
       {/* 상품이미지 */}
       <img src={img} alt="Product"></img>
       {/* 상품명 */}
-      <p>{products[0].product_name}</p>
+      <p>{data.product_name}</p>
       {/* 상품구매갯수 */}
       <p>1개</p>
       {/* 가격 */}
-      <p>{products[0].product_price}원</p>
+      <p>{(data.product_price).toLocaleString()}원</p>
       {/* 배송현황 */}
-      <p>{datas[0].orders_status}</p>
-    </OrderItem>
+      <p>{data.orders_status}</p>
+    </OrderItem >
   );
 };
 //end

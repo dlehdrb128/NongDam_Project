@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { useState, useEffect } from 'react'
+import axios from "axios";
 //color,font Asset
 
 //섹션2 콘텐츠1 주문처리현황 컨테이너(사이즈,백그라운드,위치조정)
@@ -126,45 +127,58 @@ const Info = styled.div`
 
 //dummy object
 
-const member = {
-  PersonalMember: [
-    {
-      TotoalCount: '준비 중 입니다.',
-      Totoalpay: '',
-      Favorite: 2,
-    },
-  ],
-};
+const Mypagesec2Info = ({ data, userData }) => {
 
-const Mypagesec2Info = ({ data }) => {
+  console.log(userData);
+  const [loading, setLoading] = useState(false);
+  const [datas, setDatas] = useState();
+
+  useEffect(() => {
+    setLoading(true);
+    const Product = async () => {
+      try {
+        let response = await axios.get(`http://localhost:8080/cart/user/${userData.user_key}`, { withCredentials: true });
+        console.log(response.data);
+        setDatas(response.data)
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    Product();
+  }, []);
+
+  console.log(datas);
+
+  let name = data[0][0].user_name;
+  let otherdata = data[1]
   //구조분해할당
-  const { PersonalMember } = member;
-  const namedata = data.data[1];
-  const orders = data.data[0];
   return (
     <Info>
       {/* 회원정보 */}
       <div>
         <h1>
-          {namedata[1].user_name}님
+          {data && name}님
         </h1>
         <span>
-          총주문 {PersonalMember[0].Totoalpay.toLocaleString()}원(
-          {PersonalMember[0].TotoalCount})
+          총주문<br />
+          준비중입니다.
         </span>
       </div>
       {/* 쿠폰,적립금,관심상품 */}
       <div>
         <div>
-          <p>쿠폰</p>
+          <p>쿠폰<br />
+            0개
+          </p>
         </div>
         <div>
           <p>적립금</p>
-          <p>{orders[0].orders_point}원</p>
+          <p>{otherdata[0].orders_point}원</p>
         </div>
         <div>
           <p>관심상품</p>
-          <p>{PersonalMember[0].Favorite}개</p>
+          <p>{datas && datas.length}개</p>
         </div>
       </div>
     </Info>

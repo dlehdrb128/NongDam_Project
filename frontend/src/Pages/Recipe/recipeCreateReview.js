@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import e from "cors";
+
 import { useNavigate } from "react-router-dom";
 
 const ReviewParent = styled.div`
@@ -293,10 +293,9 @@ const RecipeCreateReview = () => {
       try {
         let response = await axios.get("http://localhost:8080/login/check", {
           withCredentials: true,
-          
         });
-        if(response.data.status === 201){
-          setData({...data,user_key : response.data.userInfo.user_key,})
+        if (response.data.status === 201) {
+          setData({ ...data, user_key: response.data.userInfo.user_key });
         }
       } catch (err) {
         console.log(err);

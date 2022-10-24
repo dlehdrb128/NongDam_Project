@@ -48,37 +48,37 @@ const Storeinfo = ({ data }) => {
         <div>
           <div>
             <div>상호명</div>
-            <div>{data[0] && data.store_name}</div>
+            <div>{data[0].store_name}</div>
           </div>
           <div>
             <div>사업자등록번호</div>
-            <div>{data[0] && data.business_number}</div>
+            <div>{data[0].user_admin_companyNum}</div>
           </div>
           <div>
             <div>대표전화</div>
-            <div>{data[0] && data.store_phone}</div>
+            <div>{data[0].store_phone}</div>
           </div>
           <div>
             <div>E-mail</div>
-            <div>{data[0] && data.store_reciveEmail}</div>
+            <div>{data[0].store_reciveEmail}</div>
           </div>
         </div>
         <div>
           <div>
             <div>대표자</div>
-            <div>{data[0] && data.store_ceo_name}</div>
+            <div>{data[0].store_ceo_name}</div>
           </div>
           <div>
             <div>사업장 소재지</div>
-            <div>{data[0] && data.store_address}</div>
+            <div>{data[0].store_address}</div>
           </div>
           <div>
             <div>상담전화</div>
-            <div>{data[0] && data.store_cs_call}</div>
+            <div>{data[0].store_cs_call}</div>
           </div>
           <div>
             <div>cs 운영시간</div>
-            <div>{data[0] && data.store_cs_time}</div>
+            <div>{data[0].store_cs_time}</div>
           </div>
         </div>
       </div>

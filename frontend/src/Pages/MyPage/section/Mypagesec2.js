@@ -8,10 +8,10 @@ const Section2 = styled.section`
   padding-top: 125px;
   width: 867px;
 `;
-const Mypagesec2 = ({ data }) => {
+const Mypagesec2 = ({ data, userData }) => {
   return (
     <Section2>
-      <Mypagesec2Info data={data} />
+      <Mypagesec2Info data={data} userData={userData} />
       {/* 회원정보 */}
       <Mypagese2OrderState data={data} />
       {/* 주문처리현황 */}
