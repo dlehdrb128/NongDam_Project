@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 // 메인 박스
@@ -39,11 +40,23 @@ const Categoty = styled.div`
     font-family: "SCD-3";
     font-size: 1.5rem;
     padding-bottom: 10px;
-    cursor: pointer;
+  }
+`;
+
+const ProductManage = styled.div`
+  cursor: pointer;
+  font-family: "SCD-6";
+  font-size: 1.8rem;
+  padding-bottom: 13px;
+  color: ${({ theme }) => theme.lightblack};
+  &:hover {
+    transition: 0.3s;
+    color: ${({ theme }) => theme.green};
   }
 `;
 
 const AdminCategory = () => {
+  const navigate = useNavigate();
   return (
     <MainBox>
       <h1>스토어 개설</h1>
@@ -57,7 +70,13 @@ const AdminCategory = () => {
         <p>메인배너 설정</p>
       </Categoty>
       <Categoty>
-        <h2>상품관리</h2>
+        <ProductManage
+          onClick={() => {
+            navigate("/admin/productmanage");
+          }}
+        >
+          상품관리
+        </ProductManage>
         <p>상품 등록</p>
         <p>상품 진열</p>
       </Categoty>

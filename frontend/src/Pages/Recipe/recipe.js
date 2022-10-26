@@ -230,6 +230,24 @@ const Recipe = () => {
   const [data, setData] = useState();
   const [login, setLogin] = useState();
   const img = useRef();
+  const [userData, setUserData] = useState(null);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    const loginCheck = async () => {
+      try {
+        let response = await axios.get("http://localhost:8080/login/check", {
+          withCredentials: true,
+        });
+        if (response.data.status === 201) {
+          setUserData(response.data.userInfo);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    loginCheck();
+  }, []);
 
   const navigate = useNavigate();
   useEffect(() => {
