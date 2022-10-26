@@ -1,10 +1,9 @@
-
 import styled from "styled-components";
 import CartTitle from "./CartTitle";
 import CartItem from "./CartItem";
 import CartPrice from "./CartPrice";
 import Remocon from "../../LayOut/Remocon";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -73,13 +72,14 @@ const CartMain = () => {
     saleprice: 0,
     totalprice: 0,
   });
+
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     const getLogin = async () => {
       try {
-        let response = await axios.get('http://localhost:8080/login/check', {
+        let response = await axios.get("http://localhost:8080/login/check", {
           withCredentials: true,
         });
         if (response.data.status === 201) {
@@ -93,9 +93,8 @@ const CartMain = () => {
             console.log(error);
           }
         } else {
-
-          alert('로그인 하셔야 합니다');
-          navigate('/');
+          alert("로그인 하셔야 합니다");
+          navigate("/");
         }
       } catch (error) {
         console.log(error);
@@ -104,22 +103,21 @@ const CartMain = () => {
     getLogin();
   }, []);
 
-  if (userData === undefined) {
-    return null;
-  }
-
   const calc = (price, saleprice) => {
     setData({
       price: priceData.price + price,
       saleprice: priceData.saleprice + saleprice,
     });
   };
-  console.log(priceData);
+
+  if (userData === undefined) {
+    return null;
+  }
 
   if (data === undefined) {
     return <h1>데이터를 읽을 수 없습니다.</h1>;
   }
-  console.log(data);
+
   return (
     <MainBox>
       <CartMainBox>
@@ -132,7 +130,7 @@ const CartMain = () => {
         })}
         <CartPrice data={priceData} />
 
-        <div className='buttonBox'>
+        <div className="buttonBox">
           <SelectOrderButton
             col={({ theme }) => theme.green}
             bgcol={({ theme }) => theme.realWhite}
@@ -152,4 +150,4 @@ const CartMain = () => {
   );
 };
 
-export default CartMain;
+export default memo(CartMain);
