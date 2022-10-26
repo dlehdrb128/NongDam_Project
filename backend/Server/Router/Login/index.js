@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../../../db/db");
 const userCheck = require("../../../util/usercheck");
+const admincheck = require("../../../util/admincheck");
 
 // router.post("/attempt", (req, res) => {
 //   console.log(req.body);
@@ -52,6 +53,12 @@ router.get("/check", userCheck, (req, res, next) => {
   if (req.session.userId) {
     res.json({ status: 201, userInfo: req.userInfo });
   }
+});
+
+router.get("/admincheck", admincheck, (req, res, next) => {
+  console.log("aa");
+
+  res.status(200).json({ status: 201, statusMessage: "ok" });
 });
 
 // router.get("/check", (req, res) => {

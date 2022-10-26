@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
 const LoginHeader = styled.div`
   /* 최상단 "로그인" 제목 값 */
   width: 1265px;
@@ -207,6 +208,20 @@ const AppleLogo = styled.img`
 
 const Login = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const request = async () => {
+      let getCheckLogin = await axios.get("http://localhost:8080/login/check", {
+        withCredentials: true,
+      });
+      if (getCheckLogin.data.status === 201) {
+        navigate("/");
+      }
+    };
+
+    request();
+  }, []);
+
   // const [inputId, setInputId] = useState("");
   // const [inputPW, setInputPw] = useState("");
 
