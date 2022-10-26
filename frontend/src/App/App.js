@@ -22,6 +22,7 @@ import RecipeReview from "../Pages/Recipe/recipeReview";
 import UploadTest from "../Pages/uploadTest/index";
 import NewLogin from "../Pages/Login/newLogin";
 import Store from "../Pages/Store/Store";
+import { StyledTest } from "../Pages/buttonStyled/buttonStyled";
 import "./App.css";
 import AdminProductManage from "../Pages/Admin/AdminProductManage";
 
@@ -32,6 +33,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route element={<Header />} />
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/styledTest" element={<StyledTest />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/newLogin" element={<NewLogin />}></Route>
           <Route path="/intro" element={<Intro />}></Route>

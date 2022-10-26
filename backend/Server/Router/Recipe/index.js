@@ -12,6 +12,13 @@ router.get("/post/:id", (req, res) => {
   );
 });
 
+let query =
+  "select * from recipe inner join recipe_image inner join user where recipe.recipe_key = recipe_image.recipe_key AND recipe.user_key = user.user_key ORDER BY recipe_views DESC limit 1";
+
+let test = (type) => {
+  return `select * from recipe inner join recipe_image where recipe.recipe_key = recipe_image.recipe_key ORDER BY ${type} DESC;`;
+};
+
 // router.get("/", (req, res) => {
 //   connection.query(`select * from recipe_image`, (err, row, field) => {
 //     res.json(row);
@@ -20,7 +27,7 @@ router.get("/post/:id", (req, res) => {
 
 router.get("/", (req, res) => {
   connection.query(
-    `select * from recipe inner join recipe_image where recipe.recipe_key = recipe_image.recipe_key; select * from recipe inner join recipe_image inner join user where recipe.recipe_key = recipe_image.recipe_key AND recipe.user_key = user.user_key ORDER BY recipe_views DESC limit 1;`,
+    `select * from recipe inner join recipe_image where recipe.recipe_key = recipe_image.recipe_key; ${query} `,
     (err, row, field) => {
       res.json(row);
     }
@@ -72,6 +79,41 @@ router.post("/recipeCreateReview/upload", (req, res) => {
       );
     }
   );
+});
+
+
+router.get("/sort/:type", (req, res) => {
+  const type = req.params.type;
+
+  switch (type) {
+    case "new":
+      connection.query(
+        `${test("recipe.recipe_created_date")} ${query}`,
+        (err, row, field) => {
+          if (err) throw err;
+          res.json(row);
+        }
+      );
+      break;
+    case "view":
+      connection.query(
+        `${test("recipe.recipe_views")} ${query}`,
+        (err, row, field) => {
+          if (err) throw err;
+          res.json(row);
+        }
+      );
+      break;
+    default:
+      connection.query(
+        `select * from recipe inner join recipe_image where recipe.recipe_key = recipe_image.recipe_key; ${query}`,
+        (err, row, field) => {
+          if (err) throw err;
+          res.json(row);
+        }
+      );
+      break;
+  }
 });
 
 router.get("/delete/:recipe_Key", (req, res) => {

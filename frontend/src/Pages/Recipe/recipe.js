@@ -3,6 +3,10 @@ import RecipeItem from "./recipeItem";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import RecipeSort from "./recipeSort";
+import { getData } from "../../modules/function";
+
 const RecipeParent = styled.div`
   /* 레시피 페이지 전체 부모 설정값 */
   width: 1230px;
@@ -231,7 +235,14 @@ const Recipe = () => {
   const [login, setLogin] = useState();
   const img = useRef();
   const [userData, setUserData] = useState(null);
+
   const navigate = useNavigate();
+  const [params, setParams] = useState({ sort: "normal" });
+  
+
+  useEffect(() => {
+    getData(`recipe/sort/${params.sort}`, null, null, setData, null, null);
+  }, [params]);
 
   useEffect(() => {
     const loginCheck = async () => {
@@ -281,9 +292,20 @@ const Recipe = () => {
   if (data === undefined) {
     return null;
   }
+  // for (let i = 0; i < data[0].length; i++) {
+  //   let latestOrder = data[0][i].recipe_created_date;
+  //   console.log(latestOrder);
+  // }
+  // for (let i = 0; i < data[0].length; i++) {
+  //   let viewsOrder = data[0][i].recipe_views;
 
+  //   console.log(viewsOrder);
+  // }
+
+  // let order = data[0][(0, 1, 2)];
+  // console.log(order);
   let topRecipe = data[1][0];
-  console.log(login.status);
+  // console.log(data);
   return (
     <RecipeParent>
       {/* 레시피 페이지 전체 부모 설정값 */}
@@ -336,21 +358,19 @@ const Recipe = () => {
               <button>불로초</button>
               <button>산삼</button>
               <button>코코넛</button>
+              {/* 코코넛 */}
             </FruitVegetable>
           </div>
         </div>
       </div>
       <div>
-        {/* 밑에 게시물 부모 */}
         <TitleButton>
           {/* 총 000개의 맛있는 레시피가 있습니다, 최신순/추천순 버튼 */}
           <h2>
             총 <span>{data[0].length}</span>개의 맛있는 레시피가 있읍니다.
           </h2>
           <div>
-            <button>최신순</button>
-            &nbsp;
-            <button>인기순</button>
+            <RecipeSort params={params} setParams={setParams}></RecipeSort>
           </div>
         </TitleButton>
         <PostPage>
