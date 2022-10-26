@@ -1,48 +1,48 @@
 import styled from "styled-components";
 
 const Info = styled.div`
-      width: inherit;
-      color: ${({ theme }) => theme.lightblack};
-    &>h1{
-      font-family: SCD-6;
-      font-size: ${({ theme }) => theme.fontSize_25};
-      margin-bottom: 30px;
-    }
-    &>div{
-      width: inherit;
-      display: flex;
-      border-top: 2px solid ${({ theme }) => theme.gray};
-      &>div{
-        width: 50%;
-        &>div{
-          display: flex;
-          font-family: SCD-5;
+  width: inherit;
+  color: ${({ theme }) => theme.lightblack};
+  & > h1 {
+    font-family: SCD-6;
+    font-size: ${({ theme }) => theme.fontSize_25};
+    margin-bottom: 30px;
+  }
+  & > div {
+    width: inherit;
+    display: flex;
+    border-top: 2px solid ${({ theme }) => theme.gray};
+    & > div {
+      width: 50%;
+      & > div {
+        display: flex;
+        font-family: SCD-5;
+        font-size: ${({ theme }) => theme.fontSize_18};
+        color: ${({ theme }) => theme.lightblack};
+        & > div {
+          height: 80px;
           font-size: ${({ theme }) => theme.fontSize_18};
-          color: ${({ theme }) => theme.lightblack};
-          &>div{
-            height: 80px;
-            font-size: ${({ theme }) => theme.fontSize_18};
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom : 1px solid ${({ theme }) => theme.gray}
-          }
-          &>div:nth-child(1){
-            width: 40%;
-            background: ${({ theme }) => theme.white};
-          }
-          &>div:nth-child(2){
-            width: 100%;
-          }
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid ${({ theme }) => theme.gray};
+        }
+        & > div:nth-child(1) {
+          width: 40%;
+          background: ${({ theme }) => theme.white};
+        }
+        & > div:nth-child(2) {
+          width: 100%;
         }
       }
     }
-`
+  }
+`;
 
 const Storeinfo = ({ data }) => {
   // console.log(data);
   return (
-    <Info id='info'>
+    <Info id="info">
       <h1>판매자정보</h1>
       <div>
         <div>
@@ -83,7 +83,7 @@ const Storeinfo = ({ data }) => {
         </div>
       </div>
     </Info>
-  )
-}
+  );
+};
 
-export default Storeinfo
+export default Storeinfo;

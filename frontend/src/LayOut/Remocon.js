@@ -137,11 +137,8 @@ const Top = styled.div`
     
   }
 `
-
-
-
 const Remocon = () => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null);
   const [cartData, setCartData] = useState();
 
   //Top btn func
@@ -156,22 +153,24 @@ const Remocon = () => {
           withCredentials: true,
         });
         if (response.data.status === 201) {
-          setData(response.data.userInfo)
+          setData(response.data.userInfo);
           try {
-            const response2 = await axios(`http://localhost:8080/cart/user/${response.data.userInfo.user_key}`);
+            const response2 = await axios(
+              `http://localhost:8080/cart/user/${response.data.userInfo.user_key}`
+            );
             setCartData(response2.data);
             // console.log(cartData.length);
           } catch (error) {
             console.log(error);
           }
         } else {
-          setData({ user_auth: '비회원' })
+          setData({ user_auth: "비회원" });
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    getLogin()
+    };
+    getLogin();
   }, []);
   if (data === null) {
     return null;
@@ -180,10 +179,9 @@ const Remocon = () => {
     return 0;
   }
 
-
   return (
     <Remote id="Remote">
-      {data === null || data.user_auth === '일반' ?
+      {data === null || data.user_auth === "일반" ? (
         <Container>
           <>
             <Link to={`/cart/user/${data.user_key}`}>

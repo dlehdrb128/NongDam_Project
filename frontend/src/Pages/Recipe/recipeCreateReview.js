@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 const ReviewParent = styled.div`
@@ -302,10 +301,7 @@ const RecipeCreateReview = () => {
       }
     };
     loginCheck();
-  }, []);
-
-  const [img, setImg] = useState("");
-  const imgSrc = useRef();
+  }, [data.user_auth]);
 
   const ImgUpload = (input, id) => {
     if (input.files && input.files[0]) {
@@ -369,6 +365,7 @@ const RecipeCreateReview = () => {
   };
 
   const createRecipe = async () => {
+    console.log(data);
     if (
       data.recipe_title === null ||
       data.recipe_guide === null ||
@@ -380,14 +377,18 @@ const RecipeCreateReview = () => {
       alert("데이터가 부족합니다");
     } else {
       let response = await axios.post(
-        "http://localhost:8080/recipeCreateReview/upload",
+        "http://localhost:8080/recipe/recipeCreateReview/upload",
         data,
         { withCredentials: true }
       );
+      if (response.data.status === 201) {
+        alert("리뷰 작성이 완료되었습니다");
+        navigate("/recipe");
+        window.location.reload();
+      }
     }
   };
 
-  console.log(data);
   return (
     <ReviewParent>
       {/* 전체 부모 */}

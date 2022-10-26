@@ -113,7 +113,9 @@ router.get("/detail/:id", (req, res) => {
 router.post("/cart/insert", (req, res) => {
   let key = req.body[0].product_key;
   let count = req.body[1];
-  connection.query(`insert into cart value (null,2,${key},'일반',${count}`),
+  console.log(key);
+  console.log(count);
+  connection.query(`insert into cart value (null,2,${key},'일반',${count})`),
     (err, row, field) => {
       if (err) throw err;
     };
