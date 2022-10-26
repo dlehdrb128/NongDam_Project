@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -11,53 +11,7 @@ const Remote = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 `;
-
-const Top = styled.div`
-
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: ${({ theme }) => theme.orange};
-    padding-top: 18px;
-    position: relative;
-    color: ${({ theme }) => theme.realWhite};
-    font-size: 1.4rem;
-    font-family: SCD-5;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${({ theme }) => theme.green};
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 15px;
-      left: 33.5px;
-      transform: rotate(145deg);
-      background: ${({ theme }) => theme.realWhite};
-      border-radius: 1px;
-      width: 2px;
-      height: 15px;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 15px;
-      right: 33px;
-      transform: rotate(-145deg);
-      background: ${({ theme }) => theme.realWhite};
-      border-radius: 1px;
-      width: 2px;
-      height: 15px;
-    
-  }
-`
 
 const Container = styled.div`
     width: 76px;
@@ -67,7 +21,6 @@ const Container = styled.div`
     background: ${({ theme }) => theme.realWhite};
     overflow: hidden;
     margin-bottom: 30px;
-
     & > a {
       width: inherit;
       height: calc(240px / 2);
@@ -112,6 +65,78 @@ const Container = styled.div`
       }
     }`
 
+const updown = keyframes`
+  0%{
+    top : 8px;
+  }
+  50%{
+    top:0px;
+  }
+  100%{
+    top : 8px;
+  }
+`
+const Line = styled.div`
+  background-color: ${({ theme }) => theme.orange};
+  width: 1px;
+  height: 60px;
+`
+const Metabus = styled.a`
+  background: url('http://localhost:8080/icon/metabus.png') no-repeat center/cover;
+  width: 95px;
+  height: 131px;
+  position: relative;
+  transition: ease .5s;
+  animation: ${updown} 1s infinite linear alternate;
+  cursor: pointer;
+  &:hover{
+    transform:scale(1.1);
+    transition: ease .5s;
+  }
+`
+
+const Top = styled.div`
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.orange};
+    padding-top: 18px;
+    position: relative;
+    color: ${({ theme }) => theme.realWhite};
+    font-size: 1.4rem;
+    font-family: SCD-5;
+    margin-bottom: 0px;
+    cursor: pointer;
+    &:hover {
+      background-color: ${({ theme }) => theme.green};
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 33.5px;
+      transform: rotate(145deg);
+      background: ${({ theme }) => theme.realWhite};
+      border-radius: 1px;
+      width: 2px;
+      height: 15px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      right: 33px;
+      transform: rotate(-145deg);
+      background: ${({ theme }) => theme.realWhite};
+      border-radius: 1px;
+      width: 2px;
+      height: 15px;
+    
+  }
+`
 
 
 
@@ -179,9 +204,9 @@ const Remocon = () => {
           </>
         </Container>
         : null}
-
       <Top onClick={MoveTop}>TOP</Top>
-
+      <Line></Line>
+      <Metabus href="https://app.gather.town/invite?token=exEth8VwR7aXhS-BeDXo"></Metabus>
     </Remote>
   );
 };
