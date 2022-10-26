@@ -1,5 +1,5 @@
-import { useState, forwardRef, useEffect } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
 // 상품 목록 전체 박스
 const ItemBox = styled.div`
@@ -35,27 +35,27 @@ const ItemBox = styled.div`
     width: 357px;
     padding-right: 3px;
     font-size: 1.5rem;
-    font-family: 'SCD-3';
+    font-family: "SCD-3";
   }
   // 판매가
   & > div:nth-child(4) {
     width: 79px;
     font-size: 1.5rem;
-    font-family: 'SCD-3';
+    font-family: "SCD-3";
     text-align: center;
   }
   // 할인금액
   & > div:nth-child(6) {
     width: 80px;
     font-size: 1.5rem;
-    font-family: 'SCD-3';
+    font-family: "SCD-3";
     text-align: center;
   }
   // 합계
   & > div:nth-child(7) {
     width: 139px;
     font-size: 1.5rem;
-    font-family: 'SCD-3';
+    font-family: "SCD-3";
     text-align: center;
   }
   // 선택
@@ -70,7 +70,7 @@ const ItemBox = styled.div`
       width: 117px;
       height: 40px;
       font-size: 1.5rem;
-      font-family: 'SCD-6';
+      font-family: "SCD-6";
       background-color: ${({ theme }) => theme.green};
       color: ${({ theme }) => theme.realWhite};
       border: none;
@@ -111,34 +111,32 @@ const CountBox = styled.div`
   & > button {
     width: 26px;
     height: 26px;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     font-size: 1.5rem;
   }
   & > input {
     width: 26px;
     height: 26px;
-    font-family: 'SCD-3';
+    font-family: "SCD-3";
     font-size: 1.5rem;
     text-align: center;
   }
 `;
 
 //
-const CartItem = ({ product, pricedata, calc }) => {
+const CartItem = ({ product, calc }) => {
   //수량
   const [number, setNumber] = useState(0);
-  const discount = product.product_price - (product.product_price * (product.product_discount_percent / 100));
+  const discount =
+    product.product_price -
+    product.product_price * (product.product_discount_percent / 100);
   const [totalPrice, setTotalPrice] = useState({
-    type: '',
-    price: 0
+    type: "",
+    price: 0,
+    saleprice: 0,
   });
 
-  let test;
-
-  product.product_discount_percent === 0 ? test = product.product_price : test = product.product_price - product.product_price * (product.product_discount_percent / 100)
-
-
-
+  // product.product_discount_percent === 0 ? test = product.product_price : test = product.product_price - product.product_price * (product.product_discount_percent / 100)
   // 값 바뀔때마다 number로 받고 있는 input창 변화
   const onChange = (e) => {
     if (e.target.value > 0) {
@@ -149,35 +147,42 @@ const CartItem = ({ product, pricedata, calc }) => {
   // 플러스버튼 누르면 1씩 증가
   const clickPlus = () => {
     setNumber(number + 1);
-    setTotalPrice({ type: 'up', price: product.product_price * (number + 1) })
+    setTotalPrice({
+      type: "up",
+      price: product.product_price * (number + 1),
+      saleprice: (product.product_price - discount) * (number + 1),
+    });
   };
 
   // 마이너스버튼 누르면 1씩 감소
   const clickMinus = () => {
-    if (number >= 1) {
+    if (number > 0) {
       setNumber(number - 1);
-      setTotalPrice({ type: 'down', price: product.product_price * (number + 1) })
+      setTotalPrice({
+        type: "down",
+        price: product.product_price * number,
+        saleprice: (product.product_price - discount) * number,
+      });
     }
   };
 
   useEffect(() => {
-    if (totalPrice.type === 'up') {
-      calc(test)
+    if (totalPrice.type === "up") {
+      calc(totalPrice.price, totalPrice.saleprice);
+    } else {
+      calc(-totalPrice.price, -totalPrice.saleprice);
     }
-    else {
-      calc(-test)
-    }
-  }, [totalPrice])
+  }, [totalPrice]);
 
-  const img = `http://localhost:8080/product/product-${product.product_key}.png`
+  const img = `http://localhost:8080/product/product-${product.product_key}.png`;
   return (
     <>
       <ItemBox>
         <div>
-          <input type='checkbox' name='product'></input>
+          <input type="checkbox" name="product"></input>
         </div>
         <div>
-          <img src={img} alt='productimage'></img>
+          <img src={img} alt="productimage"></img>
         </div>
         <div>{product.product_name}</div>
         <div>{product.product_price.toLocaleString()}원</div>
@@ -189,21 +194,20 @@ const CartItem = ({ product, pricedata, calc }) => {
         <div>
           {((product.product_price - discount) * number).toLocaleString()}원
         </div>
-        <div>
-          {
-            totalPrice.price.toLocaleString()}
-          원
-        </div>
+        <div>{(discount * number).toLocaleString()}원</div>
         <div>
           <button>바로구매</button>
           <div>
             <div>
-              <img src={"http://localhost:8080/icon/cart_heart.png"} alt="icon"></img>
+              <img
+                src={"http://localhost:8080/icon/cart_heart.png"}
+                alt="icon"
+              ></img>
             </div>
             <div>
               <img
-                src={'http://localhost:8080/icon/cart_trash.png'}
-                alt='icon'
+                src={"http://localhost:8080/icon/cart_trash.png"}
+                alt="icon"
               ></img>
             </div>
           </div>

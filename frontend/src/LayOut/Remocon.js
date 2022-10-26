@@ -131,7 +131,7 @@ const Remocon = () => {
               `http://localhost:8080/cart/user/${response.data.userInfo.user_key}`
             );
             setCartData(response2.data);
-            console.log(cartData.length);
+            // console.log(cartData.length);
           } catch (error) {
             console.log(error);
           }
@@ -164,7 +164,7 @@ const Remocon = () => {
               <p>장바구니</p>
               <span>{cartData && cartData.length}</span>
             </Link>
-            <Link to="/admin/myPage">
+            <Link to="/myPage">
               <img
                 src="http://localhost:8080/svg/mypage_gray.svg"
                 alt="Mypage"

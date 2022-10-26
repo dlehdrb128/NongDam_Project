@@ -294,18 +294,7 @@ const RecipeCreateReview = () => {
           withCredentials: true,
         });
         if (response.data.status === 201) {
-          setData({
-            ...data,
-            user_key: response.data.userInfo.user_key,
-            user_auth: response.data.userInfo.user_auth,
-          });
-          if (data.user_auth === "사업자") {
-            alert("사업자 회원은 레시피를 작성할 수 없습니다");
-            navigate("/recipe");
-          }
-        } else {
-          alert("일반 회원만 레시피를 작성할 수 있습니다");
-          navigate("/login");
+          setData({ ...data, user_key: response.data.userInfo.user_key });
         }
       } catch (err) {
         console.log(err);

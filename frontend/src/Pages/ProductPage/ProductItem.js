@@ -1,132 +1,20 @@
-import { memo, useEffect, useState } from "react";
-import styled from "styled-components";
+import { ProductItemBox, SaleBox } from "../../common/product";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
-// 상품 검색 페이지의 상품을 담은 박스
-const ProductItemBox = styled.div`
-  & > *:hover {
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  /* Link 속성 설정 */
-  & > a:link {
-    text-decoration: none;
-    color: ${({ theme }) => theme.lightblack};
-  }
-  & > a:visited {
-    text-decoration: none;
-    color: ${({ theme }) => theme.lightblack};
-  }
-  & > a:active {
-    text-decoration: none;
-    color: ${({ theme }) => theme.lightblack};
-  }
-
-  & > a:nth-child(1) {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-
-    /* 이미지 규격 설정 */
-    & > img {
-      width: 350px;
-      height: 300px;
-      border-radius: 10px;
-    }
-
-    /* 지역 텍스트 */
-    & > div:nth-child(2) {
-      margin-top: 15px;
-      font-family: "SCD-4";
-      font-size: 1.5rem;
-      color: ${({ theme }) => theme.green};
-    }
-
-    /* 상품 이름 */
-    & > div:nth-child(3) {
-      font-family: "SCD-4";
-      font-size: 2.1rem;
-      color: ${({ theme }) => theme.lightblack};
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      padding-bottom: 30px;
-    }
-
-    /* 가격, 별점, 리뷰를 담은 박스 */
-    & > div:nth-child(4) {
-      display: flex;
-      align-items: center;
-
-      /* 가격*/
-      & > div:nth-child(1) {
-        font-family: "SCD-6";
-        font-size: 3rem;
-        color: ${({ theme }) => theme.lightblack};
-      }
-
-      /* 별점, 리뷰를 담은 박스 */
-      & > div:nth-child(2) {
-        margin-left: 15px;
-
-        /* 별점 */
-        & > div:nth-child(1) {
-          font-family: "SCD-4";
-          font-size: 0.8rem;
-          color: ${({ theme }) => theme.black};
-          & > span {
-            color: rgba(255, 210, 51, 1);
-          }
-        }
-
-        /* 리뷰 */
-        & > div:nth-child(2) {
-          font-family: "SCD-4";
-          font-size: 1.3rem;
-          color: ${({ theme }) => theme.black};
-        }
-      }
-    }
-  }
-`;
-
-const SaleBox = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  & > div:nth-child(2) {
-    font-family: "SCD-7";
-    font-size: 3rem;
-    color: ${({ theme }) => theme.lightblack};
-  }
-  & > div:nth-child(1) {
-    font-family: "SCD-7";
-    font-size: 2rem;
-    color: ${({ theme }) => theme.gray};
-    text-decoration: line-through;
-    position: absolute;
-    bottom: 40px;
-  }
-`;
+import { useEffect, useState } from "react";
+import { getData, price } from "../../modules/yehoon";
 
 const ProductItem = ({ data }) => {
   const [datas, setDatas] = useState();
 
   useEffect(() => {
-    const getData = async (id) => {
-      try {
-        let response = await axios.get(
-          `http://localhost:8080/product/value/${id}`
-        );
-        setDatas(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData(data.product_key);
+    getData(
+      `product/value/${data.product_key}`,
+      null,
+      null,
+      setDatas,
+      null,
+      null
+    );
   }, []);
 
   if (datas === undefined) {
@@ -144,21 +32,21 @@ const ProductItem = ({ data }) => {
         <div>{data.product_name}</div>
         <div>
           {data.product_discount_percent === 0 ? (
-            <div>
-              {Math.round((data.product_price / 10) * 10).toLocaleString()}원
-            </div>
+            <div>{price(null, data.product_price)}원</div>
           ) : (
-            <SaleBox>
+            <SaleBox
+              firstTextDecoration="line-through"
+              firstPosition="absolute"
+              firstBottom="40px"
+            >
+              <div>{price(null, data.product_price)}</div>
               <div>
-                {Math.round((data.product_price / 10) * 10).toLocaleString()}
-              </div>
-              <div>
-                {Math.round(
-                  (data.product_price -
-                    (data.product_price * data.product_discount_percent) /
-                      100) /
-                    10
-                ) * (10).toLocaleString()}
+                {price(
+                  "sale",
+                  data.product_price,
+                  1,
+                  data.product_discount_percent
+                )}
                 원
               </div>
             </SaleBox>
@@ -180,4 +68,4 @@ const ProductItem = ({ data }) => {
   );
 };
 
-export default memo(ProductItem);
+export default ProductItem;

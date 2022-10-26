@@ -170,7 +170,6 @@ const RecipeReview = ({ recipe }) => {
   if (data === undefined) {
     return null;
   }
-
   let imageArray = [
     data.recipe_image_path,
     data.recipe_image_path_2,
