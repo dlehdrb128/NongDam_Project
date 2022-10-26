@@ -232,8 +232,8 @@ const Recipe = () => {
   const [login, setLogin] = useState();
   const img = useRef();
   const [userData, setUserData] = useState(null);
-
   const navigate = useNavigate();
+
   useEffect(() => {
     const loginCheck = async () => {
       try {
@@ -250,7 +250,6 @@ const Recipe = () => {
     loginCheck();
   }, []);
 
-  const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
       try {

@@ -2,7 +2,7 @@ import ProductItem from "./ProductItem";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData } from "../../modules/yehoon";
+import { getData } from "../../modules/function";
 import {
   ProductBox,
   ProductItemLeft,
@@ -10,8 +10,8 @@ import {
   ProductSortBox,
   ProductTop,
   UndefinedBox,
-} from "../../common/AllProduct";
-import Sort from "../../common/sort";
+} from "../../common/Allproduct";
+import Sort from "../../modules/sort";
 
 const AllProduct = () => {
   const [params, setParams] = useState({
