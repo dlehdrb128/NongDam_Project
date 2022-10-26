@@ -1,7 +1,7 @@
 import { ProductItemBox, SaleBox } from "../../common/product";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getData, price } from "../../modules/yehoon";
+import { getData, price } from "../../modules/function";
 
 const ProductItem = ({ data }) => {
   const [datas, setDatas] = useState();

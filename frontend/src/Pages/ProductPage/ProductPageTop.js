@@ -11,7 +11,7 @@ import {
   ProductPageTotalPrice,
   ProductPageButtonBox,
 } from "../../common/productPage.js";
-import { price } from "../../modules/yehoon";
+import { price } from "../../modules/function";
 
 const ProductPageTop = ({ ProductData }) => {
   const [count, setCount] = useState(0);
