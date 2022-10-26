@@ -24,6 +24,7 @@ import NewLogin from "../Pages/Login/newLogin";
 import Store from "../Pages/Store/Store";
 import { StyledTest } from "../Pages/buttonStyled/buttonStyled";
 import "./App.css";
+import AdminProductManage from "../Pages/Admin/AdminProductManage";
 
 function App() {
   return (
@@ -40,6 +41,10 @@ function App() {
           <Route path="/product/detail/:id" element={<ProductPage />}></Route>
           <Route path="/admin" element={<AdminMain />}></Route>
           <Route path="/admin/create" element={<StoreOpenMain />}></Route>
+          <Route
+            path="/admin/productmanage"
+            element={<AdminProductManage />}
+          ></Route>
           <Route path="/signUp" element={<SignUp></SignUp>}></Route>
           <Route path="/signUpEnd" element={<SignUpEnd />}></Route>
           <Route path="/recipe" element={<Recipe />}></Route>
@@ -52,6 +57,7 @@ function App() {
             path="/orderDetail/:productId"
             element={<OrderDetail />}
           ></Route>
+
           <Route path="/cart/user/:id" element={<CartMain />}></Route>
           <Route path="/FivedaysMakret" element={<FivedaysMakret />}></Route>
           <Route path="/admin/newproduct" element={<NewProductMain />}></Route>
