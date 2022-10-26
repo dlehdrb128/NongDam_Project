@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-const MainLogoBox = styled.div``;
-const MainLogoItem = styled.img``;
+const MainLogoBox = styled.div`
+  position: relative;
+  z-index: 3;
+  `;
+const MainLogoItem = styled.img`
+`;
 
 // 메인 로고
 const MainLogo = () => {
