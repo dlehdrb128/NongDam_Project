@@ -584,18 +584,57 @@ const StoreOpenForm = () => {
     storeDesc: storeDesc,
   };
 
-  console.log(data);
+  //console.log(data);
+  console.dir(topping);
+  console.log(onChangeRadio);
+  const inputCheck =
+    storeName.length >= 1 &&
+    mobilePhone.length >= 1 &&
+    email.length >= 1 &&
+    name.length >= 1 &&
+    address1.length >= 1 &&
+    address2.length >= 1 &&
+    imagePath.length >= 1 &&
+    storeDesc.length >= 1 &&
+    mobile1.length >= 1 &&
+    mobile2.length >= 1 &&
+    mobile3.length >= 1 &&
+    receiveEmail.length >= 1 &&
+    outgoingEmail.length >= 1 &&
+    csTel1.length >= 1 &&
+    csTel2.length >= 1 &&
+    csTel3.length >= 1 &&
+    csHours.length >= 1 &&
+    csEmail.length >= 1;
+
+  const handleInput = () => {
+    if (!inputCheck) {
+      alert('필수 입력사항을 체크하세요');
+    } else {
+      axios.post('http://localhost:8080/admin/storeOpen', data);
+
+      alert('스토어 개설을 하였습니다!');
+      navigate('/admin');
+    }
+  };
   const onclick = (e) => {
-    axios
-      .post('http://localhost:8080/admin/storeOpen', data)
-      .then((response) => {
-        if (response.data.success) {
-          alert('스토어 개설을 하였습니다!');
-          navigate('/admin');
-        } else {
-          alert('스토어 개설에 실패하였습니다.');
-        }
-      });
+    // if (storeName === '') {
+    //   alert('스토어명을 입력하세요');
+    //   return false;
+    // }
+    // if (mobilePhone === '') {
+    //   alert('대표 휴대전화를 입력하세요');
+    //   return false;
+    // }
+    // if (email === '') {
+    //   alert('대표 이메일을 입력하세요');
+    //   return false;
+    // }
+    // if (name === '') {
+    //   alert('대표 이메일을 입력하세요');
+    //   return false;
+    // }
+    handleInput();
   };
 
   return (
@@ -609,11 +648,10 @@ const StoreOpenForm = () => {
         <div>
           <ContentBox>
             <h2>
-              쇼핑몰명
+              스토어명
               <span> *</span>
             </h2>
             <div>
-              <input hidden='hidden' />
               <input type='text' onChange={onchange} name='storeName'></input>
 
               <span>
