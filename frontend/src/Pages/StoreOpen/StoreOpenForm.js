@@ -586,9 +586,16 @@ const StoreOpenForm = () => {
 
   console.log(data);
   const onclick = (e) => {
-    axios.post('http://localhost:8080/admin/storeOpen', data);
-    alert('스토어 개설을 하였습니다!');
-    navigate('/admin');
+    axios
+      .post('http://localhost:8080/admin/storeOpen', data)
+      .then((response) => {
+        if (response.data.success) {
+          alert('스토어 개설을 하였습니다!');
+          navigate('/admin');
+        } else {
+          alert('스토어 개설에 실패하였습니다.');
+        }
+      });
   };
 
   return (
