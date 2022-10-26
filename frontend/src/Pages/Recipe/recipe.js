@@ -232,6 +232,7 @@ const Recipe = () => {
   const img = useRef();
   const [userData, setUserData] = useState(null);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const loginCheck = async () => {
       try {

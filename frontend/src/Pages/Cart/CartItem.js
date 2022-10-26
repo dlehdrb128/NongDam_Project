@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
+
 // 상품 목록 전체 박스
 const ItemBox = styled.div`
   width: inherit;
@@ -167,7 +168,9 @@ const CartItem = ({ product, calc }) => {
   };
 
   useEffect(() => {
-    if (totalPrice.type === "up") {
+
+
+    if (totalPrice.type === 'up') {
       calc(totalPrice.price, totalPrice.saleprice);
     } else {
       calc(-totalPrice.price, -totalPrice.saleprice);

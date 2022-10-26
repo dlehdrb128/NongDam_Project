@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 import CartTitle from "./CartTitle";
 import CartItem from "./CartItem";
@@ -78,7 +79,7 @@ const CartMain = () => {
   useEffect(() => {
     const getLogin = async () => {
       try {
-        let response = await axios.get("http://localhost:8080/login/check", {
+        let response = await axios.get('http://localhost:8080/login/check', {
           withCredentials: true,
         });
         if (response.data.status === 201) {
@@ -92,8 +93,9 @@ const CartMain = () => {
             console.log(error);
           }
         } else {
-          alert("로그인 하셔야 합니다");
-          navigate("/");
+
+          alert('로그인 하셔야 합니다');
+          navigate('/');
         }
       } catch (error) {
         console.log(error);
@@ -129,7 +131,8 @@ const CartMain = () => {
           );
         })}
         <CartPrice data={priceData} />
-        <div className="buttonBox">
+
+        <div className='buttonBox'>
           <SelectOrderButton
             col={({ theme }) => theme.green}
             bgcol={({ theme }) => theme.realWhite}
