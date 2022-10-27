@@ -406,6 +406,7 @@ const Recipe = () => {
           </CreateLink>
         </div>
       )}
+ 
     </RecipeParent>
   );
 };
