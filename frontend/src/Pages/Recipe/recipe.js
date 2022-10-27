@@ -238,7 +238,6 @@ const Recipe = () => {
 
   const navigate = useNavigate();
   const [params, setParams] = useState({ sort: "normal" });
-  
 
   useEffect(() => {
     getData(`recipe/sort/${params.sort}`, null, null, setData, null, null);
@@ -306,6 +305,7 @@ const Recipe = () => {
   // console.log(order);
   let topRecipe = data[1][0];
   // console.log(data);
+
   return (
     <RecipeParent>
       {/* 레시피 페이지 전체 부모 설정값 */}
@@ -390,20 +390,22 @@ const Recipe = () => {
           <button>5</button>
         </FooterButton>
       </div>
-      <div>
-        <CreateLink
-          onClick={() => {
-            if (login.status !== 201) {
-              alert("로그인이 필요합니다.");
-              navigate("/login");
-            } else {
-              navigate("/recipeCreateReview");
-            }
-          }}
-        >
-          게시글 작성하기
-        </CreateLink>
-      </div>
+      {userData.user_auth === "사업자" || userData === null ? null : (
+        <div>
+          <CreateLink
+            onClick={() => {
+              if (login.status !== 201) {
+                alert("로그인이 필요합니다.");
+                navigate("/login");
+              } else {
+                navigate("/recipeCreateReview");
+              }
+            }}
+          >
+            게시글 작성하기
+          </CreateLink>
+        </div>
+      )}
     </RecipeParent>
   );
 };
