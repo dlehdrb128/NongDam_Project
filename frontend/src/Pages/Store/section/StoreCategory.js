@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 // 상품 상세, 상품 후기, 상품 문의를 담은 전체 박스
 const CategoryBox = styled.div`

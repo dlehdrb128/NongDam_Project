@@ -7,15 +7,15 @@ router.get('/detail/:id/:sort', (req, res) => {
   let sort = req.params.sort;
 
   switch (sort) {
-    case 'highPrice': connection.query(`select * from product inner join admin_store on product.user_key = admin_store.user_key where admin_store.store_key = ${id} ORDER BY product.product_price DESC;`, (err, row, field) => {
+    case 'highPrice': connection.query(`select * from product inner join admin_store on product.user_key = admin_store.user_key inner join user on user.user_key = admin_store.user_key  where admin_store.store_key = ${id} ORDER BY product.product_price DESC;;`, (err, row, field) => {
       res.send(row);
     })
       break;
-    case 'lowPrice': connection.query(`select * from product inner join admin_store on product.user_key = admin_store.user_key where admin_store.store_key = ${id} ORDER BY product.product_price ASC;`, (err, row, field) => {
+    case 'lowPrice': connection.query(`select * from product inner join admin_store on product.user_key = admin_store.user_key inner join user on user.user_key = admin_store.user_key where admin_store.store_key = ${id} ORDER BY product.product_price ASC;`, (err, row, field) => {
       res.send(row);
     })
       break;
-    case 'new': connection.query(`select * from product inner join admin_store on product.user_key = admin_store.user_key where admin_store.store_key = ${id} ORDER BY product.product_post_date DESC;`, (err, row, field) => {
+    case 'new': connection.query(`select * from product inner join admin_store on product.user_key = admin_store.user_key inner join user on user.user_key = admin_store.user_key where admin_store.store_key = ${id} ORDER BY product.product_post_date DESC;`, (err, row, field) => {
       res.send(row);
     })
       break;

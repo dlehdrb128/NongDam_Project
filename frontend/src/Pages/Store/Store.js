@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Storesec1 from "./section/Storesec1";
-import StoreCategory from "../StoreOpen/StoreCategory";
+import StoreCategory from "./section/StoreCategory";
 import Storeproduct from "./section/Storeproduct";
 import Storeinfo from "./section/Storeinfo";
 
@@ -55,8 +55,8 @@ const Store = () => {
     <StoreMain>
       <Storesec1 data={data}></Storesec1>
       <StoreCategory></StoreCategory>
-      <Storeproduct data={data} change={categoryChange}></Storeproduct>
-      <Storeinfo data={data}></Storeinfo>
+      <Storeproduct id='product' data={data} change={categoryChange}></Storeproduct>
+      <Storeinfo id='info' data={data}></Storeinfo>
     </StoreMain>
   );
 };

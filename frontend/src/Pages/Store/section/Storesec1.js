@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { useState, useEffect } from 'react';
-
 
 const Section1 = styled.section`
   width: inherit;

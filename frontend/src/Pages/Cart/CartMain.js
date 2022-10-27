@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import CartTitle from './CartTitle';
-import CartItem from './CartItem';
-import CartPrice from './CartPrice';
-import Remocon from '../../LayOut/Remocon';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import styled from "styled-components";
+import CartTitle from "./CartTitle";
+import CartItem from "./CartItem";
+import CartPrice from "./CartPrice";
+import Remocon from "../../LayOut/Remocon";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // 장바구니 메인 큰 박스
 const MainBox = styled.div`
@@ -14,7 +14,7 @@ const MainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'SCD-6';
+  font-family: "SCD-6";
   color: ${(theme) => theme.lightblack};
 `;
 
@@ -22,15 +22,13 @@ const MainBox = styled.div`
 
 const CartMainBox = styled.div`
   width: 1280px;
-
   // 메인 이름 - 장바구니
   & > h1 {
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
     font-size: 4rem;
     text-align: center;
     padding-bottom: 80px;
   }
-
   // 선택주문, 전체주문 담을 박스
   .buttonBox {
     width: inherit;
@@ -47,7 +45,7 @@ const AllOrderButton = styled.button`
   height: 50px;
   color: ${(props) => props.col};
   background-color: ${(props) => props.bgcol};
-  font-family: 'SCD-6';
+  font-family: "SCD-6";
   font-size: 1.8rem;
   border: none;
   border-radius: 3px;
@@ -72,13 +70,14 @@ const CartMain = () => {
     saleprice: 0,
     totalprice: 0,
   });
+
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     const getLogin = async () => {
       try {
-        let response = await axios.get('http://localhost:8080/login/check', {
+        let response = await axios.get("http://localhost:8080/login/check", {
           withCredentials: true,
         });
         if (response.data.status === 201) {
@@ -92,8 +91,8 @@ const CartMain = () => {
             console.log(error);
           }
         } else {
-          alert('로그인 하셔야 합니다');
-          navigate('/');
+          alert("로그인 하셔야 합니다");
+          navigate("/");
         }
       } catch (error) {
         console.log(error);
@@ -102,17 +101,16 @@ const CartMain = () => {
     getLogin();
   }, []);
 
-  if (userData === undefined) {
-    return null;
-  }
-
   const calc = (price, saleprice) => {
     setData({
       price: priceData.price + price,
       saleprice: priceData.saleprice + saleprice,
     });
   };
-  console.log(priceData);
+
+  if (userData === undefined) {
+    return null;
+  }
 
   if (data === undefined) {
     return <h1>데이터를 읽을 수 없습니다.</h1>;
@@ -129,7 +127,8 @@ const CartMain = () => {
           );
         })}
         <CartPrice data={priceData} />
-        <div className='buttonBox'>
+
+        <div className="buttonBox">
           <SelectOrderButton
             col={({ theme }) => theme.green}
             bgcol={({ theme }) => theme.realWhite}

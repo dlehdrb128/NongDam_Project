@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // 금액 나타나는 제일 큰 박스
 const MainBox = styled.div`
@@ -18,16 +18,15 @@ const Pricebox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   // 해당가격 이름
   & > p:nth-child(1) {
     font-size: 2rem;
-    font-family: 'SCD-3';
+    font-family: "SCD-3";
   }
   // 해당 가격
   & > p:nth-child(2) {
     font-size: 3rem;
-    font-family: 'SCD-5';
+    font-family: "SCD-5";
   }
 `;
 
@@ -40,12 +39,11 @@ const OperatorBox = styled.div`
   align-items: center;
   & > p {
     font-size: 3rem;
-    font-family: 'SCD-6';
+    font-family: "SCD-6";
   }
 `;
 
 const CartPrice = ({ data }) => {
-  console.log(data);
   let shipping = 2500;
   if (data.price < 50000) {
     shipping = 2500;
