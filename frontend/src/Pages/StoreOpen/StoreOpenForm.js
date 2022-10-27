@@ -584,12 +584,42 @@ const StoreOpenForm = () => {
     storeDesc: storeDesc,
   };
 
-  console.log(data);
-  const onclick = (e) => {
-    axios.post('http://localhost:8080/admin/storeOpen', data);
-    alert('스토어 개설을 하였습니다!');
-    navigate('/admin');
+  const onClick = (e) => {
+    for (let key in data) {
+      let obj = data[key];
+      if (obj.length === 0) {
+        alert('필수 입력사항을 체크하세요');
+      } else {
+        axios.post('http://localhost:8080/admin/storeOpen', data);
+        alert('스토어 개설을 하였습니다!');
+        navigate('/admin');
+      }
+      break;
+    }
   };
+  //console.log(data);
+  console.dir(topping);
+  console.log(onChangeRadio);
+
+  // const onclick = (e) => {
+  //   if (storeName === '') {
+  //     alert('스토어명을 입력하세요');
+  //     return false;
+  //   }
+  //   if (mobilePhone === '') {
+  //     alert('대표 휴대전화를 입력하세요');
+  //     return false;
+  //   }
+  //   if (email === '') {
+  //     alert('대표 이메일을 입력하세요');
+  //     return false;
+  //   }
+  //   if (name === '') {
+  //     alert('대표 이메일을 입력하세요');
+  //     return false;
+  //   }
+
+  // };
 
   return (
     <MainBox>
@@ -602,11 +632,10 @@ const StoreOpenForm = () => {
         <div>
           <ContentBox>
             <h2>
-              쇼핑몰명
+              스토어명
               <span> *</span>
             </h2>
             <div>
-              <input hidden='hidden' />
               <input type='text' onChange={onchange} name='storeName'></input>
 
               <span>
@@ -863,7 +892,7 @@ const StoreOpenForm = () => {
             수정
           </EditButton>
           <RegButton
-            onClick={onclick}
+            onClick={onClick}
             col={Theme.realWhite}
             bgcol={Theme.green}
           >

@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const connection = require('../../../db/db');
-const multer = require('multer');
-const path = require('path');
+const connection = require("../../../db/db");
+const multer = require("multer");
+const path = require("path");
 
 const upload = multer({
   // storage 어디에 저장할건지 , diskStorage 하드 디스크에 저장하겠다.
@@ -13,7 +13,7 @@ const upload = multer({
 
     destination: function (req, file, cb) {
       console.log(req);
-      cb(null, 'uploads/store');
+      cb(null, "uploads/store");
     },
 
     // 파일 이름 무엇으로 할건지
@@ -24,12 +24,12 @@ const upload = multer({
   }),
 });
 
-router.get('/storeOpen', (req, res) => {
-  res.send(' 연동쓰');
-  console.log('연동');
+router.get("/storeOpen", (req, res) => {
+  res.send(" 연동쓰");
+  console.log("연동");
 });
 
-router.post('/storeOpen', (req, res) => {
+router.post("/storeOpen", (req, res) => {
   console.log(req.body);
   console.log(req.file);
   const {
@@ -61,8 +61,8 @@ router.post('/storeOpen', (req, res) => {
 });
 
 // 스토어 대표이미지 업로드
-router.post('/storeImage', upload.single('img'), (req, res) => {
-  console.log(req.file, 'aaaaaa');
+router.post("/storeImage", upload.single("img"), (req, res) => {
+  console.log(req.file, "aaaaaa");
   console.log(req.body);
   console.log(req.file.filename);
   res.json({ imagePath: req.file.filename });
@@ -76,7 +76,7 @@ const upload_product = multer({
     // cb는 함수이고 (에러, 파일이름) 에러가 없으나 null
 
     destination: function (req, file, cb) {
-      cb(null, 'uploads/product');
+      cb(null, "uploads/product");
     },
 
     // 파일 이름 무엇으로 할건지
@@ -87,13 +87,13 @@ const upload_product = multer({
   }),
 });
 
-router.get('/newProduct', (req, res) => {
-  console.log('상품등록');
-  res.send('상품등록페이지');
+router.get("/newProduct", (req, res) => {
+  console.log("상품등록");
+  res.send("상품등록페이지");
 });
 
-router.post('/newProduct', (req, res) => {
-  console.log('연동완료');
+router.post("/newProduct", (req, res) => {
+  console.log("연동완료");
   const {
     productName,
     productLocal,
@@ -119,7 +119,29 @@ router.post('/newProduct', (req, res) => {
 });
 
 // 상품등록 이미지 업로드
-router.post('/newProductImage', upload_product.single('img'), (req, res) => {
+router.post("/newProductImage", upload_product.single("img"), (req, res) => {
   res.json({ imgPath: req.file.filename });
+});
+
+router.get(`/product/data/:user_key`, (req, res) => {
+  console.log("요청");
+  let key = req.params.user_key;
+
+  connection.query(
+    `select * from product where user_key = ${key}`,
+    (err, row, field) => {
+      res.json(row);
+    }
+  );
+});
+
+router.get("/product/delete/:product_key", (req, res) => {
+  connection.query(
+    `delete from product where product_key = ${req.params.product_key}`,
+    (err, row, field) => {
+      if (err) throw err;
+      res.json({ status: 201 });
+    }
+  );
 });
 module.exports = router;

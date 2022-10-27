@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { StyledButton } from "../../Theme/theme";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const ReviewParent = styled.div`
   display: flex;
   flex-direction: column;
@@ -106,11 +106,53 @@ let TextInput = styled.input`
   padding-left: 10px;
 `;
 
+const Deletebutton = styled.div`
+  align-self: flex-end;
+  margin-top: 30px;
+  margin-right: 190px;
+  width: 90px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.green};
+  color: ${({ theme }) => theme.lightblack};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: "SCD-6";
+
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+    background-color: ${({ theme }) => theme.orange};
+    transition: 0.3s;
+  }
+`;
+
 const RecipeReview = ({ recipe }) => {
   const { id } = useParams();
   const [hovered, setHovered] = useState(null);
   const [clicked, setClicked] = useState(null);
   const [data, setData] = useState();
+  const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loginCheck = async () => {
+      try {
+        let response = await axios.get("http://localhost:8080/login/check", {
+          withCredentials: true,
+        });
+        if (response.data.status === 201) {
+          setUserData(response.data.userInfo);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    loginCheck();
+  }, []);
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -124,6 +166,7 @@ const RecipeReview = ({ recipe }) => {
     };
     getData();
   }, []);
+
   if (data === undefined) {
     return null;
   }
@@ -168,6 +211,22 @@ const RecipeReview = ({ recipe }) => {
     );
   });
 
+  const removeRecipe = async () => {
+    let choice = window.confirm("레시피를 삭제하시겠습니까?");
+    if (choice === true) {
+      let response = await axios.get(
+        `http://localhost:8080/recipe/delete/${data.recipe_key}`,
+        { withCredentials: true }
+      );
+
+      if (response.data.status === 201) {
+        alert("레시피가 삭제되었습니다");
+        navigate("/recipe");
+        window.location.reload();
+      }
+    }
+  };
+
   return (
     <ReviewParent>
       <div>
@@ -185,6 +244,9 @@ const RecipeReview = ({ recipe }) => {
       </div>
       <div>{data.recipe_tip}</div>
       <div>{imageComponent}</div>
+      {userData === null ? null : userData.user_key === data.user_key ? (
+        <Deletebutton onClick={removeRecipe}>레시피 삭제</Deletebutton>
+      ) : null}
       <ReviewWriteBox>
         <ValueBox>{starRating}</ValueBox>
         <div>
