@@ -305,6 +305,7 @@ const Recipe = () => {
   // console.log(order);
   let topRecipe = data[1][0];
   // console.log(data);
+
   return (
     <RecipeParent>
       {/* 레시피 페이지 전체 부모 설정값 */}
@@ -389,8 +390,8 @@ const Recipe = () => {
           <button>5</button>
         </FooterButton>
       </div>
-      <div>
-        {userData === null ? null : userData.user_auth === "사업자" ? null : (
+      {userData === null ? null : userData.user_auth === "사업자" ? null : (
+        <div>
           <CreateLink
             onClick={() => {
               if (login.status !== 201) {
@@ -403,8 +404,9 @@ const Recipe = () => {
           >
             게시글 작성하기
           </CreateLink>
-        )}
-      </div>
+        </div>
+      )}
+ 
     </RecipeParent>
   );
 };
