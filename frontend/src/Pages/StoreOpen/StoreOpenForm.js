@@ -584,58 +584,42 @@ const StoreOpenForm = () => {
     storeDesc: storeDesc,
   };
 
+  const onClick = (e) => {
+    for (let key in data) {
+      let obj = data[key];
+      if (obj.length === 0) {
+        alert('필수 입력사항을 체크하세요');
+      } else {
+        axios.post('http://localhost:8080/admin/storeOpen', data);
+        alert('스토어 개설을 하였습니다!');
+        navigate('/admin');
+      }
+      break;
+    }
+  };
   //console.log(data);
   console.dir(topping);
   console.log(onChangeRadio);
-  const inputCheck =
-    storeName.length >= 1 &&
-    mobilePhone.length >= 1 &&
-    email.length >= 1 &&
-    name.length >= 1 &&
-    address1.length >= 1 &&
-    address2.length >= 1 &&
-    imagePath.length >= 1 &&
-    storeDesc.length >= 1 &&
-    mobile1.length >= 1 &&
-    mobile2.length >= 1 &&
-    mobile3.length >= 1 &&
-    receiveEmail.length >= 1 &&
-    outgoingEmail.length >= 1 &&
-    csTel1.length >= 1 &&
-    csTel2.length >= 1 &&
-    csTel3.length >= 1 &&
-    csHours.length >= 1 &&
-    csEmail.length >= 1;
 
-  const handleInput = () => {
-    if (!inputCheck) {
-      alert('필수 입력사항을 체크하세요');
-    } else {
-      axios.post('http://localhost:8080/admin/storeOpen', data);
+  // const onclick = (e) => {
+  //   if (storeName === '') {
+  //     alert('스토어명을 입력하세요');
+  //     return false;
+  //   }
+  //   if (mobilePhone === '') {
+  //     alert('대표 휴대전화를 입력하세요');
+  //     return false;
+  //   }
+  //   if (email === '') {
+  //     alert('대표 이메일을 입력하세요');
+  //     return false;
+  //   }
+  //   if (name === '') {
+  //     alert('대표 이메일을 입력하세요');
+  //     return false;
+  //   }
 
-      alert('스토어 개설을 하였습니다!');
-      navigate('/admin');
-    }
-  };
-  const onclick = (e) => {
-    // if (storeName === '') {
-    //   alert('스토어명을 입력하세요');
-    //   return false;
-    // }
-    // if (mobilePhone === '') {
-    //   alert('대표 휴대전화를 입력하세요');
-    //   return false;
-    // }
-    // if (email === '') {
-    //   alert('대표 이메일을 입력하세요');
-    //   return false;
-    // }
-    // if (name === '') {
-    //   alert('대표 이메일을 입력하세요');
-    //   return false;
-    // }
-    handleInput();
-  };
+  // };
 
   return (
     <MainBox>
@@ -908,7 +892,7 @@ const StoreOpenForm = () => {
             수정
           </EditButton>
           <RegButton
-            onClick={onclick}
+            onClick={onClick}
             col={Theme.realWhite}
             bgcol={Theme.green}
           >
