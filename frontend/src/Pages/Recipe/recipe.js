@@ -390,7 +390,7 @@ const Recipe = () => {
           <button>5</button>
         </FooterButton>
       </div>
-      {userData.user_auth === "사업자" || userData === null ? null : (
+      {userData === null ? null : userData.user_auth === "사업자" ? null : (
         <div>
           <CreateLink
             onClick={() => {
