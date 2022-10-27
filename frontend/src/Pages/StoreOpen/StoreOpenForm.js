@@ -476,9 +476,9 @@ const StoreOpenForm = () => {
 
   console.log(imagePath);
 
-  const [topping, setTopping] = useState();
+  const [radioCheck, setradioCheck] = useState();
   const onChangeRadio = (e) => {
-    setTopping(e.target.value);
+    setradioCheck(e.target.value);
   };
 
   const firstTelList = [
@@ -580,46 +580,15 @@ const StoreOpenForm = () => {
     storeCsEmail: csEmail,
     storeFax: `${faxTel1}-${faxTel2}-${faxTel3}`,
     storeCsTime: csHours,
-    storeBusiness: topping === 'true' ? 1 : 0,
+    storeBusiness: radioCheck === 'true' ? 1 : 0,
     storeDesc: storeDesc,
   };
 
   const onClick = (e) => {
-    for (let key in data) {
-      let obj = data[key];
-      if (obj.length === 0) {
-        alert('필수 입력사항을 체크하세요');
-      } else {
-        axios.post('http://localhost:8080/admin/storeOpen', data);
-        alert('스토어 개설을 하였습니다!');
-        navigate('/admin');
-      }
-      break;
-    }
+    axios.post('http://localhost:8080/admin/storeOpen', data);
+    alert('스토어 개설을 하였습니다!');
+    navigate('/admin');
   };
-  //console.log(data);
-  console.dir(topping);
-  console.log(onChangeRadio);
-
-  // const onclick = (e) => {
-  //   if (storeName === '') {
-  //     alert('스토어명을 입력하세요');
-  //     return false;
-  //   }
-  //   if (mobilePhone === '') {
-  //     alert('대표 휴대전화를 입력하세요');
-  //     return false;
-  //   }
-  //   if (email === '') {
-  //     alert('대표 이메일을 입력하세요');
-  //     return false;
-  //   }
-  //   if (name === '') {
-  //     alert('대표 이메일을 입력하세요');
-  //     return false;
-  //   }
-
-  // };
 
   return (
     <MainBox>
@@ -637,10 +606,6 @@ const StoreOpenForm = () => {
             </h2>
             <div>
               <input type='text' onChange={onchange} name='storeName'></input>
-
-              <span>
-                (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
-              </span>
             </div>
           </ContentBox>
           <ContentBox>
@@ -816,17 +781,17 @@ const StoreOpenForm = () => {
             <div>
               <input
                 type='radio'
-                name='topping'
+                name='radioCheck'
                 value='true'
-                checked={topping === 'true'}
+                checked={radioCheck === 'true'}
                 onChange={onChangeRadio}
               ></input>
               <label>신고함</label>
               <input
                 type='radio'
-                name='topping'
+                name='radioCheck'
                 value='false'
-                checked={topping === 'false'}
+                checked={radioCheck === 'false'}
                 onChange={onChangeRadio}
               ></input>
               <label>신고안함</label>
