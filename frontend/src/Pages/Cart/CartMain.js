@@ -3,7 +3,7 @@ import CartTitle from "./CartTitle";
 import CartItem from "./CartItem";
 import CartPrice from "./CartPrice";
 import Remocon from "../../LayOut/Remocon";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,6 @@ const MainBox = styled.div`
 
 const CartMainBox = styled.div`
   width: 1280px;
-
   // 메인 이름 - 장바구니
   & > h1 {
     font-family: "SCD-6";
@@ -30,7 +29,6 @@ const CartMainBox = styled.div`
     text-align: center;
     padding-bottom: 80px;
   }
-
   // 선택주문, 전체주문 담을 박스
   .buttonBox {
     width: inherit;
@@ -150,4 +148,4 @@ const CartMain = () => {
   );
 };
 
-export default memo(CartMain);
+export default CartMain;

@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 // 상품 목록 전체 박스
@@ -9,12 +10,10 @@ const ItemBox = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.gray};
-
   // 체크박스
   & > div:nth-child(1) {
     width: 79px;
     padding-left: 20px;
-
     // 체크박스 사이즈 조정
     & > input {
       width: 24px;
@@ -22,7 +21,6 @@ const ItemBox = styled.div`
     }
   }
   // 상품이미지
-
   & > div:nth-child(2) {
     width: 219px;
     & > img {
@@ -70,7 +68,6 @@ const ItemBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
     // 바로구매 버튼
     & > button {
       width: 117px;
@@ -90,7 +87,6 @@ const ItemBox = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-
       // 하트, 휴지통 넣을 회색 박스
       & > div {
         width: 52px;
@@ -98,7 +94,6 @@ const ItemBox = styled.div`
         border-radius: 3px;
         border: 1px solid ${({ theme }) => theme.gray};
         cursor: pointer;
-
         // 아이콘
         & > img {
           width: 52px;

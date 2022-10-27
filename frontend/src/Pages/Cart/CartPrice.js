@@ -18,7 +18,6 @@ const Pricebox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   // 해당가격 이름
   & > p:nth-child(1) {
     font-size: 2rem;

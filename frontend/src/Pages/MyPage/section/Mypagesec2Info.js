@@ -129,7 +129,7 @@ const Info = styled.div`
 
 const Mypagesec2Info = ({ data, userData }) => {
 
-  console.log(userData);
+  // console.log(userData);
   const [loading, setLoading] = useState(false);
   const [datas, setDatas] = useState();
 
@@ -148,7 +148,12 @@ const Mypagesec2Info = ({ data, userData }) => {
     Product();
   }, []);
 
-  console.log(datas);
+  if (loading) {
+    return <h1>준비중입니다.</h1>;
+  }
+  if (data === undefined) {
+    return null;
+  }
 
   let name = data[0][0].user_name;
   let otherdata = data[1]

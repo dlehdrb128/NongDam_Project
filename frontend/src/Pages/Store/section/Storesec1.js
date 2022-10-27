@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 
 const Section1 = styled.section`
   width: inherit;
@@ -40,8 +39,8 @@ const Storesec1 = ({ data }) => {
           alt="store이미지"
         ></img>
         <div>
-          <h1>{data[0] && data.store_name}</h1>
-          <p>{data[0] && data.store_desc}</p>
+          <h1>{data[0] && data[0].store_name}</h1>
+          <p>{data[0] && data[0].store_desc}</p>
         </div>
       </div>
     </Section1>
