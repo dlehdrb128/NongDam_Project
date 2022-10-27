@@ -238,7 +238,6 @@ const Recipe = () => {
 
   const navigate = useNavigate();
   const [params, setParams] = useState({ sort: "normal" });
-  
 
   useEffect(() => {
     getData(`recipe/sort/${params.sort}`, null, null, setData, null, null);
@@ -391,18 +390,20 @@ const Recipe = () => {
         </FooterButton>
       </div>
       <div>
-        <CreateLink
-          onClick={() => {
-            if (login.status !== 201) {
-              alert("로그인이 필요합니다.");
-              navigate("/login");
-            } else {
-              navigate("/recipeCreateReview");
-            }
-          }}
-        >
-          게시글 작성하기
-        </CreateLink>
+        {userData === null ? null : userData.user_auth === "사업자" ? null : (
+          <CreateLink
+            onClick={() => {
+              if (login.status !== 201) {
+                alert("로그인이 필요합니다.");
+                navigate("/login");
+              } else {
+                navigate("/recipeCreateReview");
+              }
+            }}
+          >
+            게시글 작성하기
+          </CreateLink>
+        )}
       </div>
     </RecipeParent>
   );
