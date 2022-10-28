@@ -23,21 +23,29 @@ const Main = styled.main`
 const FivedaysMakret = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
+  const [weeks, setWeeks] = useState();
+
+  let weekss = new Date().getDate() / 7 - 2;
 
   useEffect(() => {
     setLoading(true);
     const Product = async () => {
       try {
-        let response = await axios.get('http://localhost:8080/market/', { withCredentials: true });
+        let response = await axios.get(
+          `http://localhost:8080/market/${weekss}`,
+          {
+            withCredentials: true,
+          }
+        );
         console.log(response.data);
-        setData(response.data)
+        setData(response.data);
       } catch (e) {
         console.log(e);
       }
       setLoading(false);
     };
     Product();
-  }, []);
+  }, [weekss]);
 
   if (loading) {
     return <h1>준비중입니다.</h1>;
@@ -46,9 +54,13 @@ const FivedaysMakret = () => {
     return null;
   }
 
+  const getWeeks = (weeks) => {
+    setWeeks(weeks);
+  };
+
   return (
     <>
-      <FivedaysMakretTopvisual />
+      <FivedaysMakretTopvisual getWeeks={getWeeks} />
       <Remocon />
       {/* Visual */}
       <Main>

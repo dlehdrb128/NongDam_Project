@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import axios from "axios";
 //color,font Asset
 
@@ -94,7 +94,8 @@ const Info = styled.div`
     & > div:nth-child(2) {
       &::before {
         content: "";
-        background: url("http://localhost:8080/svg/StackMoney.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/StackMoney.svg") no-repeat
+          center;
         background-size: cover;
         width: 43px;
         height: 47px;
@@ -104,7 +105,8 @@ const Info = styled.div`
     & > div:nth-child(3) {
       &::before {
         content: "";
-        background: url("http://localhost:8080/svg/Favorite.svg") no-repeat center;
+        background: url("http://localhost:8080/svg/Favorite.svg") no-repeat
+          center;
         width: 41px;
         height: 47px;
         position: absolute;
@@ -128,8 +130,6 @@ const Info = styled.div`
 //dummy object
 
 const Mypagesec2Info = ({ data, userData }) => {
-
-  console.log(userData);
   const [loading, setLoading] = useState(false);
   const [datas, setDatas] = useState();
 
@@ -137,9 +137,12 @@ const Mypagesec2Info = ({ data, userData }) => {
     setLoading(true);
     const Product = async () => {
       try {
-        let response = await axios.get(`http://localhost:8080/cart/user/${userData.user_key}`, { withCredentials: true });
-        console.log(response.data);
-        setDatas(response.data)
+        let response = await axios.get(
+          `http://localhost:8080/cart/user/${userData.user_key}`,
+          { withCredentials: true }
+        );
+
+        setDatas(response.data);
       } catch (e) {
         console.log(e);
       }
@@ -148,33 +151,35 @@ const Mypagesec2Info = ({ data, userData }) => {
     Product();
   }, []);
 
-  console.log(datas);
-
   let name = data[0][0].user_name;
-  let otherdata = data[1]
+  let otherdata = data[1];
   //구조분해할당
+
   return (
     <Info>
       {/* 회원정보 */}
       <div>
-        <h1>
-          {data && name}님
-        </h1>
+        <h1>{data && name}님</h1>
         <span>
-          총주문<br />
+          총주문
+          <br />
           준비중입니다.
         </span>
       </div>
       {/* 쿠폰,적립금,관심상품 */}
       <div>
         <div>
-          <p>쿠폰<br />
+          <p>
+            쿠폰
+            <br />
             0개
           </p>
         </div>
         <div>
           <p>적립금</p>
-          <p>{otherdata[0].orders_point}원</p>
+          {otherdata[0] === undefined || otherdata[0] === null ? null : (
+            <p>{otherdata[0].orders_point}원</p>
+          )}
         </div>
         <div>
           <p>관심상품</p>

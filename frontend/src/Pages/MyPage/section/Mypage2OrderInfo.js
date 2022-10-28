@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Mypagesec2OrderItem from './Mypagesec2OrderItem';
+import styled from "styled-components";
+import Mypagesec2OrderItem from "./Mypagesec2OrderItem";
 
 //섹션2 콘텐츠3 최근주문정보 컨테이너(사이즈조정)
 const OrderInfo = styled.div`
@@ -63,8 +63,8 @@ const OrderInfo = styled.div`
 `;
 
 const Mypage2OrderInfo = ({ data }) => {
-  console.log(data[1]);
-  const buyproduct = data[1]
+  const buyproduct = data[1];
+
   return (
     <OrderInfo>
       {/* 최근 주문정보 타이틀 */}
@@ -92,15 +92,17 @@ const Mypage2OrderInfo = ({ data }) => {
         {/* 최근 주문정보 리스트 콘테이너 */}
         <div>
           {/* 더미 오브젝트 props로 Mypagese2OrderItem 컴포넌트로 보냄,맵 사용해서 태그 생성 */}
-          {buyproduct.map((value, index) => {
-            return (
-              <Mypagesec2OrderItem
-                key={index}
-                data={value}
-                totaldata={data}
-              ></Mypagesec2OrderItem>
-            );
-          })}
+          {buyproduct[0] === undefined
+            ? null
+            : buyproduct.map((value, index) => {
+                return (
+                  <Mypagesec2OrderItem
+                    key={index}
+                    data={value}
+                    totaldata={data}
+                  ></Mypagesec2OrderItem>
+                );
+              })}
         </div>
       </div>
     </OrderInfo>

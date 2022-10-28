@@ -9,7 +9,8 @@ const FivedaysmakretTopvisual = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url("http://localhost:8080/market/FivedaysMarketTopvisual.png") no-repeat center;
+  background: url("http://localhost:8080/market/FivedaysMarketTopvisual.png")
+    no-repeat center;
   background-size: cover;
   position: relative;
   z-index: 3;
@@ -32,7 +33,7 @@ const FivedaysmakretTopvisual = styled.div`
   }
 `;
 
-const FivedaysMakretTopvisual = () => {
+const FivedaysMakretTopvisual = ({ getWeeks }) => {
   return (
     // 비주얼 컨테이너
     <FivedaysmakretTopvisual>
@@ -41,7 +42,7 @@ const FivedaysMakretTopvisual = () => {
         오늘은 <span>충청,전라</span> 에서 왓슈~
       </h1>
       {/* 카운트다운 */}
-      <Countdown></Countdown>
+      <Countdown getWeeks={getWeeks}></Countdown>
     </FivedaysmakretTopvisual>
   );
 };
