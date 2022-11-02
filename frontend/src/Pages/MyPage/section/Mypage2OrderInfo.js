@@ -92,7 +92,7 @@ const Mypage2OrderInfo = ({ data }) => {
         {/* 최근 주문정보 리스트 콘테이너 */}
         <div>
           {/* 더미 오브젝트 props로 Mypagese2OrderItem 컴포넌트로 보냄,맵 사용해서 태그 생성 */}
-          {buyproduct.map((value, index) => {
+          {buyproduct[0] === undefined ? null : buyproduct.map((value, index) => {
             return (
               <Mypagesec2OrderItem
                 key={index}

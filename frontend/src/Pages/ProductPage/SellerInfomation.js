@@ -53,6 +53,8 @@ const SellerInformation = forwardRef(({ data }, ref) => {
     return null;
   }
 
+  console.log(data);
+
   let sellerDataArray = [
     { key: "상호명", text: data[0].store_name },
     { key: "대표자", text: data[0].store_ceo_name },

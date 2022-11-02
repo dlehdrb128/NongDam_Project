@@ -147,6 +147,8 @@ const Mypagesec2Info = ({ data, userData }) => {
     };
     Product();
   }, []);
+  // console.log(datas);
+  // console.log(data);
 
   if (loading) {
     return <h1>준비중입니다.</h1>;

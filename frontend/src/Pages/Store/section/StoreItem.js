@@ -64,9 +64,6 @@ const Storeitem = ({ data }) => {
 
   const [reviewData, setReviewData] = useState()
 
-
-
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -82,7 +79,6 @@ const Storeitem = ({ data }) => {
   if (reviewData === undefined) {
     return null
   }
-
 
   return (
     <Storeitmes href={href}>
