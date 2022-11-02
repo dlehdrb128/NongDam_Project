@@ -7,7 +7,6 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   color : ${(props) => props.title};
-  margin-bottom: ${(props) => props.marignbt};
   //섹션2 콘텐츠 컨테이너(상품)(사이즈,위치,테두리조정)
   & > div {
     display: flex;
@@ -53,18 +52,36 @@ const Wrapper = styled.section`
 `;
 
 
-const FivedaysMarketsec2conwrapper = ({ local, title, brcol, data, marignbt }) => {
-  console.log(data);
+const FivedaysMarketsec2conwrapper = ({ local, title, brcol, data }) => {
+  let ment
+  switch (local[0]) {
+    case '충':
+      ment = '반가워유~ 충청도 에유~'
+      break;
+    case '전':
+      ment = '어메 반갑구만~ 전라도 랑께~'
+      break;
+    case '경':
+      ment = '반갑쉼더~ 경상도임더~'
+      break;
+    case '강':
+      ment = '반갑소야~ 강원도래요~'
+      break;
+    default:
+      ment = '해당되는 지역이 없네요.'
+  }
   return (
-    <Wrapper title={title} brcol={brcol} marignbt={marignbt}>
+    <Wrapper title={title} brcol={brcol}>
       <div>
         {/* 상품(충청) */}
         {/* 장식용 타이틀 */}
         <div>{local}</div>
-        <h2>반가워요 {local}도 에유!</h2>
+        <h2>{
+          ment
+        }</h2>
         {/* 충청도상품 컴포넌트 import */}
         <div class="wrap">
-          {data.map((value, index) => {
+          {data && data.map((value, index) => {
             return <FivedaysMarketitems data={value} key={index}></FivedaysMarketitems>
           })}
         </div>

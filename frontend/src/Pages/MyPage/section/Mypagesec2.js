@@ -9,6 +9,7 @@ const Section2 = styled.section`
   width: 867px;
 `;
 const Mypagesec2 = ({ data, userData }) => {
+  console.log(userData);
   return (
     <Section2>
       <Mypagesec2Info data={data} userData={userData} />

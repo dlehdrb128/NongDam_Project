@@ -99,7 +99,7 @@ router.get("/detail/:id", (req, res) => {
 
   connection.query(
     // `SELECT * FROM product INNER JOIN review on product.product_id = review.product_id WHERE product.product_id = ${id}`,
-    `SELECT product.*,admin_store.* FROM product inner join admin_store on product.user_key = admin_store.user_key where product_key = ${id}; SELECT DISTINCT review.review_post_date,review.*, review_image.review_image,review_image.review_image_2,review_image.review_image_3 from review inner join review_image on review.user_key = review_image.user_key where review.product_key = ${id} AND review_image.product_key = ${id};`,
+    `SELECT product.*,admin_store.*FROM product inner join admin_store on product.user_key = admin_store.user_key where product_key = ${id}; SELECT DISTINCT review.review_post_date,review.*, review_image.review_image,review_image.review_image_2,review_image.review_image_3 from review inner join review_image on review.user_key = review_image.user_key where review.product_key = ${id} AND review_image.product_key = ${id};`,
     (err, row, field) => {
       if (err) {
         throw err;
@@ -127,15 +127,11 @@ router.post(`/review/write`, (req, res) => {
     "select review_key from review order by review_key desc limit 1",
     (err, rows, fields) => {
       connection.query(
-        `insert into review values(null,${data.product_key},${data.user_key},'${
-          data.user_auth
-        }','${data.user_id}','${data.review_value}','${data.review_text}','${
-          data.review_post_date
+        `insert into review values(null,${data.product_key},${data.user_key},'${data.user_auth
+        }','${data.user_id}','${data.review_value}','${data.review_text}','${data.review_post_date
         }');
-      insert into review_image values(null,${rows[0].review_key + 1},${
-          data.product_key
-        },${data.user_key},'${data.review_image}','${data.review_image_2}','${
-          data.review_image_3
+      insert into review_image values(null,${rows[0].review_key + 1},${data.product_key
+        },${data.user_key},'${data.review_image}','${data.review_image_2}','${data.review_image_3
         }')`,
         (err, rows, fields) => {
           if (err) throw err;
