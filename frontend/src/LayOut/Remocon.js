@@ -193,7 +193,7 @@ const Remocon = () => {
               <p>장바구니</p>
               <span>{cartData && cartData.length}</span>
             </Link>
-            <Link to="/myPage">
+            <Link to="/mypage">
               <img
                 src="http://localhost:8080/svg/mypage_gray.svg"
                 alt="Mypage"

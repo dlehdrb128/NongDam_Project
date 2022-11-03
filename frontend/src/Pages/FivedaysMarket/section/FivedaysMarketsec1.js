@@ -53,6 +53,7 @@ const Section1 = styled.section`
 `;
 
 const FivedaysMakretsec1 = ({ data }) => {
+  // console.log(data);
   return (
     <Section1>
       {/* 섹션1 콘텐츠 컨테이너 */}
@@ -68,7 +69,7 @@ const FivedaysMakretsec1 = ({ data }) => {
         <div>
           <div></div>
           {/* 섹션1 콘텐츠 컴포넌트 Import */}
-          <FivedaysMarektsec1con data={data} />
+          <FivedaysMarektsec1con data={data && data} />
         </div>
       </div>
     </Section1>

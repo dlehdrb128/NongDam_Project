@@ -40,7 +40,7 @@ const Info = styled.div`
 `;
 
 const Storeinfo = ({ data }) => {
-  // console.log(data);
+  console.log(data);
   return (
     <Info id="info">
       <h1>판매자정보</h1>
@@ -52,7 +52,7 @@ const Storeinfo = ({ data }) => {
           </div>
           <div>
             <div>사업자등록번호</div>
-            <div>{data[0].user_admin_companyNum}</div>
+            <div>{data[0].business_number}</div>
           </div>
           <div>
             <div>대표전화</div>

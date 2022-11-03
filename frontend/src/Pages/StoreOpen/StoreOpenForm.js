@@ -476,9 +476,9 @@ const StoreOpenForm = () => {
 
   console.log(imagePath);
 
-  const [topping, setTopping] = useState();
+  const [radioCheck, setradioCheck] = useState();
   const onChangeRadio = (e) => {
-    setTopping(e.target.value);
+    setradioCheck(e.target.value);
   };
 
   const firstTelList = [
@@ -580,12 +580,11 @@ const StoreOpenForm = () => {
     storeCsEmail: csEmail,
     storeFax: `${faxTel1}-${faxTel2}-${faxTel3}`,
     storeCsTime: csHours,
-    storeBusiness: topping === 'true' ? 1 : 0,
+    storeBusiness: radioCheck === 'true' ? 1 : 0,
     storeDesc: storeDesc,
   };
 
-  console.log(data);
-  const onclick = (e) => {
+  const onClick = (e) => {
     axios.post('http://localhost:8080/admin/storeOpen', data);
     alert('스토어 개설을 하였습니다!');
     navigate('/admin');
@@ -602,16 +601,11 @@ const StoreOpenForm = () => {
         <div>
           <ContentBox>
             <h2>
-              쇼핑몰명
+              스토어명
               <span> *</span>
             </h2>
             <div>
-              <input hidden='hidden' />
               <input type='text' onChange={onchange} name='storeName'></input>
-
-              <span>
-                (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
-              </span>
             </div>
           </ContentBox>
           <ContentBox>
@@ -787,17 +781,17 @@ const StoreOpenForm = () => {
             <div>
               <input
                 type='radio'
-                name='topping'
+                name='radioCheck'
                 value='true'
-                checked={topping === 'true'}
+                checked={radioCheck === 'true'}
                 onChange={onChangeRadio}
               ></input>
               <label>신고함</label>
               <input
                 type='radio'
-                name='topping'
+                name='radioCheck'
                 value='false'
-                checked={topping === 'false'}
+                checked={radioCheck === 'false'}
                 onChange={onChangeRadio}
               ></input>
               <label>신고안함</label>
@@ -863,7 +857,7 @@ const StoreOpenForm = () => {
             수정
           </EditButton>
           <RegButton
-            onClick={onclick}
+            onClick={onClick}
             col={Theme.realWhite}
             bgcol={Theme.green}
           >
