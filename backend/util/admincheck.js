@@ -1,4 +1,4 @@
-const connection = require("../db/db");
+const connection = require('../db/db');
 
 // 사업자 로그인 체크 함수
 const admincheck = (req, res, next) => {
@@ -6,8 +6,8 @@ const admincheck = (req, res, next) => {
     req.session.destroy();
     return res
       .status(401)
-      .clearCookie("connect.sid")
-      .json({ status: 401, statusMessage: "로그인 실패입니다" });
+      .clearCookie('connect.sid')
+      .json({ status: 401, statusMessage: '로그인 실패입니다' });
   } else {
     const SQL1 = `SELECT 
     user_auth
@@ -17,8 +17,6 @@ FROM  user WHERE user_id = '${req.session.userId}'`;
     user_address, user_address_detail, user_phone
 FROM  user WHERE user_id = '${req.session.userId}'`;
 
-    let check = "일반";
-
     connection.query(SQL1, (err, row, filed) => {
       if (err) console.error(err);
       const [userAuth] = row;
@@ -26,9 +24,9 @@ FROM  user WHERE user_id = '${req.session.userId}'`;
     });
 
     const ex = (userauth) => {
-      if (userauth === "사업자") {
+      if (userauth === '사업자') {
         connection.query(SQL, (err, row, filed) => {
-          console.log("1");
+          console.log('1');
           if (err) console.error(err);
 
           req.userInfo = row[0];
@@ -38,7 +36,7 @@ FROM  user WHERE user_id = '${req.session.userId}'`;
       } else {
         return res
           .status(401)
-          .json({ status: 401, statusMessage: "권한이 없습니다." });
+          .json({ status: 401, statusMessage: '권한이 없습니다.' });
       }
     };
   }

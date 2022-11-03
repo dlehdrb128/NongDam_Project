@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import AdminCategory from '../../Pages/Admin/AdminCategory';
-import StoreOpenForm from './StoreOpenForm';
+import StoreInfoForm from './StoreInfoForm';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-//스토어 개설 메인 페이지
+//스토어 정보 메인 페이지
 
 const MainBox = styled.div`
   width: inherit;
@@ -14,21 +14,21 @@ const MainBox = styled.div`
 
 // 메인박스 안에
 // 왼쪽에 관리자 카테리고리와 중앙에 스토어 개설 폼
-const StoreOpenMain = () => {
+const StoreInfoMain = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [userData, setUserData] = useState(null);
-  const navigate = useNavigate();
   useEffect(() => {
-    const request = async () => {
+    const getLoginData = async () => {
       try {
         let response = await axios.get(
-          'http://localhost:8080/login/admincheck',
+          `http://localhost:8080/login/admincheck`,
           {
             withCredentials: true,
           }
         );
         if (response.data.status === 201) {
-          setUserData(response.data.adminInfo.user_key);
+          setUserData(response.data.adminInfo);
 
           let response2 = await axios.get(
             `http://localhost:8080/admin/store/data/${response.data.adminInfo.user_key}`
@@ -36,29 +36,28 @@ const StoreOpenMain = () => {
           setData(response2.data);
         }
       } catch (error) {
-        alert(error.response.data.statusMessage);
-        navigate('/');
+        console.log(error);
       }
     };
-    request();
+
+    getLoginData();
   }, []);
 
   if (data === null) {
     return null;
   }
 
-  if (data.length !== 0) {
-    alert('스토어가 존재합니다!');
-    navigate('/admin/storeInfo');
+  if (data.length === 0) {
+    alert('스토어 정보가 없습니다! 스토어 개설을 해주세요.');
+    navigate('/admin');
   }
-
-  console.log(data);
+  console.log(userData);
   return (
     <MainBox>
-      <AdminCategory></AdminCategory>
-      <StoreOpenForm user_key={userData}></StoreOpenForm>
+      <AdminCategory mainmenu={'스토어 관리'}></AdminCategory>
+      <StoreInfoForm storeInfo={data}></StoreInfoForm>
     </MainBox>
   );
 };
 
-export default StoreOpenMain;
+export default StoreInfoMain;

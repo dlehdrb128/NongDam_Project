@@ -3,6 +3,8 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme/theme';
 
+
+
 // 폼제목과 폼을 메인박스로 묶었다
 const MainBox = styled.div`
   width: 843px;
@@ -402,7 +404,7 @@ const RegButton = styled.button`
 const EditButton = styled(RegButton)`
   border: 1px solid ${({ theme }) => theme.lightblack};
 `;
-const NewProductForm = () => {
+const NewProductForm = ({ userKey }) => {
   const [sale, setSale] = useState(false);
   const [region, setRegion] = useState('경기도');
   const [regionEng, setRegionEng] = useState('gyeongi');
@@ -528,6 +530,7 @@ const NewProductForm = () => {
     productDiscountEnd:
       sale === true ? `'${endDate} ${endHour}:${endMinute}:00'` : null,
     productImage: imgPath,
+    userKey: userKey,
   };
 
   const onclick = () => {
@@ -539,7 +542,7 @@ const NewProductForm = () => {
   };
 
   console.log(data);
-
+  console.log(userKey);
   return (
     <MainBox>
       <form

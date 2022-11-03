@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 // 메인 박스
 const MainBox = styled.div`
@@ -10,7 +10,7 @@ const MainBox = styled.div`
   align-items: center;
   // 메인 제목 ( 스토어관리 카테고리 타이틀)
   & > h1 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     color: ${({ theme }) => theme.lightblack};
     font-size: 4rem;
     padding-bottom: 45px;
@@ -29,7 +29,7 @@ const Categoty = styled.div`
 
   // 스토어관리 타이틀
   & > h2 {
-    font-family: "SCD-6";
+    font-family: 'SCD-6';
     font-size: 1.8rem;
     padding-bottom: 13px;
   }
@@ -37,15 +37,20 @@ const Categoty = styled.div`
   // 세부 카테고리 개수와 상관없이 몇 개가 설정되도
   // 간격 유지 가능
   & > p {
-    font-family: "SCD-3";
+    font-family: 'SCD-3';
     font-size: 1.5rem;
     padding-bottom: 10px;
+    cursor: pointer;
+    &:hover {
+      transition: 0.3s;
+      color: ${({ theme }) => theme.green};
+    }
   }
 `;
 
 const ProductManage = styled.div`
   cursor: pointer;
-  font-family: "SCD-6";
+  font-family: 'SCD-6';
   font-size: 1.8rem;
   padding-bottom: 13px;
   color: ${({ theme }) => theme.lightblack};
@@ -55,24 +60,35 @@ const ProductManage = styled.div`
   }
 `;
 
-const AdminCategory = () => {
+const AdminCategory = ({ mainmenu }) => {
   const navigate = useNavigate();
   return (
     <MainBox>
-      <h1>스토어 개설</h1>
+      <h1>{mainmenu}</h1>
       <Categoty>
         <h2>스토어 개설</h2>
-        <p>스토어 정보</p>
+        <p
+          onClick={() => {
+            navigate('/admin/create');
+          }}
+        >
+          스토어 개설
+        </p>
       </Categoty>
       <Categoty>
         <h2>스토어 관리</h2>
-        <p>스토어 프로필 설정</p>
-        <p>메인배너 설정</p>
+        <p
+          onClick={() => {
+            navigate('/admin/storeInfo');
+          }}
+        >
+          스토어 정보
+        </p>
       </Categoty>
       <Categoty>
         <ProductManage
           onClick={() => {
-            navigate("/admin/productmanage");
+            navigate('/admin/productmanage');
           }}
         >
           상품관리

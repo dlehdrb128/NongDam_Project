@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme/theme';
 import axios from 'axios';
@@ -441,68 +441,14 @@ const EditButton = styled(RegButton)`
   border: 1px solid ${({ theme }) => theme.lightblack};
 `;
 
-const StoreOpenForm = ({ user_key }) => {
+const StoreInfoForm = ({ storeInfo }) => {
   const imgSrc = useRef();
   const navigate = useNavigate();
 
   const [img, setImg] = useState('');
   const [imagePath, setImagePath] = useState('');
 
-  console.log(img);
-
-  const onChangeFile = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      let save = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      setImg(e.target.files[0]);
-
-      reader.onload = async (e) => {
-        const formData = new FormData();
-        formData.append('img', save);
-
-        let URL = `http://localhost:8080/admin/storeImage`;
-        const request = await axios.post(URL, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-
-        setImagePath(request.data.imagePath);
-        imgSrc.current.src = reader.result;
-      };
-    }
-  };
-
-  console.log(imagePath);
-
   const [radioCheck, setradioCheck] = useState();
-  const onChangeRadio = (e) => {
-    setradioCheck(e.target.value);
-  };
-
-  const firstTelList = [
-    '02',
-    '031',
-    '032',
-    '033',
-    '041',
-    '042',
-    '043',
-    '044',
-    '051',
-    '052',
-    '054',
-    '055',
-    '061',
-    '062',
-    '063',
-    '064',
-    '070',
-    '010',
-  ];
-
-  const firstMobileList = ['010', '011', '016', '017', '018', '019', '070'];
   const [inputData, setInputData] = useState({
     storeName: '',
     mobilePhone: '',
@@ -530,6 +476,36 @@ const StoreOpenForm = ({ user_key }) => {
     storeDesc: '',
   });
 
+  const onChangeFile = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let save = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      setImg(e.target.files[0]);
+
+      reader.onload = async (e) => {
+        const formData = new FormData();
+        formData.append('img', save);
+
+        let URL = `http://localhost:8080/admin/storeImage`;
+        const request = await axios.post(URL, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
+        setImagePath(request.data.imagePath);
+        imgSrc.current.src = reader.result;
+      };
+    }
+  };
+
+  console.log(imagePath);
+
+  const onChangeRadio = (e) => {
+    setradioCheck(e.target.value);
+  };
+
   const {
     storeName,
     mobilePhone,
@@ -556,7 +532,6 @@ const StoreOpenForm = ({ user_key }) => {
     csHours,
     storeDesc,
   } = inputData;
-
   const onchange = (e) => {
     const { value, name } = e.target;
     setInputData({
@@ -564,7 +539,6 @@ const StoreOpenForm = ({ user_key }) => {
       [name]: value,
     });
   };
-
   const data = {
     storeName: storeName,
     storeCeophone: mobilePhone,
@@ -582,7 +556,6 @@ const StoreOpenForm = ({ user_key }) => {
     storeCsTime: csHours,
     storeBusiness: radioCheck === 'true' ? 1 : 0,
     storeDesc: storeDesc,
-    user_key: user_key,
   };
 
   const onClick = (e) => {
@@ -590,7 +563,31 @@ const StoreOpenForm = ({ user_key }) => {
     alert('스토어 개설을 하였습니다!');
     navigate('/admin');
   };
+  const firstTelList = [
+    '02',
+    '031',
+    '032',
+    '033',
+    '041',
+    '042',
+    '043',
+    '044',
+    '051',
+    '052',
+    '054',
+    '055',
+    '061',
+    '062',
+    '063',
+    '064',
+    '070',
+    '010',
+  ];
 
+  const firstMobileList = ['010', '011', '016', '017', '018', '019', '070'];
+
+  console.log(storeInfo[0]);
+  console.log(data);
   return (
     <MainBox>
       <form
@@ -606,7 +603,12 @@ const StoreOpenForm = ({ user_key }) => {
               <span> *</span>
             </h2>
             <div>
-              <input type='text' onChange={onchange} name='storeName'></input>
+              <input
+                type='text'
+                onChange={onchange}
+                name='storeName'
+                value={storeInfo[0].store_name}
+              ></input>
             </div>
           </ContentBox>
           <ContentBox>
@@ -614,7 +616,12 @@ const StoreOpenForm = ({ user_key }) => {
               대표 휴대전화<span> *</span>
             </h2>
             <div>
-              <input type='tel' onChange={onchange} name='mobilePhone'></input>
+              <input
+                type='tel'
+                onChange={onchange}
+                name='mobilePhone'
+                value={storeInfo[0].store_ceo_phone}
+              ></input>
             </div>
           </ContentBox>
           <ContentBox>
@@ -622,7 +629,12 @@ const StoreOpenForm = ({ user_key }) => {
               대표 이메일<span> *</span>
             </h2>
             <div>
-              <input type='email' onChange={onchange} name='email'></input>
+              <input
+                type='email'
+                onChange={onchange}
+                name='email'
+                value={storeInfo[0].store_cs_email}
+              ></input>
             </div>
           </ContentBox>
           <ContentBox>
@@ -630,7 +642,12 @@ const StoreOpenForm = ({ user_key }) => {
               이름<span> *</span>
             </h2>
             <div>
-              <input type='text' onChange={onchange} name='name'></input>
+              <input
+                type='text'
+                onChange={onchange}
+                name='name'
+                value={storeInfo[0].store_ceo_name}
+              ></input>
             </div>
           </ContentBox>
           <BusinessAdd>
@@ -665,23 +682,12 @@ const StoreOpenForm = ({ user_key }) => {
             <div>
               <div>
                 <div>
-                  {img ? (
-                    <img
-                      src=''
-                      alt=''
-                      ref={imgSrc}
-                      style={{ borderRadius: '3px' }}
-                    />
-                  ) : (
-                    <div
-                      style={{
-                        width: '155px',
-                        height: '155px',
-                        backgroundColor: 'gray',
-                        borderRadius: '3px',
-                      }}
-                    ></div>
-                  )}
+                  <img
+                    src={`http://localhost:8080/store/${storeInfo[0].store_img}`}
+                    alt=''
+                    ref={imgSrc}
+                    style={{ borderRadius: '3px' }}
+                  />
                 </div>
                 <p>권장 500px * 500px</p>
               </div>
@@ -707,18 +713,15 @@ const StoreOpenForm = ({ user_key }) => {
                 onChange={onchange}
                 name='storeDesc'
                 placeholder='200자 이내로 작성해주세요'
-                maxlength='200'
+                maxLength='200'
+                value={storeInfo[0].store_desc}
               ></input>
             </div>
           </StoreDescBox>
           <TelBox>
             <h2>대표전화</h2>
             <div>
-              <select
-                onChange={onchange}
-                value={huntingLine1}
-                name='huntingLine1'
-              >
+              <select onChange={onchange} name='huntingLine1'>
                 {firstTelList.map((item) => (
                   <option value={item} key={item}>
                     {item}
@@ -737,7 +740,7 @@ const StoreOpenForm = ({ user_key }) => {
               <span> *</span>
             </h2>
             <div>
-              <select onChange={onchange} value={mobile1} name='mobile1'>
+              <select onChange={onchange} name='mobile1'>
                 {firstMobileList.map((item) => (
                   <option value={item} key={item}>
                     {item}
@@ -759,6 +762,7 @@ const StoreOpenForm = ({ user_key }) => {
                 type='email'
                 onChange={onchange}
                 name='receiveEmail'
+                value={storeInfo[0].store_reciveEmail}
               ></input>
             </div>
           </ContentBox>
@@ -771,6 +775,7 @@ const StoreOpenForm = ({ user_key }) => {
                 type='email'
                 onChange={onchange}
                 name='outgoingEmail'
+                value={storeInfo[0].store_reciveEmail}
               ></input>
             </div>
           </ContentBox>
@@ -785,6 +790,11 @@ const StoreOpenForm = ({ user_key }) => {
                 name='radioCheck'
                 value='true'
                 checked={radioCheck === 'true'}
+                // {
+                //   `${storeInfo[0].store_business}` === 1
+                //     ? setradioCheck(true)
+                //     : setradioCheck(false)
+                // }
                 onChange={onChangeRadio}
               ></input>
               <label>신고함</label>
@@ -807,7 +817,7 @@ const StoreOpenForm = ({ user_key }) => {
               <span> *</span>
             </h2>
             <div>
-              <select onChange={onchange} value={csTel1} name='csTel1'>
+              <select onChange={onchange} name='csTel1'>
                 {firstTelList.map((item) => (
                   <option value={item} key={item}>
                     {item}
@@ -825,13 +835,18 @@ const StoreOpenForm = ({ user_key }) => {
               상담 이메일<span> *</span>
             </h2>
             <div>
-              <input type='email' onChange={onchange} name='csEmail'></input>
+              <input
+                type='email'
+                onChange={onchange}
+                name='csEmail'
+                value={storeInfo[0].store_cs_email}
+              ></input>
             </div>
           </ContentBox>
           <TelBox>
             <h2>팩스 전화</h2>
             <div>
-              <select onChange={onchange} value={faxTel1} name='faxTel1'>
+              <select onChange={onchange} name='faxTel1'>
                 {firstTelList.map((item) => (
                   <option value={item} key={item}>
                     {item}
@@ -849,20 +864,18 @@ const StoreOpenForm = ({ user_key }) => {
               CS 운영시간<span> *</span>
             </h2>
             <div>
-              <input type='text' onChange={onchange} name='csHours'></input>
+              <input
+                type='text'
+                onChange={onchange}
+                name='csHours'
+                value={storeInfo[0].store_cs_time}
+              ></input>
             </div>
           </ContentBox>
         </div>
         <div>
-          <EditButton col={Theme.lightblack} bgcol={Theme.realWhite}>
+          <RegButton col={Theme.realWhite} bgcol={Theme.green}>
             수정
-          </EditButton>
-          <RegButton
-            onClick={onClick}
-            col={Theme.realWhite}
-            bgcol={Theme.green}
-          >
-            등록
           </RegButton>
         </div>
       </form>
@@ -870,4 +883,4 @@ const StoreOpenForm = ({ user_key }) => {
   );
 };
 
-export default StoreOpenForm;
+export default StoreInfoForm;

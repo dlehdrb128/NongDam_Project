@@ -150,14 +150,16 @@ const AdminMain = () => {
               <span>기본 스토어 개설</span>
             </div>
           </Link>
-          <div>
-            <img
-              src='http://localhost:8080/icon/Admin_icon2.png'
-              alt='icon'
-            ></img>
-            <h1>스토어관리</h1>
-            <span>기존 스토어 관리</span>
-          </div>
+          <Link to='storeInfo'>
+            <div>
+              <img
+                src='http://localhost:8080/icon/Admin_icon2.png'
+                alt='icon'
+              ></img>
+              <h1>스토어관리</h1>
+              <span>기존 스토어 관리</span>
+            </div>
+          </Link>
           <Link to='newproduct'>
             <div>
               <img

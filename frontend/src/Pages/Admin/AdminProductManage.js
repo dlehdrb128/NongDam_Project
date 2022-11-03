@@ -1,8 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import AdminCategory from "./AdminCategory";
-import ProductItem from "./ProductItem";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import AdminCategory from './AdminCategory';
+import ProductItem from './ProductItem';
 
 const ManageMain = styled.div`
   margin-top: 80px;
@@ -15,7 +15,7 @@ const ManageMain = styled.div`
 
     & > h1 {
       font-size: 6rem;
-      font-family: "SCD-6";
+      font-family: 'SCD-6';
     }
     & > div {
       width: inherit;
@@ -57,7 +57,7 @@ const AdminProductManage = () => {
 
   return (
     <ManageMain>
-      <AdminCategory></AdminCategory>
+      <AdminCategory mainmenu={'상품관리'}></AdminCategory>
       <div>
         <h1>상품 관리</h1>
         <div>

@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const connection = require("../../../db/db");
-const userCheck = require("../../../util/usercheck");
-const admincheck = require("../../../util/admincheck");
+const connection = require('../../../db/db');
+const userCheck = require('../../../util/usercheck');
+const admincheck = require('../../../util/admincheck');
 
 // router.post("/attempt", (req, res) => {
 //   console.log(req.body);
@@ -20,7 +20,7 @@ const admincheck = require("../../../util/admincheck");
 //   );
 // });
 
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const { id, password } = req.body;
 
   const SQL = `SELECT *
@@ -31,8 +31,8 @@ router.post("/", async (req, res, next) => {
     if (err || row.length === 0) {
       console.error(err);
       return res
-        .clearCookie("connect.sid")
-        .json({ status: 401, statusMessage: "로그인 실패" });
+        .clearCookie('connect.sid')
+        .json({ status: 401, statusMessage: '로그인 실패' });
     }
 
     if (row[0].user_id === id && row[0].user_password === password) {
@@ -44,21 +44,23 @@ router.post("/", async (req, res, next) => {
       req.session.userId = row[0].user_id;
       // req.session.userInfo = row[0];
 
-      res.json({ status: 201, statusMessage: "로그인 성공" });
+      res.json({ status: 201, statusMessage: '로그인 성공' });
     }
   });
 });
 
-router.get("/check", userCheck, (req, res, next) => {
+router.get('/check', userCheck, (req, res, next) => {
   if (req.session.userId) {
     res.json({ status: 201, userInfo: req.userInfo });
   }
 });
 
-router.get("/admincheck", admincheck, (req, res, next) => {
-  console.log("aa");
+router.get('/admincheck', admincheck, (req, res, next) => {
+  console.log(req.userInfo);
 
-  res.status(200).json({ status: 201, statusMessage: "ok" });
+  res
+    .status(200)
+    .json({ status: 201, statusMessage: 'ok', adminInfo: req.userInfo });
 });
 
 // router.get("/check", (req, res) => {

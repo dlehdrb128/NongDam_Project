@@ -49,9 +49,10 @@ router.post('/storeOpen', (req, res) => {
     storeCsTime,
     storeDesc,
     storeimg,
+    user_key,
   } = req.body;
 
-  const SQL = `INSERT INTO admin_store (store_key, user_key,user_auth, store_name,store_ceo_phone,store_ceo_email,store_ceo_name,store_address,store_img,store_call,store_phone,store_reciveEmail,store_outgoingEmail,store_business,store_cs_call,store_cs_email,store_fax,store_cs_time,store_desc) VALUES (null, 12,'사업자','${storeName}','${storeCeophone}','${storeCeoEmail}','${storeCeoName}','${storeAddress}','${storeimg}','${storeCall}','${storePhone}','${storeReceiveEmail}','${storeOutgoingEmail}',${storeBusiness},'${storecsCall}','${storeCsEmail}','${storeFax}','${storeCsTime}','${storeDesc}'
+  const SQL = `INSERT INTO admin_store (store_key, user_key,user_auth, store_name,store_ceo_phone,store_ceo_email,store_ceo_name,store_address,store_img,store_call,store_phone,store_reciveEmail,store_outgoingEmail,store_business,store_cs_call,store_cs_email,store_fax,store_cs_time,store_desc) VALUES (null, ${user_key},'사업자','${storeName}','${storeCeophone}','${storeCeoEmail}','${storeCeoName}','${storeAddress}','${storeimg}','${storeCall}','${storePhone}','${storeReceiveEmail}','${storeOutgoingEmail}',${storeBusiness},'${storecsCall}','${storeCsEmail}','${storeFax}','${storeCsTime}','${storeDesc}'
   );`;
 
   connection.query(SQL, (err, row, fild) => {
@@ -113,10 +114,10 @@ router.post('/newProduct', (req, res) => {
       console.log(row1);
       const newproductSQL = `INSERT INTO product (product_key,user_key,user_auth, product_name, product_local,product_local_eng,product_price,
       product_image,
-      product_discount_set,product_discount_percent) VALUES (null,12,'사업자','${productName}','${productLocal}','${productLocalEng}',${productPrice},'${productImage}',${productDiscountSet},${ProductDiscountPercent});
+      product_discount_set,product_discount_percent) VALUES (null,${user_key},'사업자','${productName}','${productLocal}','${productLocalEng}',${productPrice},'${productImage}',${productDiscountSet},${ProductDiscountPercent});
       INSERT INTO admin_discount_date VALUES(null,${
         row1[0].product_key + 1
-      },12,'사업자',${productDiscountStart},${productDiscountEnd});`;
+      },${user_key},'사업자',${productDiscountStart},${productDiscountEnd});`;
 
       connection.query(newproductSQL, (err, row2, fild) => {
         if (err) throw err;
