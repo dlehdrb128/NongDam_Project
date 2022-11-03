@@ -1,6 +1,35 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../../../db/db");
+const multer = require("multer");
+const path = require("path");
+// 멀터 큰 세팅
+const uploadImg = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cd) => {
+      console.log(req);
+      cd(null, "uploads/recipe");
+    },
+    filename: (req, file, cd) => {
+      console.log(file);
+      cd(null, new Date().valueOf() + path.extname(file.originalname));
+    },
+  }),
+});
+// 레시피 이미지 업로드
+router.post("/newRecipeImage", uploadImg.single("img"), (req, res) => {
+  res.json({ imgPath: req.file.filename });
+});
+router.get(`/recipe/data/:user_key`, (req, res) => {
+  console.log("요청");
+  let key = req.params.user_key;
+  connection.query(
+    `select * from recipe where user_key = ${key}`,
+    (err, row, field) => {
+      res.json(row);
+    }
+  );
+});
 
 router.get("/post/:id", (req, res) => {
   const id = req.params.id;
@@ -80,7 +109,6 @@ router.post("/recipeCreateReview/upload", (req, res) => {
     }
   );
 });
-
 
 router.get("/sort/:type", (req, res) => {
   const type = req.params.type;

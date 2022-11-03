@@ -270,6 +270,8 @@ const RecipeCreateReview = () => {
     return today.toISOString().replace("T", " ").substring(0, 19);
   };
   const [upload, setUpload] = useState(null);
+  const [img, setImg] = useState("");
+  const [imgPath, setImgPath] = useState("");
   const [data, setData] = useState({
     user_key: null,
     user_auth: null,
@@ -294,7 +296,11 @@ const RecipeCreateReview = () => {
           withCredentials: true,
         });
         if (response.data.status === 201) {
-          setData({ ...data, user_key: response.data.userInfo.user_key });
+          setData({
+            ...data,
+            user_key: response.data.userInfo.user_key,
+            user_auth: response.data.userInfo.user_auth,
+          });
         }
       } catch (err) {
         console.log(err);
@@ -303,35 +309,48 @@ const RecipeCreateReview = () => {
     loginCheck();
   }, [data.user_auth]);
 
-  const ImgUpload = (input, id) => {
+  const ImgUpload = async (input, id) => {
     if (input.files && input.files[0]) {
+      let save = input.files[0];
       let reader = new FileReader();
+      const formData = new FormData();
+      formData.append("img", save);
+
+      const request = await axios.post(
+        `http://localhost:8080/recipe/newRecipeImage`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
       reader.onload = (e) => {
         document.getElementById(id).src = e.target.result;
-
         switch (id) {
           case "img1":
             setData({
               ...data,
-              recipe_image_path_2: input.files[0].name,
+              recipe_image_path_2: request.data.imgPath,
             });
             break;
           case "img2":
             setData({
               ...data,
-              recipe_image_path_3: input.files[0].name,
+              recipe_image_path_3: request.data.imgPath,
             });
             break;
           case "img3":
             setData({
               ...data,
-              recipe_image_path_4: input.files[0].name,
+              recipe_image_path_4: request.data.imgPath,
             });
             break;
           case "img4":
             setData({
               ...data,
-              recipe_image_path_5: input.files[0].name,
+              recipe_image_path_5: request.data.imgPath,
             });
             break;
 
@@ -344,7 +363,7 @@ const RecipeCreateReview = () => {
         setUpload(true);
         setData({
           ...data,
-          recipe_image_path: input.files[0].name,
+          recipe_image_path: request.data.imgPath,
         });
       }
     } else {

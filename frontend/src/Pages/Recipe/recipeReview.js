@@ -226,7 +226,7 @@ const RecipeReview = ({ recipe }) => {
       }
     }
   };
-
+  console.log(data.recipe_image_path);
   return (
     <ReviewParent>
       <div>
