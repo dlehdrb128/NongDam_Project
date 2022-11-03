@@ -3,7 +3,7 @@ const router = express.Router();
 const connection = require("../../../db/db");
 const multer = require("multer");
 const path = require("path");
-
+// 멀터 세팅
 const uploadImg = multer({
   storage: multer.diskStorage({
     destination: (req, file, cd) => {
