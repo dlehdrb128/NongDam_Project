@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme/theme';
-
-
+import './Editor.css';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 // 폼제목과 폼을 메인박스로 묶었다
 const MainBox = styled.div`
@@ -189,7 +190,7 @@ const ImgBox = styled.div`
 
 const DetailBox = styled.div`
   width: inherit;
-  height: 764px;
+  height: 452px;
   display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.lightblack};
@@ -211,8 +212,7 @@ const DetailBox = styled.div`
   }
   & > div {
     width: inherit;
-    height: 680px;
-    border-bottom: 1.5px solid ${({ theme }) => theme.lightblak};
+    border-bottom: 1.5px solid ${({ theme }) => theme.lightgray};
   }
 `;
 // 라디오 선택박스
@@ -408,17 +408,68 @@ const NewProductForm = ({ userKey }) => {
   const [sale, setSale] = useState(false);
   const [region, setRegion] = useState('경기도');
   const [regionEng, setRegionEng] = useState('gyeongi');
+  const [img, setImg] = useState('');
+  const [imgPath, setImgPath] = useState('');
+  const [inputData, setInputData] = useState({
+    productName: '',
+    productPrice: '',
+    startHour: '00',
+    startMinute: '00',
+    endHour: '23',
+    endMinute: '55',
+    ProductDiscountPercent: '',
+    discount: '',
+    startDate: '',
+    endDate: '',
+    productLocal: '경기도',
+  });
+  const [editorContent, setEditorContent] = useState('');
+  const imgSrc = useRef();
+  const [flag, setFlag] = useState(false);
+  const imgLink = 'http://localhost:8080/product';
 
+  const customUploadAdapter = (loader) => {
+    // (2)
+    return {
+      upload() {
+        return new Promise((resolve, reject) => {
+          const data = new FormData();
+          loader.file.then((file) => {
+            data.append('name', file.name);
+            data.append('file', file);
+
+            axios
+              .post(`http://localhost:8080/admin/productImages`, data)
+              .then((res) => {
+                if (!flag) {
+                  setFlag(true);
+                  // setImage(res.data.filename);
+                }
+                resolve(
+                  {
+                    default: `${imgLink}/${res.data.filename}`,
+                  },
+                  console.log(`${imgLink}/${res.data.filename}`)
+                );
+              })
+              .catch((err) => reject(err));
+          });
+        });
+      },
+    };
+  };
+
+  function uploadPlugin(editor) {
+    // (3)
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+      return customUploadAdapter(loader);
+    };
+  }
   const onchangeRegion = (e) => {
     setRegionEng(e.target.value);
     setRegion(e.target[e.target.selectedIndex].text);
     //console.log(e.target[e.target.selectedIndex].text);
   };
-
-  const imgSrc = useRef();
-  const [img, setImg] = useState('');
-  const [imgPath, setImgPath] = useState('');
-
   const onChangeFile = (e) => {
     if (e.target.files && e.target.files[0]) {
       let save = e.target.files[0];
@@ -450,20 +501,6 @@ const NewProductForm = ({ userKey }) => {
       [name]: value,
     });
   };
-
-  const [inputData, setInputData] = useState({
-    productName: '',
-    productPrice: '',
-    startHour: '00',
-    startMinute: '00',
-    endHour: '23',
-    endMinute: '55',
-    ProductDiscountPercent: '',
-    discount: '',
-    startDate: '',
-    endDate: '',
-    productLocal: '경기도',
-  });
 
   const hourList = [
     '00',
@@ -635,7 +672,32 @@ const NewProductForm = ({ userKey }) => {
               상세페이지
               <span> *</span>
             </h2>
-            <div></div>
+            <div>
+              <CKEditor
+                editor={ClassicEditor}
+                config={{
+                  // (4)
+                  extraPlugins: [uploadPlugin],
+                  placeholder: '상세페이지를 작성해주세요!',
+                }}
+                onReady={(editor) => {
+                  // You can store the "editor" and use when it is needed.
+                  //console.log('Editor is ready to use!', editor);
+                }}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  // console.log({ event, editor, data });
+                  setEditorContent(data);
+                  console.log(data);
+                }}
+                onBlur={(event, editor) => {
+                  // console.log(event, editor);
+                }}
+                onFocus={(event, editor) => {
+                  // console.log('Focus.', editor);
+                }}
+              />
+            </div>
           </DetailBox>
         </div>
         <h1>할인 적용</h1>

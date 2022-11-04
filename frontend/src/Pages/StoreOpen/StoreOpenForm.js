@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Theme from '../../Theme/theme';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import PostCode from './PostCode';
 
 // 메인박스로 묶음
 const MainBox = styled.div`
@@ -144,7 +145,7 @@ const StoreDescBox = styled.div`
 // 사업장 주소 input부분은 형식이 달라서 따로 지정
 const BusinessAdd = styled.div`
   width: inherit;
-  height: 208px;
+  height: 220px;
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   color: ${({ theme }) => theme.lightblack};
@@ -168,7 +169,7 @@ const BusinessAdd = styled.div`
   // 사업장 주소를 입력 받을 박스
   & > div {
     width: inherit;
-    padding: 22px 20px 22px 20px;
+    padding: 22px 0px 22px 20px;
     border-left: 1px solid ${({ theme }) => theme.lightblack};
     display: flex;
     flex-direction: column;
@@ -447,7 +448,10 @@ const StoreOpenForm = ({ user_key }) => {
 
   const [img, setImg] = useState('');
   const [imagePath, setImagePath] = useState('');
-
+  const [postcode, setPostCode] = useState(false);
+  const [display, setDisplay] = useState('inline');
+  const [zipcode, setZipCode] = useState('');
+  const [address1, setaddress1] = useState('');
   console.log(img);
 
   const onChangeFile = (e) => {
@@ -508,9 +512,7 @@ const StoreOpenForm = ({ user_key }) => {
     mobilePhone: '',
     email: '',
     name: '',
-    address1: '',
     address2: '',
-    address3: '',
     huntingLine1: '02',
     huntingLine2: '',
     huntingLine3: '',
@@ -535,9 +537,7 @@ const StoreOpenForm = ({ user_key }) => {
     mobilePhone,
     email,
     name,
-    address1,
     address2,
-    address3,
     huntingLine1,
     huntingLine2,
     huntingLine3,
@@ -570,7 +570,7 @@ const StoreOpenForm = ({ user_key }) => {
     storeCeophone: mobilePhone,
     storeCeoEmail: email,
     storeCeoName: name,
-    storeAddress: `${address1} ${address2} ${address3}`,
+    storeAddress: `${zipcode} ${address1} ${address2}`,
     storeimg: imagePath,
     storeCall: `${huntingLine1}-${huntingLine2}-${huntingLine3}`,
     storePhone: `${mobile1}-${mobile2}-${mobile3}`,
@@ -585,10 +585,15 @@ const StoreOpenForm = ({ user_key }) => {
     user_key: user_key,
   };
 
-  const onClick = (e) => {
+  const onClick = () => {
     axios.post('http://localhost:8080/admin/storeOpen', data);
     alert('스토어 개설을 하였습니다!');
     navigate('/admin');
+  };
+
+  const clickPost = () => {
+    setPostCode(true);
+    setDisplay('none');
   };
 
   return (
@@ -641,22 +646,36 @@ const StoreOpenForm = ({ user_key }) => {
               <div>
                 <input
                   onChange={onchange}
-                  name='address1'
                   placeholder='우편번호'
+                  value={zipcode}
                 ></input>
-                <button>주소검색</button>
+                <button
+                  type='button'
+                  style={{ display: `${display}` }}
+                  onClick={clickPost}
+                >
+                  주소검색
+                </button>
               </div>
               <input
                 onChange={onchange}
-                name='address2'
                 placeholder='기본주소'
+                value={address1}
               ></input>
               <input
                 onChange={onchange}
-                name='address3'
-                placeholder='나머지 주소(선택 입력 가능)'
+                name='address2'
+                placeholder='나머지 주소'
               ></input>
             </div>
+            {postcode ? (
+              <PostCode
+                zipcode={setZipCode}
+                address1={setaddress1}
+                display={setDisplay}
+                postcode={setPostCode}
+              ></PostCode>
+            ) : null}
           </BusinessAdd>
           <ImgBox>
             <h2>
@@ -854,9 +873,6 @@ const StoreOpenForm = ({ user_key }) => {
           </ContentBox>
         </div>
         <div>
-          <EditButton col={Theme.lightblack} bgcol={Theme.realWhite}>
-            수정
-          </EditButton>
           <RegButton
             onClick={onClick}
             col={Theme.realWhite}

@@ -3,6 +3,8 @@ const router = express.Router();
 const connection = require('../../../db/db');
 const multer = require('multer');
 const path = require('path');
+const { v4: uuid } = require('uuid');
+const mime = require('mime-types');
 
 const upload = multer({
   // storage 어디에 저장할건지 , diskStorage 하드 디스크에 저장하겠다.
@@ -22,11 +24,6 @@ const upload = multer({
       cb(null, new Date().valueOf() + path.extname(file.originalname));
     },
   }),
-});
-
-router.get('/storeOpen', (req, res) => {
-  res.send(' 연동쓰');
-  console.log('연동');
 });
 
 router.post('/storeOpen', (req, res) => {
@@ -107,6 +104,8 @@ router.post('/newProduct', (req, res) => {
     productImage,
   } = req.body;
 
+  // product_key 기준으로 desc 내림차순 으로
+  // product테이블에 product_key 컬럼을 product_key기준으로 내림차순으로 1개
   connection.query(
     'select product_key from product order by product_key desc limit 1',
     (err, row1, field) => {
@@ -146,6 +145,38 @@ router.get(`/product/data/:user_key`, (req, res) => {
   );
 });
 
+// 상품등록 - 상세페이지 사진 업로드 과정
+const productStorage = multer.diskStorage({
+  // (2)
+  destination: (req, file, cb) => {
+    // (3)
+    cb(null, 'uploads/product');
+  },
+  filename: (req, file, cb) => {
+    // (4)
+    cb(null, `${uuid()}.${mime.extension(file.mimetype)}`); // (5)
+  },
+});
+
+const productUpload = multer({
+  // (6)
+  storage: productStorage,
+  fileFilter: (req, file, cb) => {
+    if (['image/jpeg', 'image/jpg', 'image/png'].includes(file.mimetype))
+      cb(null, true);
+    else cb(new Error('해당 파일의 형식을 지원하지 않습니다.'), false);
+  },
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+});
+
+router.post('/productImages', productUpload.single('file'), (req, res) => {
+  // (7)
+  console.log('데이터');
+  res.status(200).json(req.file);
+});
+
 router.get('/product/delete/:product_key', (req, res) => {
   connection.query(
     `delete from product where product_key = ${req.params.product_key}`,
@@ -155,4 +186,19 @@ router.get('/product/delete/:product_key', (req, res) => {
     }
   );
 });
+
+// 스토어 정보 불러오기
+router.get('/store/data/:user_key', (req, res) => {
+  console.log('스토어연동');
+
+  let key = req.params.user_key;
+
+  connection.query(
+    `select * from admin_store where user_key = ${key}`,
+    (err, row, field) => {
+      res.json(row);
+    }
+  );
+});
+
 module.exports = router;
